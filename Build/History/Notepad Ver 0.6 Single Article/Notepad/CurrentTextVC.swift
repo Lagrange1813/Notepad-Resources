@@ -43,7 +43,7 @@ class CurrentTextVC: UIViewController {
     }
 
     func configureNavigationBar() {
-        navigationItem.title = "观辞"
+        navigationItem.title = "卡拉马佐夫兄弟"
 //        navigationController?.navigationBar.barStyle = .black
         navigationController?.navigationBar.isTranslucent = false
 
