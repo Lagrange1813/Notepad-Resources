@@ -13,6 +13,7 @@ class CurrentTextVC: UIViewController {
     var articleField: PureTextView!
     var articles: [NSManagedObject] = []
     var counter: WordCounter!
+    var toolBar: ToolBar!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +28,7 @@ class CurrentTextVC: UIViewController {
         configureTextView()
         configureCounter()
         configureToolBar()
+        registNotification()
     }
 
     func configureNavigationBar() {
@@ -43,7 +45,7 @@ class CurrentTextVC: UIViewController {
             self.navigationController?.navigationBar.standardAppearance = bar
         }
     }
-    
+
     func loadData() {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             return
@@ -67,18 +69,19 @@ class CurrentTextVC: UIViewController {
 
         articleField.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
-            make.leading.trailing.equalToSuperview()
+            make.leading.equalToSuperview()
+            make.trailing.equalToSuperview()
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(5)
         }
     }
-    
+
     func configureText(_ articleField: PureTextView) {
         let index = articles.count
         let text = articles[index - 1]
         articleField.configureText(title: text.value(forKey: "title") as! String,
                                    body: text.value(forKey: "body") as! String)
     }
-    
+
     func configureCounter() {
         counter = WordCounter()
         view.addSubview(counter)
@@ -91,22 +94,26 @@ class CurrentTextVC: UIViewController {
         counter.refreshLabel(articleField.text.count)
         refreshCounter()
     }
-    
+
     func refreshCounter() {
         counter.snp.updateConstraints { make in
             make.width.equalTo(counter.width + 5)
         }
     }
-    
+
     func configureToolBar() {
-        let tool = ToolBar()
-        view.addSubview(tool)
-        
-        tool.snp.makeConstraints { make in
+        toolBar = ToolBar()
+        view.addSubview(toolBar)
+
+        toolBar.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
-            make.width.equalTo(tool.width)
-            make.height.equalTo(tool.height)
+            if ScreenSize.bottomPadding! > 0 {
+                make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+            } else {
+                make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).inset(5)
+            }
+            make.width.equalTo(toolBar.width)
+            make.height.equalTo(toolBar.height)
         }
     }
 
@@ -134,7 +141,7 @@ class CurrentTextVC: UIViewController {
         let textRange = articleField.textRange(from: start, to: end)!
         articleField.replace(textRange, withText: sender.argument!)
     }
-    
+
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let pan = scrollView.panGestureRecognizer
         let velocity = pan.velocity(in: scrollView).y
@@ -144,13 +151,51 @@ class CurrentTextVC: UIViewController {
 //                           animations: {
 //                self.navigationController?.isNavigationBarHidden = true
 //            })
-            self.navigationController?.isNavigationBarHidden = true
+            navigationController?.isNavigationBarHidden = true
         } else if velocity > 100 {
             UIView.animate(withDuration: 0.3,
                            animations: {
-                self.navigationController?.isNavigationBarHidden = false
-            })
+                               self.navigationController?.isNavigationBarHidden = false
+                           })
         }
+    }
+
+    func registNotification() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(handleKeyboardWillShow(notification:)),
+                                               name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(handleKeyboardWillHide),
+                                               name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+
+    @objc func handleKeyboardWillShow(notification: NSNotification) {
+        print("It will appear")
+
+        let keyboardInfo = notification.userInfo as NSDictionary?
+        let value = keyboardInfo?.object(forKey: UIResponder.keyboardFrameEndUserInfoKey) as! CGRect
+        let moveDistance = value.height - ScreenSize.bottomPadding! + 5
+        print(moveDistance)
+
+        UIView.animate(withDuration: 1, animations: {
+            self.toolBar.snp.updateConstraints { make in
+                make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom).inset(moveDistance)
+            }
+        })
+        view.layoutIfNeeded()
+    }
+
+    @objc func handleKeyboardWillHide() {
+        UIView.animate(withDuration: 1, animations: {
+            self.toolBar.snp.updateConstraints { make in
+                if ScreenSize.bottomPadding! > 0 {
+                    make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom)
+                } else {
+                    make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom).inset(5)
+                }
+            }
+        })
+        view.layoutIfNeeded()
     }
 }
 

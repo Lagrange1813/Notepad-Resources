@@ -60,7 +60,7 @@ class ToolBar: UIView {
 //        self.gestureRecognizers = [panRecognizer]
         print(ScreenSize.width)
         self.backgroundColor = ColorCollection.lightToolBG
-        self.alpha = 1
+        self.alpha = 0.9
         self.tintColor = .black
         layer.cornerRadius = height/2
         
@@ -69,7 +69,7 @@ class ToolBar: UIView {
                                             y: 0,
                                             width: width - height,
                                             height: height))
-            view.backgroundColor = .systemGray
+            view.backgroundColor = ColorCollection.lightToolBG
             view.layer.cornerRadius = height/2
             return view
         }()
@@ -151,7 +151,6 @@ class ToolBar: UIView {
                                                 height: btnLength))
         
         commandBtn.setImage(UIImage(systemName: fixedBarItem.0), for: .normal)
-        commandBtn.tintColor = .black
         
         addSubview(commandBtn)
 
@@ -161,7 +160,6 @@ class ToolBar: UIView {
                                                height: btnLength))
         
         returnBtn.setImage(UIImage(systemName: fixedBarItem.1), for: .normal)
-        returnBtn.tintColor = .white
         
         addSubview(returnBtn)
         
@@ -171,7 +169,6 @@ class ToolBar: UIView {
                                                height: btnLength))
         
         pasteBtn.setImage(UIImage(systemName: fixedBarItem.2), for: .normal)
-        pasteBtn.tintColor = .white
         
         addSubview(pasteBtn)
         
@@ -181,7 +178,6 @@ class ToolBar: UIView {
                                                height: btnLength))
         
         downBtn.setImage(UIImage(systemName: fixedBarItem.3), for: .normal)
-        downBtn.tintColor = .white
         
         addSubview(downBtn)
         

@@ -15,6 +15,7 @@ struct ColorCollection {
     static let lightNavigation = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
     static let lightCountBG = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
     static let lightToolBG = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
+    static let lightRightBG = UIColor(red: 0.94117, green: 0.94117, blue: 0.94117, alpha: 1)
     
     static let darkBodyBG = UIColor(red: 0.15686, green: 0.15686, blue: 0.15686, alpha: 1)
     static let darkBodyText = UIColor(red: 0.90196, green: 0.90196, blue: 0.90196, alpha: 1)
@@ -28,11 +29,12 @@ enum ScreenSize {
 
     static let window = UIApplication.shared.windows.filter { $0.isKeyWindow }.first
     static let topPadding = window?.safeAreaInsets.top
-    static let bottomPadding = { () -> CGFloat? in
-        if (window?.safeAreaInsets.bottom)! > 0 {
-            return window?.safeAreaInsets.bottom
-        } else {
-            return 20.0
-        }
-    }
+    static let bottomPadding = window?.safeAreaInsets.bottom
+//    static let bottomPadding = { () -> CGFloat? in
+//        if (window?.safeAreaInsets.bottom)! > 0 {
+//            return window?.safeAreaInsets.bottom
+//        } else {
+//            return 20.0
+//        }
+//    }
 }
