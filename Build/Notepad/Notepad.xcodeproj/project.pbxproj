@@ -14,6 +14,7 @@
 		7A51029327A007BA00002C01 /* ToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A51029227A007BA00002C01 /* ToolBar.swift */; };
 		7A51029827A0352B00002C01 /* LXGWWenKai-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7A51029727A0352B00002C01 /* LXGWWenKai-Regular.ttf */; };
 		7A51029A27A109BB00002C01 /* ToolBG.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A51029927A109BB00002C01 /* ToolBG.swift */; };
+		7A5102BE27A2A0B600002C01 /* ConfigureBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5102BD27A2A0B600002C01 /* ConfigureBtn.swift */; };
 		7A57108C279D00BB009738D4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A57108B279D00BB009738D4 /* AppDelegate.swift */; };
 		7A57108E279D00BB009738D4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A57108D279D00BB009738D4 /* SceneDelegate.swift */; };
 		7A571090279D00BB009738D4 /* CurrentTextVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A57108F279D00BB009738D4 /* CurrentTextVC.swift */; };
@@ -34,6 +35,7 @@
 		7A51029227A007BA00002C01 /* ToolBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolBar.swift; sourceTree = "<group>"; };
 		7A51029727A0352B00002C01 /* LXGWWenKai-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "LXGWWenKai-Regular.ttf"; sourceTree = "<group>"; };
 		7A51029927A109BB00002C01 /* ToolBG.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolBG.swift; sourceTree = "<group>"; };
+		7A5102BD27A2A0B600002C01 /* ConfigureBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigureBtn.swift; sourceTree = "<group>"; };
 		7A571088279D00BB009738D4 /* Notepad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Notepad.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A57108B279D00BB009738D4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7A57108D279D00BB009738D4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 				7A51029027A005BA00002C01 /* BtnWithArgu.swift */,
 				7A51029227A007BA00002C01 /* ToolBar.swift */,
 				7A51029927A109BB00002C01 /* ToolBG.swift */,
+				7A5102BD27A2A0B600002C01 /* ConfigureBtn.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -259,6 +262,7 @@
 				7A51028D279FAA8800002C01 /* Handler.swift in Sources */,
 				7A51029A27A109BB00002C01 /* ToolBG.swift in Sources */,
 				7A571096279D00BB009738D4 /* Notepad.xcdatamodeld in Sources */,
+				7A5102BE27A2A0B600002C01 /* ConfigureBtn.swift in Sources */,
 				7A51028B279F95FC00002C01 /* FirstLaunch.swift in Sources */,
 				7A51029327A007BA00002C01 /* ToolBar.swift in Sources */,
 			);

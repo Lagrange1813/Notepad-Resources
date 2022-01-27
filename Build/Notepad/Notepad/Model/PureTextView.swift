@@ -28,7 +28,7 @@ class PureTextView: UITextView, UITextFieldDelegate {
         
     private func customize() {
         self.backgroundColor = ColorCollection.lightBodyBG
-        self.textContainerInset = UIEdgeInsets(top: 25, left: 3, bottom: 300, right: 3)
+        self.textContainerInset = UIEdgeInsets(top: 25, left: 3, bottom: 360, right: 3)
         self.indicatorStyle = .black
 
         let titleFont = UIFont(name: "LXGW WenKai", size: 18)

@@ -15,17 +15,18 @@ class ToolBar: UIView {
     var width: CGFloat = {
         switch ScreenSize.width {
         case 0...330:
-            return 7*40.0 + 4
+            return 7 * 40.0 + 4
         case 330...370:
-            return 8*40.0 + 4
+            return 8 * 40.0 + 4
         case 370...410:
-            return 9*40.0 + 4
+            return 9 * 40.0 + 4
         case 410...450:
-            return 10*40.0 + 4
+            return 10 * 40.0 + 4
         default:
-            return 9*40.0 + 4
+            return 9 * 40.0 + 4
         }
     }()
+
     var height = 40.0
     
     let fixedBarItem = (
@@ -46,6 +47,11 @@ class ToolBar: UIView {
     var velocityLoop: CADisplayLink!
     var toolBG: ToolBG!
     
+    var commandBtn: UIButton!
+    var returnBtn: UIButton!
+    var pasteBtn: UIButton!
+    var downBtn: UIButton!
+    
     init() {
 //        let y = ScreenSize.height - ScreenSize.bottomPadding()! - height - ScreenSize.topPadding! - barHeight
 //        print(ScreenSize.bottomPadding)
@@ -61,7 +67,7 @@ class ToolBar: UIView {
         print(ScreenSize.width)
         self.backgroundColor = ColorCollection.lightToolBG
         self.alpha = 0.9
-        self.tintColor = .black
+//        self.tintColor = .black
         layer.cornerRadius = height/2
         
         let rightBG: UIView = {
@@ -85,7 +91,7 @@ class ToolBar: UIView {
             toolBG.alpha = 1
 //            toolBG.layer.cornerRadius = height/2
             
-            toolBG.contentSize = CGSize(width: 10*height, height: height)
+            toolBG.contentSize = CGSize(width: 10 * height, height: height)
             toolBG.canCancelContentTouches = true
             toolBG.delaysContentTouches = false
             toolBG.showsHorizontalScrollIndicator = false
@@ -145,43 +151,47 @@ class ToolBar: UIView {
     }
     
     func configureFixedButton() {
-        let commandBtn = UIButton(frame: CGRect(x: height/2 - btnLength/2 + 2,
+        commandBtn = { () -> UIButton in
+            let button = UIButton(frame: CGRect(x: height/2 - btnLength/2 + 2,
                                                 y: height/2 - btnLength/2,
                                                 width: btnLength,
                                                 height: btnLength))
-        
-        commandBtn.setImage(UIImage(systemName: fixedBarItem.0), for: .normal)
-        
+            button.setImage(UIImage(systemName: fixedBarItem.0), for: .normal)
+            return button
+        }()
         addSubview(commandBtn)
 
-        let returnBtn = UIButton(frame: CGRect(x: height/2 - btnLength/2 + height * 1 + 2,
-                                               y: height/2 - btnLength/2,
-                                               width: btnLength,
-                                               height: btnLength))
-        
-        returnBtn.setImage(UIImage(systemName: fixedBarItem.1), for: .normal)
-        
+        returnBtn = { () -> UIButton in
+            let button = UIButton(frame: CGRect(x: height/2 - btnLength/2 + height * 1 + 2,
+                                                y: height/2 - btnLength/2,
+                                                width: btnLength,
+                                                height: btnLength))
+            button.setImage(UIImage(systemName: fixedBarItem.1), for: .normal)
+            return button
+        }()
         addSubview(returnBtn)
         
-        let pasteBtn = UIButton(frame: CGRect(x: height/2 - btnLength/2 + height * 2 + 2,
-                                               y: height/2 - btnLength/2,
-                                               width: btnLength,
-                                               height: btnLength))
-        
-        pasteBtn.setImage(UIImage(systemName: fixedBarItem.2), for: .normal)
-        
+        pasteBtn = { () -> UIButton in
+            let button = UIButton(frame: CGRect(x: height/2 - btnLength/2 + height * 2 + 2,
+                                                y: height/2 - btnLength/2,
+                                                width: btnLength,
+                                                height: btnLength))
+            button.setImage(UIImage(systemName: fixedBarItem.2), for: .normal)
+            return button
+        }()
         addSubview(pasteBtn)
         
-        let downBtn = UIButton(frame: CGRect(x: width - height + height/2 - btnLength/2 - 2,
-                                               y: height/2 - btnLength/2,
-                                               width: btnLength,
-                                               height: btnLength))
-        
-        downBtn.setImage(UIImage(systemName: fixedBarItem.3), for: .normal)
-        
+        downBtn = { () -> UIButton in
+            let button = UIButton(frame: CGRect(x: width - height + height/2 - btnLength/2 - 2,
+                                                y: height/2 - btnLength/2,
+                                                width: btnLength,
+                                                height: btnLength))
+            button.setImage(UIImage(systemName: fixedBarItem.3), for: .normal)
+            return button
+        }()
         addSubview(downBtn)
         
-        for x in 0 ... 9 {
+        for x in 0...9 {
             let testBtn = UIView()
             
             testBtn.backgroundColor = .blue
@@ -193,5 +203,7 @@ class ToolBar: UIView {
                 make.size.width.height.equalTo(20)
             }
         }
+        
+        
     }
 }
