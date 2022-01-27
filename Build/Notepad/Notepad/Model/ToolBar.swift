@@ -32,8 +32,9 @@ class ToolBar: UIView {
     let fixedBarItem = (
         "command",
         "arrowshape.turn.up.backward",
-        "rectangle.on.rectangle",
-        "arrow.down.circle"
+        "doc.on.clipboard",
+        "arrowtriangle.down",
+        "rectangle.on.rectangle"
     )
     
     var scrollBarItem = [
@@ -47,10 +48,10 @@ class ToolBar: UIView {
     var velocityLoop: CADisplayLink!
     var toolBG: ToolBG!
     
-    var commandBtn: UIButton!
-    var returnBtn: UIButton!
-    var pasteBtn: UIButton!
-    var downBtn: UIButton!
+    var commandBtn: CustomBtn!
+    var returnBtn: CustomBtn!
+    var pasteBtn: CustomBtn!
+    var downBtn: CustomBtn!
     
     init() {
 //        let y = ScreenSize.height - ScreenSize.bottomPadding()! - height - ScreenSize.topPadding! - barHeight
@@ -67,7 +68,7 @@ class ToolBar: UIView {
         print(ScreenSize.width)
         self.backgroundColor = ColorCollection.lightToolBG
         self.alpha = 0.9
-//        self.tintColor = .black
+        self.tintColor = .black
         layer.cornerRadius = height/2
         
         let rightBG: UIView = {
@@ -151,28 +152,30 @@ class ToolBar: UIView {
     }
     
     func configureFixedButton() {
-        commandBtn = { () -> UIButton in
-            let button = UIButton(frame: CGRect(x: height/2 - btnLength/2 + 2,
+        commandBtn = { () -> CustomBtn in
+            let button = CustomBtn(frame: CGRect(x: height/2 - btnLength/2 + 2,
                                                 y: height/2 - btnLength/2,
                                                 width: btnLength,
                                                 height: btnLength))
             button.setImage(UIImage(systemName: fixedBarItem.0), for: .normal)
+//
             return button
         }()
         addSubview(commandBtn)
 
-        returnBtn = { () -> UIButton in
-            let button = UIButton(frame: CGRect(x: height/2 - btnLength/2 + height * 1 + 2,
+        returnBtn = { () -> CustomBtn in
+            let button = CustomBtn(frame: CGRect(x: height/2 - btnLength/2 + height * 1 + 2,
                                                 y: height/2 - btnLength/2,
                                                 width: btnLength,
                                                 height: btnLength))
             button.setImage(UIImage(systemName: fixedBarItem.1), for: .normal)
+            button.setTitleColor(.black, for: .normal)
             return button
         }()
         addSubview(returnBtn)
         
-        pasteBtn = { () -> UIButton in
-            let button = UIButton(frame: CGRect(x: height/2 - btnLength/2 + height * 2 + 2,
+        pasteBtn = { () -> CustomBtn in
+            let button = CustomBtn(frame: CGRect(x: height/2 - btnLength/2 + height * 2 + 2,
                                                 y: height/2 - btnLength/2,
                                                 width: btnLength,
                                                 height: btnLength))
@@ -181,8 +184,8 @@ class ToolBar: UIView {
         }()
         addSubview(pasteBtn)
         
-        downBtn = { () -> UIButton in
-            let button = UIButton(frame: CGRect(x: width - height + height/2 - btnLength/2 - 2,
+        downBtn = { () -> CustomBtn in
+            let button = CustomBtn(frame: CGRect(x: width - height + height/2 - btnLength/2 - 2,
                                                 y: height/2 - btnLength/2,
                                                 width: btnLength,
                                                 height: btnLength))

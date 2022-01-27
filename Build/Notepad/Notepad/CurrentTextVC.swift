@@ -29,6 +29,7 @@ class CurrentTextVC: UIViewController {
         configureCounter()
         configureToolBar()
         registNotification()
+        configureBtnAction()
     }
 
     func configureNavigationBar() {
@@ -117,46 +118,20 @@ class CurrentTextVC: UIViewController {
         }
     }
 
-    func test() {
-        let btn = BtnWithArgu()
-        btn.setTitle("Test", for: .normal)
-        btn.setTitleColor(.white, for: .normal)
-        btn.setTitleColor(.systemGray, for: .highlighted)
-        btn.argument = "\\\""
-
-        view.addSubview(btn)
-
-        btn.snp.makeConstraints { make in
-            make.center.equalToSuperview()
-            make.size.width.height.equalTo(50)
-        }
-
-        btn.addTarget(self, action: #selector(insertFromCursor), for: .touchUpInside)
-    }
-
-    @objc func insertFromCursor(sender: BtnWithArgu, forEvent event: UIEvent) {
-        let range = articleField.selectedRange
-        let start = articleField.position(from: articleField.beginningOfDocument, offset: range.location)!
-        let end = articleField.position(from: start, offset: range.length)!
-        let textRange = articleField.textRange(from: start, to: end)!
-        articleField.replace(textRange, withText: sender.argument!)
-    }
-
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let pan = scrollView.panGestureRecognizer
         let velocity = pan.velocity(in: scrollView).y
         navigationController?.navigationBar.barStyle = .black
-        if velocity < -100 {
-//            UIView.animate(withDuration: 0.3,
-//                           animations: {
-//                self.navigationController?.isNavigationBarHidden = true
-//            })
-            navigationController?.isNavigationBarHidden = true
-        } else if velocity > 100 {
-            UIView.animate(withDuration: 0.3,
-                           animations: {
-                               self.navigationController?.isNavigationBarHidden = false
-                           })
+        if velocity < -200 {
+            UIView.animate(withDuration: 0.3, animations: {
+//                self.navigationController?.isNavigationBarHidden = true  WOC, NB!
+                self.navigationController?.setNavigationBarHidden(true, animated: true)
+            })
+//            navigationController?.isNavigationBarHidden = true
+        } else if velocity > 200 {
+            UIView.animate(withDuration: 0.3, animations: {
+                self.navigationController?.isNavigationBarHidden = false
+            })
         }
     }
 
