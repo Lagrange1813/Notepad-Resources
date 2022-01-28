@@ -22,17 +22,27 @@ extension CurrentTextVC {
     }
 
     @objc func downBtnFunc() {
-        print("down")
         articleField.titleView.resignFirstResponder()
         articleField.bodyView.resignFirstResponder()
     }
 
     @objc func insertFromCursor(sender: CustomBtn, forEvent event: UIEvent) {
-        let range = articleField.bodyView.selectedRange
-        let start = articleField.bodyView.position(from: articleField.bodyView.beginningOfDocument, offset: range.location)!
-        let end = articleField.bodyView.position(from: start, offset: range.length)!
-        let textRange = articleField.bodyView.textRange(from: start, to: end)!
-        articleField.bodyView.replace(textRange, withText: sender.argument!)
+        var selectedView: CustomTextView?
+        
+        if articleField.bodyViewUnderEditing {
+            selectedView = articleField.bodyView
+        } else if articleField.titleViewUnderEditing {
+            selectedView = articleField.titleView
+        }
+        
+        if let selectedView = selectedView {
+            let range = selectedView.selectedRange
+            let start = selectedView.position(from: selectedView.beginningOfDocument, offset: range.location)!
+            let end = selectedView.position(from: start, offset: range.length)!
+            let textRange = selectedView.textRange(from: start, to: end)!
+            selectedView.replace(textRange, withText: sender.argument!)
+        }
+        
     }
 
 }

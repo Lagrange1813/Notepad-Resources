@@ -152,12 +152,9 @@ class CurrentTextVC: UIViewController {
     }
 
     @objc func handleKeyboardWillShow(notification: NSNotification) {
-        print("It will appear")
-
         let keyboardInfo = notification.userInfo as NSDictionary?
         let value = keyboardInfo?.object(forKey: UIResponder.keyboardFrameEndUserInfoKey) as! CGRect
         let moveDistance = value.height - ScreenSize.bottomPadding! + 5
-        print(moveDistance)
 
         UIView.animate(withDuration: 1, animations: {
             self.toolBar.snp.updateConstraints { make in
@@ -178,6 +175,14 @@ class CurrentTextVC: UIViewController {
             }
         })
         view.layoutIfNeeded()
+    }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        articleField.bodyViewUnderEditing = true
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        articleField.bodyViewUnderEditing = false
     }
 }
 

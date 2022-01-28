@@ -17,6 +17,9 @@ class PureTextView: UIScrollView, UITextViewDelegate {
     var titleView: CustomTextView!
     var bodyView: CustomTextView!
     
+    var titleViewUnderEditing = false
+    var bodyViewUnderEditing = false
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureBackView()
@@ -135,4 +138,13 @@ class PureTextView: UIScrollView, UITextViewDelegate {
     func resize() {
         contentSize = CGSize(width: frame.width, height: titleView.frame.height + bodyView.frame.height)
     }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        titleViewUnderEditing = true
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        titleViewUnderEditing = false
+    }
+    
 }
