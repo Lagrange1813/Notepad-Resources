@@ -15,6 +15,7 @@
 		7A51029827A0352B00002C01 /* LXGWWenKai-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7A51029727A0352B00002C01 /* LXGWWenKai-Regular.ttf */; };
 		7A51029A27A109BB00002C01 /* ToolBG.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A51029927A109BB00002C01 /* ToolBG.swift */; };
 		7A5102BE27A2A0B600002C01 /* ConfigureBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5102BD27A2A0B600002C01 /* ConfigureBtn.swift */; };
+		7A5102E727A3B12200002C01 /* CustomTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5102E627A3B12200002C01 /* CustomTextView.swift */; };
 		7A57108C279D00BB009738D4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A57108B279D00BB009738D4 /* AppDelegate.swift */; };
 		7A57108E279D00BB009738D4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A57108D279D00BB009738D4 /* SceneDelegate.swift */; };
 		7A571090279D00BB009738D4 /* CurrentTextVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A57108F279D00BB009738D4 /* CurrentTextVC.swift */; };
@@ -36,6 +37,7 @@
 		7A51029727A0352B00002C01 /* LXGWWenKai-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "LXGWWenKai-Regular.ttf"; sourceTree = "<group>"; };
 		7A51029927A109BB00002C01 /* ToolBG.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolBG.swift; sourceTree = "<group>"; };
 		7A5102BD27A2A0B600002C01 /* ConfigureBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigureBtn.swift; sourceTree = "<group>"; };
+		7A5102E627A3B12200002C01 /* CustomTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextView.swift; sourceTree = "<group>"; };
 		7A571088279D00BB009738D4 /* Notepad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Notepad.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A57108B279D00BB009738D4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7A57108D279D00BB009738D4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -73,6 +75,7 @@
 		7A5102BF27A2E63000002C01 /* TextView */ = {
 			isa = PBXGroup;
 			children = (
+				7A51029427A0326600002C01 /* Font */,
 			);
 			path = TextView;
 			sourceTree = "<group>";
@@ -99,7 +102,6 @@
 			isa = PBXGroup;
 			children = (
 				7A5102BF27A2E63000002C01 /* TextView */,
-				7A51029427A0326600002C01 /* Font */,
 				7A5710CE279E4F23009738D4 /* Model */,
 				7A57108B279D00BB009738D4 /* AppDelegate.swift */,
 				7A57108D279D00BB009738D4 /* SceneDelegate.swift */,
@@ -124,6 +126,7 @@
 				7A51029227A007BA00002C01 /* ToolBar.swift */,
 				7A51029927A109BB00002C01 /* ToolBG.swift */,
 				7A5102BD27A2A0B600002C01 /* ConfigureBtn.swift */,
+				7A5102E627A3B12200002C01 /* CustomTextView.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -264,6 +267,7 @@
 				7A571090279D00BB009738D4 /* CurrentTextVC.swift in Sources */,
 				7A57108C279D00BB009738D4 /* AppDelegate.swift in Sources */,
 				7A5710A5279D0222009738D4 /* WordCounter.swift in Sources */,
+				7A5102E727A3B12200002C01 /* CustomTextView.swift in Sources */,
 				7A5710D0279E5115009738D4 /* PureTextView.swift in Sources */,
 				7A51029127A005BA00002C01 /* CustomBtn.swift in Sources */,
 				7A57108E279D00BB009738D4 /* SceneDelegate.swift in Sources */,

@@ -12,24 +12,25 @@ extension CurrentTextVC {
     func textViewDidChange(_ textView: UITextView) {
         print("Yes!")
         
-        var splitTitle: String!
-        var splitBody: String!
+//        var splitTitle: String!
+//        var splitBody: String!
         
-        let temp = articleField.text!
-        let till: Character = "\n"
+//        let temp = articleField.text!
+        let temp = articleField.titleView.text! + articleField.bodyView.text!
+//        let till: Character = "\n"
         
         counter.refreshLabel(temp.count)
         refreshCounter()
         
-        if let index = temp.firstIndex(of: till) {
-            let position = temp.distance(from: temp.startIndex, to: index)
-            splitTitle = (temp as NSString).substring(to: position)
-            splitBody = (temp as NSString).substring(from: position + 2)
-        }
+//        if let index = temp.firstIndex(of: till) {
+//            let position = temp.distance(from: temp.startIndex, to: index)
+//            splitTitle = (temp as NSString).substring(to: position)
+//            splitBody = (temp as NSString).substring(from: position + 2)
+//        }
         
-        let titleToStore: String = splitTitle
+        let titleToStore: String = articleField.titleView.text
         
-        let bodyToStore: String = splitBody
+        let bodyToStore: String = articleField.bodyView.text
         
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             return

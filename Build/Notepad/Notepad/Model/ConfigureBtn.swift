@@ -22,7 +22,8 @@ extension CurrentTextVC {
     
     @objc func downBtnFunc() {
         print("down")
-        articleField.resignFirstResponder()
+        articleField.titleView.resignFirstResponder()
+        articleField.bodyView.resignFirstResponder()
     }
 
     func test() {
@@ -43,10 +44,10 @@ extension CurrentTextVC {
     }
 
     @objc func insertFromCursor(sender: CustomBtn, forEvent event: UIEvent) {
-        let range = articleField.selectedRange
-        let start = articleField.position(from: articleField.beginningOfDocument, offset: range.location)!
-        let end = articleField.position(from: start, offset: range.length)!
-        let textRange = articleField.textRange(from: start, to: end)!
-        articleField.replace(textRange, withText: sender.argument!)
+        let range = articleField.bodyView.selectedRange
+        let start = articleField.bodyView.position(from: articleField.bodyView.beginningOfDocument, offset: range.location)!
+        let end = articleField.bodyView.position(from: start, offset: range.length)!
+        let textRange = articleField.bodyView.textRange(from: start, to: end)!
+        articleField.bodyView.replace(textRange, withText: sender.argument!)
     }
 }

@@ -31,6 +31,11 @@ class CurrentTextVC: UIViewController {
         registNotification()
         configureBtnAction()
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        articleField.resize()
+    }
 
     func configureNavigationBar() {
         navigationItem.title = "卡拉马佐夫兄弟"
@@ -63,8 +68,9 @@ class CurrentTextVC: UIViewController {
     }
 
     func configureTextView() {
-        articleField = PureTextView(frame: CGRect(), textContainer: nil)
-        articleField.delegate = self
+        articleField = PureTextView(frame: CGRect())
+        articleField.bodyView.delegate = self
+        articleField.configureFont(fontName: "LXGW WenKai")
         configureText(articleField)
         view.addSubview(articleField)
 
@@ -92,7 +98,8 @@ class CurrentTextVC: UIViewController {
             make.width.equalTo(55)
             make.height.equalTo(20)
         }
-        counter.refreshLabel(articleField.text.count)
+        let temp = articleField.titleView.text + articleField.bodyView.text
+        counter.refreshLabel(temp.count)
         refreshCounter()
     }
 
