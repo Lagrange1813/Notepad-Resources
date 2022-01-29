@@ -35,6 +35,7 @@ class CurrentTextVC: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         articleField.resize()
+        updateUnRedoButtons()
     }
 
     func configureNavigationBar() {
@@ -71,6 +72,7 @@ class CurrentTextVC: UIViewController {
         articleField = PureTextView(frame: CGRect())
         articleField.delegate = self
         articleField.bodyView.delegate = self
+        articleField.titleView.delegate = self
         articleField.configureFont(fontName: "LXGW WenKai")
         configureText(articleField)
         view.addSubview(articleField)
@@ -127,11 +129,19 @@ class CurrentTextVC: UIViewController {
     }
 
     func textViewDidBeginEditing(_ textView: UITextView) {
-        articleField.bodyViewUnderEditing = true
+        if textView == articleField.bodyView {
+            articleField.bodyViewUnderEditing = true
+        } else if textView == articleField.titleView {
+            articleField.titleViewUnderEditing = true
+        }
     }
 
     func textViewDidEndEditing(_ textView: UITextView) {
-        articleField.bodyViewUnderEditing = false
+        if textView == articleField.bodyView {
+            articleField.bodyViewUnderEditing = false
+        } else if textView == articleField.titleView {
+            articleField.titleViewUnderEditing = false
+        }
     }
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
