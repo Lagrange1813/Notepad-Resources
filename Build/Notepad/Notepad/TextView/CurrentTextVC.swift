@@ -14,6 +14,8 @@ class CurrentTextVC: UIViewController {
     var articles: [NSManagedObject] = []
     var counter: WordCounter!
     var toolBar: ToolBar!
+    
+    var cursor: UIView?
 
     override func viewDidLoad() {
         super.viewDidLoad()

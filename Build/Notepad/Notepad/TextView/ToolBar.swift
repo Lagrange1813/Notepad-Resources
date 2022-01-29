@@ -51,6 +51,9 @@ class ToolBar: UIView {
     var toolBG: ToolBG!
 
     var commandBtn: CustomBtn!
+    
+    var joyStick: JoyStick!
+    
     var undoBtn: CustomBtn!
     var pasteBtn: CustomBtn!
     var downBtn: CustomBtn!
@@ -96,6 +99,7 @@ class ToolBar: UIView {
         addSubview(toolBG)
 
         configureFixedButton()
+        configureJoyStick()
     }
 
     @available(*, unavailable)
@@ -288,5 +292,12 @@ class ToolBar: UIView {
                 make.size.width.height.equalTo(20)
             }
         }
+    }
+    
+    func configureJoyStick() {
+        joyStick = JoyStick(x: 100,
+                                y: 100,
+                                size: 100)
+        addSubview(joyStick)
     }
 }

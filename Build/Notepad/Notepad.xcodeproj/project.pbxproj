@@ -25,6 +25,7 @@
 		7A5710A3279D01FF009738D4 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5710A2279D01FF009738D4 /* Extensions.swift */; };
 		7A5710A5279D0222009738D4 /* WordCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5710A4279D0222009738D4 /* WordCounter.swift */; };
 		7A5710D0279E5115009738D4 /* PureTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5710CF279E5115009738D4 /* PureTextView.swift */; };
+		7A72A05B27A56F8400E13C72 /* JoyStick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A72A05A27A56F8400E13C72 /* JoyStick.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +50,7 @@
 		7A5710A2279D01FF009738D4 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		7A5710A4279D0222009738D4 /* WordCounter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordCounter.swift; sourceTree = "<group>"; };
 		7A5710CF279E5115009738D4 /* PureTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PureTextView.swift; sourceTree = "<group>"; };
+		7A72A05A27A56F8400E13C72 /* JoyStick.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoyStick.swift; sourceTree = "<group>"; };
 		9D0E7F4F9770E2C345759EC8 /* Pods-Notepad.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Notepad.release.xcconfig"; path = "Target Support Files/Pods-Notepad/Pods-Notepad.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -129,6 +131,7 @@
 			children = (
 				7A5102E627A3B12200002C01 /* CustomTextView.swift */,
 				7A51029027A005BA00002C01 /* CustomBtn.swift */,
+				7A72A05A27A56F8400E13C72 /* JoyStick.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -292,6 +295,7 @@
 				7A57108C279D00BB009738D4 /* AppDelegate.swift in Sources */,
 				7A5710A5279D0222009738D4 /* WordCounter.swift in Sources */,
 				7A5102E727A3B12200002C01 /* CustomTextView.swift in Sources */,
+				7A72A05B27A56F8400E13C72 /* JoyStick.swift in Sources */,
 				7A5710D0279E5115009738D4 /* PureTextView.swift in Sources */,
 				7A51029127A005BA00002C01 /* CustomBtn.swift in Sources */,
 				7A57108E279D00BB009738D4 /* SceneDelegate.swift in Sources */,

@@ -40,8 +40,10 @@ extension CurrentTextVC {
                     make.height.equalTo(307 + 40)
                     make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom)
                 }
-                self.view.layoutIfNeeded()
+//                self.view.layoutIfNeeded()
             })
+            
+            configureJoyStickHandler()
             
         } else if !articleField.isMenuExpanded, !articleField.isKeyboardUsing {
             // 此时键盘收起，点击展开展示command菜单
@@ -56,6 +58,8 @@ extension CurrentTextVC {
                 }
                 self.view.layoutIfNeeded()
             })
+            
+            configureJoyStickHandler()
             
         } else if articleField.isMenuExpanded {
             // 此时command菜单展开，点击收起菜单，恢复键盘
@@ -72,6 +76,42 @@ extension CurrentTextVC {
             })
             
             articleField.bodyView.becomeFirstResponder()
+            cursor!.removeFromSuperview()
+            cursor = nil
+        }
+    }
+    
+    func configureJoyStickHandler() {
+        let velocityMultiplier: CGFloat = 0.12
+        
+        let position = articleField.bodyView.getRangeRect(articleField.bodyView, articleField.bodyView.selectedRange)
+        print(position)
+        
+        cursor = UIView(frame: CGRect(x: position.origin.x + 5,
+                                      y: position.origin.y + articleField.titleView.frame.height,
+                                      width: 2,
+                                      height: 19))
+        cursor!.backgroundColor = .systemBlue
+        view.addSubview(cursor!)
+        
+        toolBar.joyStick.handler = { [unowned self] data in
+            cursor!.center = CGPoint(x: cursor!.center.x + (data.velocity.x * velocityMultiplier),
+                                     y: cursor!.center.y + (data.velocity.y * velocityMultiplier))
+
+            let upSide = cursor!.frame.origin.y
+            let downSide = cursor!.frame.origin.y + cursor!.frame.height
+            let leftSide = cursor!.frame.origin.x
+            let rightSide = cursor!.frame.origin.x + cursor!.frame.width
+
+            if upSide < 0 {
+                cursor!.frame.origin.y = 0
+            } else if leftSide < 0 {
+                cursor!.frame.origin.x = 0
+            } else if downSide > view.frame.height {
+                cursor!.frame.origin.y = view.frame.height - cursor!.frame.height
+            } else if rightSide > view.frame.width {
+                cursor!.frame.origin.x = view.frame.width - cursor!.frame.width
+            }
         }
     }
     
