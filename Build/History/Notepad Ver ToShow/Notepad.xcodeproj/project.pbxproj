@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6418B72D2972C4EF5D28882D /* Pods_Notepad.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5890213D476BCCAA74DFCBD6 /* Pods_Notepad.framework */; };
+		7A411D7C27AAB53100A41D3B /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 7A411D7B27AAB53100A41D3B /* SnapKit */; };
 		7A51028B279F95FC00002C01 /* FirstLaunch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A51028A279F95FC00002C01 /* FirstLaunch.swift */; };
 		7A51028D279FAA8800002C01 /* Handler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A51028C279FAA8800002C01 /* Handler.swift */; };
 		7A51029127A005BA00002C01 /* CustomBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A51029027A005BA00002C01 /* CustomBtn.swift */; };
@@ -60,6 +61,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6418B72D2972C4EF5D28882D /* Pods_Notepad.framework in Frameworks */,
+				7A411D7C27AAB53100A41D3B /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -193,6 +195,9 @@
 			dependencies = (
 			);
 			name = Notepad;
+			packageProductDependencies = (
+				7A411D7B27AAB53100A41D3B /* SnapKit */,
+			);
 			productName = Notepad;
 			productReference = 7A571088279D00BB009738D4 /* Notepad.app */;
 			productType = "com.apple.product-type.application";
@@ -221,6 +226,9 @@
 				Base,
 			);
 			mainGroup = 7A57107F279D00BB009738D4;
+			packageReferences = (
+				7A411D7A27AAB53100A41D3B /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = 7A571089279D00BB009738D4 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -518,6 +526,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		7A411D7A27AAB53100A41D3B /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		7A411D7B27AAB53100A41D3B /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7A411D7A27AAB53100A41D3B /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		7A571094279D00BB009738D4 /* Notepad.xcdatamodeld */ = {
