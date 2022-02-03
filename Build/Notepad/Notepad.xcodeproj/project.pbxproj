@@ -10,6 +10,8 @@
 		7AAC1E9127ABA93A00A296B8 /* cmark-gfm in Frameworks */ = {isa = PBXBuildFile; productRef = 7AAC1E9027ABA93A00A296B8 /* cmark-gfm */; };
 		7AAC1E9427ABA96700A296B8 /* ArgumentParser in Frameworks */ = {isa = PBXBuildFile; productRef = 7AAC1E9327ABA96700A296B8 /* ArgumentParser */; };
 		7AAC1E9727ABA98000A296B8 /* Markdown in Frameworks */ = {isa = PBXBuildFile; productRef = 7AAC1E9627ABA98000A296B8 /* Markdown */; };
+		7AAC1E9927ABAA1700A296B8 /* Markdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAC1E9827ABAA1700A296B8 /* Markdown.swift */; };
+		7AAC1E9D27ABAA7900A296B8 /* test.md in Resources */ = {isa = PBXBuildFile; fileRef = 7AAC1E9C27ABAA7900A296B8 /* test.md */; };
 		7AC3213F27AB9148008987B7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC3213E27AB9148008987B7 /* AppDelegate.swift */; };
 		7AC3214127AB9148008987B7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC3214027AB9148008987B7 /* SceneDelegate.swift */; };
 		7AC3214327AB9148008987B7 /* CurrentTextVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC3214227AB9148008987B7 /* CurrentTextVC.swift */; };
@@ -52,6 +54,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7AAC1E9827ABAA1700A296B8 /* Markdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Markdown.swift; sourceTree = "<group>"; };
+		7AAC1E9C27ABAA7900A296B8 /* test.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = test.md; sourceTree = "<group>"; };
 		7AC3213B27AB9148008987B7 /* Notepad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Notepad.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7AC3213E27AB9148008987B7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7AC3214027AB9148008987B7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -182,6 +186,8 @@
 				7AC3218227AB9325008987B7 /* ToolBG.swift */,
 				7AC3218427AB9339008987B7 /* ConfigureBtn.swift */,
 				7AC3218627AB934F008987B7 /* Handler.swift */,
+				7AAC1E9C27ABAA7900A296B8 /* test.md */,
+				7AAC1E9827ABAA1700A296B8 /* Markdown.swift */,
 				7AC3214227AB9148008987B7 /* CurrentTextVC.swift */,
 			);
 			path = TextView;
@@ -321,6 +327,7 @@
 			files = (
 				7AC3214E27AB9149008987B7 /* LaunchScreen.storyboard in Resources */,
 				7AC3214B27AB9149008987B7 /* Assets.xcassets in Resources */,
+				7AAC1E9D27ABAA7900A296B8 /* test.md in Resources */,
 				7AC3217B27AB92CB008987B7 /* LXGWWenKai-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -358,6 +365,7 @@
 				7AC3218727AB934F008987B7 /* Handler.swift in Sources */,
 				7AC3217727AB9289008987B7 /* JoyStick.swift in Sources */,
 				7AC3218127AB9314008987B7 /* ToolBar.swift in Sources */,
+				7AAC1E9927ABAA1700A296B8 /* Markdown.swift in Sources */,
 				7AC3217F27AB9302008987B7 /* PureTextView.swift in Sources */,
 				7AC3217527AB9271008987B7 /* CustomBtn.swift in Sources */,
 				7AC3218A27AB9371008987B7 /* Extensions.swift in Sources */,
