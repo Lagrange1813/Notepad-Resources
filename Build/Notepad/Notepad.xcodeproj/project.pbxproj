@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7AAC1E9127ABA93A00A296B8 /* cmark-gfm in Frameworks */ = {isa = PBXBuildFile; productRef = 7AAC1E9027ABA93A00A296B8 /* cmark-gfm */; };
+		7AAC1E9427ABA96700A296B8 /* ArgumentParser in Frameworks */ = {isa = PBXBuildFile; productRef = 7AAC1E9327ABA96700A296B8 /* ArgumentParser */; };
+		7AAC1E9727ABA98000A296B8 /* Markdown in Frameworks */ = {isa = PBXBuildFile; productRef = 7AAC1E9627ABA98000A296B8 /* Markdown */; };
 		7AC3213F27AB9148008987B7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC3213E27AB9148008987B7 /* AppDelegate.swift */; };
 		7AC3214127AB9148008987B7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC3214027AB9148008987B7 /* SceneDelegate.swift */; };
 		7AC3214327AB9148008987B7 /* CurrentTextVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC3214227AB9148008987B7 /* CurrentTextVC.swift */; };
@@ -81,7 +84,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7AAC1E9427ABA96700A296B8 /* ArgumentParser in Frameworks */,
+				7AAC1E9127ABA93A00A296B8 /* cmark-gfm in Frameworks */,
 				7AC3218F27AB941B008987B7 /* SnapKit in Frameworks */,
+				7AAC1E9727ABA98000A296B8 /* Markdown in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -215,6 +221,9 @@
 			name = Notepad;
 			packageProductDependencies = (
 				7AC3218E27AB941B008987B7 /* SnapKit */,
+				7AAC1E9027ABA93A00A296B8 /* cmark-gfm */,
+				7AAC1E9327ABA96700A296B8 /* ArgumentParser */,
+				7AAC1E9627ABA98000A296B8 /* Markdown */,
 			);
 			productName = Notepad;
 			productReference = 7AC3213B27AB9148008987B7 /* Notepad.app */;
@@ -290,6 +299,9 @@
 			mainGroup = 7AC3213227AB9148008987B7;
 			packageReferences = (
 				7AC3218D27AB941B008987B7 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				7AAC1E8F27ABA93A00A296B8 /* XCRemoteSwiftPackageReference "swift-cmark" */,
+				7AAC1E9227ABA96700A296B8 /* XCRemoteSwiftPackageReference "swift-argument-parser" */,
+				7AAC1E9527ABA98000A296B8 /* XCRemoteSwiftPackageReference "swift-markdown" */,
 			);
 			productRefGroup = 7AC3213C27AB9148008987B7 /* Products */;
 			projectDirPath = "";
@@ -686,6 +698,30 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		7AAC1E8F27ABA93A00A296B8 /* XCRemoteSwiftPackageReference "swift-cmark" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:apple/swift-cmark.git";
+			requirement = {
+				branch = gfm;
+				kind = branch;
+			};
+		};
+		7AAC1E9227ABA96700A296B8 /* XCRemoteSwiftPackageReference "swift-argument-parser" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@gitee.com:lagrange1813/swift-argument-parser.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 1.0.1;
+			};
+		};
+		7AAC1E9527ABA98000A296B8 /* XCRemoteSwiftPackageReference "swift-markdown" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@gitee.com:lagrange1813/swift-markdown.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		7AC3218D27AB941B008987B7 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "git@github.com:SnapKit/SnapKit.git";
@@ -697,6 +733,21 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		7AAC1E9027ABA93A00A296B8 /* cmark-gfm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7AAC1E8F27ABA93A00A296B8 /* XCRemoteSwiftPackageReference "swift-cmark" */;
+			productName = "cmark-gfm";
+		};
+		7AAC1E9327ABA96700A296B8 /* ArgumentParser */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7AAC1E9227ABA96700A296B8 /* XCRemoteSwiftPackageReference "swift-argument-parser" */;
+			productName = ArgumentParser;
+		};
+		7AAC1E9627ABA98000A296B8 /* Markdown */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7AAC1E9527ABA98000A296B8 /* XCRemoteSwiftPackageReference "swift-markdown" */;
+			productName = Markdown;
+		};
 		7AC3218E27AB941B008987B7 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 7AC3218D27AB941B008987B7 /* XCRemoteSwiftPackageReference "SnapKit" */;
