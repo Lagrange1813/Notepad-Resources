@@ -37,12 +37,12 @@ class JoyStick: UIView {
     init(x: Double, y: Double, size: Int) {
         substractSize = CGFloat(size)
         joystickSize = CGFloat(size / 2)
-        
+
         super.init(frame: CGRect(x: x,
                                  y: y,
                                  width: substractSize,
                                  height: substractSize))
-        
+
         backgroundColor = .gray
         layer.cornerRadius = CGFloat(substractSize / 2)
 

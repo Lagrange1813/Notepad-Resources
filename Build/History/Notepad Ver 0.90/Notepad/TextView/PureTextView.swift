@@ -125,9 +125,6 @@ class PureTextView: UIScrollView, UITextViewDelegate {
         bodyView.typingAttributes = bodyAttributes
         let bodyString = NSMutableAttributedString(string: body ?? "请输入正文", attributes: bodyAttributes)
         bodyView.text = body
-        
-        titleView.selectedRange = NSRange(location: 0,length: 0)
-        bodyView.selectedRange = NSRange(location: 0,length: 0)
     }
 
     func configureText(title: String, body: String) {

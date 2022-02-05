@@ -50,9 +50,22 @@ class CustomTextView: UITextView {
         return testRects
     }
 
-    public func getRect(_ textView: CustomTextView, _ range: NSRange) -> CGRect {
+    public func getRangeRect(_ textView: CustomTextView, _ range: NSRange) -> CGRect {
         let beginning = textView.beginningOfDocument
-        let position = textView.position(from: beginning, offset: range.location)!
-        return textView.caretRect(for: position)
+
+        guard let start = textView.position(from: beginning, offset: range.location) else {
+            return .zero
+        }
+
+        guard let end = textView.position(from: start, offset: range.length) else {
+            return .zero
+        }
+
+        guard let textRange = textView.textRange(from: start, to: end) else {
+            return .zero
+        }
+
+//        return textView.firstRect(for: textRange)
+        return textView.caretRect(for: start)
     }
 }

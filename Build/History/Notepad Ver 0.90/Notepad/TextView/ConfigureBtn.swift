@@ -76,19 +76,25 @@ extension CurrentTextVC {
             })
             
             articleField.bodyView.becomeFirstResponder()
-            if let cursor = cursor {
-                cursor.removeFromSuperview()
-                self.cursor = nil
-            }
+            cursor!.removeFromSuperview()
+            cursor = nil
         }
     }
     
     func configureJoyStickHandler() {
-        let velocityMultiplier: CGFloat = 0.08
+        let velocityMultiplier: CGFloat = 0.12
         
-        let rectFrame = articleField.bodyView.getRect(articleField.bodyView, articleField.bodyView.selectedRange)
-
-        cursor = UIView(frame: rectFrame)
+//        let position = articleField.bodyView.getRangeRect(articleField.bodyView, articleField.bodyView.selectedRange)
+        let position = articleField.bodyView.getRangeRect(articleField.bodyView, articleField.bodyView.selectedRange)
+        print(position)
+        
+        
+        
+//        cursor = UIView(frame: CGRect(x: position.origin.x - 2,
+//                                      y: position.origin.y,
+//                                      width: 2,
+//                                      height: 30))
+        cursor = UIView(frame: position)
         cursor!.backgroundColor = .systemBlue
         articleField.bodyView.addSubview(cursor!)
         
@@ -101,17 +107,14 @@ extension CurrentTextVC {
             let leftSide = cursor!.frame.origin.x
             let rightSide = cursor!.frame.origin.x + cursor!.frame.width
 
-            if upSide <= 0 {
+            if upSide < 0 {
                 cursor!.frame.origin.y = 0
-            }
-            if leftSide <= 0 {
+            } else if leftSide < 0 {
                 cursor!.frame.origin.x = 0
-            }
-            if downSide >= articleField.bodyView.frame.height {
-                cursor!.frame.origin.y = articleField.bodyView.frame.height - cursor!.frame.height
-            }
-            if rightSide >= articleField.bodyView.frame.width {
-                cursor!.frame.origin.x = articleField.bodyView.frame.width - cursor!.frame.width
+            } else if downSide > view.frame.height {
+                cursor!.frame.origin.y = view.frame.height - cursor!.frame.height
+            } else if rightSide > view.frame.width {
+                cursor!.frame.origin.x = view.frame.width - cursor!.frame.width
             }
         }
     }

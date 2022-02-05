@@ -200,6 +200,11 @@ class CurrentTextVC: UIViewController {
             articleField.bodyView.becomeFirstResponder()
         }
         
+        if let cursor = cursor {
+            cursor.removeFromSuperview()
+            self.cursor = nil
+        }
+        
         articleField.isKeyboardUsing = true
         articleField.isMenuExpanded = false
     }
