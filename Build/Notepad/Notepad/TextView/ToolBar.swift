@@ -76,6 +76,7 @@ class ToolBar: UIView {
         self.backgroundColor = ColorCollection.lightToolBG
         self.alpha = 0.9
         self.tintColor = .black
+        self.clipsToBounds = true
         layer.cornerRadius = height / 2
 
         let rightBG: UIView = {
@@ -295,9 +296,11 @@ class ToolBar: UIView {
     }
     
     func configureJoyStick() {
-        joyStick = JoyStick(x: 100,
-                                y: 100,
-                                size: 100)
+        let size = 200
+        joyStick = JoyStick(x: width/2 - CGFloat(size/2),
+                                y: 50,
+                                size: size)
         addSubview(joyStick)
+        joyStick.isHidden = true
     }
 }

@@ -68,11 +68,14 @@ extension CurrentTextVC {
             articleField.isMenuExpanded = false
             articleField.isKeyboardUsing = true
             
-            UIView.animate(withDuration: 1, animations: {
+            UIView.animate(withDuration: 0.25, animations: {
                 self.toolBar.snp.updateConstraints { make in
                     make.height.equalTo(40)
                     make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom).inset(307)
                 }
+                self.view.layoutIfNeeded()
+            }, completion: { _ in
+                self.toolBar.joyStick.isHidden = true
             })
             
             articleField.bodyView.becomeFirstResponder()
@@ -84,18 +87,22 @@ extension CurrentTextVC {
     }
     
     func configureJoyStickHandler() {
-        let velocityMultiplier: CGFloat = 0.08
+        toolBar.joyStick.isHidden = false
         
-        let rectFrame = articleField.bodyView.getRect(articleField.bodyView, articleField.bodyView.selectedRange)
+        let velocityMultiplier: CGFloat = 1
+        
+        var rectFrame = articleField.bodyView.getRect(articleField.bodyView, articleField.bodyView.selectedRange)
 
         cursor = UIView(frame: rectFrame)
-        cursor!.backgroundColor = .systemBlue
+        cursor!.backgroundColor = ColorCollection.cursorColor
         articleField.bodyView.addSubview(cursor!)
         
         toolBar.joyStick.handler = { [unowned self] data in
-            cursor!.center = CGPoint(x: cursor!.center.x + (data.velocity.x * velocityMultiplier),
-                                     y: cursor!.center.y + (data.velocity.y * velocityMultiplier))
+            cursor!.frame.origin = CGPoint(x: rectFrame.origin.x + (data.velocity.x * velocityMultiplier),
+                                           y: rectFrame.origin.y + (data.velocity.y * velocityMultiplier))
 
+            print(data.velocity)
+            
             let upSide = cursor!.frame.origin.y
             let downSide = cursor!.frame.origin.y + cursor!.frame.height
             let leftSide = cursor!.frame.origin.x
@@ -113,6 +120,16 @@ extension CurrentTextVC {
             if rightSide >= articleField.bodyView.frame.width {
                 cursor!.frame.origin.x = articleField.bodyView.frame.width - cursor!.frame.width
             }
+        }
+        
+        toolBar.joyStick.handleTouchEnded = { [unowned self] in
+            print("ended")
+            let range = self.articleField.bodyView.closestPosition(to: self.cursor!.center)!
+            let location = self.articleField.bodyView.offset(from: articleField.bodyView.beginningOfDocument, to: range)
+            articleField.bodyView.selectedRange = NSRange(location: location, length: 0)
+            
+            rectFrame = articleField.bodyView.getRect(articleField.bodyView, articleField.bodyView.selectedRange)
+            cursor!.frame = rectFrame
         }
     }
     

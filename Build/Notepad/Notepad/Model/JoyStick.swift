@@ -33,6 +33,7 @@ class JoyStick: UIView {
     var panGesture: UIPanGestureRecognizer!
     var velocityLoop: CADisplayLink!
     var handler: ((JoyStickData) -> Void)?
+    var handleTouchEnded: (() -> ())?
 
     init(x: Double, y: Double, size: Int) {
         substractSize = CGFloat(size)
@@ -98,12 +99,13 @@ class JoyStick: UIView {
 
         joystickView.center = newCenter
 
-        let dataCenter = CGPoint(x: newCenter.x - 50, y: newCenter.y - 50)
+        let dataCenter = CGPoint(x: newCenter.x - joystickSize, y: newCenter.y - joystickSize)
         data = JoyStickData(velocity: dataCenter, angular: -atan2(dataCenter.x, dataCenter.y))
 
         if panGesture.state == .ended {
             reset()
             tracking = false
+            handleTouchEnded?()
         }
     }
 

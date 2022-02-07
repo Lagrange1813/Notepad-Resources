@@ -8,7 +8,6 @@
 import UIKit
 
 class WordCounter: UIView {
-
     var number = 0
     lazy var width: CGFloat = {
         var temp = 0.0
@@ -46,10 +45,6 @@ class WordCounter: UIView {
     func refreshLabel(_ count: Int) {
         number = count
         data.text = "字数：\(number)"
-        data.frame = CGRect(x: 10,
-                            y: 0,
-                            width: width,
-                            height: 20)
+        data.frame = CGRect(x: 10, y: 0, width: width, height: 20)
     }
-
 }

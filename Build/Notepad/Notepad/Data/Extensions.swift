@@ -21,6 +21,8 @@ struct ColorCollection {
     static let darkBodyText = UIColor(red: 0.90196, green: 0.90196, blue: 0.90196, alpha: 1)
     static let darkNavigation = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
     static let darkCountBG = UIColor(red: 0.13333, green: 0.13333, blue: 0.13333, alpha: 0.6)
+    
+    static let cursorColor = UIColor(red: 0.2941176, green: 0.415686, blue: 0.917647, alpha: 1)
 }
 
 enum ScreenSize {
