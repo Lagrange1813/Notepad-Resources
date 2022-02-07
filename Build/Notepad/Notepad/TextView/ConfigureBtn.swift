@@ -234,6 +234,7 @@ extension CurrentTextVC {
                 return false
             }
             return true
+            
         } else if textView == articleField.titleView {
             if text == "\n" {
                 if articleField.isShortcutBtnInputing, articleField.titleViewUnderEditing {

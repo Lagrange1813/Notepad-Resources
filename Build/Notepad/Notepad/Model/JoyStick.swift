@@ -11,10 +11,10 @@ public struct JoyStickData: CustomStringConvertible {
     var velocity = CGPoint.zero,
         angular = CGFloat(0)
 
-    mutating func reset() {
-        velocity = CGPoint.zero
-        angular = 0
-    }
+//    mutating func reset() {
+//        velocity = CGPoint.zero
+//        angular = 0
+//    }
 
     public var description: String {
         return "JoyStickData(velocity: \(velocity), angular: \(angular))"

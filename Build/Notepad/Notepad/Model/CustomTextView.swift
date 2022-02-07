@@ -43,6 +43,7 @@ class CustomTextView: UITextView {
         }
 
         if testRects.count >= 3 {
+//            testRects[testRects.count - 2]._rect.size.height = firstRect(for: range).height
             testRects[testRects.count - 2]._rect.size.height = firstRect(for: range).height
             testRects[testRects.count - 1]._rect.size.height = height
         }
