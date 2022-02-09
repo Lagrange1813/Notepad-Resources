@@ -41,9 +41,9 @@ class ToolBar: UIView {
                            "platter.filled.bottom.and.arrow.down.iphone",
                            "arrowshape.turn.up.right"]
 
-    var scrollBarItem = ["quotes": ("“”", true, "“”"),
-                         "sqr-brackets": ("「」", true, "「」"),
-                         "brackets": ("（）", true, "（）")]
+//    var scrollBarItem = ["quotes": ("“”", true, "“”"),
+//                         "sqr-brackets": ("「」", true, "「」"),
+//                         "brackets": ("（）", true, "（）")]
 
     var tracking = false
 
@@ -52,7 +52,7 @@ class ToolBar: UIView {
 
     var commandBtn: CustomBtn!
     
-    var joyStick: JoyStick!
+    var touchPad: TouchPad!
     
     var undoBtn: CustomBtn!
     var pasteBtn: CustomBtn!
@@ -100,7 +100,6 @@ class ToolBar: UIView {
         addSubview(toolBG)
 
         configureFixedButton()
-        configureJoyStick()
     }
 
     @available(*, unavailable)
@@ -152,7 +151,7 @@ class ToolBar: UIView {
     func configureFixedButton() {
         commandBtn = { () -> CustomBtn in
             let button = CustomBtn(frame: CGRect(x: height / 2 - btnLength / 2 + 2, y: height / 2 - btnLength / 2, width: btnLength, height: btnLength))
-            button.setImage(UIImage(systemName: fixedBarItem.0), for: .normal)
+            button.setImage(UIImage(named: fixedBarItem.0), for: .normal)
             addSubview(button)
             
             return button
@@ -160,7 +159,7 @@ class ToolBar: UIView {
 
         undoBtn = { () -> CustomBtn in
             let button = CustomBtn(frame: CGRect(x: height / 2 - btnLength / 2 + height * 1 + 2, y: height / 2 - btnLength / 2, width: btnLength, height: btnLength))
-            button.setImage(UIImage(systemName: fixedBarItem.1), for: .normal)
+            button.setImage(UIImage(named: fixedBarItem.1), for: .normal)
             button.setTitleColor(.black, for: .normal)
             addSubview(button)
             
@@ -169,7 +168,7 @@ class ToolBar: UIView {
 
         pasteBtn = { () -> CustomBtn in
             let button = CustomBtn(frame: CGRect(x: height / 2 - btnLength / 2 + height * 2 + 2, y: height / 2 - btnLength / 2, width: btnLength, height: btnLength))
-            button.setImage(UIImage(systemName: fixedBarItem.2), for: .normal)
+            button.setImage(UIImage(named: fixedBarItem.2), for: .normal)
             addSubview(button)
             
             return button
@@ -177,7 +176,7 @@ class ToolBar: UIView {
 
         downBtn = { () -> CustomBtn in
             let button = CustomBtn(frame: CGRect(x: width - height + height / 2 - btnLength / 2 - 2, y: height / 2 - btnLength / 2, width: btnLength, height: btnLength))
-            button.setImage(UIImage(systemName: fixedBarItem.3), for: .normal)
+            button.setImage(UIImage(named: fixedBarItem.3), for: .normal)
             addSubview(button)
             
             return button
@@ -239,7 +238,7 @@ class ToolBar: UIView {
 
         jumpToTop = { () -> CustomBtn in
             let shortcutBtn = CustomBtn()
-            shortcutBtn.setImage(UIImage(systemName: shortcutBarItem[3]), for: .normal)
+            shortcutBtn.setImage(UIImage(named: shortcutBarItem[3]), for: .normal)
 //            shortcutBtn.argument = "top"
 
             toolBG.addSubview(shortcutBtn)
@@ -254,7 +253,7 @@ class ToolBar: UIView {
 
         jumpToBottom = { () -> CustomBtn in
             let shortcutBtn = CustomBtn()
-            shortcutBtn.setImage(UIImage(systemName: shortcutBarItem[4]), for: .normal)
+            shortcutBtn.setImage(UIImage(named: shortcutBarItem[4]), for: .normal)
 //            shortcutBtn.argument = "bottom"
 
             toolBG.addSubview(shortcutBtn)
@@ -269,7 +268,7 @@ class ToolBar: UIView {
 
         redoBtn = { () -> CustomBtn in
             let shortcutBtn = CustomBtn()
-            shortcutBtn.setImage(UIImage(systemName: shortcutBarItem[5]), for: .normal)
+            shortcutBtn.setImage(UIImage(named: shortcutBarItem[5]), for: .normal)
 
             toolBG.addSubview(shortcutBtn)
             shortcutBtn.snp.makeConstraints { make in
@@ -295,12 +294,26 @@ class ToolBar: UIView {
         }
     }
     
-    func configureJoyStick() {
-        let size = 200
-        joyStick = JoyStick(x: width/2 - CGFloat(size/2),
-                                y: 50,
-                                size: size)
-        addSubview(joyStick)
-        joyStick.isHidden = true
+    func configureTouchPad(_ commandHeight: CGFloat) {
+        let touchPadWidth: CGFloat = 200
+        let touchPadHeight: CGFloat = 200
+        
+        touchPad = TouchPad(x: width/2 - CGFloat(touchPadWidth/2),
+                            y: height + commandHeight/2 - touchPadHeight/2 - 5,
+                                width: 200,
+                                height: 200)
+        touchPad.backgroundColor = .white
+        touchPad.layer.cornerRadius = touchPadWidth/2
+        addSubview(touchPad)
+        
+        let icon = UIImageView(image: UIImage(systemName: "ipad.landscape"))
+        touchPad.addSubview(icon)
+        icon.snp.makeConstraints { make in
+            make.width.equalTo(20)
+            make.height.equalTo(20)
+            make.center.equalToSuperview()
+        }
+        
+        touchPad.isHidden = true
     }
 }

@@ -3,7 +3,7 @@
     "pins": [
       {
         "package": "SnapKit",
-        "repositoryURL": "git@github.com:SnapKit/SnapKit.git",
+        "repositoryURL": "git@gitee.com:lagrange1813/SnapKit.git",
         "state": {
           "branch": null,
           "revision": "d458564516e5676af9c70b4f4b2a9178294f1bc6",
@@ -21,7 +21,7 @@
       },
       {
         "package": "cmark-gfm",
-        "repositoryURL": "git@github.com:apple/swift-cmark.git",
+        "repositoryURL": "git@gitee.com:lagrange1813/swift-cmark.git",
         "state": {
           "branch": "gfm",
           "revision": "7fc530e5f12432db9768326ff74dc46de72a24e2",

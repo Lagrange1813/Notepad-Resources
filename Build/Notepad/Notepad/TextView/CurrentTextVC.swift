@@ -14,8 +14,11 @@ class CurrentTextVC: UIViewController {
     var articles: [NSManagedObject] = []
     var counter: WordCounter!
     var toolBar: ToolBar!
-    
+
     var cursor: UIView?
+
+    var isKeyboardHasPoppedUp = false
+    var moveDistance: CGFloat?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -178,35 +181,38 @@ class CurrentTextVC: UIViewController {
         if !articleField.isMenuExpanded {
             let keyboardInfo = notification.userInfo as NSDictionary?
             let value = keyboardInfo?.object(forKey: UIResponder.keyboardFrameEndUserInfoKey) as! CGRect
-            let moveDistance = value.height - ScreenSize.bottomPadding! + 5
-            
+            let distance = value.height - ScreenSize.bottomPadding! + 5
+            moveDistance = distance
+            isKeyboardHasPoppedUp = true
+
             UIView.animate(withDuration: 1, animations: {
                 self.toolBar.snp.updateConstraints { make in
-                    make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom).inset(moveDistance)
+                    make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom).inset(distance)
                 }
             })
             view.layoutIfNeeded()
+
         } else {
-            toolBar.downBtn.isEnabled = true
-            
             UIView.animate(withDuration: 1, animations: {
                 self.toolBar.snp.updateConstraints { make in
                     make.height.equalTo(40)
-                    make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom).inset(307)
+                    make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom).inset(self.moveDistance!)
                 }
             })
             view.layoutIfNeeded()
-            
+
             articleField.bodyView.becomeFirstResponder()
         }
-        
+
         if let cursor = cursor {
             cursor.removeFromSuperview()
             self.cursor = nil
         }
-        
+
         articleField.isKeyboardUsing = true
         articleField.isMenuExpanded = false
+
+        updateBtnStatus()
     }
 
     @objc func handleKeyboardWillHide() {
@@ -222,9 +228,11 @@ class CurrentTextVC: UIViewController {
             })
             view.layoutIfNeeded()
         }
-        
+
         articleField.isKeyboardUsing = false
+
+        updateBtnStatus()
     }
 }
 
-extension CurrentTextVC: UIScrollViewDelegate,UITextViewDelegate {}
+extension CurrentTextVC: UIScrollViewDelegate, UITextViewDelegate {}

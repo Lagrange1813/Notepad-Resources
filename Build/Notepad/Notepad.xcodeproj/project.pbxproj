@@ -7,9 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7AAC1E9127ABA93A00A296B8 /* cmark-gfm in Frameworks */ = {isa = PBXBuildFile; productRef = 7AAC1E9027ABA93A00A296B8 /* cmark-gfm */; };
-		7AAC1E9427ABA96700A296B8 /* ArgumentParser in Frameworks */ = {isa = PBXBuildFile; productRef = 7AAC1E9327ABA96700A296B8 /* ArgumentParser */; };
-		7AAC1E9727ABA98000A296B8 /* Markdown in Frameworks */ = {isa = PBXBuildFile; productRef = 7AAC1E9627ABA98000A296B8 /* Markdown */; };
+		7A2E4C9227B37A2C00FEC361 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 7A2E4C9127B37A2C00FEC361 /* SnapKit */; };
+		7A2E4C9527B37A4C00FEC361 /* ArgumentParser in Frameworks */ = {isa = PBXBuildFile; productRef = 7A2E4C9427B37A4C00FEC361 /* ArgumentParser */; };
+		7A2E4C9827B37A7500FEC361 /* cmark-gfm in Frameworks */ = {isa = PBXBuildFile; productRef = 7A2E4C9727B37A7500FEC361 /* cmark-gfm */; };
+		7A2E4C9B27B37A9300FEC361 /* Markdown in Frameworks */ = {isa = PBXBuildFile; productRef = 7A2E4C9A27B37A9300FEC361 /* Markdown */; };
 		7AAC1E9927ABAA1700A296B8 /* Markdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAC1E9827ABAA1700A296B8 /* Markdown.swift */; };
 		7AAC1E9D27ABAA7900A296B8 /* test.md in Resources */ = {isa = PBXBuildFile; fileRef = 7AAC1E9C27ABAA7900A296B8 /* test.md */; };
 		7AB9F1F727AD1FF300A64FDA /* CustomTextSelectionRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB9F1F627AD1FF300A64FDA /* CustomTextSelectionRect.swift */; };
@@ -24,7 +25,7 @@
 		7AC3216527AB9149008987B7 /* NotepadUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC3216427AB9149008987B7 /* NotepadUITestsLaunchTests.swift */; };
 		7AC3217327AB925A008987B7 /* CustomTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC3217227AB925A008987B7 /* CustomTextView.swift */; };
 		7AC3217527AB9271008987B7 /* CustomBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC3217427AB9271008987B7 /* CustomBtn.swift */; };
-		7AC3217727AB9289008987B7 /* JoyStick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC3217627AB9289008987B7 /* JoyStick.swift */; };
+		7AC3217727AB9289008987B7 /* TouchPad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC3217627AB9289008987B7 /* TouchPad.swift */; };
 		7AC3217B27AB92CB008987B7 /* LXGWWenKai-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7AC3217A27AB92CB008987B7 /* LXGWWenKai-Regular.ttf */; };
 		7AC3217D27AB92ED008987B7 /* WordCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC3217C27AB92ED008987B7 /* WordCounter.swift */; };
 		7AC3217F27AB9302008987B7 /* PureTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC3217E27AB9302008987B7 /* PureTextView.swift */; };
@@ -34,7 +35,6 @@
 		7AC3218727AB934F008987B7 /* Handler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC3218627AB934F008987B7 /* Handler.swift */; };
 		7AC3218A27AB9371008987B7 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC3218927AB9371008987B7 /* Extensions.swift */; };
 		7AC3218C27AB938A008987B7 /* FirstLaunch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC3218B27AB938A008987B7 /* FirstLaunch.swift */; };
-		7AC3218F27AB941B008987B7 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 7AC3218E27AB941B008987B7 /* SnapKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,7 +73,7 @@
 		7AC3216427AB9149008987B7 /* NotepadUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotepadUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		7AC3217227AB925A008987B7 /* CustomTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextView.swift; sourceTree = "<group>"; };
 		7AC3217427AB9271008987B7 /* CustomBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBtn.swift; sourceTree = "<group>"; };
-		7AC3217627AB9289008987B7 /* JoyStick.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoyStick.swift; sourceTree = "<group>"; };
+		7AC3217627AB9289008987B7 /* TouchPad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchPad.swift; sourceTree = "<group>"; };
 		7AC3217A27AB92CB008987B7 /* LXGWWenKai-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "LXGWWenKai-Regular.ttf"; sourceTree = "<group>"; };
 		7AC3217C27AB92ED008987B7 /* WordCounter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordCounter.swift; sourceTree = "<group>"; };
 		7AC3217E27AB9302008987B7 /* PureTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PureTextView.swift; sourceTree = "<group>"; };
@@ -90,10 +90,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7AAC1E9427ABA96700A296B8 /* ArgumentParser in Frameworks */,
-				7AAC1E9127ABA93A00A296B8 /* cmark-gfm in Frameworks */,
-				7AC3218F27AB941B008987B7 /* SnapKit in Frameworks */,
-				7AAC1E9727ABA98000A296B8 /* Markdown in Frameworks */,
+				7A2E4C9827B37A7500FEC361 /* cmark-gfm in Frameworks */,
+				7A2E4C9527B37A4C00FEC361 /* ArgumentParser in Frameworks */,
+				7A2E4C9227B37A2C00FEC361 /* SnapKit in Frameworks */,
+				7A2E4C9B27B37A9300FEC361 /* Markdown in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -173,7 +173,7 @@
 			children = (
 				7AC3217227AB925A008987B7 /* CustomTextView.swift */,
 				7AC3217427AB9271008987B7 /* CustomBtn.swift */,
-				7AC3217627AB9289008987B7 /* JoyStick.swift */,
+				7AC3217627AB9289008987B7 /* TouchPad.swift */,
 				7AB9F1F627AD1FF300A64FDA /* CustomTextSelectionRect.swift */,
 			);
 			path = Model;
@@ -229,10 +229,10 @@
 			);
 			name = Notepad;
 			packageProductDependencies = (
-				7AC3218E27AB941B008987B7 /* SnapKit */,
-				7AAC1E9027ABA93A00A296B8 /* cmark-gfm */,
-				7AAC1E9327ABA96700A296B8 /* ArgumentParser */,
-				7AAC1E9627ABA98000A296B8 /* Markdown */,
+				7A2E4C9127B37A2C00FEC361 /* SnapKit */,
+				7A2E4C9427B37A4C00FEC361 /* ArgumentParser */,
+				7A2E4C9727B37A7500FEC361 /* cmark-gfm */,
+				7A2E4C9A27B37A9300FEC361 /* Markdown */,
 			);
 			productName = Notepad;
 			productReference = 7AC3213B27AB9148008987B7 /* Notepad.app */;
@@ -307,10 +307,10 @@
 			);
 			mainGroup = 7AC3213227AB9148008987B7;
 			packageReferences = (
-				7AC3218D27AB941B008987B7 /* XCRemoteSwiftPackageReference "SnapKit" */,
-				7AAC1E8F27ABA93A00A296B8 /* XCRemoteSwiftPackageReference "swift-cmark" */,
-				7AAC1E9227ABA96700A296B8 /* XCRemoteSwiftPackageReference "swift-argument-parser" */,
-				7AAC1E9527ABA98000A296B8 /* XCRemoteSwiftPackageReference "swift-markdown" */,
+				7A2E4C9027B37A2C00FEC361 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				7A2E4C9327B37A4C00FEC361 /* XCRemoteSwiftPackageReference "swift-argument-parser" */,
+				7A2E4C9627B37A7500FEC361 /* XCRemoteSwiftPackageReference "swift-cmark" */,
+				7A2E4C9927B37A9300FEC361 /* XCRemoteSwiftPackageReference "swift-markdown" */,
 			);
 			productRefGroup = 7AC3213C27AB9148008987B7 /* Products */;
 			projectDirPath = "";
@@ -367,7 +367,7 @@
 				7AC3218327AB9325008987B7 /* ToolBG.swift in Sources */,
 				7AC3214927AB9148008987B7 /* Notepad.xcdatamodeld in Sources */,
 				7AC3218727AB934F008987B7 /* Handler.swift in Sources */,
-				7AC3217727AB9289008987B7 /* JoyStick.swift in Sources */,
+				7AC3217727AB9289008987B7 /* TouchPad.swift in Sources */,
 				7AC3218127AB9314008987B7 /* ToolBar.swift in Sources */,
 				7AAC1E9927ABAA1700A296B8 /* Markdown.swift in Sources */,
 				7AC3217F27AB9302008987B7 /* PureTextView.swift in Sources */,
@@ -710,15 +710,15 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		7AAC1E8F27ABA93A00A296B8 /* XCRemoteSwiftPackageReference "swift-cmark" */ = {
+		7A2E4C9027B37A2C00FEC361 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "git@github.com:apple/swift-cmark.git";
+			repositoryURL = "git@gitee.com:lagrange1813/SnapKit.git";
 			requirement = {
-				branch = gfm;
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
 			};
 		};
-		7AAC1E9227ABA96700A296B8 /* XCRemoteSwiftPackageReference "swift-argument-parser" */ = {
+		7A2E4C9327B37A4C00FEC361 /* XCRemoteSwiftPackageReference "swift-argument-parser" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "git@gitee.com:lagrange1813/swift-argument-parser.git";
 			requirement = {
@@ -726,7 +726,15 @@
 				minimumVersion = 1.0.1;
 			};
 		};
-		7AAC1E9527ABA98000A296B8 /* XCRemoteSwiftPackageReference "swift-markdown" */ = {
+		7A2E4C9627B37A7500FEC361 /* XCRemoteSwiftPackageReference "swift-cmark" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@gitee.com:lagrange1813/swift-cmark.git";
+			requirement = {
+				branch = gfm;
+				kind = branch;
+			};
+		};
+		7A2E4C9927B37A9300FEC361 /* XCRemoteSwiftPackageReference "swift-markdown" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "git@gitee.com:lagrange1813/swift-markdown.git";
 			requirement = {
@@ -734,36 +742,28 @@
 				kind = branch;
 			};
 		};
-		7AC3218D27AB941B008987B7 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "git@github.com:SnapKit/SnapKit.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		7AAC1E9027ABA93A00A296B8 /* cmark-gfm */ = {
+		7A2E4C9127B37A2C00FEC361 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 7AAC1E8F27ABA93A00A296B8 /* XCRemoteSwiftPackageReference "swift-cmark" */;
-			productName = "cmark-gfm";
+			package = 7A2E4C9027B37A2C00FEC361 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
 		};
-		7AAC1E9327ABA96700A296B8 /* ArgumentParser */ = {
+		7A2E4C9427B37A4C00FEC361 /* ArgumentParser */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 7AAC1E9227ABA96700A296B8 /* XCRemoteSwiftPackageReference "swift-argument-parser" */;
+			package = 7A2E4C9327B37A4C00FEC361 /* XCRemoteSwiftPackageReference "swift-argument-parser" */;
 			productName = ArgumentParser;
 		};
-		7AAC1E9627ABA98000A296B8 /* Markdown */ = {
+		7A2E4C9727B37A7500FEC361 /* cmark-gfm */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 7AAC1E9527ABA98000A296B8 /* XCRemoteSwiftPackageReference "swift-markdown" */;
-			productName = Markdown;
+			package = 7A2E4C9627B37A7500FEC361 /* XCRemoteSwiftPackageReference "swift-cmark" */;
+			productName = "cmark-gfm";
 		};
-		7AC3218E27AB941B008987B7 /* SnapKit */ = {
+		7A2E4C9A27B37A9300FEC361 /* Markdown */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 7AC3218D27AB941B008987B7 /* XCRemoteSwiftPackageReference "SnapKit" */;
-			productName = SnapKit;
+			package = 7A2E4C9927B37A9300FEC361 /* XCRemoteSwiftPackageReference "swift-markdown" */;
+			productName = Markdown;
 		};
 /* End XCSwiftPackageProductDependency section */
 

@@ -28,9 +28,6 @@ class PureTextView: UIScrollView, UITextViewDelegate {
     var isMenuExpanded = false
     var isKeyboardUsing = false
     
-    var moveDistance = 307.0
-    
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureBackView()
@@ -124,7 +121,7 @@ class PureTextView: UIScrollView, UITextViewDelegate {
         
         bodyView.typingAttributes = bodyAttributes
         let bodyString = NSMutableAttributedString(string: body ?? "请输入正文", attributes: bodyAttributes)
-        bodyView.text = body
+        bodyView.attributedText = bodyString
         
         titleView.selectedRange = NSRange(location: 0,length: 0)
         bodyView.selectedRange = NSRange(location: 0,length: 0)

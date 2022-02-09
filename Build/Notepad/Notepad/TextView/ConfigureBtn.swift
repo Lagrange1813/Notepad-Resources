@@ -23,59 +23,78 @@ extension CurrentTextVC {
         
         toolBar.jumpToTop.addTarget(self, action: #selector(jumpToTopFunc), for: .touchUpInside)
         toolBar.jumpToBottom.addTarget(self, action: #selector(jumpToBottomFunc), for: .touchUpInside)
+        
+        updateBtnStatus()
+    }
+    
+    func updateBtnStatus() {
+        if isKeyboardHasPoppedUp {
+            toolBar.commandBtn.isEnabled = true
+        } else {
+            toolBar.commandBtn.isEnabled = false
+        }
+        
+        if articleField.isMenuExpanded {
+            toolBar.downBtn.isEnabled = false
+        } else {
+            toolBar.downBtn.isEnabled = true
+        }
     }
 
     @objc func commandBtnFunc() {
         if articleField.isKeyboardUsing {
             // 此时键盘展开，点击收起键盘并展示command菜单
-            toolBar.downBtn.isEnabled = false
-            
             articleField.isMenuExpanded = true
             articleField.isKeyboardUsing = false
+            
+            updateBtnStatus()
+            
             articleField.titleView.resignFirstResponder()
             articleField.bodyView.resignFirstResponder()
             
+            toolBar.configureTouchPad(moveDistance!)
+            
             UIView.animate(withDuration: 0.5, animations: {
                 self.toolBar.snp.updateConstraints { make in
-                    make.height.equalTo(307 + 40)
+                    make.height.equalTo(self.moveDistance! + 40)
                     make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom)
                 }
 //                self.view.layoutIfNeeded()
             })
             
-            configureJoyStickHandler()
+            configureTouchPadHandler()
             
         } else if !articleField.isMenuExpanded, !articleField.isKeyboardUsing {
             // 此时键盘收起，点击展开展示command菜单
-            toolBar.downBtn.isEnabled = false
-            
             articleField.isMenuExpanded = true
             articleField.isKeyboardUsing = false
             
+            updateBtnStatus()
+            
             UIView.animate(withDuration: 0.5, animations: {
                 self.toolBar.snp.updateConstraints { make in
-                    make.height.equalTo(307 + 40)
+                    make.height.equalTo(self.moveDistance! + 40)
                 }
                 self.view.layoutIfNeeded()
             })
             
-            configureJoyStickHandler()
+            configureTouchPadHandler()
             
         } else if articleField.isMenuExpanded {
             // 此时command菜单展开，点击收起菜单，恢复键盘
-            toolBar.downBtn.isEnabled = true
-            
             articleField.isMenuExpanded = false
             articleField.isKeyboardUsing = true
+            
+            updateBtnStatus()
             
             UIView.animate(withDuration: 0.25, animations: {
                 self.toolBar.snp.updateConstraints { make in
                     make.height.equalTo(40)
-                    make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom).inset(307)
+                    make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom).inset(self.moveDistance!)
                 }
                 self.view.layoutIfNeeded()
             }, completion: { _ in
-                self.toolBar.joyStick.isHidden = true
+                self.toolBar.touchPad.isHidden = true
             })
             
             articleField.bodyView.becomeFirstResponder()
@@ -86,10 +105,10 @@ extension CurrentTextVC {
         }
     }
     
-    func configureJoyStickHandler() {
-        toolBar.joyStick.isHidden = false
+    func configureTouchPadHandler() {
+        guard let touchPad = toolBar.touchPad else { return }
         
-        let velocityMultiplier: CGFloat = 1
+        touchPad.isHidden = false
         
         var rectFrame = articleField.bodyView.getRect(articleField.bodyView, articleField.bodyView.selectedRange)
 
@@ -97,12 +116,48 @@ extension CurrentTextVC {
         cursor!.backgroundColor = ColorCollection.cursorColor
         articleField.bodyView.addSubview(cursor!)
         
-        toolBar.joyStick.handler = { [unowned self] data in
-            cursor!.frame.origin = CGPoint(x: rectFrame.origin.x + (data.velocity.x * velocityMultiplier),
-                                           y: rectFrame.origin.y + (data.velocity.y * velocityMultiplier))
+        let line: [CGFloat] = [50, 150]
+        let multiplier: [CGFloat] = [0.5, 1, 2]
+        
+        touchPad.handler = { [unowned self] data in
+            cursor!.frame.origin = {
+                let x = rectFrame.origin.x
+                let y = rectFrame.origin.y
+                
+                let touchPadX = data.velocity.x
+                let touchPadY = data.velocity.y
+                
+                var currentX: CGFloat!
+                var currentY: CGFloat!
+                
+                let signInX = touchPadX/abs(touchPadX)
+                let signInY = touchPadY/abs(touchPadY)
+                
+                switch abs(touchPadX) {
+                case 0...line[0]:
+                    currentX = x + multiplier[0]*touchPadX
+                case line[0]...line[1]:
+                    currentX = x + multiplier[0]*line[0]*signInX + multiplier[1]*(touchPadX - line[0]*signInX)
+                case line[1]...1000:
+                    currentX = x + multiplier[0]*line[0]*signInX + multiplier[1]*(line[1] - line[0])*signInX + multiplier[2]*(touchPadX - line[1]*signInX)
+                default:
+                    currentX = x
+                }
+                
+                switch abs(touchPadY) {
+                case 0...line[0]:
+                    currentY = y + multiplier[0]*touchPadY
+                case line[0]...line[1]:
+                    currentY = y + multiplier[0]*line[0]*signInY + multiplier[1]*(touchPadY - line[0]*signInY)
+                case line[1]...1000:
+                    currentY = y + multiplier[0]*line[0]*signInY + multiplier[1]*(line[1] - line[0])*signInY + multiplier[2]*(touchPadY - line[1]*signInY)
+                default:
+                    currentY = y
+                }
+                
+                return CGPoint(x: currentX, y: currentY)
+            }()
 
-            print(data.velocity)
-            
             let upSide = cursor!.frame.origin.y
             let downSide = cursor!.frame.origin.y + cursor!.frame.height
             let leftSide = cursor!.frame.origin.x
@@ -111,24 +166,30 @@ extension CurrentTextVC {
             if upSide <= 0 {
                 cursor!.frame.origin.y = 0
             }
+            
             if leftSide <= 0 {
                 cursor!.frame.origin.x = 0
             }
+            
             if downSide >= articleField.bodyView.frame.height {
                 cursor!.frame.origin.y = articleField.bodyView.frame.height - cursor!.frame.height
             }
+            
             if rightSide >= articleField.bodyView.frame.width {
                 cursor!.frame.origin.x = articleField.bodyView.frame.width - cursor!.frame.width
             }
         }
         
-        toolBar.joyStick.handleTouchEnded = { [unowned self] in
+        touchPad.handleTouchEnded = { [unowned self] in
             print("ended")
             let range = self.articleField.bodyView.closestPosition(to: self.cursor!.center)!
             let location = self.articleField.bodyView.offset(from: articleField.bodyView.beginningOfDocument, to: range)
             articleField.bodyView.selectedRange = NSRange(location: location, length: 0)
             
+//            let correction = NSRange(location: location-1, length: 0)
+            
             rectFrame = articleField.bodyView.getRect(articleField.bodyView, articleField.bodyView.selectedRange)
+//            rectFrame.origin.x += articleField.bodyFont!.pointSize
             cursor!.frame = rectFrame
         }
     }
