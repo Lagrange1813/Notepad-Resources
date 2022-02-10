@@ -15,7 +15,7 @@ struct ColorCollection {
     static let lightTitleText = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
     static let lightBodyText = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
     
-    static let lightNavigation = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
+    static let lightTitleBar = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
     
     static let lightCountBG = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
     static let lightToolBG = UIColor(red: 1, green: 1, blue: 1, alpha: 1)

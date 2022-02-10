@@ -13,6 +13,7 @@ class CurrentTextVC: UIViewController {
     var articleField: PureTextView!
     var articles: [NSManagedObject] = []
     var counter: WordCounter!
+    var titleBar: TitleBar!
     var toolBar: ToolBar!
 
     var cursor: UIView?
@@ -29,10 +30,10 @@ class CurrentTextVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         loadData()
-        configureTitleBar()
         configureTextView()
-        configureCounter()
         configureToolBar()
+        configureTitleBar()
+        configureCounter()
         registNotification()
         configureBtnAction()
     }
@@ -71,6 +72,15 @@ class CurrentTextVC: UIViewController {
 //            self.navigationController?.navigationBar.scrollEdgeAppearance = bar
 //            self.navigationController?.navigationBar.standardAppearance = bar
 //        }
+        titleBar = TitleBar()
+        view.addSubview(titleBar)
+        
+        titleBar.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            make.centerX.equalToSuperview()
+            make.width.equalTo(ToolBar.width())
+            make.height.equalTo(titleBar.height)
+        }
     }
 
 
@@ -102,7 +112,7 @@ class CurrentTextVC: UIViewController {
         counter = WordCounter()
         view.addSubview(counter)
         counter.snp.makeConstraints { make in
-            make.top.equalTo(articleField).offset(5)
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(10 + TitleBar.height())
             make.trailing.equalTo(articleField).inset(5)
             make.width.equalTo(55)
             make.height.equalTo(20)

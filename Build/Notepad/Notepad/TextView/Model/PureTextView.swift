@@ -47,7 +47,7 @@ class PureTextView: UIScrollView, UITextViewDelegate {
     func configureBackView() {
         backgroundColor = .white
         indicatorStyle = .black
-        contentInset = UIEdgeInsets(top: 100, left: 0, bottom: 400, right: 0)
+        contentInset = UIEdgeInsets(top: TitleBar.height(), left: 0, bottom: 400, right: 0)
         alwaysBounceHorizontal = false
     }
     

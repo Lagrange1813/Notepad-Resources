@@ -12,21 +12,8 @@ class ToolBar: UIView {
     var lastLocation: CGPoint!
     let btnLength = 20.0
     let btnSpacing = 10.0
-    var width: CGFloat = {
-        switch ScreenSize.width {
-        case 0...330:
-            return 7 * 40.0 + 4
-        case 330...370:
-            return 8 * 40.0 + 4
-        case 370...410:
-            return 9 * 40.0 + 4
-        case 410...450:
-            return 10 * 40.0 + 4
-        default:
-            return 9 * 40.0 + 4
-        }
-    }()
-
+    
+    var width: CGFloat!
     var height = 40.0
 
     let fixedBarItem = ("command",
@@ -69,6 +56,9 @@ class ToolBar: UIView {
 
     init() {
         super.init(frame: CGRect())
+        
+        width = ToolBar.width()
+        
 //        lastLocation = self.center
 //        let panRecognizer = UIPanGestureRecognizer(target:self, action:#selector(self.detectPan(_:)))
 //        self.gestureRecognizers = [panRecognizer]
@@ -81,8 +71,8 @@ class ToolBar: UIView {
         
         layer.shadowColor = CGColor(red: 0, green: 0, blue: 0, alpha: 1)
         layer.shadowOffset = CGSize(width: 0, height: 0)
-        layer.shadowOpacity = 0.5
-        layer.shadowRadius = 3
+        layer.shadowOpacity = 0.2
+        layer.shadowRadius = 1.5
 
 //        let rightBG: UIView = {
 //            let view = UIView(frame: CGRect(x: height, y: 0, width: width - height, height: height))
@@ -127,6 +117,21 @@ class ToolBar: UIView {
             if frame.origin.x + width > ScreenSize.width {
                 frame.origin.x = ScreenSize.width - width
             }
+        }
+    }
+    
+    class func width() -> CGFloat {
+        switch ScreenSize.width {
+        case 0...330:
+            return 7 * 40.0 + 4
+        case 330...370:
+            return 8 * 40.0 + 4
+        case 370...410:
+            return 9 * 40.0 + 4
+        case 410...450:
+            return 10 * 40.0 + 4
+        default:
+            return 9 * 40.0 + 4
         }
     }
 
