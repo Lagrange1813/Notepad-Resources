@@ -35,18 +35,4 @@ extension CurrentTextVC {
     }
 }
 
-func saveData(title: String, body: String) {
-    guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
 
-    let managedContext = appDelegate.persistentContainer.viewContext
-
-    let entity = NSEntityDescription.entity(forEntityName: "Article", in: managedContext)!
-    let article = NSManagedObject(entity: entity, insertInto: managedContext)
-    article.setValue(title, forKeyPath: "title")
-    article.setValue(body, forKey: "body")
-
-    do { try managedContext.save()
-    } catch let error as NSError {
-        print("Could not save. \(error), \(error.userInfo)")
-    }
-}

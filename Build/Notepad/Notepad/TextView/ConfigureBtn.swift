@@ -179,7 +179,7 @@ extension CurrentTextVC {
                 cursor!.frame.origin.x = articleField.bodyView.frame.width - cursor!.frame.width
             }
             
-//            let absPoint = cursor!.convert(cursor!.frame.origin, from: UIScreen.main.fixedCoordinateSpace)
+//            let absPoint = cursor!.convert(cursor!.frame.origin, to: articleField)
 //            print(absPoint)
         }
         
