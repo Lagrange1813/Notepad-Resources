@@ -178,6 +178,9 @@ extension CurrentTextVC {
             if rightSide >= articleField.bodyView.frame.width {
                 cursor!.frame.origin.x = articleField.bodyView.frame.width - cursor!.frame.width
             }
+            
+//            let absPoint = cursor!.convert(cursor!.frame.origin, from: UIScreen.main.fixedCoordinateSpace)
+//            print(absPoint)
         }
         
         touchPad.handleTouchEnded = { [unowned self] in
