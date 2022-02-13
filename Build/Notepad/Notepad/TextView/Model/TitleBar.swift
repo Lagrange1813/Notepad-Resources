@@ -22,22 +22,36 @@ class TitleBar: UIView {
     
     func customize() {
         height = TitleBar.height()
-        backgroundColor = ColorCollection.lightTitleBar
-        alpha = 0.95
-//        clipsToBounds = true
+        tintColor = .black
+        alpha = 1
         
         layer.cornerRadius = 8
         
         layer.shadowColor = CGColor(red: 0, green: 0, blue: 0, alpha: 1)
         layer.shadowOffset = CGSize(width: 0, height: 0)
-        layer.shadowOpacity = 0.2
-        layer.shadowRadius = 1.5
-        
+        layer.shadowOpacity = 0.5
+        layer.shadowRadius = 0.5
+
+        configureBlur()
         configueTitle()
+        configureBtn()
     }
     
     class func height() -> CGFloat {
         return 50
+    }
+    
+    func configureBlur() {
+        let backgroundSupport = UIView(frame: CGRect(x: 0, y: 0, width: frame.width, height: frame.height))
+        backgroundSupport.layer.cornerRadius = layer.cornerRadius
+        backgroundSupport.clipsToBounds = true
+        addSubview(backgroundSupport)
+        
+        let blur = UIBlurEffect(style: .light)
+        let background = UIVisualEffectView(effect: blur)
+        background.frame = CGRect(x: 0, y: 0, width: frame.width, height: frame.height)
+        background.layer.cornerRadius = layer.cornerRadius
+        backgroundSupport.addSubview(background)
     }
     
     func configueTitle() {
@@ -45,11 +59,29 @@ class TitleBar: UIView {
         
         let title = UILabel()
         title.text = text
-        title.font = UIFont.systemFont(ofSize: 20)
+        title.font = getFont(font: .bookTitle)
+
         addSubview(title)
         
         title.snp.makeConstraints { make in
-            make.center.equalToSuperview()
+            make.centerY.equalToSuperview()
+            make.leading.equalToSuperview().offset(TitleBar.height())
         }
+    }
+    
+    func configureBtn() {
+        let listBtn: UIButton = {
+            let button = CustomBtn()
+            button.setImage(UIImage(named: "list.bullet.rectangle"), for: .normal)
+            addSubview(button)
+            
+            button.snp.makeConstraints { make in
+                make.width.height.equalTo(25)
+                make.centerY.equalToSuperview()
+                make.leading.equalToSuperview().offset(15)
+            }
+            
+            return button
+        }()
     }
 }

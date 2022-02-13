@@ -33,7 +33,7 @@ class WordCounter: UIView {
         data.textColor = .white
         data.frame = CGRect(x: 10, y: 0, width: 50, height: 20)
         addSubview(data)
-        self.backgroundColor = ColorCollection.lightCountBG
+        self.backgroundColor = fetchColor(place: .countBG, mode: .light)
         layer.cornerRadius = 10
     }
 

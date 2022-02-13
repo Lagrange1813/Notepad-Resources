@@ -47,7 +47,7 @@ class PureTextView: UIScrollView, UITextViewDelegate {
     func configureBackView() {
         backgroundColor = .white
         indicatorStyle = .black
-        contentInset = UIEdgeInsets(top: TitleBar.height(), left: 0, bottom: 400, right: 0)
+        contentInset = UIEdgeInsets(top: TitleBar.height() + titleBarOffset, left: 0, bottom: 400, right: 0)
         alwaysBounceHorizontal = false
     }
     
@@ -66,6 +66,7 @@ class PureTextView: UIScrollView, UITextViewDelegate {
         
         bodyView = CustomTextView()
         bodyView.isScrollEnabled = false
+//        bodyView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 1000, right: 0)
         addSubview(bodyView)
         
         bodyView.snp.makeConstraints { make in
@@ -76,13 +77,13 @@ class PureTextView: UIScrollView, UITextViewDelegate {
     }
     
     func configureFont(fontName: String) {
-        titleFont = UIFont(name: fontName, size: 20)
+        titleFont = UIFont(name: "LXGW WenKai Bold", size: 17)
         bodyFont = UIFont(name: fontName, size: 15)
     }
     
     private func customize() {
         let titleFont = titleFont
-        let titleColor = ColorCollection.lightTitleText
+        let titleColor = fetchColor(place: .titleText, mode: .light)
         
         let titleParagraphStyle: NSMutableParagraphStyle = {
             let style = NSMutableParagraphStyle()
@@ -102,7 +103,7 @@ class PureTextView: UIScrollView, UITextViewDelegate {
         titleView.attributedText = titleString
         
         let bodyFont = bodyFont
-        let bodyColor = ColorCollection.lightBodyText
+        let bodyColor = fetchColor(place: .bodyText, mode: .light)
         
         let bodyParagraphStyle: NSMutableParagraphStyle = {
             let style = NSMutableParagraphStyle()

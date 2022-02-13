@@ -13,16 +13,17 @@ extension CurrentTextVC {
         if textView == articleField.bodyView {
             articleField.bodyView.sizeToFit()
             updateUnRedoButtons()
-            refreshAndGetText()
+            refreshAndSaveText()
         } else if textView == articleField.titleView {
             articleField.titleView.sizeToFit()
             updateUnRedoButtons()
-            refreshAndGetText()
+            refreshAndSaveText()
         }
         articleField.resize()
+        refreshCounter()
     }
 
-    func refreshAndGetText() {
+    func refreshAndSaveText() {
         let temp = articleField.titleView.text! + articleField.bodyView.text!
 
         counter.refreshLabel(temp.count)

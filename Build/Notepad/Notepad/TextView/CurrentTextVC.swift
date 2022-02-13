@@ -20,11 +20,11 @@ class CurrentTextVC: UIViewController {
 
     var isKeyboardHasPoppedUp = false
     var moveDistance: CGFloat?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        view.backgroundColor = ColorCollection.lightBodyBG
+        view.backgroundColor = fetchColor(place: .bodyBG, mode: .light)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -33,6 +33,7 @@ class CurrentTextVC: UIViewController {
         configureTextView()
         configureToolBar()
         configureTitleBar()
+        configureStatusBarBackground()
         configureCounter()
         registNotification()
         configureBtnAction()
@@ -58,31 +59,20 @@ class CurrentTextVC: UIViewController {
             print("Could not fetch. \(error), \(error.userInfo)")
         }
     }
+
+    func configureStatusBarBackground() {
+        let background = UIView(frame: CGRect(x: 0, y: 0, width: ScreenSize.width, height: ScreenSize.topPadding! - 1))
+        background.backgroundColor = fetchColor(place: .bodyBG, mode: .light)
+        view.addSubview(background)
+    }
     
     func configureTitleBar() {
-////        navigationItem.title = "卡拉马佐夫兄弟"
-////        navigationController?.navigationBar.barStyle = .black
-//        navigationController?.navigationBar.isTranslucent = true
-//
-//        let bar = UINavigationBarAppearance()
-//        bar.backgroundColor = ColorCollection.lightNavigation
-//        bar.titleTextAttributes = [.foregroundColor: ColorCollection.lightTitleText]
-//        if #available(iOS 15.0, *) {
-//            bar.backgroundEffect = nil
-//            self.navigationController?.navigationBar.scrollEdgeAppearance = bar
-//            self.navigationController?.navigationBar.standardAppearance = bar
-//        }
-        titleBar = TitleBar()
+        titleBar = TitleBar(frame: CGRect(x: ScreenSize.width/2 - ToolBar.width()/2,
+                                          y: ScreenSize.topPadding! + titleBarOffset,
+                                          width: ToolBar.width(),
+                                          height: TitleBar.height()))
         view.addSubview(titleBar)
-        
-        titleBar.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
-            make.centerX.equalToSuperview()
-            make.width.equalTo(ToolBar.width())
-            make.height.equalTo(titleBar.height)
-        }
     }
-
 
     func configureTextView() {
         articleField = PureTextView(frame: CGRect())
@@ -112,8 +102,9 @@ class CurrentTextVC: UIViewController {
         counter = WordCounter()
         view.addSubview(counter)
         counter.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(10 + TitleBar.height())
-            make.trailing.equalTo(articleField).inset(5)
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(5 + TitleBar.height() + titleBarOffset)
+//            make.trailing.equalTo(articleField).inset(5)
+            make.trailing.equalTo(articleField).offset(10)
             make.width.equalTo(55)
             make.height.equalTo(20)
         }
@@ -124,7 +115,7 @@ class CurrentTextVC: UIViewController {
 
     func refreshCounter() {
         counter.snp.updateConstraints { make in
-            make.width.equalTo(counter.width + 5)
+            make.width.equalTo(counter.width + 11)
         }
     }
 
@@ -142,6 +133,22 @@ class CurrentTextVC: UIViewController {
             make.width.equalTo(toolBar.width)
             make.height.equalTo(toolBar.height)
         }
+        
+//        toolBar.gestureHandler = { [self] in
+//            let pan = self.toolBar.panGestureRecognizer
+//            let velocity = pan!.velocity(in: articleField).y
+//
+//            if velocity < -200 {
+//                UIView.animate(withDuration: 0.3, animations: {
+//                    self.titleBar.frame.origin.y -= 50
+//                })
+//
+//            } else if velocity > 200 {
+//                UIView.animate(withDuration: 0.3, animations: {
+//                    self.titleBar.frame.origin.y = ScreenSize.topPadding!
+//                })
+//            }
+//        }
     }
 }
 

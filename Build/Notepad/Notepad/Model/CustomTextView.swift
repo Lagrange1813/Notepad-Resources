@@ -11,7 +11,12 @@ class CustomTextView: UITextView {
     var height: CGFloat {
         let positon = self.position(from: self.beginningOfDocument, offset: 0)!
         let range = self.textRange(from: positon, to: positon)!
-        let height = firstRect(for: range).height
+        var height = firstRect(for: range).height
+        
+        if isFullScreen() {
+            height += 2
+        } else { height += 1 }
+        
         return height
     }
     
@@ -29,7 +34,7 @@ class CustomTextView: UITextView {
     }
 
     override func selectionRects(for range: UITextRange) -> [UITextSelectionRect] {
-        let testRects = super.selectionRects(for: range).map {
+        let rects = super.selectionRects(for: range).map {
             CustomTextSelectionRect(
                 rect: CGRect(x: $0.rect.origin.x,
                              y: $0.rect.origin.y - offset,
@@ -42,13 +47,13 @@ class CustomTextView: UITextView {
             )
         }
 
-        if testRects.count >= 3 {
-//            testRects[testRects.count - 2]._rect.size.height = firstRect(for: range).height
-            testRects[testRects.count - 2]._rect.size.height = firstRect(for: range).height
-            testRects[testRects.count - 1]._rect.size.height = height
+        if rects.count >= 3 {
+            rects[rects.count - 3]._rect.size.height = height
+            rects[rects.count - 2]._rect.size.height = max(firstRect(for: range).height, height)
+            rects[rects.count - 1]._rect.size.height = height
         }
-
-        return testRects
+        
+        return rects
     }
 
     public func getRect(_ textView: CustomTextView, _ range: NSRange) -> CGRect {

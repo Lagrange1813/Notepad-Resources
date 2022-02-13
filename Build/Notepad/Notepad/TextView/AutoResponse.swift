@@ -26,25 +26,24 @@ extension CurrentTextVC {
         }
     }
 
+    func textViewDidChangeSelection(_ textView: UITextView) {
+        if articleField.isShortcutBtnInputing {
+            articleField.isShortcutBtnInputing = false
+        }
+    }
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let pan = scrollView.panGestureRecognizer
         let velocity = pan.velocity(in: scrollView).y
-        
+
         if velocity < -200 {
             UIView.animate(withDuration: 0.3, animations: {
-                self.titleBar.snp.updateConstraints { make in
-                    make.height.equalTo(0)
-                }
-                self.view.layoutIfNeeded()
+                self.titleBar.frame.origin.y -= 50
             })
-           
-            
+
         } else if velocity > 200 {
             UIView.animate(withDuration: 0.3, animations: {
-                self.titleBar.snp.updateConstraints { make in
-                    make.height.equalTo(TitleBar.height())
-                }
-                self.view.layoutIfNeeded()
+                self.titleBar.frame.origin.y = ScreenSize.topPadding! + titleBarOffset
             })
         }
     }
