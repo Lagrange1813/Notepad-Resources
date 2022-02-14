@@ -157,16 +157,17 @@ extension CurrentTextVC {
             let lowerBoundary = correctCoordinates(toolBar.frame.origin.y, position: .view) - 30
             
             if upperSurface <= upperBoundary {
-                articleField.setContentOffset(CGPoint(x: 0, y: max(cursor!.frame.origin.y - 20, 0)), animated: false)
-//                self.articleField.layoutIfNeeded()
-//                hideTitleBar()
+                articleField.setContentOffset(CGPoint(x: 0,
+                                                      y: articleField.contentOffset.y - 5), animated: false)
+                cursor!.frame.origin.y -= 4
+                hideTitleBar()
                 print("up")
             }
             
             if lowerSurface >= lowerBoundary {
-                articleField.setContentOffset(CGPoint(x: 0, y: cursor!.frame.origin.y - 300), animated: false)
-//                self.articleField.layoutIfNeeded()
-//                hideTitleBar()
+                articleField.setContentOffset(CGPoint(x: 0, y: articleField.contentOffset.y + 5), animated: false)
+//                cursor!.frame.origin.y += 4
+                hideTitleBar()
                 print("down")
             }
 
