@@ -10,6 +10,8 @@ import UIKit
 class TitleBar: UIView {
     var height: CGFloat!
     
+    var listBtn: CustomBtn!
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         customize()
@@ -70,7 +72,7 @@ class TitleBar: UIView {
     }
     
     func configureBtn() {
-        let listBtn: UIButton = {
+        listBtn = { () -> CustomBtn in
             let button = CustomBtn()
             button.setImage(UIImage(named: "list.bullet.rectangle"), for: .normal)
             addSubview(button)

@@ -8,7 +8,15 @@
 import UIKit
 
 extension CurrentTextVC {
-    func configureBtnAction() {
+    // MARK: - Title bar button configurment
+
+    func configureTitleBarBtnAction() {
+//        titleBar.listBtn.addTarget(self, action: <#T##Selector#>, for: <#T##UIControl.Event#>)
+    }
+
+    // MARK: - Tool bar button configurment
+
+    func configureToolBarBtnAction() {
         toolBar.commandBtn.addTarget(self, action: #selector(commandBtnFunc), for: .touchUpInside)
 
         toolBar.undoBtn.addTarget(self, action: #selector(undoFunc), for: .touchUpInside)
@@ -149,13 +157,13 @@ extension CurrentTextVC {
             if rightSide >= articleField.bodyView.frame.width {
                 cursor!.frame.origin.x = articleField.bodyView.frame.width - cursor!.frame.width
             }
-            
+
             let upperSurface = correctCoordinates(cursor!.frame.origin.y, position: .bodyView)
             let lowerSurface = upperSurface + cursor!.frame.height
-            
-            let upperBoundary:CGFloat = 0
+
+            let upperBoundary: CGFloat = 0
             let lowerBoundary = correctCoordinates(toolBar.frame.origin.y, position: .view) - 30
-            
+
             if upperSurface <= upperBoundary {
                 articleField.setContentOffset(CGPoint(x: 0,
                                                       y: articleField.contentOffset.y - 5), animated: false)
@@ -163,7 +171,7 @@ extension CurrentTextVC {
                 hideTitleBar()
                 print("up")
             }
-            
+
             if lowerSurface >= lowerBoundary {
                 articleField.setContentOffset(CGPoint(x: 0, y: articleField.contentOffset.y + 5), animated: false)
 //                cursor!.frame.origin.y += 4

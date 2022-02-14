@@ -36,7 +36,7 @@ class CurrentTextVC: UIViewController {
         configureStatusBarBackground()
         configureCounter()
         registNotification()
-        configureBtnAction()
+        configureToolBarBtnAction()
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -67,6 +67,7 @@ class CurrentTextVC: UIViewController {
     }
     
     func configureTitleBar() {
+        navigationController?.navigationBar.isHidden = true
         titleBar = TitleBar(frame: CGRect(x: ScreenSize.width/2 - ToolBar.width()/2,
                                           y: ScreenSize.topPadding! + titleBarOffset,
                                           width: ToolBar.width(),
