@@ -56,8 +56,17 @@ extension CurrentTextVC {
 
             UIView.animate(withDuration: 0.5, animations: {
                 self.toolBar.snp.updateConstraints { make in
-                    make.height.equalTo(self.moveDistance! + 40)
-                    make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom)
+                    if isFullScreen() {
+                        make.height.equalTo(self.moveDistance! + 40)
+                    } else {
+                        make.height.equalTo(self.moveDistance! + 40 - 5)
+                    }
+
+                    if isFullScreen() {
+                        make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom)
+                    } else {
+                        make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom).inset(5)
+                    }
                 }
 //                self.view.layoutIfNeeded()
             })
@@ -110,7 +119,7 @@ extension CurrentTextVC {
 
         touchPad.isHidden = false
 
-        var rectFrame = articleField.bodyView.getRect(articleField.bodyView, articleField.bodyView.selectedRange)
+        var rectFrame = articleField.bodyView.fetchRect(articleField.bodyView, articleField.bodyView.selectedRange)
 
         cursor = UIView(frame: rectFrame)
         cursor!.backgroundColor = fetchColor(place: .cursor, mode: .light)
@@ -140,9 +149,34 @@ extension CurrentTextVC {
             if rightSide >= articleField.bodyView.frame.width {
                 cursor!.frame.origin.x = articleField.bodyView.frame.width - cursor!.frame.width
             }
+            
+            let upperSurface = correctCoordinates(cursor!.frame.origin.y, position: .bodyView)
+            let lowerSurface = upperSurface + cursor!.frame.height
+            
+            let upperBoundary:CGFloat = 0
+            let lowerBoundary = correctCoordinates(toolBar.frame.origin.y, position: .view) - 30
+            
+            if upperSurface <= upperBoundary {
+                articleField.setContentOffset(CGPoint(x: 0, y: max(cursor!.frame.origin.y - 20, 0)), animated: false)
+//                self.articleField.layoutIfNeeded()
+//                hideTitleBar()
+                print("up")
+            }
+            
+            if lowerSurface >= lowerBoundary {
+                articleField.setContentOffset(CGPoint(x: 0, y: cursor!.frame.origin.y - 300), animated: false)
+//                self.articleField.layoutIfNeeded()
+//                hideTitleBar()
+                print("down")
+            }
 
-//            let absPoint = cursor!.convert(cursor!.frame.origin, to: articleField)
-//            print(absPoint)
+//            let cursorPosition = cursor!.frame.origin.y
+//            print(cursorPosition)
+//            print(correctCoordinates(cursorPosition, position: .bodyView))
+//            let toolBarPosition = toolBar.frame.origin.y
+//            print(toolBarPosition)
+//            print(correctCoordinates(toolBarPosition, position: .view))
+//            print("")
         }
 
         touchPad.handleTouchEnded = { [unowned self] in
@@ -153,7 +187,7 @@ extension CurrentTextVC {
 
 //            let correction = NSRange(location: location-1, length: 0)
 
-            rectFrame = articleField.bodyView.getRect(articleField.bodyView, articleField.bodyView.selectedRange)
+            rectFrame = articleField.bodyView.fetchRect(articleField.bodyView, articleField.bodyView.selectedRange)
 //            rectFrame.origin.x += articleField.bodyFont!.pointSize
             cursor!.frame = rectFrame
         }
@@ -226,9 +260,9 @@ extension CurrentTextVC {
         selectedView.replace(textRange, withText: "")
         selectedView.becomeFirstResponder()
 
-        UIView.animate(withDuration: 0.3, animations: {
-            self.navigationController?.isNavigationBarHidden = false
-        })
+        articleField.setContentOffset(CGPoint(x: 0, y: -TitleBar.height() - titleBarOffset), animated: true)
+
+        showTitleBar()
     }
 
     @objc func jumpToBottomFunc() {
@@ -243,10 +277,7 @@ extension CurrentTextVC {
         selectedView.replace(textRange, withText: "")
         selectedView.becomeFirstResponder()
 
-        UIView.animate(withDuration: 0.3, animations: {
-//                self.navigationController?.isNavigationBarHidden = true  WOC, NB!
-            self.navigationController?.setNavigationBarHidden(true, animated: true)
-        })
+        hideTitleBar()
     }
 
     @objc func insertFromCursor(sender: CustomBtn, forEvent event: UIEvent) {

@@ -52,7 +52,6 @@ func fetchColor(place: TonalCollocation, mode: ColorMode) -> UIColor {
     }
 }
 
-
 func isFullScreen() -> Bool {
     if ScreenSize.bottomPadding! > 0 { return true }
     else { return false }

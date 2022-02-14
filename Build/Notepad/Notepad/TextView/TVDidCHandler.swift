@@ -15,6 +15,8 @@ extension CurrentTextVC {
             updateUnRedoButtons()
             refreshAndSaveText()
         } else if textView == articleField.titleView {
+//            print(articleField.titleView.bounds.height)
+            
             articleField.titleView.sizeToFit()
             updateUnRedoButtons()
             refreshAndSaveText()

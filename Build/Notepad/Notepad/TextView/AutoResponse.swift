@@ -37,14 +37,14 @@ extension CurrentTextVC {
         let velocity = pan.velocity(in: scrollView).y
 
         if velocity < -200 {
-            UIView.animate(withDuration: 0.3, animations: {
-                self.titleBar.frame.origin.y -= 50
-            })
+            hideTitleBar()
 
         } else if velocity > 200 {
-            UIView.animate(withDuration: 0.3, animations: {
-                self.titleBar.frame.origin.y = ScreenSize.topPadding! + titleBarOffset
-            })
+            showTitleBar()
+        }
+        
+        if articleField.contentOffset.y <= -(TitleBar.height() + titleBarOffset) + 10 {
+            showTitleBar()
         }
     }
 
