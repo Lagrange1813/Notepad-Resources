@@ -30,12 +30,16 @@ class CurrentTextVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         loadData()
+        
         configureTextView()
         configureToolBar()
         configureTitleBar()
         configureStatusBarBackground()
         configureCounter()
+        
         registNotification()
+        
+        configureTitleBarBtnAction()
         configureToolBarBtnAction()
     }
 

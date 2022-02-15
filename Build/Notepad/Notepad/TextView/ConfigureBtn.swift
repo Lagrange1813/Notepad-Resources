@@ -11,7 +11,12 @@ extension CurrentTextVC {
     // MARK: - Title bar button configurment
 
     func configureTitleBarBtnAction() {
-//        titleBar.listBtn.addTarget(self, action: <#T##Selector#>, for: <#T##UIControl.Event#>)
+        titleBar.listBtn.addTarget(self, action: #selector(listBtnFunc), for: .touchUpInside)
+    }
+    
+    @objc func listBtnFunc() {
+        print("yes")
+        splitViewController?.show(.supplementary)
     }
 
     // MARK: - Tool bar button configurment

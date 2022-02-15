@@ -18,7 +18,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
-        window?.rootViewController = CustomSplitVC(style: .tripleColumn)
+        let customSplitVC = CustomSplitVC(style: .tripleColumn)
+        window?.rootViewController = customSplitVC
         window?.makeKeyAndVisible()
     }
 
