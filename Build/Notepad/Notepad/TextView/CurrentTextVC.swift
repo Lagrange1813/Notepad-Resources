@@ -21,6 +21,7 @@ class CurrentTextVC: UIViewController {
     var isKeyboardHasPoppedUp = false
     var moveDistance: CGFloat?
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -34,7 +35,7 @@ class CurrentTextVC: UIViewController {
         configureTextView()
         configureToolBar()
         configureTitleBar()
-        configureStatusBarBackground()
+//        configureStatusBarBackground()
         configureCounter()
         
         registNotification()
@@ -71,7 +72,6 @@ class CurrentTextVC: UIViewController {
     }
     
     func configureTitleBar() {
-        navigationController?.navigationBar.isHidden = true
         titleBar = TitleBar(frame: CGRect(x: ScreenSize.width/2 - ToolBar.width()/2,
                                           y: ScreenSize.topPadding! + titleBarOffset,
                                           width: ToolBar.width(),

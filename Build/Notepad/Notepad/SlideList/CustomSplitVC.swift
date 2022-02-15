@@ -14,7 +14,7 @@ class CustomSplitVC: UISplitViewController, UISplitViewControllerDelegate {
 
         self.delegate = self
         view.backgroundColor = .white
-        self.preferredDisplayMode = .twoBesideSecondary
+        self.preferredDisplayMode = .oneBesideSecondary
         
         let bookListVC = BookListVC()
         let articleListVC = ArticleListVC()
@@ -27,13 +27,12 @@ class CustomSplitVC: UISplitViewController, UISplitViewControllerDelegate {
         setViewController(articleListNav, for: .supplementary)
         setViewController(articleFieldNav, for: .secondary)
         
-        let articleFieldCompact = CurrentTextVC()
-        let aFCompactNav = UINavigationController(rootViewController: articleFieldCompact)
-        
-        setViewController(aFCompactNav, for: .compact)
-        
-        preferredPrimaryColumnWidth = 200
-        preferredSupplementaryColumnWidth = 200
+        preferredPrimaryColumnWidthFraction = 1/3
+        preferredSupplementaryColumnWidthFraction = 1/3
+
+        let bookListCompact = BookListVC()
+        let bookListCompactNav = UINavigationController(rootViewController: bookListCompact)
+        setViewController(bookListCompactNav, for: .compact)
     }
 
 }

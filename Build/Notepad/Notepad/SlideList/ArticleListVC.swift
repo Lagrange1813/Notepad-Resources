@@ -10,10 +10,9 @@ import UIKit
 class ArticleListVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 0
+        
+//        self.navigationController?.navigationBar.prefersLargeTitles = true
+        title = "卡拉马佐夫兄弟"
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
