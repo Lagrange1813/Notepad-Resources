@@ -36,7 +36,9 @@ class CustomSplitVC: UISplitViewController, UISplitViewControllerDelegate {
         let articleCompact = ArticleTextVC()
         setViewController(articleCompact, for: .compact)
         
-        
+//        let test = UIView(frame: CGRect(x: 400, y: 400, width: 100, height: 100))
+//        test.backgroundColor = .red
+//        view.addSubview(test)
     }
 
 }

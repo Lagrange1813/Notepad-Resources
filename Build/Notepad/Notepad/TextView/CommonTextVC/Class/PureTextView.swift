@@ -47,7 +47,6 @@ class PureTextView: UIScrollView, UITextViewDelegate {
     func configureBackView() {
         backgroundColor = .white
         indicatorStyle = .black
-        contentInset = UIEdgeInsets(top: TitleBar.height() + titleBarOffset, left: 0, bottom: 400, right: 0)
         alwaysBounceHorizontal = false
     }
     
@@ -66,7 +65,6 @@ class PureTextView: UIScrollView, UITextViewDelegate {
         
         bodyView = CustomTextView()
         bodyView.isScrollEnabled = false
-//        bodyView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 1000, right: 0)
         addSubview(bodyView)
         
         bodyView.snp.makeConstraints { make in
@@ -142,7 +140,9 @@ class PureTextView: UIScrollView, UITextViewDelegate {
         bodyView.snp.updateConstraints { make in
             make.width.equalTo(width - 10)
         }
-        
-        
+    }
+    
+    func setInsets(topPadding: CGFloat, bottomPadding: CGFloat) {
+        contentInset = UIEdgeInsets(top: topPadding + titleBarOffset, left: 0, bottom: bottomPadding, right: 0)
     }
 }

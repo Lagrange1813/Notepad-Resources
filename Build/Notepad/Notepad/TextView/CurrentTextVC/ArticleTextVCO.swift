@@ -1,76 +1,63 @@
 //
-//  CommonTextVC.swift
+//  ArticleTextVC.swift
 //  Notepad
 //
-//  Created by 张维熙 on 2022/2/19.
+//  Created by 张维熙 on 2022/1/23.
 //
 
 import CoreData
 import SnapKit
 import UIKit
 
-class CommonTextVC: UIViewController {
+class ArticleTextVC: UIViewController {
     var articleField: PureTextView!
     var articles: [NSManagedObject] = []
     var counter: WordCounter!
-    
+    var titleBar: TitleBar!
+    var toolBar: ToolBar!
+
     var cursor: UIView?
-    
+
     var isKeyboardHasPoppedUp = false
     var moveDistance: CGFloat?
+
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        appDelegate.supportAll = false
         view.backgroundColor = fetchColor(place: .bodyBG, mode: .light)
-        navigationController?.navigationBar.isTranslucent = true
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        print(view.frame.width)
         loadData()
-        
+
         configureTextView()
+        configureToolBar()
+        configureTitleBar()
+//        configureStatusBarBackground()
         configureCounter()
+
+        registNotification()
+
+        configureTitleBarBtnAction()
+        configureToolBarBtnAction()
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         articleField.resize()
+        updateUnRedoButtons()
     }
-    
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-        articleField.correctLayout(width: view.frame.width)
-        
-        navigationController?.navigationBar.isHidden = true
-    }
-    
-    override func viewDidLayoutSubviews() {
-        adjustView()
-    }
-    
+
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        super.viewWillTransition(to: size, with: coordinator)
-        splitViewController?.hide(.primary)
-        
-        articleField.correctLayout(width: view.frame.width)
-        
-        coordinator.animate(alongsideTransition: nil) { _ in
-            self.splitViewController?.hide(.primary)
-            
-            self.adjustView()
-        }
+        print(size)
     }
-    
-    func adjustView() {
-        articleField.titleView.sizeToFit()
-        articleField.bodyView.sizeToFit()
-        articleField.resize()
-    }
-    
+
     // MARK: - Load data
-    
+
     func loadData() {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
 
@@ -83,9 +70,23 @@ class CommonTextVC: UIViewController {
             print("Could not fetch. \(error), \(error.userInfo)")
         }
     }
-    
+
     // MARK: - Configure components
-    
+
+    func configureStatusBarBackground() {
+        let background = UIView(frame: CGRect(x: 0, y: 0, width: ScreenSize.width, height: ScreenSize.topPadding! - 1))
+        background.backgroundColor = fetchColor(place: .bodyBG, mode: .light)
+        view.addSubview(background)
+    }
+
+    func configureTitleBar() {
+        titleBar = TitleBar(frame: CGRect(x: ScreenSize.width/2 - ToolBar.width()/2,
+                                          y: ScreenSize.topPadding! + titleBarOffset,
+                                          width: ToolBar.width(),
+                                          height: TitleBar.height()))
+        view.addSubview(titleBar)
+    }
+
     func configureTextView() {
         articleField = PureTextView(frame: CGRect())
         articleField.delegate = self
@@ -102,26 +103,26 @@ class CommonTextVC: UIViewController {
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(5)
         }
     }
-    
+
     func configureText(_ articleField: PureTextView) {
         let index = articles.count
         let text = articles[index - 1]
         articleField.configureText(title: text.value(forKey: "title") as! String,
                                    body: text.value(forKey: "body") as! String)
     }
-    
+
     func configureCounter() {
         counter = WordCounter()
         view.addSubview(counter)
         counter.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(5 + titleBarOffset)
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(5 + TitleBar.height() + titleBarOffset)
+//            make.trailing.equalTo(articleField).inset(5)
             make.trailing.equalTo(articleField).offset(10)
             make.width.equalTo(55)
             make.height.equalTo(20)
         }
         let temp = articleField.titleView.text + articleField.bodyView.text
         counter.refreshLabel(temp.count)
-        
         refreshCounter()
     }
 
@@ -130,6 +131,38 @@ class CommonTextVC: UIViewController {
             make.width.equalTo(counter.width + 11)
         }
     }
+
+    func configureToolBar() {
+        toolBar = ToolBar()
+        view.addSubview(toolBar)
+
+        toolBar.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            if ScreenSize.bottomPadding! > 0 {
+                make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+            } else {
+                make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).inset(5)
+            }
+            make.width.equalTo(toolBar.width)
+            make.height.equalTo(toolBar.height)
+        }
+
+//        toolBar.gestureHandler = { [self] in
+//            let pan = self.toolBar.panGestureRecognizer
+//            let velocity = pan!.velocity(in: articleField).y
+//
+//            if velocity < -200 {
+//                UIView.animate(withDuration: 0.3, animations: {
+//                    self.titleBar.frame.origin.y -= 50
+//                })
+//
+//            } else if velocity > 200 {
+//                UIView.animate(withDuration: 0.3, animations: {
+//                    self.titleBar.frame.origin.y = ScreenSize.topPadding!
+//                })
+//            }
+//        }
+    }
 }
 
-extension CommonTextVC: UIScrollViewDelegate, UITextViewDelegate {}
+extension ArticleTextVC: UIScrollViewDelegate, UITextViewDelegate {}

@@ -11,7 +11,7 @@ class ArticleListVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        self.navigationController?.navigationBar.prefersLargeTitles = true
+        self.navigationController?.navigationBar.prefersLargeTitles = true
         title = "卡拉马佐夫兄弟"
     }
 
