@@ -19,20 +19,24 @@ class CustomSplitVC: UISplitViewController, UISplitViewControllerDelegate {
         
         let bookListVC = BookListVC()
         let articleListVC = ArticleListVC()
-        let articleField = CurrentTextVC()
+        let currentTextVC = CurrentTextVC()
         
         let articleListNav = UINavigationController(rootViewController: articleListVC)
-        let articleFieldNav = UINavigationController(rootViewController: articleField)
+        let currentTextNav = UINavigationController(rootViewController: currentTextVC)
         
         setViewController(bookListVC, for: .primary)
         setViewController(articleListNav, for: .supplementary)
-        setViewController(articleFieldNav, for: .secondary)
+        setViewController(currentTextNav, for: .secondary)
         
         preferredPrimaryColumnWidthFraction = 1/3
         preferredSupplementaryColumnWidthFraction = 1/3
+        showsSecondaryOnlyButton = true
+        hide(.primary)
 
-        let articleFieldCompact = CurrentTextVC()
-        setViewController(articleFieldCompact, for: .compact)
+        let articleCompact = ArticleTextVC()
+        setViewController(articleCompact, for: .compact)
+        
+        
     }
 
 }

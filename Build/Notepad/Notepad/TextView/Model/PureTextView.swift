@@ -5,8 +5,8 @@
 //  Created by 张维熙 on 2022/1/24.
 //
 
-import UIKit
 import SnapKit
+import UIKit
 
 class PureTextView: UIScrollView, UITextViewDelegate {
     var title: String?
@@ -124,8 +124,8 @@ class PureTextView: UIScrollView, UITextViewDelegate {
         let bodyString = NSMutableAttributedString(string: body ?? "请输入正文", attributes: bodyAttributes)
         bodyView.attributedText = bodyString
         
-        titleView.selectedRange = NSRange(location: 0,length: 0)
-        bodyView.selectedRange = NSRange(location: 0,length: 0)
+        titleView.selectedRange = NSRange(location: 0, length: 0)
+        bodyView.selectedRange = NSRange(location: 0, length: 0)
     }
 
     func configureText(title: String, body: String) {
@@ -136,5 +136,13 @@ class PureTextView: UIScrollView, UITextViewDelegate {
     
     func resize() {
         contentSize = CGSize(width: frame.width, height: titleView.frame.height + bodyView.frame.height)
+    }
+    
+    func correctLayout(width: CGFloat) {
+        bodyView.snp.updateConstraints { make in
+            make.width.equalTo(width - 10)
+        }
+        
+        
     }
 }

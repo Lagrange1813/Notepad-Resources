@@ -91,7 +91,7 @@ class ToolBar: UIView {
             return 8 * 40.0 + 4
         case 370...410:
             return 9 * 40.0 + 4
-        case 410...450:
+        case 410...:
             return 10 * 40.0 + 4
         default:
             return 9 * 40.0 + 4

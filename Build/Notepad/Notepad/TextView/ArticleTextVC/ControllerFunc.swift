@@ -9,7 +9,7 @@ import CoreData
 import SnapKit
 import UIKit
 
-extension CurrentTextVC {
+extension ArticleTextVC {
     func showTitleBar() {
         UIView.animate(withDuration: 0.7, animations: {
             self.titleBar.frame.origin.y = ScreenSize.topPadding! + titleBarOffset

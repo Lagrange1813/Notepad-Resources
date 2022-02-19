@@ -7,7 +7,7 @@
 
 import UIKit
 
-extension CurrentTextVC {
+extension ArticleTextVC {
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView == articleField.bodyView {
             articleField.bodyViewUnderEditing = true

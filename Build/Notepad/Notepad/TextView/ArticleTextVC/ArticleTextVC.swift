@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  ArticleTextVC.swift
 //  Notepad
 //
 //  Created by 张维熙 on 2022/1/23.
@@ -9,7 +9,7 @@ import CoreData
 import SnapKit
 import UIKit
 
-class CurrentTextVC: UIViewController {
+class ArticleTextVC: UIViewController {
     var articleField: PureTextView!
     var articles: [NSManagedObject] = []
     var counter: WordCounter!
@@ -20,26 +20,28 @@ class CurrentTextVC: UIViewController {
 
     var isKeyboardHasPoppedUp = false
     var moveDistance: CGFloat?
-    
+
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        appDelegate.supportAll = false
         view.backgroundColor = fetchColor(place: .bodyBG, mode: .light)
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        print(view.frame.width)
         loadData()
-        
+
         configureTextView()
         configureToolBar()
         configureTitleBar()
 //        configureStatusBarBackground()
         configureCounter()
-        
+
         registNotification()
-        
+
         configureTitleBarBtnAction()
         configureToolBarBtnAction()
     }
@@ -49,9 +51,13 @@ class CurrentTextVC: UIViewController {
         articleField.resize()
         updateUnRedoButtons()
     }
-    
+
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        print(size)
+    }
+
     // MARK: - Load data
-    
+
     func loadData() {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
 
@@ -64,15 +70,15 @@ class CurrentTextVC: UIViewController {
             print("Could not fetch. \(error), \(error.userInfo)")
         }
     }
-    
+
     // MARK: - Configure components
-    
+
     func configureStatusBarBackground() {
         let background = UIView(frame: CGRect(x: 0, y: 0, width: ScreenSize.width, height: ScreenSize.topPadding! - 1))
         background.backgroundColor = fetchColor(place: .bodyBG, mode: .light)
         view.addSubview(background)
     }
-    
+
     func configureTitleBar() {
         titleBar = TitleBar(frame: CGRect(x: ScreenSize.width/2 - ToolBar.width()/2,
                                           y: ScreenSize.topPadding! + titleBarOffset,
@@ -140,7 +146,7 @@ class CurrentTextVC: UIViewController {
             make.width.equalTo(toolBar.width)
             make.height.equalTo(toolBar.height)
         }
-        
+
 //        toolBar.gestureHandler = { [self] in
 //            let pan = self.toolBar.panGestureRecognizer
 //            let velocity = pan!.velocity(in: articleField).y
@@ -159,4 +165,4 @@ class CurrentTextVC: UIViewController {
     }
 }
 
-extension CurrentTextVC: UIScrollViewDelegate, UITextViewDelegate {}
+extension ArticleTextVC: UIScrollViewDelegate, UITextViewDelegate {}

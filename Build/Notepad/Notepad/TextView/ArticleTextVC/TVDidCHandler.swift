@@ -8,7 +8,7 @@
 import CoreData
 import UIKit
 
-extension CurrentTextVC {
+extension ArticleTextVC {
     func textViewDidChange(_ textView: UITextView) {
         if textView == articleField.bodyView {
             articleField.bodyView.sizeToFit()

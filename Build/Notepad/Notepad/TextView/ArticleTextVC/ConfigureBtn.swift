@@ -7,7 +7,7 @@
 
 import UIKit
 
-extension CurrentTextVC {
+extension ArticleTextVC {
     // MARK: - Title bar button configurment
 
     func configureTitleBarBtnAction() {
