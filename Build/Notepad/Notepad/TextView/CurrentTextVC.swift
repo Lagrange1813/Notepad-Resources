@@ -49,11 +49,11 @@ class CurrentTextVC: UIViewController {
         articleField.resize()
         updateUnRedoButtons()
     }
-
+    
+    // MARK: - Load data
+    
     func loadData() {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            return
-        }
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
 
         let managedContext = appDelegate.persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Article")
@@ -64,7 +64,9 @@ class CurrentTextVC: UIViewController {
             print("Could not fetch. \(error), \(error.userInfo)")
         }
     }
-
+    
+    // MARK: - Configure components
+    
     func configureStatusBarBackground() {
         let background = UIView(frame: CGRect(x: 0, y: 0, width: ScreenSize.width, height: ScreenSize.topPadding! - 1))
         background.backgroundColor = fetchColor(place: .bodyBG, mode: .light)

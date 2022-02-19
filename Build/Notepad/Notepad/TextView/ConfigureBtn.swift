@@ -16,7 +16,7 @@ extension CurrentTextVC {
     
     @objc func listBtnFunc() {
         print("yes")
-        splitViewController?.show(.supplementary)
+//        splitViewController?.show(.supplementary)
     }
 
     // MARK: - Tool bar button configurment

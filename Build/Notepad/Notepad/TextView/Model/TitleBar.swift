@@ -61,7 +61,7 @@ class TitleBar: UIView {
         
         let title = UILabel()
         title.text = text
-        title.font = getFont(font: .bookTitle)
+        title.font = fetchFont(font: .bookTitle)
 
         addSubview(title)
         

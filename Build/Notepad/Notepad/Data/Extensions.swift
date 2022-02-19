@@ -88,7 +88,7 @@ enum Font {
     case articleBody
 }
 
-func getFont(font: Font) -> UIFont {
+func fetchFont(font: Font) -> UIFont {
     switch font {
     case .bookTitle:
         return UIFont(name: "LXGW WenKai Bold", size: 16)!
