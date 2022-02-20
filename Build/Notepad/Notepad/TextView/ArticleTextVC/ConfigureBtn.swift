@@ -13,7 +13,7 @@ extension ArticleTextVC {
     func configureTitleBarBtnAction() {
         titleBar.listBtn.addTarget(self, action: #selector(listBtnFunc), for: .touchUpInside)
     }
-    
+
     @objc func listBtnFunc() {
         print("yes")
 //        splitViewController?.show(.supplementary)
@@ -276,7 +276,9 @@ extension ArticleTextVC {
 
         articleField.setContentOffset(CGPoint(x: 0, y: -TitleBar.height() - titleBarOffset), animated: true)
 
-        showTitleBar()
+        if !fullScreen {
+            showTitleBar()
+        }
     }
 
     @objc func jumpToBottomFunc() {

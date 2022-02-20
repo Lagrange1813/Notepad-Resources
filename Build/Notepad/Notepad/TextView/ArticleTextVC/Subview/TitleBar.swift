@@ -44,16 +44,29 @@ class TitleBar: UIView {
     }
     
     func configureBlur() {
-        let backgroundSupport = UIView(frame: CGRect(x: 0, y: 0, width: frame.width, height: frame.height))
+        let backgroundSupport = UIView()
         backgroundSupport.layer.cornerRadius = layer.cornerRadius
         backgroundSupport.clipsToBounds = true
         addSubview(backgroundSupport)
+       
+        backgroundSupport.snp.makeConstraints { make in
+            make.top.equalToSuperview()
+            make.bottom.equalToSuperview()
+            make.leading.equalToSuperview()
+            make.trailing.equalToSuperview()
+        }
         
         let blur = UIBlurEffect(style: .light)
         let background = UIVisualEffectView(effect: blur)
-        background.frame = CGRect(x: 0, y: 0, width: frame.width, height: frame.height)
         background.layer.cornerRadius = layer.cornerRadius
         backgroundSupport.addSubview(background)
+        
+        background.snp.makeConstraints { make in
+            make.top.equalToSuperview()
+            make.bottom.equalToSuperview()
+            make.leading.equalToSuperview()
+            make.trailing.equalToSuperview()
+        }
     }
     
     func configueTitle() {

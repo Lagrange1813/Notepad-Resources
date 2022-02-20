@@ -8,19 +8,27 @@
 import UIKit
 
 class ArticleTextVC: CommonTextVC {
+    var viewWidth: CGFloat!
+
     var titleBar: TitleBar!
     var toolBar: ToolBar!
 
     var isKeyboardHasPoppedUp = false
     var moveDistance: CGFloat?
 
+    var fullScreen = false
+
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
     override func viewDidLoad() {
         super.viewDidLoad()
         appDelegate.supportAll = false
+
+        updateViewWidth()
+
         barHeight = TitleBar.height()
         topPadding = barHeight
+        bottomPadding = view.frame.height/2
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -40,6 +48,21 @@ class ArticleTextVC: CommonTextVC {
         updateUnRedoButtons()
     }
 
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+
+        updateViewWidth()
+        updateComponents()
+    }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+    }
+
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+    }
+
     func configureStatusBarBackground() {
         let background = UIView(frame: CGRect(x: 0, y: 0, width: ScreenSize.width, height: ScreenSize.topPadding! - 1))
         background.backgroundColor = fetchColor(place: .bodyBG, mode: .light)
@@ -47,15 +70,15 @@ class ArticleTextVC: CommonTextVC {
     }
 
     func configureTitleBar() {
-        titleBar = TitleBar(frame: CGRect(x: view.frame.width/2 - ToolBar.width()/2,
+        titleBar = TitleBar(frame: CGRect(x: view.frame.width/2 - (viewWidth - 10)/2,
                                           y: ScreenSize.topPadding! + titleBarOffset,
-                                          width: ToolBar.width(),
+                                          width: viewWidth - 10,
                                           height: TitleBar.height()))
         view.addSubview(titleBar)
     }
 
     func configureToolBar() {
-        toolBar = ToolBar()
+        toolBar = ToolBar(viewWidth: viewWidth)
         view.addSubview(toolBar)
 
         toolBar.snp.makeConstraints { make in

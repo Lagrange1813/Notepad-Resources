@@ -137,6 +137,7 @@
 		7A172DE527C096CF00568433 /* ArticleTextVC */ = {
 			isa = PBXGroup;
 			children = (
+				7A5CAAC227C25407000173F4 /* Subview */,
 				7AC3218427AB9339008987B7 /* ConfigureBtn.swift */,
 				7AC3218627AB934F008987B7 /* ArtVCHandler.swift */,
 				7A443A1127B688C900A72F76 /* ControllerFunc.swift */,
@@ -157,27 +158,27 @@
 		7A172DE727C0C77E00568433 /* CommonTextVC */ = {
 			isa = PBXGroup;
 			children = (
-				7A172DEC27C1352800568433 /* View */,
+				7A172DEC27C1352800568433 /* SubView */,
 				7A172DE827C0C7CD00568433 /* CommonTextVC.swift */,
 				7A172DEA27C0CA1D00568433 /* ComVCHandler.swift */,
 			);
 			path = CommonTextVC;
 			sourceTree = "<group>";
 		};
-		7A172DEC27C1352800568433 /* View */ = {
+		7A172DEC27C1352800568433 /* SubView */ = {
 			isa = PBXGroup;
 			children = (
 				7AC3217C27AB92ED008987B7 /* WordCounter.swift */,
 				7AC3217E27AB9302008987B7 /* PureTextView.swift */,
 			);
-			path = View;
+			path = SubView;
 			sourceTree = "<group>";
 		};
-		7A443A0C27B4D89600A72F76 /* Subview */ = {
+		7A5CAAC227C25407000173F4 /* Subview */ = {
 			isa = PBXGroup;
 			children = (
-				7AC3217627AB9289008987B7 /* TouchPad.swift */,
 				7AC3218027AB9314008987B7 /* ToolBar.swift */,
+				7AC3217627AB9289008987B7 /* TouchPad.swift */,
 				7AAC1E9827ABAA1700A296B8 /* Markdown.swift */,
 				7A443A0D27B4D99600A72F76 /* TitleBar.swift */,
 			);
@@ -218,8 +219,8 @@
 			isa = PBXGroup;
 			children = (
 				7A758BBD27BAAAF000813C08 /* SlideList */,
-				7AC3218827AB9364008987B7 /* Data */,
 				7AC3217827AB92A4008987B7 /* TextView */,
+				7AC3218827AB9364008987B7 /* Data */,
 				7AC3217127AB9243008987B7 /* CustomClass */,
 				7AC3213E27AB9148008987B7 /* AppDelegate.swift */,
 				7AC3214227AB9148008987B7 /* ArticleTextVCO.swift */,
@@ -264,11 +265,10 @@
 		7AC3217827AB92A4008987B7 /* TextView */ = {
 			isa = PBXGroup;
 			children = (
+				7AC3217927AB92AC008987B7 /* Font */,
 				7A172DE727C0C77E00568433 /* CommonTextVC */,
 				7A172DE627C0AE3B00568433 /* CurrentTextVC */,
 				7A172DE527C096CF00568433 /* ArticleTextVC */,
-				7A443A0C27B4D89600A72F76 /* Subview */,
-				7AC3217927AB92AC008987B7 /* Font */,
 			);
 			path = TextView;
 			sourceTree = "<group>";

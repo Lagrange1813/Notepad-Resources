@@ -33,18 +33,20 @@ extension ArticleTextVC {
     }
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let pan = scrollView.panGestureRecognizer
-        let velocity = pan.velocity(in: scrollView).y
+        if !fullScreen {
+            let pan = scrollView.panGestureRecognizer
+            let velocity = pan.velocity(in: scrollView).y
 
-        if velocity < -200 {
-            hideTitleBar()
+            if velocity < -200 {
+                hideTitleBar()
 
-        } else if velocity > 200 {
-            showTitleBar()
-        }
+            } else if velocity > 200 {
+                showTitleBar()
+            }
 
-        if articleField.contentOffset.y <= -(TitleBar.height() + titleBarOffset) + 10 {
-            showTitleBar()
+            if articleField.contentOffset.y <= -(TitleBar.height() + titleBarOffset) + 10 {
+                showTitleBar()
+            }
         }
     }
 

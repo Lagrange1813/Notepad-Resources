@@ -9,6 +9,12 @@ import SnapKit
 import UIKit
 
 class ToolBar: UIView {
+    var viewWidth: CGFloat = 0 {
+        didSet {
+            width = viewWidth - 10
+        }
+    }
+
     let btnLength = 20.0
     let btnSpacing = 10.0
 
@@ -49,8 +55,9 @@ class ToolBar: UIView {
                            "platter.filled.bottom.and.arrow.down.iphone",
                            "arrowshape.turn.up.right"]
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    init(viewWidth: CGFloat) {
+        super.init(frame: CGRect())
+        self.viewWidth = viewWidth
         customize()
     }
 
@@ -59,8 +66,23 @@ class ToolBar: UIView {
         customize()
     }
 
+//    class func width() -> CGFloat {
+//        switch ScreenSize.width {
+//        case 0...330:
+//            return 7 * 40.0 + 4
+//        case 330...370:
+//            return 8 * 40.0 + 4
+//        case 370...410:
+//            return 9 * 40.0 + 4
+//        case 410...:
+//            return 10 * 40.0 + 4
+//        default:
+//            return 9 * 40.0 + 4
+//        }
+//    }
+
     func customize() {
-        width = ToolBar.width()
+        width = viewWidth - 10
 
         panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(detectPan))
 
@@ -83,39 +105,24 @@ class ToolBar: UIView {
         gestureHandler?()
     }
 
-    class func width() -> CGFloat {
-        switch ScreenSize.width {
-        case 0...330:
-            return 7 * 40.0 + 4
-        case 330...370:
-            return 8 * 40.0 + 4
-        case 370...410:
-            return 9 * 40.0 + 4
-        case 410...:
-            return 10 * 40.0 + 4
-        default:
-            return 9 * 40.0 + 4
-        }
-    }
-
     func configureBlur() {
         let backgroundSupport = UIView()
         backgroundSupport.layer.cornerRadius = layer.cornerRadius
         backgroundSupport.clipsToBounds = true
         addSubview(backgroundSupport)
-        
+
         backgroundSupport.snp.makeConstraints { make in
             make.top.equalToSuperview()
             make.bottom.equalToSuperview()
             make.leading.equalToSuperview()
             make.trailing.equalToSuperview()
         }
-        
+
         let blur = UIBlurEffect(style: .systemUltraThinMaterialLight)
         let background = UIVisualEffectView(effect: blur)
         background.layer.cornerRadius = layer.cornerRadius
         backgroundSupport.addSubview(background)
-        
+
         background.snp.makeConstraints { make in
             make.top.equalToSuperview()
             make.bottom.equalToSuperview()
@@ -123,7 +130,7 @@ class ToolBar: UIView {
             make.trailing.equalToSuperview()
         }
     }
-    
+
     func configureScrollToolView() {
         scrollToolView = { () -> CustomScrollView in
             let view = CustomScrollView(frame: CGRect(x: height * 3 + 2, y: 0, width: width - height * 4 - 2.0, height: height))
@@ -136,6 +143,10 @@ class ToolBar: UIView {
             return view
         }()
         addSubview(scrollToolView)
+    }
+    
+    func updateScrollToolView() {
+        scrollToolView.frame.size.width = width - height * 4 - 2.0
     }
 
     func configureFixedButton() {
@@ -165,10 +176,19 @@ class ToolBar: UIView {
         }()
 
         downBtn = { () -> CustomBtn in
-            let button = CustomBtn(frame: CGRect(x: width - height + height / 2 - btnLength / 2 - 2, y: height / 2 - btnLength / 2, width: btnLength, height: btnLength))
+//            let button = CustomBtn(frame: CGRect(x: width - height + height / 2 - btnLength / 2 - 2,
+//                                                 y: height / 2 - btnLength / 2,
+//                                                 width: btnLength, height: btnLength))
+            let button = CustomBtn()
             button.setImage(UIImage(named: fixedBarItem.3), for: .normal)
             addSubview(button)
 
+            button.snp.makeConstraints { make in
+                make.centerY.equalToSuperview()
+                make.trailing.equalToSuperview().inset(2 + btnLength/2)
+                make.width.height.equalTo(btnLength)
+            }
+            
             return button
         }()
 
@@ -270,7 +290,7 @@ class ToolBar: UIView {
             return shortcutBtn
         }()
 
-        for x in 6...9 {
+        for x in 6 ... 9 {
             let testBtn = UIView()
 
             testBtn.backgroundColor = .blue
