@@ -10,19 +10,19 @@ import SnapKit
 import UIKit
 
 class CommonTextVC: UIViewController {
+    var barHeight: CGFloat = 0
+    var topPadding: CGFloat = 0
+    var bottomPadding: CGFloat = 0
+    
     var articleField: PureTextView!
     var articles: [NSManagedObject] = []
     var counter: WordCounter!
     
     var cursor: UIView?
     
-    var isKeyboardHasPoppedUp = false
-    var moveDistance: CGFloat?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = fetchColor(place: .bodyBG, mode: .light)
-        navigationController?.navigationBar.isTranslucent = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -42,8 +42,6 @@ class CommonTextVC: UIViewController {
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         articleField.correctLayout(width: view.frame.width)
-        
-        navigationController?.navigationBar.isHidden = true
     }
     
     override func viewDidLayoutSubviews() {
@@ -54,19 +52,23 @@ class CommonTextVC: UIViewController {
         super.viewWillTransition(to: size, with: coordinator)
         splitViewController?.hide(.primary)
         
-        articleField.correctLayout(width: view.frame.width)
-        
+        if let articleField = articleField {
+            articleField.correctLayout(width: view.frame.width)
+        }
+
         coordinator.animate(alongsideTransition: nil) { _ in
             self.splitViewController?.hide(.primary)
-            
+
             self.adjustView()
         }
     }
     
     func adjustView() {
-        articleField.titleView.sizeToFit()
-        articleField.bodyView.sizeToFit()
-        articleField.resize()
+        if let articleField = articleField {
+            articleField.titleView.sizeToFit()
+            articleField.bodyView.sizeToFit()
+            articleField.resize()
+        }
     }
     
     // MARK: - Load data
@@ -92,7 +94,11 @@ class CommonTextVC: UIViewController {
         articleField.bodyView.delegate = self
         articleField.titleView.delegate = self
         articleField.configureFont(fontName: "LXGW WenKai")
+        
+        configurePadding()
+        
         configureText(articleField)
+        
         view.addSubview(articleField)
 
         articleField.snp.makeConstraints { make in
@@ -101,6 +107,10 @@ class CommonTextVC: UIViewController {
             make.trailing.equalToSuperview()
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(5)
         }
+    }
+    
+    func configurePadding() {
+        articleField.setInsets(topPadding: topPadding, bottomPadding: bottomPadding)
     }
     
     func configureText(_ articleField: PureTextView) {
@@ -114,7 +124,7 @@ class CommonTextVC: UIViewController {
         counter = WordCounter()
         view.addSubview(counter)
         counter.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(5 + titleBarOffset)
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(5 + titleBarOffset + barHeight)
             make.trailing.equalTo(articleField).offset(10)
             make.width.equalTo(55)
             make.height.equalTo(20)

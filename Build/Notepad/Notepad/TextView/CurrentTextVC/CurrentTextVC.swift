@@ -6,5 +6,13 @@
 //
 
 class CurrentTextVC: CommonTextVC {
-    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+//        navigationController?.navigationBar.isHidden = true
+        
+        barHeight = 100
+        topPadding = 100
+        bottomPadding = 100
+    }
 }

@@ -31,7 +31,7 @@ extension ArticleTextVC {
             articleField.isShortcutBtnInputing = false
         }
     }
-    
+
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let pan = scrollView.panGestureRecognizer
         let velocity = pan.velocity(in: scrollView).y
@@ -42,7 +42,7 @@ extension ArticleTextVC {
         } else if velocity > 200 {
             showTitleBar()
         }
-        
+
         if articleField.contentOffset.y <= -(TitleBar.height() + titleBarOffset) + 10 {
             showTitleBar()
         }
