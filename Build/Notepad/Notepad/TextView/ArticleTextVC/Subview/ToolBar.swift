@@ -144,7 +144,7 @@ class ToolBar: UIView {
         }()
         addSubview(scrollToolView)
     }
-    
+
     func updateScrollToolView() {
         scrollToolView.frame.size.width = width - height * 4 - 2.0
     }
@@ -176,19 +176,16 @@ class ToolBar: UIView {
         }()
 
         downBtn = { () -> CustomBtn in
-//            let button = CustomBtn(frame: CGRect(x: width - height + height / 2 - btnLength / 2 - 2,
-//                                                 y: height / 2 - btnLength / 2,
-//                                                 width: btnLength, height: btnLength))
             let button = CustomBtn()
             button.setImage(UIImage(named: fixedBarItem.3), for: .normal)
             addSubview(button)
 
             button.snp.makeConstraints { make in
-                make.top.equalToSuperview().offset(height/2 - btnLength/2)
-                make.trailing.equalToSuperview().inset(2 + btnLength/2)
+                make.top.equalToSuperview().offset(height / 2 - btnLength / 2)
+                make.trailing.equalToSuperview().inset(2 + btnLength / 2)
                 make.width.height.equalTo(btnLength)
             }
-            
+
             return button
         }()
 
