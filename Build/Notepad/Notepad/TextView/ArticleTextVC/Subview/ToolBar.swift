@@ -184,7 +184,7 @@ class ToolBar: UIView {
             addSubview(button)
 
             button.snp.makeConstraints { make in
-                make.centerY.equalToSuperview()
+                make.top.equalToSuperview().offset(height/2 - btnLength/2)
                 make.trailing.equalToSuperview().inset(2 + btnLength/2)
                 make.width.height.equalTo(btnLength)
             }

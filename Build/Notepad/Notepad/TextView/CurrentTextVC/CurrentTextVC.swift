@@ -8,11 +8,11 @@
 class CurrentTextVC: CommonTextVC {
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        navigationController?.navigationBar.isHidden = true
-        
-        barHeight = 100
-        topPadding = 100
-        bottomPadding = 100
+
+        navigationController?.navigationBar.isHidden = true
+
+        barHeight = 0
+        topPadding = 0
+        bottomPadding = view.frame.height / 2
     }
 }

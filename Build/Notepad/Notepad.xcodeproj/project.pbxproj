@@ -73,6 +73,7 @@
 		7A443A0F27B6815E00A72F76 /* LXGWWenKai-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "LXGWWenKai-Bold.ttf"; sourceTree = "<group>"; };
 		7A443A1127B688C900A72F76 /* ControllerFunc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerFunc.swift; sourceTree = "<group>"; };
 		7A5CAAC027C137CA000173F4 /* ArticleTextVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleTextVC.swift; sourceTree = "<group>"; };
+		7A5CAAC327C268A5000173F4 /* Notepad.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Notepad.entitlements; sourceTree = "<group>"; };
 		7A758BBB27BAAAE700813C08 /* CustomSplitVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSplitVC.swift; sourceTree = "<group>"; };
 		7A758BBE27BAAB4200813C08 /* ArticleListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListVC.swift; sourceTree = "<group>"; };
 		7A758BC027BAAB5C00813C08 /* BookListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListVC.swift; sourceTree = "<group>"; };
@@ -218,6 +219,7 @@
 		7AC3213D27AB9148008987B7 /* Notepad */ = {
 			isa = PBXGroup;
 			children = (
+				7A5CAAC327C268A5000173F4 /* Notepad.entitlements */,
 				7A758BBD27BAAAF000813C08 /* SlideList */,
 				7AC3217827AB92A4008987B7 /* TextView */,
 				7AC3218827AB9364008987B7 /* Data */,
@@ -629,6 +631,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Notepad/Notepad.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = J848DTSBF7;
@@ -648,9 +651,11 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.lagrange1813.Notepad;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = "1,2,6";
 			};
 			name = Debug;
 		};
@@ -659,6 +664,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Notepad/Notepad.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = J848DTSBF7;
@@ -678,9 +684,11 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.lagrange1813.Notepad;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = "1,2,6";
 			};
 			name = Release;
 		};
