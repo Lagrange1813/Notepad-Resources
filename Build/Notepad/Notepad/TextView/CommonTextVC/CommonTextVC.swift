@@ -18,6 +18,10 @@ class CommonTextVC: UIViewController {
     var topPadding: CGFloat = 0
     var bottomPadding: CGFloat = 0
     
+    var hidePrimary: Bool = false
+    var showCounter: Bool = true
+    var saveText: Bool = true
+    
     var articleField: PureTextView!
     var articles: [NSManagedObject] = []
     var counter: WordCounter!
@@ -35,7 +39,9 @@ class CommonTextVC: UIViewController {
         loadData()
         
         configureTextView()
-        configureCounter()
+        if showCounter {
+            configureCounter()
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -54,14 +60,19 @@ class CommonTextVC: UIViewController {
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
-        splitViewController?.hide(.primary)
+        
+        if hidePrimary {
+            splitViewController?.hide(.primary)
+        }
         
         if let articleField = articleField {
             articleField.correctLayout(width: view.frame.width)
         }
 
         coordinator.animate(alongsideTransition: nil) { _ in
-            self.splitViewController?.hide(.primary)
+            if self.hidePrimary {
+                self.splitViewController?.hide(.primary)
+            }
 
             self.adjustView()
         }

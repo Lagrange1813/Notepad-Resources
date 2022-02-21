@@ -14,5 +14,6 @@ class CurrentTextVC: CommonTextVC {
         barHeight = 0
         topPadding = 0
         bottomPadding = view.frame.height / 2
+        
     }
 }

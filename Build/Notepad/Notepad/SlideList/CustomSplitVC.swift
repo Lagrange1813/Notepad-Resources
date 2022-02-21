@@ -13,19 +13,19 @@ class CustomSplitVC: UISplitViewController, UISplitViewControllerDelegate {
 
         self.delegate = self
         view.backgroundColor = .white
-        self.preferredDisplayMode = .twoDisplaceSecondary
+        self.preferredDisplayMode = .oneBesideSecondary
         self.preferredSplitBehavior = .displace
 
         let bookListVC = BookListVC()
         let articleListVC = ArticleListVC()
-        let currentTextVC = CurrentTextVC()
+        let mdDiplayVC = MDDisplayVC()
 
         let articleListNav = UINavigationController(rootViewController: articleListVC)
-        let currentTextNav = UINavigationController(rootViewController: currentTextVC)
+        let mdDisplayNav = UINavigationController(rootViewController: mdDiplayVC)
 
         setViewController(bookListVC, for: .primary)
         setViewController(articleListNav, for: .supplementary)
-        setViewController(currentTextNav, for: .secondary)
+        setViewController(mdDisplayNav, for: .secondary)
 
         preferredPrimaryColumnWidthFraction = 1/3
         preferredSupplementaryColumnWidthFraction = 1/3

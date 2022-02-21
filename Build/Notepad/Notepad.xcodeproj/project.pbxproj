@@ -9,11 +9,6 @@
 /* Begin PBXBuildFile section */
 		7A172DE427C096A700568433 /* CurrentTextVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A172DE327C096A700568433 /* CurrentTextVC.swift */; };
 		7A172DE927C0C7CD00568433 /* CommonTextVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A172DE827C0C7CD00568433 /* CommonTextVC.swift */; };
-		7A172DEB27C0CA1D00568433 /* ComVCHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A172DEA27C0CA1D00568433 /* ComVCHandler.swift */; };
-		7A2E4C9227B37A2C00FEC361 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 7A2E4C9127B37A2C00FEC361 /* SnapKit */; };
-		7A2E4C9527B37A4C00FEC361 /* ArgumentParser in Frameworks */ = {isa = PBXBuildFile; productRef = 7A2E4C9427B37A4C00FEC361 /* ArgumentParser */; };
-		7A2E4C9827B37A7500FEC361 /* cmark-gfm in Frameworks */ = {isa = PBXBuildFile; productRef = 7A2E4C9727B37A7500FEC361 /* cmark-gfm */; };
-		7A2E4C9B27B37A9300FEC361 /* Markdown in Frameworks */ = {isa = PBXBuildFile; productRef = 7A2E4C9A27B37A9300FEC361 /* Markdown */; };
 		7A443A0B27B4D36B00A72F76 /* AutoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A443A0A27B4D36B00A72F76 /* AutoResponse.swift */; };
 		7A443A0E27B4D99600A72F76 /* TitleBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A443A0D27B4D99600A72F76 /* TitleBar.swift */; };
 		7A443A1027B6815E00A72F76 /* LXGWWenKai-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7A443A0F27B6815E00A72F76 /* LXGWWenKai-Bold.ttf */; };
@@ -22,7 +17,6 @@
 		7A758BBC27BAAAE700813C08 /* CustomSplitVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A758BBB27BAAAE700813C08 /* CustomSplitVC.swift */; };
 		7A758BBF27BAAB4200813C08 /* ArticleListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A758BBE27BAAB4200813C08 /* ArticleListVC.swift */; };
 		7A758BC127BAAB5C00813C08 /* BookListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A758BC027BAAB5C00813C08 /* BookListVC.swift */; };
-		7AAC1E9927ABAA1700A296B8 /* Markdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAC1E9827ABAA1700A296B8 /* Markdown.swift */; };
 		7AB9F1F727AD1FF300A64FDA /* SelectionRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB9F1F627AD1FF300A64FDA /* SelectionRect.swift */; };
 		7AC3213F27AB9148008987B7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC3213E27AB9148008987B7 /* AppDelegate.swift */; };
 		7AC3214127AB9148008987B7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC3214027AB9148008987B7 /* SceneDelegate.swift */; };
@@ -45,7 +39,11 @@
 		7AC3218727AB934F008987B7 /* ArtVCHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC3218627AB934F008987B7 /* ArtVCHandler.swift */; };
 		7AC3218A27AB9371008987B7 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC3218927AB9371008987B7 /* Extensions.swift */; };
 		7AC3218C27AB938A008987B7 /* FirstLaunch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC3218B27AB938A008987B7 /* FirstLaunch.swift */; };
-		7ADEC0BF27C33760006E6DD5 /* Down in Frameworks */ = {isa = PBXBuildFile; productRef = 7ADEC0BE27C33760006E6DD5 /* Down */; };
+		7ADEC0C427C37189006E6DD5 /* ComVCHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADEC0C327C37189006E6DD5 /* ComVCHandler.swift */; };
+		7ADEC0D427C37321006E6DD5 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 7ADEC0D327C37321006E6DD5 /* SnapKit */; };
+		7ADEC0D727C3732A006E6DD5 /* Down in Frameworks */ = {isa = PBXBuildFile; productRef = 7ADEC0D627C3732A006E6DD5 /* Down */; };
+		7ADEC0DC27C37496006E6DD5 /* MDDisplayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADEC0DB27C37496006E6DD5 /* MDDisplayVC.swift */; };
+		7ADEC0DF27C377E9006E6DD5 /* MDPreviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADEC0DE27C377E9006E6DD5 /* MDPreviewVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,7 +66,6 @@
 /* Begin PBXFileReference section */
 		7A172DE327C096A700568433 /* CurrentTextVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentTextVC.swift; sourceTree = "<group>"; };
 		7A172DE827C0C7CD00568433 /* CommonTextVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonTextVC.swift; sourceTree = "<group>"; };
-		7A172DEA27C0CA1D00568433 /* ComVCHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ComVCHandler.swift; path = ../../../../../../../Documents/ComVCHandler.swift; sourceTree = "<group>"; };
 		7A443A0A27B4D36B00A72F76 /* AutoResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoResponse.swift; sourceTree = "<group>"; };
 		7A443A0D27B4D99600A72F76 /* TitleBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleBar.swift; sourceTree = "<group>"; };
 		7A443A0F27B6815E00A72F76 /* LXGWWenKai-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "LXGWWenKai-Bold.ttf"; sourceTree = "<group>"; };
@@ -78,7 +75,6 @@
 		7A758BBB27BAAAE700813C08 /* CustomSplitVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSplitVC.swift; sourceTree = "<group>"; };
 		7A758BBE27BAAB4200813C08 /* ArticleListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListVC.swift; sourceTree = "<group>"; };
 		7A758BC027BAAB5C00813C08 /* BookListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListVC.swift; sourceTree = "<group>"; };
-		7AAC1E9827ABAA1700A296B8 /* Markdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Markdown.swift; sourceTree = "<group>"; };
 		7AB9F1F627AD1FF300A64FDA /* SelectionRect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionRect.swift; sourceTree = "<group>"; };
 		7AC3213B27AB9148008987B7 /* Notepad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Notepad.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7AC3213E27AB9148008987B7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -105,6 +101,9 @@
 		7AC3218627AB934F008987B7 /* ArtVCHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtVCHandler.swift; sourceTree = "<group>"; };
 		7AC3218927AB9371008987B7 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		7AC3218B27AB938A008987B7 /* FirstLaunch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstLaunch.swift; sourceTree = "<group>"; };
+		7ADEC0C327C37189006E6DD5 /* ComVCHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComVCHandler.swift; sourceTree = "<group>"; };
+		7ADEC0DB27C37496006E6DD5 /* MDDisplayVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDDisplayVC.swift; sourceTree = "<group>"; };
+		7ADEC0DE27C377E9006E6DD5 /* MDPreviewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDPreviewVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,11 +111,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7A2E4C9827B37A7500FEC361 /* cmark-gfm in Frameworks */,
-				7A2E4C9527B37A4C00FEC361 /* ArgumentParser in Frameworks */,
-				7ADEC0BF27C33760006E6DD5 /* Down in Frameworks */,
-				7A2E4C9227B37A2C00FEC361 /* SnapKit in Frameworks */,
-				7A2E4C9B27B37A9300FEC361 /* Markdown in Frameworks */,
+				7ADEC0D727C3732A006E6DD5 /* Down in Frameworks */,
+				7ADEC0D427C37321006E6DD5 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -163,7 +159,7 @@
 			children = (
 				7A172DEC27C1352800568433 /* SubView */,
 				7A172DE827C0C7CD00568433 /* CommonTextVC.swift */,
-				7A172DEA27C0CA1D00568433 /* ComVCHandler.swift */,
+				7ADEC0C327C37189006E6DD5 /* ComVCHandler.swift */,
 			);
 			path = CommonTextVC;
 			sourceTree = "<group>";
@@ -182,7 +178,6 @@
 			children = (
 				7AC3218027AB9314008987B7 /* ToolBar.swift */,
 				7AC3217627AB9289008987B7 /* TouchPad.swift */,
-				7AAC1E9827ABAA1700A296B8 /* Markdown.swift */,
 				7A443A0D27B4D99600A72F76 /* TitleBar.swift */,
 			);
 			path = Subview;
@@ -271,6 +266,8 @@
 			children = (
 				7AC3217927AB92AC008987B7 /* Font */,
 				7A172DE727C0C77E00568433 /* CommonTextVC */,
+				7ADEC0D827C3739F006E6DD5 /* MarkdownVC */,
+				7ADEC0DD27C377A4006E6DD5 /* MDPreviewVC */,
 				7A172DE627C0AE3B00568433 /* CurrentTextVC */,
 				7A172DE527C096CF00568433 /* ArticleTextVC */,
 			);
@@ -294,6 +291,22 @@
 			path = Data;
 			sourceTree = "<group>";
 		};
+		7ADEC0D827C3739F006E6DD5 /* MarkdownVC */ = {
+			isa = PBXGroup;
+			children = (
+				7ADEC0DB27C37496006E6DD5 /* MDDisplayVC.swift */,
+			);
+			path = MarkdownVC;
+			sourceTree = "<group>";
+		};
+		7ADEC0DD27C377A4006E6DD5 /* MDPreviewVC */ = {
+			isa = PBXGroup;
+			children = (
+				7ADEC0DE27C377E9006E6DD5 /* MDPreviewVC.swift */,
+			);
+			path = MDPreviewVC;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -311,11 +324,8 @@
 			);
 			name = Notepad;
 			packageProductDependencies = (
-				7A2E4C9127B37A2C00FEC361 /* SnapKit */,
-				7A2E4C9427B37A4C00FEC361 /* ArgumentParser */,
-				7A2E4C9727B37A7500FEC361 /* cmark-gfm */,
-				7A2E4C9A27B37A9300FEC361 /* Markdown */,
-				7ADEC0BE27C33760006E6DD5 /* Down */,
+				7ADEC0D327C37321006E6DD5 /* SnapKit */,
+				7ADEC0D627C3732A006E6DD5 /* Down */,
 			);
 			productName = Notepad;
 			productReference = 7AC3213B27AB9148008987B7 /* Notepad.app */;
@@ -390,11 +400,8 @@
 			);
 			mainGroup = 7AC3213227AB9148008987B7;
 			packageReferences = (
-				7A2E4C9027B37A2C00FEC361 /* XCRemoteSwiftPackageReference "SnapKit" */,
-				7A2E4C9327B37A4C00FEC361 /* XCRemoteSwiftPackageReference "swift-argument-parser" */,
-				7A2E4C9627B37A7500FEC361 /* XCRemoteSwiftPackageReference "swift-cmark" */,
-				7A2E4C9927B37A9300FEC361 /* XCRemoteSwiftPackageReference "swift-markdown" */,
-				7ADEC0BD27C33760006E6DD5 /* XCRemoteSwiftPackageReference "Down" */,
+				7ADEC0D227C37321006E6DD5 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				7ADEC0D527C3732A006E6DD5 /* XCRemoteSwiftPackageReference "Down" */,
 			);
 			productRefGroup = 7AC3213C27AB9148008987B7 /* Products */;
 			projectDirPath = "";
@@ -443,6 +450,7 @@
 				7AC3218C27AB938A008987B7 /* FirstLaunch.swift in Sources */,
 				7A443A0E27B4D99600A72F76 /* TitleBar.swift in Sources */,
 				7AC3217D27AB92ED008987B7 /* WordCounter.swift in Sources */,
+				7ADEC0C427C37189006E6DD5 /* ComVCHandler.swift in Sources */,
 				7AC3214327AB9148008987B7 /* ArticleTextVCO.swift in Sources */,
 				7AC3217327AB925A008987B7 /* CustomTextView.swift in Sources */,
 				7AC3218527AB9339008987B7 /* ConfigureBtn.swift in Sources */,
@@ -453,14 +461,14 @@
 				7AC3213F27AB9148008987B7 /* AppDelegate.swift in Sources */,
 				7AC3214127AB9148008987B7 /* SceneDelegate.swift in Sources */,
 				7AC3218327AB9325008987B7 /* CustomSView.swift in Sources */,
+				7ADEC0DF27C377E9006E6DD5 /* MDPreviewVC.swift in Sources */,
 				7AC3214927AB9148008987B7 /* Notepad.xcdatamodeld in Sources */,
+				7ADEC0DC27C37496006E6DD5 /* MDDisplayVC.swift in Sources */,
 				7A758BBF27BAAB4200813C08 /* ArticleListVC.swift in Sources */,
 				7AC3218727AB934F008987B7 /* ArtVCHandler.swift in Sources */,
 				7AC3217727AB9289008987B7 /* TouchPad.swift in Sources */,
 				7AC3218127AB9314008987B7 /* ToolBar.swift in Sources */,
 				7A5CAAC127C137CA000173F4 /* ArticleTextVC.swift in Sources */,
-				7A172DEB27C0CA1D00568433 /* ComVCHandler.swift in Sources */,
-				7AAC1E9927ABAA1700A296B8 /* Markdown.swift in Sources */,
 				7AC3217F27AB9302008987B7 /* PureTextView.swift in Sources */,
 				7A758BBC27BAAAE700813C08 /* CustomSplitVC.swift in Sources */,
 				7AC3217527AB9271008987B7 /* CustomBtn.swift in Sources */,
@@ -814,39 +822,15 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		7A2E4C9027B37A2C00FEC361 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+		7ADEC0D227C37321006E6DD5 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "git@gitee.com:lagrange1813/SnapKit.git";
 			requirement = {
-				kind = upToNextMajorVersion;
+				kind = upToNextMinorVersion;
 				minimumVersion = 5.0.0;
 			};
 		};
-		7A2E4C9327B37A4C00FEC361 /* XCRemoteSwiftPackageReference "swift-argument-parser" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "git@gitee.com:lagrange1813/swift-argument-parser.git";
-			requirement = {
-				kind = upToNextMinorVersion;
-				minimumVersion = 1.0.1;
-			};
-		};
-		7A2E4C9627B37A7500FEC361 /* XCRemoteSwiftPackageReference "swift-cmark" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "git@gitee.com:lagrange1813/swift-cmark.git";
-			requirement = {
-				branch = gfm;
-				kind = branch;
-			};
-		};
-		7A2E4C9927B37A9300FEC361 /* XCRemoteSwiftPackageReference "swift-markdown" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "git@gitee.com:lagrange1813/swift-markdown.git";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
-		7ADEC0BD27C33760006E6DD5 /* XCRemoteSwiftPackageReference "Down" */ = {
+		7ADEC0D527C3732A006E6DD5 /* XCRemoteSwiftPackageReference "Down" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://gitee.com/lagrange1813/Down.git";
 			requirement = {
@@ -857,29 +841,14 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		7A2E4C9127B37A2C00FEC361 /* SnapKit */ = {
+		7ADEC0D327C37321006E6DD5 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 7A2E4C9027B37A2C00FEC361 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			package = 7ADEC0D227C37321006E6DD5 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
 		};
-		7A2E4C9427B37A4C00FEC361 /* ArgumentParser */ = {
+		7ADEC0D627C3732A006E6DD5 /* Down */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 7A2E4C9327B37A4C00FEC361 /* XCRemoteSwiftPackageReference "swift-argument-parser" */;
-			productName = ArgumentParser;
-		};
-		7A2E4C9727B37A7500FEC361 /* cmark-gfm */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 7A2E4C9627B37A7500FEC361 /* XCRemoteSwiftPackageReference "swift-cmark" */;
-			productName = "cmark-gfm";
-		};
-		7A2E4C9A27B37A9300FEC361 /* Markdown */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 7A2E4C9927B37A9300FEC361 /* XCRemoteSwiftPackageReference "swift-markdown" */;
-			productName = Markdown;
-		};
-		7ADEC0BE27C33760006E6DD5 /* Down */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 7ADEC0BD27C33760006E6DD5 /* XCRemoteSwiftPackageReference "Down" */;
+			package = 7ADEC0D527C3732A006E6DD5 /* XCRemoteSwiftPackageReference "Down" */;
 			productName = Down;
 		};
 /* End XCSwiftPackageProductDependency section */

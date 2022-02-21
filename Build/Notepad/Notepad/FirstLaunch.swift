@@ -26,5 +26,5 @@ func firstStart() {
 
     saveData(title: testTitle, body: testBody)
     
-    let defaults = UserDefaults()
+//    let defaults = UserDefaults()
 }
