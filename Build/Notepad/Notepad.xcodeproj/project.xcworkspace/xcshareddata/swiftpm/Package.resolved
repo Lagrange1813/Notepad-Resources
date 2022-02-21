@@ -2,6 +2,15 @@
   "object": {
     "pins": [
       {
+        "package": "Down",
+        "repositoryURL": "https://gitee.com/lagrange1813/Down.git",
+        "state": {
+          "branch": "master",
+          "revision": "e754ab1c80920dd51a8e08290c912ac1c2ac8b58",
+          "version": null
+        }
+      },
+      {
         "package": "SnapKit",
         "repositoryURL": "git@gitee.com:lagrange1813/SnapKit.git",
         "state": {

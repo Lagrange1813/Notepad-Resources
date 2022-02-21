@@ -11,6 +11,10 @@ import UIKit
 
 class CommonTextVC: UIViewController {
     var barHeight: CGFloat = 0
+    
+    var topAnchor: CGFloat = 0
+    var bottomAnchor: CGFloat = 0
+    
     var topPadding: CGFloat = 0
     var bottomPadding: CGFloat = 0
     
@@ -102,10 +106,10 @@ class CommonTextVC: UIViewController {
         view.addSubview(articleField)
 
         articleField.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(topAnchor)
             make.leading.equalToSuperview()
             make.trailing.equalToSuperview()
-            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(5)
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(bottomAnchor)
         }
     }
     

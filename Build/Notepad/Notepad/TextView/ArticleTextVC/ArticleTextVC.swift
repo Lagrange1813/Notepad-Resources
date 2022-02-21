@@ -29,6 +29,7 @@ class ArticleTextVC: CommonTextVC {
         barHeight = TitleBar.height()
         topPadding = barHeight
         bottomPadding = view.frame.height/2
+        bottomAnchor = 5
     }
 
     override func viewWillAppear(_ animated: Bool) {
