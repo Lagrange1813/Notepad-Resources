@@ -26,8 +26,6 @@ class CommonTextVC: UIViewController {
     var articles: [NSManagedObject] = []
     var counter: WordCounter!
     
-    var cursor: UIView?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = fetchColor(place: .bodyBG, mode: .light)

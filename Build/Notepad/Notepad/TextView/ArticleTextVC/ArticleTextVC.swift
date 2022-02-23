@@ -13,6 +13,8 @@ class ArticleTextVC: CommonTextVC {
     var titleBar: TitleBar!
     var toolBar: ToolBar!
 
+    var cursor: UIView?
+    
     var isKeyboardHasPoppedUp = false
     var moveDistance: CGFloat?
 
