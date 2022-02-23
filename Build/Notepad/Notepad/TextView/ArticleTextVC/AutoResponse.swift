@@ -9,26 +9,27 @@ import UIKit
 
 extension ArticleTextVC {
     func textViewDidBeginEditing(_ textView: UITextView) {
+        guard let articleField = articleField else { return }
         if textView == articleField.bodyView {
-            articleField.bodyViewUnderEditing = true
-            articleField.trackingView = "body"
+            bodyViewUnderEditing = true
+            trackingView = "body"
         } else if textView == articleField.titleView {
-            articleField.titleViewUnderEditing = true
-            articleField.trackingView = "title"
+            titleViewUnderEditing = true
+            trackingView = "title"
         }
     }
 
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView == articleField.bodyView {
-            articleField.bodyViewUnderEditing = false
+            bodyViewUnderEditing = false
         } else if textView == articleField.titleView {
-            articleField.titleViewUnderEditing = false
+            titleViewUnderEditing = false
         }
     }
 
     func textViewDidChangeSelection(_ textView: UITextView) {
-        if articleField.isShortcutBtnInputing {
-            articleField.isShortcutBtnInputing = false
+        if isShortcutBtnInputing {
+            isShortcutBtnInputing = false
         }
     }
 
@@ -60,7 +61,7 @@ extension ArticleTextVC {
     }
 
     @objc func handleKeyboardWillShow(notification: NSNotification) {
-        if !articleField.isMenuExpanded {
+        if !isMenuExpanded {
             let keyboardInfo = notification.userInfo as NSDictionary?
             let value = keyboardInfo?.object(forKey: UIResponder.keyboardFrameEndUserInfoKey) as! CGRect
             let distance = value.height - ScreenSize.bottomPadding! + 5
@@ -91,14 +92,14 @@ extension ArticleTextVC {
             self.cursor = nil
         }
 
-        articleField.isKeyboardUsing = true
-        articleField.isMenuExpanded = false
+        isKeyboardUsing = true
+        isMenuExpanded = false
 
         updateBtnStatus()
     }
 
     @objc func handleKeyboardWillHide() {
-        if !articleField.isMenuExpanded {
+        if !isMenuExpanded {
             UIView.animate(withDuration: 1, animations: {
                 self.toolBar.snp.updateConstraints { make in
                     if ScreenSize.bottomPadding! > 0 {
@@ -111,7 +112,7 @@ extension ArticleTextVC {
             view.layoutIfNeeded()
         }
 
-        articleField.isKeyboardUsing = false
+        isKeyboardUsing = false
 
         updateBtnStatus()
     }

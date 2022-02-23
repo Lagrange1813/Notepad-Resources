@@ -11,7 +11,11 @@ public struct Theme {
     
     public enum BuiltIn: String {
         case DefaultLight = "default-light"
-        case defaultDark = "default-dark"
+        case DefaultDark = "default-dark"
+        case TextLight = "text-light"
+        case TextDark = "text-dark"
+        case MarkdownLight = "markdown-light"
+        case MarkdownDark = "markdown-dark"
         
         public func theme() -> Theme {
             return Theme(self.rawValue)
@@ -76,6 +80,7 @@ public struct Theme {
     mutating func configureEditor(_ attributes: [String: AnyObject]) {
         colorSet = [
             "background": UIColor(hexString: attributes["background"] as! String),
+            "counterText": UIColor(hexString: attributes["counterText"] as! String),
             "counterBackground": UIColor(hexString: attributes["counterBackground"] as! String)
         ]
     }
@@ -97,6 +102,8 @@ public struct Theme {
                 switch attributes["alignment"] as! String {
                 case "center": return .center
                 case "justfied": return .justified
+                case "left": return .left
+                case "right": return .right
                 default: return .natural
                 }
             }()

@@ -29,6 +29,7 @@ extension ArticleTextVC {
     }
 
     func correctCoordinates(_ location: CGFloat, position: Position) -> CGFloat {
+        guard let articleField = articleField else { return 0 }
         let viewCoordinates = articleField.contentOffset
         switch position {
         case .view:
@@ -40,17 +41,16 @@ extension ArticleTextVC {
             return temp
         }
     }
-    
+
     func updateViewWidth() {
         viewWidth = view.frame.width
-        
     }
-    
+
     func updateComponents() {
         let width = viewWidth - 10
         titleBar.frame.size.width = width
         titleBar.frame.origin.x = view.frame.width/2 - width/2
-        
+
         toolBar.viewWidth = viewWidth
         toolBar.snp.updateConstraints { make in
             make.width.equalTo(width)

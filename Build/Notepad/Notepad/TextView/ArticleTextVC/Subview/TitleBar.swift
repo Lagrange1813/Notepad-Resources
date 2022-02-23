@@ -12,7 +12,7 @@ class TitleBar: UIView {
     
     var listBtn: CustomBtn!
     
-    override init(frame: CGRect) {
+    init(frame: CGRect, _ theme: Theme) {
         super.init(frame: frame)
         customize()
     }
@@ -56,7 +56,14 @@ class TitleBar: UIView {
             make.trailing.equalToSuperview()
         }
         
-        let blur = UIBlurEffect(style: .light)
+        let blur: UIBlurEffect = {
+            if traitCollection.userInterfaceStyle == .light {
+                return UIBlurEffect(style: .systemUltraThinMaterialLight)
+            } else {
+                return UIBlurEffect(style: .systemUltraThinMaterialDark)
+            }
+        }()
+        
         let background = UIVisualEffectView(effect: blur)
         background.layer.cornerRadius = layer.cornerRadius
         backgroundSupport.addSubview(background)
@@ -88,6 +95,7 @@ class TitleBar: UIView {
         listBtn = { () -> CustomBtn in
             let button = CustomBtn()
             button.setImage(UIImage(named: "list.bullet.rectangle"), for: .normal)
+//            button.tintColor = .white
             addSubview(button)
             
             button.snp.makeConstraints { make in

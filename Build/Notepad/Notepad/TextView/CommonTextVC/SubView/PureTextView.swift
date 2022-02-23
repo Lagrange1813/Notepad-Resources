@@ -12,27 +12,16 @@ class PureTextView: UIScrollView, UITextViewDelegate {
     var title: String?
     var body: String?
     
-    var titleFont: UIFont!
-    var bodyFont: UIFont!
-    
     var titleView: CustomTextView!
     var bodyView: CustomTextView!
     
-    var trackingView: String?
+    var theme: Theme!
     
-    var titleViewUnderEditing = false
-    var bodyViewUnderEditing = false
-    
-    var isShortcutBtnInputing = false
-    
-    var isMenuExpanded = false
-    var isKeyboardUsing = false
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    init(_ theme: Theme) {
+        super.init(frame: CGRect())
+        self.theme = theme
         configureBackView()
         configureTextView()
-        configureFont(fontName: "LXGW WenKai")
         customize()
     }
     
@@ -40,13 +29,12 @@ class PureTextView: UIScrollView, UITextViewDelegate {
         super.init(coder: coder)
         configureBackView()
         configureTextView()
-        configureFont(fontName: "LXGW WenKai")
         customize()
     }
     
     func configureBackView() {
-        backgroundColor = .white
-        indicatorStyle = .black
+        backgroundColor = theme.colorSet["background"]
+//        indicatorStyle = .black
         alwaysBounceHorizontal = false
     }
     
@@ -55,6 +43,7 @@ class PureTextView: UIScrollView, UITextViewDelegate {
         titleView = CustomTextView()
         titleView.isScrollEnabled = false
         titleView.textAlignment = .center
+        titleView.backgroundColor = .clear
         titleView.sizeToFit()
         addSubview(titleView)
         
@@ -66,6 +55,7 @@ class PureTextView: UIScrollView, UITextViewDelegate {
         
         bodyView = CustomTextView()
         bodyView.isScrollEnabled = false
+        bodyView.backgroundColor = .clear
         addSubview(bodyView)
         
         bodyView.snp.makeConstraints { make in
@@ -75,52 +65,10 @@ class PureTextView: UIScrollView, UITextViewDelegate {
         }
     }
     
-    func configureFont(fontName: String) {
-        titleFont = UIFont(name: "LXGW WenKai Bold", size: 17)
-        bodyFont = UIFont(name: fontName, size: 15)
-    }
-    
     private func customize() {
-        let theme = Theme.BuiltIn.DefaultLight.theme()
-        
-//        let titleFont = titleFont
-//        let titleColor = fetchColor(place: .titleText, mode: .light)
-//
-//        let titleParagraphStyle: NSMutableParagraphStyle = {
-//            let style = NSMutableParagraphStyle()
-//            style.paragraphSpacing = 20
-//            style.alignment = .center
-//            return style
-//        }()
-//
-//        let titleAttributes: [NSAttributedString.Key: Any] = [
-//            .font: titleFont!,
-//            .foregroundColor: titleColor,
-//            .paragraphStyle: titleParagraphStyle
-//        ]
-        
         titleView.typingAttributes = theme.titleAttributes
         let titleString = NSMutableAttributedString(string: title ?? "请输入标题", attributes: theme.titleAttributes)
         titleView.attributedText = titleString
-        
-//        let bodyFont = bodyFont
-//        let bodyColor = fetchColor(place: .bodyText, mode: .light)
-//
-//        let bodyParagraphStyle: NSMutableParagraphStyle = {
-//            let style = NSMutableParagraphStyle()
-//            style.lineSpacing = 7
-//            style.paragraphSpacing = 14
-//            style.firstLineHeadIndent = 2 * bodyFont!.pointSize
-//            print(bodyFont!.pointSize)
-//            style.alignment = .justified
-//            return style
-//        }()
-//
-//        let bodyAttributes: [NSAttributedString.Key: Any] = [
-//            .font: bodyFont!,
-//            .foregroundColor: bodyColor,
-//            .paragraphStyle: bodyParagraphStyle
-//        ]
         
         bodyView.typingAttributes = theme.bodyAttributes
         let bodyString = NSMutableAttributedString(string: body ?? "请输入正文", attributes: theme.bodyAttributes)

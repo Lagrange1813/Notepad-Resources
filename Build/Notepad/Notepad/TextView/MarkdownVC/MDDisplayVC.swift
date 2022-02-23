@@ -14,7 +14,7 @@ class MDDisplayVC: UIViewController {
 
     var synchronizedTitle: String = "" { didSet { mdPreviewVC.titleString = synchronizedTitle }}
     var synchronizedBody: String = "" { didSet { mdPreviewVC.bodyString = synchronizedBody }}
-    var synchronizedContentOffset: CGPoint = CGPoint() {didSet { mdPreviewVC.articleField.contentOffset = synchronizedContentOffset}}
+    var synchronizedProportion: CGFloat = 0 { didSet { mdPreviewVC.contentOffsetProportion = synchronizedProportion } }
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -18,7 +18,6 @@ class CommonTextVC: UIViewController {
     var topPadding: CGFloat = 0
     var bottomPadding: CGFloat = 0
     
-    var hidePrimary: Bool = false
     var showCounter: Bool = true
     var saveText: Bool = true
     
@@ -26,9 +25,11 @@ class CommonTextVC: UIViewController {
     var articles: [NSManagedObject] = []
     var counter: WordCounter!
     
+    let theme: Theme = Theme.BuiltIn.TextLight.theme()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = fetchColor(place: .bodyBG, mode: .light)
+        view.backgroundColor = theme.colorSet["background"]
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -59,19 +60,11 @@ class CommonTextVC: UIViewController {
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         
-        if hidePrimary {
-            splitViewController?.hide(.primary)
-        }
-        
         if let articleField = articleField {
             articleField.correctLayout(width: view.frame.width)
         }
 
         coordinator.animate(alongsideTransition: nil) { _ in
-            if self.hidePrimary {
-                self.splitViewController?.hide(.primary)
-            }
-
             self.adjustView()
         }
     }
@@ -102,15 +95,12 @@ class CommonTextVC: UIViewController {
     // MARK: - Configure components
     
     func configureTextView() {
-        articleField = PureTextView(frame: CGRect())
+        articleField = PureTextView(theme)
         articleField.delegate = self
         articleField.bodyView.delegate = self
         articleField.titleView.delegate = self
-        articleField.configureFont(fontName: "LXGW WenKai")
         
         configurePadding()
-        
-        configureText(articleField)
         
         view.addSubview(articleField)
 
@@ -120,6 +110,8 @@ class CommonTextVC: UIViewController {
             make.trailing.equalToSuperview()
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(bottomAnchor)
         }
+        
+        configureText(articleField)
     }
     
     func configurePadding() {
@@ -134,7 +126,7 @@ class CommonTextVC: UIViewController {
     }
     
     func configureCounter() {
-        counter = WordCounter()
+        counter = WordCounter(theme)
         view.addSubview(counter)
         counter.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(5 + titleBarOffset + barHeight)

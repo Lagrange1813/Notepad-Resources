@@ -11,18 +11,6 @@ import UIKit
 
 var hideSupplementary = false
 
-// extension UIColor {
-//    convenience init(hexString: String) {
-//        let temp = Int(hexString) ?? 0
-//        self.init(
-//            red: CGFloat((temp >> 16) & 0xFF),
-//            green: CGFloat((temp >> 8) & 0xFF),
-//            blue: CGFloat(temp & 0xFF),
-//            alpha: 1
-//        )
-//    }
-// }
-
 extension UIColor {
     convenience init(hexString: String) {
         let hex = hexString.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
@@ -40,67 +28,6 @@ extension UIColor {
             (a, r, g, b) = (255, 0, 0, 0)
         }
         self.init(red: CGFloat(r) / 255, green: CGFloat(g) / 255, blue: CGFloat(b) / 255, alpha: CGFloat(a) / 255)
-    }
-}
-
-// enum Theme {
-//    case defaultLight
-//    case defaultDark
-// }
-
-// func fetchConfiguration(theme: Theme) -> [String: AnyObject] {
-//    switch theme {
-//    case .defaultLight:
-//        <#code#>
-//    case .defaultDark:
-//        <#code#>
-//    }
-// }
-//
-// let defaultLight = ["":"",
-//                    "":"",
-//                    "":""]
-
-enum TonalCollocation {
-    case bodyBG
-
-    case titleText
-    case bodyText
-
-    case titleBarBG
-    case countBG
-    case toolBarBG
-
-    case cursor
-}
-
-enum ColorMode {
-    case light
-    case dark
-}
-
-func fetchColor(place: TonalCollocation, mode: ColorMode) -> UIColor {
-    switch mode {
-    case .light:
-        switch place {
-        case .bodyBG:
-            return UIColor(red: 1, green: 1, blue: 1, alpha: 1)
-        case .titleText:
-            return UIColor(red: 0, green: 0, blue: 0, alpha: 1)
-        case .bodyText:
-            return UIColor(red: 0, green: 0, blue: 0, alpha: 1)
-        case .titleBarBG:
-            return UIColor(red: 1, green: 1, blue: 1, alpha: 1)
-        case .countBG:
-            return UIColor(red: 0, green: 0, blue: 0, alpha: 1)
-        case .toolBarBG:
-            return UIColor(red: 1, green: 1, blue: 1, alpha: 1)
-        case .cursor:
-            return UIColor(red: 0.2941176, green: 0.415686, blue: 0.917647, alpha: 1)
-        }
-
-    case .dark:
-        return UIColor()
     }
 }
 
@@ -126,8 +53,6 @@ enum ColorCollection {
     static let darkBodyText = UIColor(red: 0.90196, green: 0.90196, blue: 0.90196, alpha: 1)
     static let darkNavigation = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
     static let darkCountBG = UIColor(red: 0.13333, green: 0.13333, blue: 0.13333, alpha: 0.6)
-
-    static let cursorColor = UIColor(red: 0.2941176, green: 0.415686, blue: 0.917647, alpha: 1)
 }
 
 enum FontCollection {

@@ -22,10 +22,11 @@ class MDPreviewVC: CommonTextVC {
         }
     }
 
-    var contentOffset: CGPoint = .init() {
+    var contentOffsetProportion: CGFloat = 0 {
         didSet {
             guard let articleField = articleField else { return }
-            articleField.contentOffset = self.contentOffset
+            guard articleField.contentSize.height > 0 else { return }
+            articleField.contentOffset.y = articleField.contentSize.height * contentOffsetProportion
         }
     }
 
@@ -43,6 +44,8 @@ class MDPreviewVC: CommonTextVC {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        guard let articleField = articleField else { return }
         articleField.titleView.isEditable = false
         articleField.bodyView.isEditable = false
     }

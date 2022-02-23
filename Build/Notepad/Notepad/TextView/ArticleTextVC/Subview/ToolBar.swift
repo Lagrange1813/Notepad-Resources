@@ -42,7 +42,14 @@ class ToolBar: UIView {
     var jumpToBottom: CustomBtn!
 
     var redoBtn: CustomBtn!
-
+    
+    func changeToDark() {
+        let buttonList = [commandBtn, undoBtn, pasteBtn, downBtn, quotesBtn, sqrBracketsBtn, bracketsBtn, jumpToTop, jumpToBottom, redoBtn]
+        for button in buttonList {
+            button?.tintColor = .white
+        }
+    }
+    
     let fixedBarItem = ("command",
                         "arrowshape.turn.up.backward",
                         "doc.on.clipboard",
@@ -55,7 +62,7 @@ class ToolBar: UIView {
                            "platter.filled.bottom.and.arrow.down.iphone",
                            "arrowshape.turn.up.right"]
 
-    init(viewWidth: CGFloat) {
+    init(viewWidth: CGFloat, _ theme: Theme) {
         super.init(frame: CGRect())
         self.viewWidth = viewWidth
         customize()
@@ -99,6 +106,8 @@ class ToolBar: UIView {
         configureBlur()
         configureScrollToolView()
         configureFixedButton()
+        
+//        changeToDark()
     }
 
     @objc func detectPan(_ recognizer: UIPanGestureRecognizer) {
@@ -118,7 +127,14 @@ class ToolBar: UIView {
             make.trailing.equalToSuperview()
         }
 
-        let blur = UIBlurEffect(style: .systemUltraThinMaterialLight)
+        let blur: UIBlurEffect = {
+            if traitCollection.userInterfaceStyle == .light {
+                return UIBlurEffect(style: .systemUltraThinMaterialLight)
+            } else {
+                return UIBlurEffect(style: .systemUltraThinMaterialDark)
+            }
+        }()
+        
         let background = UIVisualEffectView(effect: blur)
         background.layer.cornerRadius = layer.cornerRadius
         backgroundSupport.addSubview(background)

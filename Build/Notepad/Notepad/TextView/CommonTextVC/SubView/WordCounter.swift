@@ -26,14 +26,14 @@ class WordCounter: UIView {
 
     var data = UILabel()
 
-    init() {
+    init(_ theme: Theme) {
         super.init(frame: CGRect())
         data.text = "字数：\(number)"
         data.font = .systemFont(ofSize: 10)
-        data.textColor = .white
+        data.textColor = theme.colorSet["counterText"]
         data.frame = CGRect(x: 10, y: 0, width: 50, height: 20)
         addSubview(data)
-        self.backgroundColor = fetchColor(place: .countBG, mode: .light)
+        self.backgroundColor = theme.colorSet["counterBackground"]
         layer.cornerRadius = 10
     }
 

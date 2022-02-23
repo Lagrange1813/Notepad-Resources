@@ -5,7 +5,26 @@
   },
   "symbols" : [
     {
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ],
       "filename" : "list.bullet.rectangle.svg",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "list.bullet.rectangle-1.svg",
       "idiom" : "universal"
     }
   ]

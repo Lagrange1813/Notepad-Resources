@@ -47,7 +47,7 @@ extension ArticleTextVC {
             toolBar.commandBtn.isEnabled = false
         }
 
-        if articleField.isMenuExpanded {
+        if isMenuExpanded {
             toolBar.downBtn.isEnabled = false
         } else {
             toolBar.downBtn.isEnabled = true
@@ -55,10 +55,10 @@ extension ArticleTextVC {
     }
 
     @objc func commandBtnFunc() {
-        if articleField.isKeyboardUsing {
+        if isKeyboardUsing {
             // 此时键盘展开，点击收起键盘并展示command菜单
-            articleField.isMenuExpanded = true
-            articleField.isKeyboardUsing = false
+            isMenuExpanded = true
+            isKeyboardUsing = false
 
             updateBtnStatus()
 
@@ -86,10 +86,10 @@ extension ArticleTextVC {
 
             configureTouchPadHandler()
 
-        } else if !articleField.isMenuExpanded, !articleField.isKeyboardUsing {
+        } else if !isMenuExpanded, !isKeyboardUsing {
             // 此时键盘收起，点击展开展示command菜单
-            articleField.isMenuExpanded = true
-            articleField.isKeyboardUsing = false
+            isMenuExpanded = true
+            isKeyboardUsing = false
 
             updateBtnStatus()
 
@@ -102,10 +102,10 @@ extension ArticleTextVC {
 
             configureTouchPadHandler()
 
-        } else if articleField.isMenuExpanded {
+        } else if isMenuExpanded {
             // 此时command菜单展开，点击收起菜单，恢复键盘
-            articleField.isMenuExpanded = false
-            articleField.isKeyboardUsing = true
+            isMenuExpanded = false
+            isKeyboardUsing = true
 
             updateBtnStatus()
 
@@ -135,7 +135,7 @@ extension ArticleTextVC {
         var rectFrame = articleField.bodyView.fetchRect(articleField.bodyView, articleField.bodyView.selectedRange)
 
         cursor = UIView(frame: rectFrame)
-        cursor!.backgroundColor = fetchColor(place: .cursor, mode: .light)
+        cursor!.backgroundColor = UIColor(red: 0.2941176, green: 0.415686, blue: 0.917647, alpha: 1)
         articleField.bodyView.addSubview(cursor!)
 
         touchPad.handler = { [unowned self] data in
@@ -174,14 +174,12 @@ extension ArticleTextVC {
                                                       y: articleField.contentOffset.y - 5), animated: false)
                 cursor!.frame.origin.y -= 4
                 hideTitleBar()
-                print("up")
             }
 
             if lowerSurface >= lowerBoundary {
                 articleField.setContentOffset(CGPoint(x: 0, y: articleField.contentOffset.y + 5), animated: false)
 //                cursor!.frame.origin.y += 4
                 hideTitleBar()
-                print("down")
             }
 
 //            let cursorPosition = cursor!.frame.origin.y
@@ -208,23 +206,24 @@ extension ArticleTextVC {
     }
 
     func updateUnRedoButtons() {
+        guard let articleField = articleField else { return }
         toolBar.undoBtn.isEnabled = articleField.bodyView.undoManager!.canUndo || articleField.titleView.undoManager!.canUndo
         toolBar.redoBtn.isEnabled = articleField.bodyView.undoManager!.canRedo || articleField.titleView.undoManager!.canRedo
     }
 
     @objc func undoFunc(_ sender: Any) {
-        if articleField.trackingView == "body" {
+        if trackingView == "body" {
             articleField.bodyView.undoManager?.undo()
-        } else if articleField.trackingView == "title" {
+        } else if trackingView == "title" {
             articleField.titleView.undoManager?.undo()
         }
         updateUnRedoButtons()
     }
 
     @objc func redoFunc(_ sender: Any) {
-        if articleField.trackingView == "body" {
+        if trackingView == "body" {
             articleField.bodyView.undoManager?.redo()
-        } else if articleField.trackingView == "title" {
+        } else if trackingView == "title" {
             articleField.titleView.undoManager?.redo()
         }
         updateUnRedoButtons()
@@ -240,9 +239,9 @@ extension ArticleTextVC {
     @objc func downBtnFunc() {
         articleField.titleView.resignFirstResponder()
         articleField.bodyView.resignFirstResponder()
-        articleField.isShortcutBtnInputing = false
-        articleField.titleViewUnderEditing = false
-        articleField.bodyViewUnderEditing = false
+        isShortcutBtnInputing = false
+        titleViewUnderEditing = false
+        bodyViewUnderEditing = false
     }
 
     @objc func shortcutFunc(sender: CustomBtn, forEvent: UIEvent) {
@@ -250,15 +249,15 @@ extension ArticleTextVC {
 
         var selectedView: CustomTextView?
 
-        if articleField.bodyViewUnderEditing {
+        if bodyViewUnderEditing {
             selectedView = articleField.bodyView
-        } else if articleField.titleViewUnderEditing {
+        } else if titleViewUnderEditing {
             selectedView = articleField.titleView
         }
         if let selectedView = selectedView {
             let location = selectedView.selectedRange.location
             selectedView.selectedRange = NSRange(location: location - 1, length: 0)
-            articleField.isShortcutBtnInputing = true
+            isShortcutBtnInputing = true
         }
     }
 
@@ -299,9 +298,9 @@ extension ArticleTextVC {
     @objc func insertFromCursor(sender: CustomBtn, forEvent event: UIEvent) {
         var selectedView: CustomTextView?
 
-        if articleField.bodyViewUnderEditing {
+        if bodyViewUnderEditing {
             selectedView = articleField.bodyView
-        } else if articleField.titleViewUnderEditing {
+        } else if titleViewUnderEditing {
             selectedView = articleField.titleView
         }
 
@@ -316,10 +315,10 @@ extension ArticleTextVC {
 
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         if textView == articleField.bodyView {
-            if text == "\n", articleField.isShortcutBtnInputing, articleField.bodyViewUnderEditing {
+            if text == "\n", isShortcutBtnInputing, bodyViewUnderEditing {
                 let location = articleField.bodyView.selectedRange.location
                 articleField.bodyView.selectedRange = NSRange(location: location + 1, length: 0)
-                articleField.isShortcutBtnInputing = false
+                isShortcutBtnInputing = false
 
                 return false
             }
@@ -327,10 +326,10 @@ extension ArticleTextVC {
 
         } else if textView == articleField.titleView {
             if text == "\n" {
-                if articleField.isShortcutBtnInputing, articleField.titleViewUnderEditing {
+                if isShortcutBtnInputing, titleViewUnderEditing {
                     let location = articleField.titleView.selectedRange.location
                     articleField.titleView.selectedRange = NSRange(location: location + 1, length: 0)
-                    articleField.isShortcutBtnInputing = false
+                    isShortcutBtnInputing = false
                 } else {
                     articleField.bodyView.becomeFirstResponder()
                 }
@@ -338,7 +337,6 @@ extension ArticleTextVC {
             }
             return true
         }
-
         return true
     }
 }

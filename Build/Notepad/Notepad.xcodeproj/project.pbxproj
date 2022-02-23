@@ -224,9 +224,9 @@
 			isa = PBXGroup;
 			children = (
 				7A5CAAC327C268A5000173F4 /* Notepad.entitlements */,
+				7AC3218827AB9364008987B7 /* Data */,
 				7A758BBD27BAAAF000813C08 /* SlideList */,
 				7AC3217827AB92A4008987B7 /* TextView */,
-				7AC3218827AB9364008987B7 /* Data */,
 				7AC3217127AB9243008987B7 /* CustomClass */,
 				7AC3213E27AB9148008987B7 /* AppDelegate.swift */,
 				7AC3214227AB9148008987B7 /* ArticleTextVCO.swift */,
@@ -274,8 +274,6 @@
 				7AC3217927AB92AC008987B7 /* Font */,
 				7A172DE727C0C77E00568433 /* CommonTextVC */,
 				7ADEC0D827C3739F006E6DD5 /* MarkdownVC */,
-				7ADEC0DD27C377A4006E6DD5 /* MDPreviewVC */,
-				7A172DE627C0AE3B00568433 /* CurrentTextVC */,
 				7A172DE527C096CF00568433 /* ArticleTextVC */,
 			);
 			path = TextView;
@@ -304,6 +302,8 @@
 			isa = PBXGroup;
 			children = (
 				7ADEC0DB27C37496006E6DD5 /* MDDisplayVC.swift */,
+				7A172DE627C0AE3B00568433 /* CurrentTextVC */,
+				7ADEC0DD27C377A4006E6DD5 /* MDPreviewVC */,
 			);
 			path = MarkdownVC;
 			sourceTree = "<group>";

@@ -1,7 +1,8 @@
 {
     "name": "Default Light",
-    "editors": {
+    "editor": {
         "background": "#FFFFFF",
+        "counterText": "#FFFFFF",
         "counterBackground": "#000000"
     },
     "styles": {
@@ -18,10 +19,10 @@
             "name": "LXGW WenKai",
             "size": 15,
             "color": "#000000",
-            "lineSpacing": 7,
-            "paragraphSpacing": 14,
-            "firstLineHeadIndent": 1,
-            "alignment": "justified"
+            "lineSpacing": 0,
+            "paragraphSpacing": 0,
+            "firstLineHeadIndent": 0,
+            "alignment": "left"
         }
     }
 }

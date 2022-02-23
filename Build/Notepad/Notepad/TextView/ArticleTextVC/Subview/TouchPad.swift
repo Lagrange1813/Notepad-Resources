@@ -29,7 +29,7 @@ class TouchPad: UIView {
     var velocityLoop: CADisplayLink!
     var handler: ((TouchPadData) -> Void)?
     var handleTouchEnded: (() -> Void)?
-    
+
     var originLocation: CGPoint?
 
     init(x: CGFloat, y: CGFloat, width: CGFloat, height: CGFloat) {
@@ -63,17 +63,17 @@ class TouchPad: UIView {
     @objc func dragTouchPad(_ sender: UIPanGestureRecognizer) {
         tracking = true
         let touchLocation = sender.location(in: self)
-        
+
         if panGesture.state == .began {
             originLocation = CGPoint()
             originLocation!.x = touchLocation.x
             originLocation!.y = touchLocation.y
         }
-  
+
         guard let originLocation = originLocation else { return }
-        
+
         let dataCenter = CGPoint(x: touchLocation.x - originLocation.x, y: touchLocation.y - originLocation.y)
-        
+
         data = TouchPadData(velocity: dataCenter, angular: -atan2(dataCenter.x, dataCenter.y))
 
         if panGesture.state == .ended {

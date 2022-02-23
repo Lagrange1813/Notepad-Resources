@@ -9,7 +9,7 @@ import UIKit
 
 extension CurrentTextVC {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        mdDisplayVC.synchronizedContentOffset = articleField.contentOffset
+        mdDisplayVC.synchronizedProportion = articleField.contentOffset.y/max(articleField.contentSize.height, 30)
     }
     
     override func textViewDidChange(_ textView: UITextView) {

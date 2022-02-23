@@ -11,6 +11,7 @@ import UIKit
 extension ArticleTextVC {
     override func textViewDidChange(_ textView: UITextView) {
         super.textViewDidChange(textView)
+        guard let articleField = articleField else { return }
         if textView == articleField.bodyView {
             updateUnRedoButtons()
 

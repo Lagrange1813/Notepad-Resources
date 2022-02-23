@@ -14,9 +14,19 @@ class ArticleTextVC: CommonTextVC {
     var toolBar: ToolBar!
 
     var cursor: UIView?
-    
+
     var isKeyboardHasPoppedUp = false
     var moveDistance: CGFloat?
+
+    var trackingView: String?
+
+    var titleViewUnderEditing = false
+    var bodyViewUnderEditing = false
+
+    var isShortcutBtnInputing = false
+
+    var isMenuExpanded = false
+    var isKeyboardUsing = false
 
     var fullScreen = false
 
@@ -68,7 +78,7 @@ class ArticleTextVC: CommonTextVC {
 
     func configureStatusBarBackground() {
         let background = UIView(frame: CGRect(x: 0, y: 0, width: ScreenSize.width, height: ScreenSize.topPadding! - 1))
-        background.backgroundColor = fetchColor(place: .bodyBG, mode: .light)
+        background.backgroundColor = theme.colorSet["background"]
         view.addSubview(background)
     }
 
@@ -76,12 +86,12 @@ class ArticleTextVC: CommonTextVC {
         titleBar = TitleBar(frame: CGRect(x: view.frame.width/2 - (viewWidth - 10)/2,
                                           y: ScreenSize.topPadding! + titleBarOffset,
                                           width: viewWidth - 10,
-                                          height: TitleBar.height()))
+                                          height: TitleBar.height()), theme)
         view.addSubview(titleBar)
     }
 
     func configureToolBar() {
-        toolBar = ToolBar(viewWidth: viewWidth)
+        toolBar = ToolBar(viewWidth: viewWidth, theme)
         view.addSubview(toolBar)
 
         toolBar.snp.makeConstraints { make in

@@ -10,6 +10,7 @@ import UIKit
 
 extension CommonTextVC {
     func textViewDidChange(_ textView: UITextView) {
+        guard let articleField = articleField else { return }
         if textView == articleField.bodyView {
             articleField.bodyView.sizeToFit()
             refreshAndSaveText()
