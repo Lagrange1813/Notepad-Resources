@@ -8,6 +8,26 @@
 import UIKit
 
 class MDPreviewVC: CommonTextVC {
+    var titleString: String = "" {
+        didSet {
+            guard let articleField = articleField else { return }
+            articleField.titleView.text = titleString
+        }
+    }
+
+    var bodyString: String = "" {
+        didSet {
+            guard let articleField = articleField else { return }
+            articleField.bodyView.text = bodyString
+        }
+    }
+
+    var contentOffset: CGPoint = .init() {
+        didSet {
+            guard let articleField = articleField else { return }
+            articleField.contentOffset = self.contentOffset
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +46,4 @@ class MDPreviewVC: CommonTextVC {
         articleField.titleView.isEditable = false
         articleField.bodyView.isEditable = false
     }
-    
-    
-    
 }

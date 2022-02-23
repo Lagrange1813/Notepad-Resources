@@ -108,6 +108,7 @@ class PureTextView: UIScrollView, UITextViewDelegate {
             style.lineSpacing = 7
             style.paragraphSpacing = 14
             style.firstLineHeadIndent = 2 * bodyFont!.pointSize
+            print(bodyFont!.pointSize)
             style.alignment = .justified
             return style
         }()

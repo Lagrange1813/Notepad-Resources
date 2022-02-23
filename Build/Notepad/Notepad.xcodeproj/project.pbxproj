@@ -44,6 +44,9 @@
 		7ADEC0D727C3732A006E6DD5 /* Down in Frameworks */ = {isa = PBXBuildFile; productRef = 7ADEC0D627C3732A006E6DD5 /* Down */; };
 		7ADEC0DC27C37496006E6DD5 /* MDDisplayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADEC0DB27C37496006E6DD5 /* MDDisplayVC.swift */; };
 		7ADEC0DF27C377E9006E6DD5 /* MDPreviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADEC0DE27C377E9006E6DD5 /* MDPreviewVC.swift */; };
+		7ADEC10327C46335006E6DD5 /* CurVCHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADEC10227C46335006E6DD5 /* CurVCHandler.swift */; };
+		7ADEC10827C5C6E3006E6DD5 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADEC10727C5C6E3006E6DD5 /* Theme.swift */; };
+		7ADEC10A27C5CE48006E6DD5 /* themes in Resources */ = {isa = PBXBuildFile; fileRef = 7ADEC10927C5CE48006E6DD5 /* themes */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,6 +107,9 @@
 		7ADEC0C327C37189006E6DD5 /* ComVCHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComVCHandler.swift; sourceTree = "<group>"; };
 		7ADEC0DB27C37496006E6DD5 /* MDDisplayVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDDisplayVC.swift; sourceTree = "<group>"; };
 		7ADEC0DE27C377E9006E6DD5 /* MDPreviewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDPreviewVC.swift; sourceTree = "<group>"; };
+		7ADEC10227C46335006E6DD5 /* CurVCHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurVCHandler.swift; sourceTree = "<group>"; };
+		7ADEC10727C5C6E3006E6DD5 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		7ADEC10927C5CE48006E6DD5 /* themes */ = {isa = PBXFileReference; lastKnownFileType = folder; path = themes; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +156,7 @@
 			isa = PBXGroup;
 			children = (
 				7A172DE327C096A700568433 /* CurrentTextVC.swift */,
+				7ADEC10227C46335006E6DD5 /* CurVCHandler.swift */,
 			);
 			path = CurrentTextVC;
 			sourceTree = "<group>";
@@ -286,7 +293,9 @@
 		7AC3218827AB9364008987B7 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				7ADEC10927C5CE48006E6DD5 /* themes */,
 				7AC3218927AB9371008987B7 /* Extensions.swift */,
+				7ADEC10727C5C6E3006E6DD5 /* Theme.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -419,6 +428,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7ADEC10A27C5CE48006E6DD5 /* themes in Resources */,
 				7AC3214E27AB9149008987B7 /* LaunchScreen.storyboard in Resources */,
 				7AC3214B27AB9149008987B7 /* Assets.xcassets in Resources */,
 				7A443A1027B6815E00A72F76 /* LXGWWenKai-Bold.ttf in Resources */,
@@ -468,11 +478,13 @@
 				7AC3218727AB934F008987B7 /* ArtVCHandler.swift in Sources */,
 				7AC3217727AB9289008987B7 /* TouchPad.swift in Sources */,
 				7AC3218127AB9314008987B7 /* ToolBar.swift in Sources */,
+				7ADEC10327C46335006E6DD5 /* CurVCHandler.swift in Sources */,
 				7A5CAAC127C137CA000173F4 /* ArticleTextVC.swift in Sources */,
 				7AC3217F27AB9302008987B7 /* PureTextView.swift in Sources */,
 				7A758BBC27BAAAE700813C08 /* CustomSplitVC.swift in Sources */,
 				7AC3217527AB9271008987B7 /* CustomBtn.swift in Sources */,
 				7AC3218A27AB9371008987B7 /* Extensions.swift in Sources */,
+				7ADEC10827C5C6E3006E6DD5 /* Theme.swift in Sources */,
 				7A172DE427C096A700568433 /* CurrentTextVC.swift in Sources */,
 				7A172DE927C0C7CD00568433 /* CommonTextVC.swift in Sources */,
 			);

@@ -1,0 +1,23 @@
+{
+    "name": "Default Light",
+    "editors": {
+        "background": "#FFFFFF",
+        "counterBackground": "#000000"
+    },
+    "styles": {
+        "title": {
+            "name": "LXGW WenKai Bold",
+            "size": 18,
+            "color": "#000000",
+            "lineSpacing": 0,
+            "paragraphSpacing": 20
+        },
+        "body": {
+            "name": "LXGW WenKai",
+            "size": 15,
+            "color": "#000000",
+            "lineSpacing": 14,
+            "paragraphSpacing": 14
+        }
+    }
+}

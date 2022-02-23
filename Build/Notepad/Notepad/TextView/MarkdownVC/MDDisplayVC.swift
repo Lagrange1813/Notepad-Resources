@@ -12,6 +12,10 @@ class MDDisplayVC: UIViewController {
     var currentTextVC: CurrentTextVC!
     var mdPreviewVC: MDPreviewVC!
 
+    var synchronizedTitle: String = "" { didSet { mdPreviewVC.titleString = synchronizedTitle }}
+    var synchronizedBody: String = "" { didSet { mdPreviewVC.bodyString = synchronizedBody }}
+    var synchronizedContentOffset: CGPoint = CGPoint() {didSet { mdPreviewVC.articleField.contentOffset = synchronizedContentOffset}}
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -22,16 +26,19 @@ class MDDisplayVC: UIViewController {
         currentTextVC.showCounter = false
         addChild(currentTextVC)
         view.addSubview(currentTextVC.view)
+        currentTextVC.mdDisplayVC = self
         currentTextVC.view.snp.makeConstraints { make in
-            make.leading.top.bottom.equalToSuperview()
+            make.top.equalToSuperview()
+            make.leading.bottom.equalToSuperview()
             make.width.equalTo(0)
         }
-        
+
         mdPreviewVC = MDPreviewVC()
         addChild(mdPreviewVC)
         view.addSubview(mdPreviewVC.view)
         mdPreviewVC.view.snp.makeConstraints { make in
-            make.trailing.top.bottom.equalToSuperview()
+            make.top.equalToSuperview()
+            make.trailing.bottom.equalToSuperview()
             make.width.equalTo(0)
         }
     }

@@ -39,6 +39,6 @@ class CustomSplitVC: UISplitViewController, UISplitViewControllerDelegate {
         let articleCompact = ArticleTextVC()
         setViewController(articleCompact, for: .compact)
         
-        
+//        print(UIColor(hexString: "#C96667"))
     }
 }
