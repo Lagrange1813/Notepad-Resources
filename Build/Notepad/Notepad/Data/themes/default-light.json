@@ -10,14 +10,18 @@
             "size": 18,
             "color": "#000000",
             "lineSpacing": 0,
-            "paragraphSpacing": 20
+            "paragraphSpacing": 20,
+            "firstLineHeadIndent": 0,
+            "alignment": "center"
         },
         "body": {
             "name": "LXGW WenKai",
             "size": 15,
             "color": "#000000",
-            "lineSpacing": 14,
-            "paragraphSpacing": 14
+            "lineSpacing": 7,
+            "paragraphSpacing": 14,
+            "firstLineHeadIndent": 1,
+            "alignment": "justified"
         }
     }
 }

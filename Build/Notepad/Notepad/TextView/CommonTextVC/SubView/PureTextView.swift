@@ -51,6 +51,7 @@ class PureTextView: UIScrollView, UITextViewDelegate {
     }
     
     func configureTextView() {
+        
         titleView = CustomTextView()
         titleView.isScrollEnabled = false
         titleView.textAlignment = .center
@@ -80,47 +81,49 @@ class PureTextView: UIScrollView, UITextViewDelegate {
     }
     
     private func customize() {
-        let titleFont = titleFont
-        let titleColor = fetchColor(place: .titleText, mode: .light)
+        let theme = Theme.BuiltIn.DefaultLight.theme()
         
-        let titleParagraphStyle: NSMutableParagraphStyle = {
-            let style = NSMutableParagraphStyle()
-            style.paragraphSpacing = 20
-            style.alignment = .center
-            return style
-        }()
+//        let titleFont = titleFont
+//        let titleColor = fetchColor(place: .titleText, mode: .light)
+//
+//        let titleParagraphStyle: NSMutableParagraphStyle = {
+//            let style = NSMutableParagraphStyle()
+//            style.paragraphSpacing = 20
+//            style.alignment = .center
+//            return style
+//        }()
+//
+//        let titleAttributes: [NSAttributedString.Key: Any] = [
+//            .font: titleFont!,
+//            .foregroundColor: titleColor,
+//            .paragraphStyle: titleParagraphStyle
+//        ]
         
-        let titleAttributes: [NSAttributedString.Key: Any] = [
-            .font: titleFont!,
-            .foregroundColor: titleColor,
-            .paragraphStyle: titleParagraphStyle
-        ]
-        
-        titleView.typingAttributes = titleAttributes
-        let titleString = NSMutableAttributedString(string: title ?? "请输入标题", attributes: titleAttributes)
+        titleView.typingAttributes = theme.titleAttributes
+        let titleString = NSMutableAttributedString(string: title ?? "请输入标题", attributes: theme.titleAttributes)
         titleView.attributedText = titleString
         
-        let bodyFont = bodyFont
-        let bodyColor = fetchColor(place: .bodyText, mode: .light)
+//        let bodyFont = bodyFont
+//        let bodyColor = fetchColor(place: .bodyText, mode: .light)
+//
+//        let bodyParagraphStyle: NSMutableParagraphStyle = {
+//            let style = NSMutableParagraphStyle()
+//            style.lineSpacing = 7
+//            style.paragraphSpacing = 14
+//            style.firstLineHeadIndent = 2 * bodyFont!.pointSize
+//            print(bodyFont!.pointSize)
+//            style.alignment = .justified
+//            return style
+//        }()
+//
+//        let bodyAttributes: [NSAttributedString.Key: Any] = [
+//            .font: bodyFont!,
+//            .foregroundColor: bodyColor,
+//            .paragraphStyle: bodyParagraphStyle
+//        ]
         
-        let bodyParagraphStyle: NSMutableParagraphStyle = {
-            let style = NSMutableParagraphStyle()
-            style.lineSpacing = 7
-            style.paragraphSpacing = 14
-            style.firstLineHeadIndent = 2 * bodyFont!.pointSize
-            print(bodyFont!.pointSize)
-            style.alignment = .justified
-            return style
-        }()
-        
-        let bodyAttributes: [NSAttributedString.Key: Any] = [
-            .font: bodyFont!,
-            .foregroundColor: bodyColor,
-            .paragraphStyle: bodyParagraphStyle
-        ]
-        
-        bodyView.typingAttributes = bodyAttributes
-        let bodyString = NSMutableAttributedString(string: body ?? "请输入正文", attributes: bodyAttributes)
+        bodyView.typingAttributes = theme.bodyAttributes
+        let bodyString = NSMutableAttributedString(string: body ?? "请输入正文", attributes: theme.bodyAttributes)
         bodyView.attributedText = bodyString
         
         titleView.selectedRange = NSRange(location: 0, length: 0)
