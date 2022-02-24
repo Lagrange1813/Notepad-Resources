@@ -185,10 +185,10 @@
 		7A172DEC27C1352800568433 /* SubView */ = {
 			isa = PBXGroup;
 			children = (
+				7AA89BAD27C7CDC100E77749 /* MDTextView */,
 				7AC3217C27AB92ED008987B7 /* WordCounter.swift */,
 				7A5F137627C76591002C8F1A /* BaseTextView.swift */,
 				7AC3217E27AB9302008987B7 /* PureTextView.swift */,
-				7A2A5F0527C7594C00C399F8 /* MDTextView.swift */,
 			);
 			path = SubView;
 			sourceTree = "<group>";
@@ -211,6 +211,14 @@
 				7A758BC027BAAB5C00813C08 /* BookListVC.swift */,
 			);
 			path = SlideList;
+			sourceTree = "<group>";
+		};
+		7AA89BAD27C7CDC100E77749 /* MDTextView */ = {
+			isa = PBXGroup;
+			children = (
+				7A2A5F0527C7594C00C399F8 /* MDTextView.swift */,
+			);
+			path = MDTextView;
 			sourceTree = "<group>";
 		};
 		7AC3213227AB9148008987B7 = {
