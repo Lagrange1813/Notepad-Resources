@@ -1,6 +1,7 @@
 {
     "name": "Text Light Frosted Galss",
     "editor": {
+        "type": "Text",
         "background": "#FFFFFF",
         "counterText": "#FFFFFF",
         "counterBackground": "#000000",

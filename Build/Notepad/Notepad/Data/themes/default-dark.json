@@ -4,7 +4,7 @@
         "background": "#282828",
         "counterText": "#FFFFFF",
         "counterBackground": "#99222222",
-        "frostedGlass": 1
+        "frostedGlass": 0
     },
     "styles": {
         "title": {

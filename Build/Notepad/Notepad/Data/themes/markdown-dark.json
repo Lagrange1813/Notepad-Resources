@@ -1,10 +1,11 @@
 {
     "name": "Markdown Dark",
     "editor": {
+        "type": "MD",
         "background": "#282828",
         "counterText": "#FFFFFF",
         "counterBackground": "#99222222",
-        "frostedGlass": 1
+        "frostedGlass": 0
     },
     "styles": {
         "title": {
@@ -14,7 +15,7 @@
             "lineSpacing": 0,
             "paragraphSpacing": 20,
             "firstLineHeadIndent": 0,
-            "alignment": "center"
+            "alignment": "left"
         },
         "body": {
             "name": "LXGW WenKai",
@@ -23,7 +24,7 @@
             "lineSpacing": 7,
             "paragraphSpacing": 14,
             "firstLineHeadIndent": 1,
-            "alignment": "justified"
+            "alignment": "left"
         }
     }
 }

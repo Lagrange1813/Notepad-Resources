@@ -11,6 +11,7 @@ class TitleBar: UIView {
     var height: CGFloat!
     
     var listBtn: CustomBtn!
+    var typeBtn: CustomBtn!
     
     var theme: Theme!
     
@@ -102,7 +103,7 @@ class TitleBar: UIView {
     func configureBtn() {
         listBtn = { () -> CustomBtn in
             let button = CustomBtn()
-            button.setImage(UIImage(named: "list.bullet.rectangle"), for: .normal)
+            button.setImage(UIImage(named: "books.vertical"), for: .normal)
 //            button.tintColor = .white
             addSubview(button)
             
@@ -114,5 +115,28 @@ class TitleBar: UIView {
             
             return button
         }()
+        
+        typeBtn = { () -> CustomBtn in
+            let button = CustomBtn()
+            
+            switch theme.type {
+            case "Text": button.setTitle("TXT", for: .normal)
+            case "MD": button.setTitle("MD", for: .normal)
+            default: return CustomBtn()
+            }
+            button.setTitleColor(.black, for: .normal)
+            button.setTitleColor(.systemGray, for: .highlighted)
+            button.titleLabel!.font = UIFont(name: "LXGW WenKai", size: 15)
+            addSubview(button)
+            
+            button.snp.makeConstraints { make in
+                make.centerY.equalToSuperview()
+                make.trailing.equalToSuperview().inset(30)
+                make.width.height.equalTo(35)
+            }
+            
+            return button
+        }()
+
     }
 }

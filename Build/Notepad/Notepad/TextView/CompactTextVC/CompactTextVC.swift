@@ -32,14 +32,15 @@ class CompactTextVC: CommonTextVC {
 
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
+    var image: UIImageView?
+    var backgroundSupport: UIView?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         textTheme = Theme.BuiltIn.TextLightFrostedGlass.theme()
         markdownTheme = Theme.BuiltIn.MarkdownLight.theme()
         loadTheme()
-        
-        print(type)
         
         appDelegate.supportAll = false
 
@@ -136,12 +137,21 @@ class CompactTextVC: CommonTextVC {
 //        }
     }
     
+    func configureBackgroundImage() {
+        image = UIImageView(image: UIImage(named: "Qerg85B7JDI"))
+        image!.contentMode = .scaleAspectFill
+        view.addSubview(image!)
+        image!.snp.makeConstraints { make in
+            make.top.leading.trailing.bottom.equalToSuperview()
+        }
+    }
+    
     func configureBlur() {
-        let backgroundSupport = UIView()
-        backgroundSupport.clipsToBounds = true
-        view.addSubview(backgroundSupport)
+        backgroundSupport = UIView()
+        backgroundSupport!.clipsToBounds = true
+        view.addSubview(backgroundSupport!)
        
-        backgroundSupport.snp.makeConstraints { make in
+        backgroundSupport!.snp.makeConstraints { make in
             make.top.equalToSuperview()
             make.bottom.equalToSuperview()
             make.leading.equalToSuperview()
@@ -157,22 +167,13 @@ class CompactTextVC: CommonTextVC {
         }()
         
         let background = UIVisualEffectView(effect: blur)
-        backgroundSupport.addSubview(background)
+        backgroundSupport!.addSubview(background)
         
         background.snp.makeConstraints { make in
             make.top.equalToSuperview()
             make.bottom.equalToSuperview()
             make.leading.equalToSuperview()
             make.trailing.equalToSuperview()
-        }
-    }
-    
-    func configureBackgroundImage() {
-        let image = UIImageView(image: UIImage(named: "Qerg85B7JDI"))
-        image.contentMode = .scaleAspectFill
-        view.addSubview(image)
-        image.snp.makeConstraints { make in
-            make.top.leading.trailing.bottom.equalToSuperview()
         }
     }
 }

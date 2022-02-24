@@ -57,4 +57,41 @@ extension CompactTextVC {
         }
         toolBar.updateScrollToolView()
     }
+    
+    func restart() {
+        textField.removeFromSuperview()
+        textField = nil
+        counter.removeFromSuperview()
+        counter = nil
+        titleBar.removeFromSuperview()
+        titleBar = nil
+        toolBar.removeFromSuperview()
+        toolBar = nil
+        image?.removeFromSuperview()
+        image = nil
+        backgroundSupport?.removeFromSuperview()
+        backgroundSupport = nil
+        
+        loadData()
+        loadType()
+        loadTheme()
+        if theme.frostedGlass {
+            configureBackgroundImage()
+            configureBlur()
+        } else {
+            view.backgroundColor = theme.colorSet["background"]
+        }
+        loadTextView()
+        configureTextView()
+        if showCounter {
+            configureCounter()
+        }
+        configureToolBar()
+        configureTitleBar()
+
+        registNotification()
+
+        configureTitleBarBtnAction()
+        configureToolBarBtnAction()
+    }
 }

@@ -41,11 +41,7 @@ class CommonTextVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        switch type {
-        case "Text": textField = PureTextView(theme)
-        case "MD": textField = MDTextView(theme)
-        default: return
-        }
+        loadTextView()
         
         configureTextView()
         if showCounter {
@@ -112,6 +108,14 @@ class CommonTextVC: UIViewController {
         switch type {
         case "Text": self.theme = textTheme
         case "MD": self.theme = markdownTheme
+        default: return
+        }
+    }
+    
+    func loadTextView() {
+        switch type {
+        case "Text": textField = PureTextView(theme)
+        case "MD": textField = MDTextView(theme)
         default: return
         }
     }

@@ -23,6 +23,7 @@ public struct Theme {
         }
     }
     
+    public var type: String!
     public var titleAttributes: [NSAttributedString.Key: Any]!
     public var bodyAttributes: [NSAttributedString.Key: Any]!
     public var colorSet: [String: UIColor]!
@@ -80,6 +81,8 @@ public struct Theme {
     }
     
     mutating func configureEditor(_ attributes: [String: AnyObject]) {
+        type = (attributes["type"] as! String)
+        
         colorSet = [
             "background": UIColor(hexString: attributes["background"] as! String),
             "counterText": UIColor(hexString: attributes["counterText"] as! String),
@@ -120,7 +123,7 @@ public struct Theme {
         
         stringAttributes = [
             .font: UIFont(name: attributes["name"] as! String,
-                          size: attributes["size"] as! CGFloat)!,
+                          size: attributes["size"] as! CGFloat) ?? UIFont.systemFont(ofSize: attributes["size"] as! CGFloat),
             .foregroundColor: UIColor(hexString: attributes["color"] as! String),
             .paragraphStyle: paragraphStyle,
         ]
