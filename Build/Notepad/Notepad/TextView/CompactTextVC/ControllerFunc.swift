@@ -9,7 +9,7 @@ import CoreData
 import SnapKit
 import UIKit
 
-extension ArticleTextVC {
+extension CompactTextVC {
     func showTitleBar() {
         UIView.animate(withDuration: 0.7, animations: {
             self.titleBar.frame.origin.y = ScreenSize.topPadding! + titleBarOffset
@@ -24,20 +24,20 @@ extension ArticleTextVC {
 
     enum Position {
         case view
-        case articleField
+        case textField
         case bodyView
     }
 
     func correctCoordinates(_ location: CGFloat, position: Position) -> CGFloat {
-        guard let articleField = articleField else { return 0 }
-        let viewCoordinates = articleField.contentOffset
+        guard let textField = textField else { return 0 }
+        let viewCoordinates = textField.contentOffset
         switch position {
         case .view:
             return location - ScreenSize.topPadding!
-        case .articleField:
+        case .textField:
             return location - viewCoordinates.y
         case .bodyView:
-            let temp = location + articleField.titleView.bounds.height - viewCoordinates.y
+            let temp = location + textField.titleView.bounds.height - viewCoordinates.y
             return temp
         }
     }

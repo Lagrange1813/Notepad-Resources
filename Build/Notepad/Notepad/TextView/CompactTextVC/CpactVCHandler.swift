@@ -8,14 +8,14 @@
 import CoreData
 import UIKit
 
-extension ArticleTextVC {
+extension CompactTextVC {
     override func textViewDidChange(_ textView: UITextView) {
         super.textViewDidChange(textView)
-        guard let articleField = articleField else { return }
-        if textView == articleField.bodyView {
+        guard let textField = textField else { return }
+        if textView == textField.bodyView {
             updateUnRedoButtons()
 
-        } else if textView == articleField.titleView {
+        } else if textView == textField.titleView {
             updateUnRedoButtons()
         }
     }

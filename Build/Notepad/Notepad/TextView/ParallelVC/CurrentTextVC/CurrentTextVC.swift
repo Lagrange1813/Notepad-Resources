@@ -24,8 +24,8 @@ class CurrentTextVC: CommonTextVC {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        guard let articleField = articleField else { return }
-        mdDisplayVC.synchronizedTitle = articleField.title!
-        mdDisplayVC.synchronizedBody = articleField.body!
+        guard let textField = textField else { return }
+        mdDisplayVC.synchronizedTitle = textField.title!
+        mdDisplayVC.synchronizedBody = textField.body!
     }
 }

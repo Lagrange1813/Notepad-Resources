@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ArticleTextVC: CommonTextVC {
+class CompactTextVC: CommonTextVC {
     var viewWidth: CGFloat!
 
     var titleBar: TitleBar!
@@ -33,8 +33,14 @@ class ArticleTextVC: CommonTextVC {
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     override func viewDidLoad() {
-        theme = Theme.BuiltIn.TextLightFrostedGlass.theme()
         super.viewDidLoad()
+        
+        textTheme = Theme.BuiltIn.TextLightFrostedGlass.theme()
+        markdownTheme = Theme.BuiltIn.MarkdownLight.theme()
+        loadTheme()
+        
+        print(type)
+        
         appDelegate.supportAll = false
 
         if theme.frostedGlass {
@@ -115,7 +121,7 @@ class ArticleTextVC: CommonTextVC {
 
 //        toolBar.gestureHandler = { [self] in
 //            let pan = self.toolBar.panGestureRecognizer
-//            let velocity = pan!.velocity(in: articleField).y
+//            let velocity = pan!.velocity(in: textField).y
 //
 //            if velocity < -200 {
 //                UIView.animate(withDuration: 0.3, animations: {

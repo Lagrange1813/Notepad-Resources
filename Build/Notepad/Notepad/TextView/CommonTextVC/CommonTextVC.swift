@@ -29,17 +29,18 @@ class CommonTextVC: UIViewController {
     var counter: WordCounter!
     
     var theme: Theme!
+    var textTheme: Theme!
+    var markdownTheme: Theme!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadData()
+        loadType()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        loadData()
-        loadType()
-        
         switch type {
         case "Text": textField = PureTextView(theme)
         case "MD": textField = MDTextView(theme)
@@ -54,12 +55,12 @@ class CommonTextVC: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        articleField.resize()
+        textField.resize()
     }
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        articleField.correctLayout(width: view.frame.width)
+        textField.correctLayout(width: view.frame.width)
     }
     
     override func viewDidLayoutSubviews() {
@@ -69,8 +70,8 @@ class CommonTextVC: UIViewController {
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         
-        if let articleField = articleField {
-            articleField.correctLayout(width: view.frame.width)
+        if let textField = textField {
+            textField.correctLayout(width: view.frame.width)
         }
 
         coordinator.animate(alongsideTransition: nil) { _ in
@@ -79,10 +80,10 @@ class CommonTextVC: UIViewController {
     }
     
     func adjustView() {
-        if let articleField = articleField {
-            articleField.titleView.sizeToFit()
-            articleField.bodyView.sizeToFit()
-            articleField.resize()
+        if let textField = textField {
+            textField.titleView.sizeToFit()
+            textField.bodyView.sizeToFit()
+            textField.resize()
         }
     }
     
@@ -104,39 +105,46 @@ class CommonTextVC: UIViewController {
     func loadType() {
         let index = articles.count
         let text = articles[index - 1]
-        self.type = text.value(forKey: "type")
+        self.type = (text.value(forKey: "type") as! String)
+    }
+    
+    func loadTheme() {
+        switch type {
+        case "Text": self.theme = textTheme
+        case "MD": self.theme = markdownTheme
+        default: return
+        }
     }
     
     // MARK: - Configure components
     
     func configureTextView() {
-        articleField = PureTextView(theme)
-        articleField.delegate = self
-        articleField.bodyView.delegate = self
-        articleField.titleView.delegate = self
+        textField.delegate = self
+        textField.bodyView.delegate = self
+        textField.titleView.delegate = self
         
         configurePadding()
         
-        view.addSubview(articleField)
+        view.addSubview(textField)
 
-        articleField.snp.makeConstraints { make in
+        textField.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(topAnchor)
             make.leading.equalToSuperview()
             make.trailing.equalToSuperview()
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(bottomAnchor)
         }
         
-        configureText(articleField)
+        configureText(textField)
     }
     
     func configurePadding() {
-        articleField.setInsets(topPadding: topPadding, bottomPadding: bottomPadding)
+        textField.setInsets(topPadding: topPadding, bottomPadding: bottomPadding)
     }
     
-    func configureText(_ articleField: PureTextView) {
+    func configureText(_ textField: BaseTextView) {
         let index = articles.count
         let text = articles[index - 1]
-        articleField.configureText(title: text.value(forKey: "title") as! String,
+        textField.configureText(title: text.value(forKey: "title") as! String,
                                    body: text.value(forKey: "body") as! String)
     }
     
@@ -145,11 +153,11 @@ class CommonTextVC: UIViewController {
         view.addSubview(counter)
         counter.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(5 + titleBarOffset + barHeight)
-            make.trailing.equalTo(articleField).offset(10)
+            make.trailing.equalTo(textField).offset(10)
             make.width.equalTo(55)
             make.height.equalTo(20)
         }
-        let temp = articleField.titleView.text + articleField.bodyView.text
+        let temp = textField.titleView.text + textField.bodyView.text
         counter.refreshLabel(temp.count)
         
         refreshCounter()

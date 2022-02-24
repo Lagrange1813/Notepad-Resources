@@ -7,22 +7,22 @@
 
 import UIKit
 
-extension ArticleTextVC {
+extension CompactTextVC {
     func textViewDidBeginEditing(_ textView: UITextView) {
-        guard let articleField = articleField else { return }
-        if textView == articleField.bodyView {
+        guard let textField = textField else { return }
+        if textView == textField.bodyView {
             bodyViewUnderEditing = true
             trackingView = "body"
-        } else if textView == articleField.titleView {
+        } else if textView == textField.titleView {
             titleViewUnderEditing = true
             trackingView = "title"
         }
     }
 
     func textViewDidEndEditing(_ textView: UITextView) {
-        if textView == articleField.bodyView {
+        if textView == textField.bodyView {
             bodyViewUnderEditing = false
-        } else if textView == articleField.titleView {
+        } else if textView == textField.titleView {
             titleViewUnderEditing = false
         }
     }
@@ -46,7 +46,7 @@ extension ArticleTextVC {
                 showTitleBar()
             }
 
-            if articleField.contentOffset.y <= -(TitleBar.height() + titleBarOffset) + 10 {
+            if textField.contentOffset.y <= -(TitleBar.height() + titleBarOffset) + 10 {
                 showTitleBar()
             }
         }
@@ -85,7 +85,7 @@ extension ArticleTextVC {
             })
             view.layoutIfNeeded()
 
-            articleField.bodyView.becomeFirstResponder()
+            textField.bodyView.becomeFirstResponder()
         }
 
         if let cursor = cursor {

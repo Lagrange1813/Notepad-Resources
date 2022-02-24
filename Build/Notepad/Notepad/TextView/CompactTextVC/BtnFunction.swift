@@ -7,7 +7,7 @@
 
 import UIKit
 
-extension ArticleTextVC {
+extension CompactTextVC {
     // MARK: - Tool bar fixed button function configurment
 
     @objc func commandBtnFunc() {
@@ -18,8 +18,8 @@ extension ArticleTextVC {
 
             updateBtnStatus()
 
-            articleField.titleView.resignFirstResponder()
-            articleField.bodyView.resignFirstResponder()
+            textField.titleView.resignFirstResponder()
+            textField.bodyView.resignFirstResponder()
 
             toolBar.configureTouchPad(moveDistance!)
 
@@ -75,7 +75,7 @@ extension ArticleTextVC {
                 self.toolBar.touchPad.isHidden = true
             })
 
-            articleField.bodyView.becomeFirstResponder()
+            textField.bodyView.becomeFirstResponder()
             if let cursor = cursor {
                 cursor.removeFromSuperview()
                 self.cursor = nil
@@ -88,11 +88,11 @@ extension ArticleTextVC {
 
         touchPad.isHidden = false
 
-        var rectFrame = articleField.bodyView.fetchRect(articleField.bodyView, articleField.bodyView.selectedRange)
+        var rectFrame = textField.bodyView.fetchRect(textField.bodyView, textField.bodyView.selectedRange)
 
         cursor = UIView(frame: rectFrame)
         cursor!.backgroundColor = UIColor(red: 0.2941176, green: 0.415686, blue: 0.917647, alpha: 1)
-        articleField.bodyView.addSubview(cursor!)
+        textField.bodyView.addSubview(cursor!)
 
         touchPad.handler = { [unowned self] data in
             cursor!.frame.origin = CGPoint(x: rectFrame.origin.x + 1.5*data.velocity.x,
@@ -111,12 +111,12 @@ extension ArticleTextVC {
                 cursor!.frame.origin.x = 0
             }
 
-            if downSide >= articleField.bodyView.frame.height {
-                cursor!.frame.origin.y = articleField.bodyView.frame.height - cursor!.frame.height
+            if downSide >= textField.bodyView.frame.height {
+                cursor!.frame.origin.y = textField.bodyView.frame.height - cursor!.frame.height
             }
 
-            if rightSide >= articleField.bodyView.frame.width {
-                cursor!.frame.origin.x = articleField.bodyView.frame.width - cursor!.frame.width
+            if rightSide >= textField.bodyView.frame.width {
+                cursor!.frame.origin.x = textField.bodyView.frame.width - cursor!.frame.width
             }
 
             let upperSurface = correctCoordinates(cursor!.frame.origin.y, position: .bodyView)
@@ -126,14 +126,14 @@ extension ArticleTextVC {
             let lowerBoundary = correctCoordinates(toolBar.frame.origin.y, position: .view) - 30
 
             if upperSurface <= upperBoundary {
-                articleField.setContentOffset(CGPoint(x: 0,
-                                                      y: articleField.contentOffset.y - 5), animated: false)
+                textField.setContentOffset(CGPoint(x: 0,
+                                                      y: textField.contentOffset.y - 5), animated: false)
                 cursor!.frame.origin.y -= 4
                 hideTitleBar()
             }
 
             if lowerSurface >= lowerBoundary {
-                articleField.setContentOffset(CGPoint(x: 0, y: articleField.contentOffset.y + 5), animated: false)
+                textField.setContentOffset(CGPoint(x: 0, y: textField.contentOffset.y + 5), animated: false)
 //                cursor!.frame.origin.y += 4
                 hideTitleBar()
             }
@@ -141,32 +141,32 @@ extension ArticleTextVC {
 
         touchPad.handleTouchEnded = { [unowned self] in
             print("ended")
-            let range = self.articleField.bodyView.closestPosition(to: self.cursor!.center)!
-            let location = self.articleField.bodyView.offset(from: articleField.bodyView.beginningOfDocument, to: range)
-            articleField.bodyView.selectedRange = NSRange(location: location, length: 0)
+            let range = self.textField.bodyView.closestPosition(to: self.cursor!.center)!
+            let location = self.textField.bodyView.offset(from: textField.bodyView.beginningOfDocument, to: range)
+            textField.bodyView.selectedRange = NSRange(location: location, length: 0)
 
 //            let correction = NSRange(location: location-1, length: 0)
 
-            rectFrame = articleField.bodyView.fetchRect(articleField.bodyView, articleField.bodyView.selectedRange)
-//            rectFrame.origin.x += articleField.bodyFont!.pointSize
+            rectFrame = textField.bodyView.fetchRect(textField.bodyView, textField.bodyView.selectedRange)
+//            rectFrame.origin.x += textField.bodyFont!.pointSize
             cursor!.frame = rectFrame
         }
     }
 
     @objc func undoFunc(_ sender: Any) {
         if trackingView == "body" {
-            articleField.bodyView.undoManager?.undo()
+            textField.bodyView.undoManager?.undo()
         } else if trackingView == "title" {
-            articleField.titleView.undoManager?.undo()
+            textField.titleView.undoManager?.undo()
         }
         updateUnRedoButtons()
     }
 
     @objc func redoFunc(_ sender: Any) {
         if trackingView == "body" {
-            articleField.bodyView.undoManager?.redo()
+            textField.bodyView.undoManager?.redo()
         } else if trackingView == "title" {
-            articleField.titleView.undoManager?.redo()
+            textField.titleView.undoManager?.redo()
         }
         updateUnRedoButtons()
     }
@@ -179,8 +179,8 @@ extension ArticleTextVC {
     }
 
     @objc func downBtnFunc() {
-        articleField.titleView.resignFirstResponder()
-        articleField.bodyView.resignFirstResponder()
+        textField.titleView.resignFirstResponder()
+        textField.bodyView.resignFirstResponder()
         isShortcutBtnInputing = false
         titleViewUnderEditing = false
         bodyViewUnderEditing = false
@@ -194,9 +194,9 @@ extension ArticleTextVC {
         var selectedView: CustomTextView?
 
         if bodyViewUnderEditing {
-            selectedView = articleField.bodyView
+            selectedView = textField.bodyView
         } else if titleViewUnderEditing {
-            selectedView = articleField.titleView
+            selectedView = textField.titleView
         }
         if let selectedView = selectedView {
             let location = selectedView.selectedRange.location
@@ -206,7 +206,7 @@ extension ArticleTextVC {
     }
 
     @objc func jumpToTopFunc() {
-        let selectedView = articleField.bodyView!
+        let selectedView = textField.bodyView!
 
         selectedView.selectedRange = NSRange(location: 0, length: 0)
 
@@ -217,7 +217,7 @@ extension ArticleTextVC {
         selectedView.replace(textRange, withText: "")
         selectedView.becomeFirstResponder()
 
-        articleField.setContentOffset(CGPoint(x: 0, y: -TitleBar.height() - titleBarOffset), animated: true)
+        textField.setContentOffset(CGPoint(x: 0, y: -TitleBar.height() - titleBarOffset), animated: true)
 
         if !fullScreen {
             showTitleBar()
@@ -225,7 +225,7 @@ extension ArticleTextVC {
     }
 
     @objc func jumpToBottomFunc() {
-        let selectedView = articleField.bodyView!
+        let selectedView = textField.bodyView!
 
         selectedView.selectedRange = NSRange(location: selectedView.text!.count,
                                              length: 0)
@@ -243,9 +243,9 @@ extension ArticleTextVC {
         var selectedView: CustomTextView?
 
         if bodyViewUnderEditing {
-            selectedView = articleField.bodyView
+            selectedView = textField.bodyView
         } else if titleViewUnderEditing {
-            selectedView = articleField.titleView
+            selectedView = textField.titleView
         }
 
         if let selectedView = selectedView {
@@ -258,24 +258,24 @@ extension ArticleTextVC {
     }
 
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        if textView == articleField.bodyView {
+        if textView == textField.bodyView {
             if text == "\n", isShortcutBtnInputing, bodyViewUnderEditing {
-                let location = articleField.bodyView.selectedRange.location
-                articleField.bodyView.selectedRange = NSRange(location: location + 1, length: 0)
+                let location = textField.bodyView.selectedRange.location
+                textField.bodyView.selectedRange = NSRange(location: location + 1, length: 0)
                 isShortcutBtnInputing = false
 
                 return false
             }
             return true
 
-        } else if textView == articleField.titleView {
+        } else if textView == textField.titleView {
             if text == "\n" {
                 if isShortcutBtnInputing, titleViewUnderEditing {
-                    let location = articleField.titleView.selectedRange.location
-                    articleField.titleView.selectedRange = NSRange(location: location + 1, length: 0)
+                    let location = textField.titleView.selectedRange.location
+                    textField.titleView.selectedRange = NSRange(location: location + 1, length: 0)
                     isShortcutBtnInputing = false
                 } else {
-                    articleField.bodyView.becomeFirstResponder()
+                    textField.bodyView.becomeFirstResponder()
                 }
                 return false
             }

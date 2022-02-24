@@ -10,7 +10,7 @@ import SnapKit
 import UIKit
 
 //class ArticleTextVCO: UIViewController {
-//    var articleField: PureTextView!
+//    var textField: PureTextView!
 //    var articles: [NSManagedObject] = []
 //    var counter: WordCounter!
 //    var titleBar: TitleBar!
@@ -48,7 +48,7 @@ import UIKit
 //
 //    override func viewDidAppear(_ animated: Bool) {
 //        super.viewDidAppear(animated)
-//        articleField.resize()
+//        textField.resize()
 //        updateUnRedoButtons()
 //    }
 //
@@ -88,15 +88,15 @@ import UIKit
 //    }
 //
 //    func configureTextView() {
-//        articleField = PureTextView(frame: CGRect())
-//        articleField.delegate = self
-//        articleField.bodyView.delegate = self
-//        articleField.titleView.delegate = self
-//        articleField.configureFont(fontName: "LXGW WenKai")
-//        configureText(articleField)
-//        view.addSubview(articleField)
+//        textField = PureTextView(frame: CGRect())
+//        textField.delegate = self
+//        textField.bodyView.delegate = self
+//        textField.titleView.delegate = self
+//        textField.configureFont(fontName: "LXGW WenKai")
+//        configureText(textField)
+//        view.addSubview(textField)
 //
-//        articleField.snp.makeConstraints { make in
+//        textField.snp.makeConstraints { make in
 //            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
 //            make.leading.equalToSuperview()
 //            make.trailing.equalToSuperview()
@@ -104,10 +104,10 @@ import UIKit
 //        }
 //    }
 //
-//    func configureText(_ articleField: PureTextView) {
+//    func configureText(_ textField: PureTextView) {
 //        let index = articles.count
 //        let text = articles[index - 1]
-//        articleField.configureText(title: text.value(forKey: "title") as! String,
+//        textField.configureText(title: text.value(forKey: "title") as! String,
 //                                   body: text.value(forKey: "body") as! String)
 //    }
 //
@@ -116,12 +116,12 @@ import UIKit
 //        view.addSubview(counter)
 //        counter.snp.makeConstraints { make in
 //            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(5 + TitleBar.height() + titleBarOffset)
-////            make.trailing.equalTo(articleField).inset(5)
-//            make.trailing.equalTo(articleField).offset(10)
+////            make.trailing.equalTo(textField).inset(5)
+//            make.trailing.equalTo(textField).offset(10)
 //            make.width.equalTo(55)
 //            make.height.equalTo(20)
 //        }
-//        let temp = articleField.titleView.text + articleField.bodyView.text
+//        let temp = textField.titleView.text + textField.bodyView.text
 //        counter.refreshLabel(temp.count)
 //        refreshCounter()
 //    }
@@ -149,7 +149,7 @@ import UIKit
 //
 ////        toolBar.gestureHandler = { [self] in
 ////            let pan = self.toolBar.panGestureRecognizer
-////            let velocity = pan!.velocity(in: articleField).y
+////            let velocity = pan!.velocity(in: textField).y
 ////
 ////            if velocity < -200 {
 ////                UIView.animate(withDuration: 0.3, animations: {

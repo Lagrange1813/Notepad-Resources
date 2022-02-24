@@ -10,20 +10,20 @@ import UIKit
 
 extension CommonTextVC {
     func textViewDidChange(_ textView: UITextView) {
-        guard let articleField = articleField else { return }
-        if textView == articleField.bodyView {
-            articleField.bodyView.sizeToFit()
+        guard let textField = textField else { return }
+        if textView == textField.bodyView {
+            textField.bodyView.sizeToFit()
             refreshAndSaveText()
 
-        } else if textView == articleField.titleView {
-            articleField.titleView.sizeToFit()
+        } else if textView == textField.titleView {
+            textField.titleView.sizeToFit()
             refreshAndSaveText()
         }
-        articleField.resize()
+        textField.resize()
     }
 
     func refreshAndSaveText() {
-        let temp = articleField.titleView.text! + articleField.bodyView.text!
+        let temp = textField.titleView.text! + textField.bodyView.text!
 
         if showCounter {
             counter.refreshLabel(temp.count)
@@ -31,8 +31,8 @@ extension CommonTextVC {
         }
 
         if saveText {
-            let titleToStore: String = articleField.titleView.text
-            let bodyToStore: String = articleField.bodyView.text
+            let titleToStore: String = textField.titleView.text
+            let bodyToStore: String = textField.bodyView.text
 
             saveData(title: titleToStore, body: bodyToStore, type: "text")
         }

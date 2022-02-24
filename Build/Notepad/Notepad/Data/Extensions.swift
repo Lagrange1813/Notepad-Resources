@@ -102,7 +102,7 @@ func saveData(title: String, body: String, type: String) {
     let article = NSManagedObject(entity: entity, insertInto: managedContext)
     article.setValue(title, forKeyPath: "title")
     article.setValue(body, forKey: "body")
-    article.setValue("Text", forKey: "type")
+    article.setValue(type, forKey: "type")
 
     do { try managedContext.save()
     } catch let error as NSError {

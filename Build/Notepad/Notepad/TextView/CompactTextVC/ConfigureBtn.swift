@@ -7,7 +7,7 @@
 
 import UIKit
 
-extension ArticleTextVC {
+extension CompactTextVC {
     // MARK: - Title bar button configurment
 
     func configureTitleBarBtnAction() {
@@ -15,8 +15,10 @@ extension ArticleTextVC {
     }
 
     @objc func listBtnFunc() {
-        print("yes")
-//        splitViewController?.show(.supplementary)
+//        saveData(title: "Test", body: "iahuohihoifbuiauihuuifba", type: "MD")
+//        loadTheme()
+//        configureTextView()
+//        configureCounter()
     }
 
     // MARK: - Tool bar button configurment
@@ -56,8 +58,8 @@ extension ArticleTextVC {
     }
 
     func updateUnRedoButtons() {
-        guard let articleField = articleField else { return }
-        toolBar.undoBtn?.isEnabled = articleField.bodyView.undoManager!.canUndo || articleField.titleView.undoManager!.canUndo
-        toolBar.redoBtn?.isEnabled = articleField.bodyView.undoManager!.canRedo || articleField.titleView.undoManager!.canRedo
+        guard let textField = textField else { return }
+        toolBar.undoBtn?.isEnabled = textField.bodyView.undoManager!.canUndo || textField.titleView.undoManager!.canUndo
+        toolBar.redoBtn?.isEnabled = textField.bodyView.undoManager!.canRedo || textField.titleView.undoManager!.canRedo
     }
 }

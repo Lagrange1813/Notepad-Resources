@@ -10,23 +10,23 @@ import UIKit
 class MDPreviewVC: CommonTextVC {
     var titleString: String = "" {
         didSet {
-            guard let articleField = articleField else { return }
-            articleField.titleView.text = titleString
+            guard let textField = textField else { return }
+            textField.titleView.text = titleString
         }
     }
 
     var bodyString: String = "" {
         didSet {
-            guard let articleField = articleField else { return }
-            articleField.bodyView.text = bodyString
+            guard let textField = textField else { return }
+            textField.bodyView.text = bodyString
         }
     }
 
     var contentOffsetProportion: CGFloat = 0 {
         didSet {
-            guard let articleField = articleField else { return }
-            guard articleField.contentSize.height > 0 else { return }
-            articleField.contentOffset.y = articleField.contentSize.height * contentOffsetProportion
+            guard let textField = textField else { return }
+            guard textField.contentSize.height > 0 else { return }
+            textField.contentOffset.y = textField.contentSize.height * contentOffsetProportion
         }
     }
 
@@ -45,8 +45,8 @@ class MDPreviewVC: CommonTextVC {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        guard let articleField = articleField else { return }
-        articleField.titleView.isEditable = false
-        articleField.bodyView.isEditable = false
+        guard let textField = textField else { return }
+        textField.titleView.isEditable = false
+        textField.bodyView.isEditable = false
     }
 }
