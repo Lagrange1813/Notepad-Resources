@@ -21,8 +21,9 @@ class CommonTextVC: UIViewController {
     var showCounter: Bool = true
     var saveText: Bool = true
     
-    var articleField: PureTextView!
-    var mdField: MDTextView?
+    var textField: BaseTextView!
+    
+    var type: String!
     
     var articles: [NSManagedObject] = []
     var counter: WordCounter!
@@ -37,6 +38,13 @@ class CommonTextVC: UIViewController {
         super.viewWillAppear(animated)
 
         loadData()
+        loadType()
+        
+        switch type {
+        case "Text": textField = PureTextView(theme)
+        case "MD": textField = MDTextView(theme)
+        default: return
+        }
         
         configureTextView()
         if showCounter {
@@ -91,6 +99,12 @@ class CommonTextVC: UIViewController {
         } catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
         }
+    }
+    
+    func loadType() {
+        let index = articles.count
+        let text = articles[index - 1]
+        self.type = text.value(forKey: "type")
     }
     
     // MARK: - Configure components
