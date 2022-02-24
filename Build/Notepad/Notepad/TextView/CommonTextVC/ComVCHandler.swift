@@ -34,7 +34,7 @@ extension CommonTextVC {
             let titleToStore: String = articleField.titleView.text
             let bodyToStore: String = articleField.bodyView.text
 
-            saveData(title: titleToStore, body: bodyToStore)
+            saveData(title: titleToStore, body: bodyToStore, type: "text")
         }
     }
 }

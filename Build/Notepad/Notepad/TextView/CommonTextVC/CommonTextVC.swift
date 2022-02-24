@@ -22,6 +22,8 @@ class CommonTextVC: UIViewController {
     var saveText: Bool = true
     
     var articleField: PureTextView!
+    var mdField: MDTextView?
+    
     var articles: [NSManagedObject] = []
     var counter: WordCounter!
     

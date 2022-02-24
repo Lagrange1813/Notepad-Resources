@@ -52,7 +52,7 @@ class PureTextView: UIScrollView, UITextViewDelegate {
         bodyView.snp.makeConstraints { make in
             make.top.equalTo(titleView.snp.bottom)
             make.centerX.equalToSuperview()
-            make.width.equalTo(ScreenSize.width - 10)
+            make.width.equalTo(0)
         }
     }
     
