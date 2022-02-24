@@ -19,7 +19,7 @@ class MDDisplayVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        navigationController?.navigationBar.isHidden = true
+        navigationController?.navigationBar.isHidden = true
         splitViewController?.hide(.supplementary)
         
         currentTextVC = CurrentTextVC()

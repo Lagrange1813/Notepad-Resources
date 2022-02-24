@@ -93,7 +93,7 @@ enum ScreenSize {
     static let bottomPadding = window?.safeAreaInsets.bottom
 }
 
-func saveData(title: String, body: String) {
+func saveData(title: String, body: String, type: String) {
     guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
 
     let managedContext = appDelegate.persistentContainer.viewContext
@@ -102,6 +102,7 @@ func saveData(title: String, body: String) {
     let article = NSManagedObject(entity: entity, insertInto: managedContext)
     article.setValue(title, forKeyPath: "title")
     article.setValue(body, forKey: "body")
+    article.setValue("Text", forKey: "body")
 
     do { try managedContext.save()
     } catch let error as NSError {

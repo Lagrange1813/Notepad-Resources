@@ -3,7 +3,8 @@
     "editor": {
         "background": "#282828",
         "counterText": "#FFFFFF",
-        "counterBackground": "#99222222"
+        "counterBackground": "#99222222",
+        "frostedGlass": 1
     },
     "styles": {
         "title": {

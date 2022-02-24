@@ -20,26 +20,17 @@ class PureTextView: UIScrollView, UITextViewDelegate {
     init(_ theme: Theme) {
         super.init(frame: CGRect())
         self.theme = theme
-        configureBackView()
         configureTextView()
         customize()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        configureBackView()
         configureTextView()
         customize()
     }
     
-    func configureBackView() {
-        backgroundColor = theme.colorSet["background"]
-//        indicatorStyle = .black
-        alwaysBounceHorizontal = false
-    }
-    
     func configureTextView() {
-        
         titleView = CustomTextView()
         titleView.isScrollEnabled = false
         titleView.textAlignment = .center

@@ -25,16 +25,15 @@ class CommonTextVC: UIViewController {
     var articles: [NSManagedObject] = []
     var counter: WordCounter!
     
-    let theme: Theme = Theme.BuiltIn.TextLight.theme()
+    var theme: Theme!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = theme.colorSet["background"]
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+
         loadData()
         
         configureTextView()

@@ -8,28 +8,30 @@
 import UIKit
 
 public struct Theme {
-    
     public enum BuiltIn: String {
         case DefaultLight = "default-light"
         case DefaultDark = "default-dark"
         case TextLight = "text-light"
         case TextDark = "text-dark"
+        case TextLightFrostedGlass = "text-light-frosted-glass"
+        case TextDarkFrostedGlass = "text-dark-frosted-glass"
         case MarkdownLight = "markdown-light"
         case MarkdownDark = "markdown-dark"
         
         public func theme() -> Theme {
-            return Theme(self.rawValue)
+            return Theme(rawValue)
         }
     }
     
-    
     public var titleAttributes: [NSAttributedString.Key: Any]!
     public var bodyAttributes: [NSAttributedString.Key: Any]!
-    public var colorSet: [String:UIColor]!
+    public var colorSet: [String: UIColor]!
+    public var frostedGlass: Bool!
+    public var backgroundImage: UIImage?
     
     init(_ name: String) {
         let bundle = Bundle.main
-        let path: String
+        let path: String!
         
         if let path1 = bundle.path(forResource: "themes/\(name)", ofType: "json") { path = path1 }
         else if let path2 = bundle.path(forResource: name, ofType: "json") { path = path2 }
@@ -38,7 +40,7 @@ public struct Theme {
             assertionFailure()
             return
         }
-        
+
         if let data = convertFile(path) {
             configure(data)
         }
@@ -81,8 +83,14 @@ public struct Theme {
         colorSet = [
             "background": UIColor(hexString: attributes["background"] as! String),
             "counterText": UIColor(hexString: attributes["counterText"] as! String),
-            "counterBackground": UIColor(hexString: attributes["counterBackground"] as! String)
+            "counterBackground": UIColor(hexString: attributes["counterBackground"] as! String),
         ]
+        
+        frostedGlass = (attributes["frostedGlass"] as! Bool)
+        
+        if frostedGlass {
+            backgroundImage = UIImage(named: attributes["backgroundImage"] as! String)!
+        }
     }
     
     func parse(_ attributes: [String: AnyObject]) -> [NSAttributedString.Key: Any]? {
@@ -94,14 +102,14 @@ public struct Theme {
             style.paragraphSpacing = attributes["paragraphSpacing"] as! CGFloat
             style.firstLineHeadIndent = { () -> CGFloat in
                 if attributes["firstLineHeadIndent"] as! Bool {
-                    return 2*(attributes["size"] as! CGFloat)
+                    return 2 * (attributes["size"] as! CGFloat)
                 }
                 return 0
             }()
             style.alignment = { () -> NSTextAlignment in
                 switch attributes["alignment"] as! String {
                 case "center": return .center
-                case "justfied": return .justified
+                case "justified": return .justified
                 case "left": return .left
                 case "right": return .right
                 default: return .natural
@@ -114,7 +122,7 @@ public struct Theme {
             .font: UIFont(name: attributes["name"] as! String,
                           size: attributes["size"] as! CGFloat)!,
             .foregroundColor: UIColor(hexString: attributes["color"] as! String),
-            .paragraphStyle: paragraphStyle
+            .paragraphStyle: paragraphStyle,
         ]
         
         return stringAttributes
