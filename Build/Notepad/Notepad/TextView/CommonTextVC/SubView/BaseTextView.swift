@@ -36,16 +36,7 @@ class BaseTextView: UIScrollView {
     func configureTitleView() {}
 
     func configureBodyView() {
-        bodyView = CustomTextView()
-        bodyView.isScrollEnabled = false
-        bodyView.backgroundColor = .clear
-        addSubview(bodyView)
-
-        bodyView.snp.makeConstraints { make in
-            make.top.equalTo(titleView.snp.bottom)
-            make.centerX.equalToSuperview()
-            make.width.equalTo(0)
-        }
+        
     }
 
     func configureText(title: String, body: String) {
@@ -54,17 +45,12 @@ class BaseTextView: UIScrollView {
         customize()
     }
 
-    private func customize() {
+    func customize() {
         titleView.typingAttributes = theme.titleAttributes
         let titleString = NSMutableAttributedString(string: title ?? "请输入标题", attributes: theme.titleAttributes)
         titleView.attributedText = titleString
-
-        bodyView.typingAttributes = theme.bodyAttributes
-        let bodyString = NSMutableAttributedString(string: body ?? "请输入正文", attributes: theme.bodyAttributes)
-        bodyView.attributedText = bodyString
-
+        
         titleView.selectedRange = NSRange(location: 0, length: 0)
-        bodyView.selectedRange = NSRange(location: 0, length: 0)
     }
 
     func resize() {

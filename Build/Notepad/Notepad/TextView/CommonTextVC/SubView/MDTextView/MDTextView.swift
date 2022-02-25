@@ -8,6 +8,12 @@
 import UIKit
 
 class MDTextView: BaseTextView {
+//    override var bodyView: CustomTextView {
+//        get {
+//            return MDBodyView()
+//        }
+//    }
+    
     override func configureTitleView() {
         titleView = CustomTextView()
         titleView.isScrollEnabled = false
@@ -20,6 +26,28 @@ class MDTextView: BaseTextView {
             make.centerX.equalToSuperview()
             make.width.equalTo(0)
         }
+    }
+    
+    override func configureBodyView() {
+        bodyView = MDBodyView()
+        bodyView.isScrollEnabled = false
+        bodyView.backgroundColor = .clear
+        addSubview(bodyView)
+
+        bodyView.snp.makeConstraints { make in
+            make.top.equalTo(titleView.snp.bottom)
+            make.centerX.equalToSuperview()
+            make.width.equalTo(0)
+        }
+    }
+    
+    override func customize() {
+        super.customize()
+        bodyView.typingAttributes = theme.bodyAttributes
+        let bodyString = NSMutableAttributedString(string: body ?? "请输入正文", attributes: theme.bodyAttributes)
+        bodyView.attributedText = bodyString
+
+        bodyView.selectedRange = NSRange(location: 0, length: 0)
     }
     
     override func correctLayout(width: CGFloat) {
