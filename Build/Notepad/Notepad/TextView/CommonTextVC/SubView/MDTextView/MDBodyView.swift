@@ -9,17 +9,17 @@ import UIKit
 
 class MDBodyView: CustomTextView {
     var storage: CustomTextStorage = CustomTextStorage()
-//    var storage = NSTextStorage()
     
-    init() {
+    init(highlight: Highlight) {
         let layoutManager = NSLayoutManager()
-        let containerSize = CGSize(width: 400, height: CGFloat.greatestFiniteMagnitude)
+        let containerSize = CGSize(width: 0, height: CGFloat.greatestFiniteMagnitude)
         let container = NSTextContainer(size: containerSize)
         container.widthTracksTextView = true
 
         layoutManager.addTextContainer(container)
         storage.addLayoutManager(layoutManager)
         super.init(frame: CGRect(), textContainer: container)
+        self.storage.highlight = highlight
     }
     
     required init?(coder: NSCoder) {

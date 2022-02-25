@@ -2,16 +2,22 @@
     "name": "Simple",
     "styles": {
         "h1": {
-            "color": "#E55D51"
+            "font": "Courier-Bold",
+            "color": "#E55D51",
+            "size": 28
         },
         "h2": {
-            "color": "#E55D51"
+            "font": "Menlo-Bold",
+            "color": "#E55D51",
+            "size": 25
         },
         "h3": {
-            "color": "#E55D51"
+            "font": "Courier-Bold",
+            "color": "#E55D51",
+            "size": 12
         },
         "body": {
-            "font": "Menlo-Regular",
+            "font": "LXGW WenKai",
             "size": 15,
             "color": "#383A42"
         },

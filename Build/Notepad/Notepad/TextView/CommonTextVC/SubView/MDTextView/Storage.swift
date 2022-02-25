@@ -9,10 +9,17 @@ import UIKit
 
 class CustomTextStorage: NSTextStorage {
     public var highlight: Highlight? {
-        didSet {}
+        didSet {
+            let wholeRange = NSRange(location: 0, length: (self.string as NSString).length)
+
+            self.beginEditing()
+            self.applyStyles(wholeRange)
+            self.edited(.editedAttributes, range: wholeRange, changeInLength: 0)
+            self.endEditing()
+        }
     }
 
-    let testRegex = "^(\\#{3}(.*))$"
+//    let testRegex = "^(\\#{3}(.*))$"
     
     var backingStore = NSTextStorage()
 
@@ -74,13 +81,12 @@ class CustomTextStorage: NSTextStorage {
     }
     
     func applyStyles(_ range: NSRange) {
-        let style = Style(regex: testRegex.toRegex(), attributes: [.foregroundColor: UIColor.orange])
-        let styles = [style]
+        guard let highlight = highlight else { return }
 
         let backingString = backingStore.string
-//        backingStore.setAttributes(theme.body.attributes, range: range)
+        backingStore.setAttributes(highlight.body.attributes, range: range)
         
-        for (style) in styles {
+        for (style) in highlight.styles {
             style.regex.enumerateMatches(in: backingString, options: .withoutAnchoringBounds, range: range, using: { (match, flags, stop) in
                 guard let match = match else { return }
                 backingStore.addAttributes(style.attributes, range: match.range(at: 0))

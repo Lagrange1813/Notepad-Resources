@@ -17,12 +17,8 @@ public struct Highlight {
         }
     }
     
-    public var type: String!
-    public var titleAttributes: [NSAttributedString.Key: Any]!
-    public var bodyAttributes: [NSAttributedString.Key: Any]!
-    public var colorSet: [String: UIColor]!
-    public var frostedGlass: Bool!
-    public var backgroundImage: UIImage?
+    public var body: Style = Style()
+    public var styles: [Style] = []
     
     init(_ name: String) {
         let bundle = Bundle.main
@@ -59,13 +55,25 @@ public struct Highlight {
     }
     
     mutating func configure(_ data: [String: AnyObject]) {
-        if let textStyles = data["styles"] as? [String: AnyObject] {
-            if let titleStyles = textStyles["title"] as? [String: AnyObject] {
-                titleAttributes = parse(titleStyles)
+        if var allStyles = data["styles"] as? [String: AnyObject] {
+            if let bodyStyle = allStyles["body"] as? [String: AnyObject] {
+                if let bodyAttributes = parse(bodyStyle) {
+                    body = Style(item: .body, attributes: bodyAttributes)
+                }
             }
             
-            if let bodyStyles = textStyles["body"] as? [String: AnyObject] {
-                bodyAttributes = parse(bodyStyles)
+            allStyles.removeValue(forKey: "body")
+            
+            for (item, attributes) in allStyles {
+                if let parsedStyles = parse(attributes as! [String : AnyObject]) {
+                    if let regexString = attributes["regex"] as? String {
+                        let regex = regexString.toRegex()
+                        styles.append(Style(regex: regex, attributes: parsedStyles))
+                    }
+                    else {
+                        styles.append(Style(item: Item.unknown.from(string: item), attributes: parsedStyles))
+                    }
+                }
             }
         }
     }
@@ -73,34 +81,16 @@ public struct Highlight {
     func parse(_ attributes: [String: AnyObject]) -> [NSAttributedString.Key: Any]? {
         var stringAttributes: [NSAttributedString.Key: Any] = [:]
         
-        let paragraphStyle: NSMutableParagraphStyle = {
-            let style = NSMutableParagraphStyle()
-            style.lineSpacing = attributes["lineSpacing"] as! CGFloat
-            style.paragraphSpacing = attributes["paragraphSpacing"] as! CGFloat
-            style.firstLineHeadIndent = { () -> CGFloat in
-                if attributes["firstLineHeadIndent"] as! Bool {
-                    return 2 * (attributes["size"] as! CGFloat)
-                }
-                return 0
-            }()
-            style.alignment = { () -> NSTextAlignment in
-                switch attributes["alignment"] as! String {
-                case "center": return .center
-                case "justified": return .justified
-                case "left": return .left
-                case "right": return .right
-                default: return .natural
-                }
-            }()
-            return style
-        }()
+        if let color = attributes["color"] as? String {
+            stringAttributes[NSAttributedString.Key.foregroundColor] = UIColor(hexString: color)
+        }
         
-        stringAttributes = [
-            .font: UIFont(name: attributes["name"] as! String,
-                          size: attributes["size"] as! CGFloat) ?? UIFont.systemFont(ofSize: attributes["size"] as! CGFloat),
-            .foregroundColor: UIColor(hexString: attributes["color"] as! String),
-            .paragraphStyle: paragraphStyle,
-        ]
+        let fontSize: CGFloat = attributes["size"] as? CGFloat ?? 15
+        let fontName: String = attributes["font"] as? String ?? "LXGW WenKai"
+        
+        let font = UIFont(name: fontName, size: fontSize)
+
+        stringAttributes[NSAttributedString.Key.font] = font
         
         return stringAttributes
     }

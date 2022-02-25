@@ -8,7 +8,7 @@
 import UIKit
 
 class MDTextView: BaseTextView {
-    var mdBodyView = MDBodyView()
+    var mdBodyView = MDBodyView(highlight: Highlight.BuiltIn.SimpleLight.enable())
     override var bodyView: CustomTextView! {
         get {
             return mdBodyView

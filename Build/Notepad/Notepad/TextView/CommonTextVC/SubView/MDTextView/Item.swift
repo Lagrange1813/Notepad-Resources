@@ -27,4 +27,20 @@ public enum Item: String {
     func toRegex() -> NSRegularExpression {
         return self.rawValue.toRegex()
     }
+    
+    func from(string: String) -> Item {
+        switch string {
+        case "h1": return .h1
+        case "h2": return .h2
+        case "h3": return .h3
+        case "body": return .body
+        case "bold": return .bold
+        case "italic": return .italic
+        case "boldItalic": return .boldItalic
+        case "code": return .code
+        case "url": return .url
+        case "image": return .image
+        default: return .unknown
+        }
+    }
 }
