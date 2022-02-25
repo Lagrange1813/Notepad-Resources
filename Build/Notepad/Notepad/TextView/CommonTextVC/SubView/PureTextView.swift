@@ -22,19 +22,6 @@ class PureTextView: BaseTextView {
         }
     }
     
-    override func configureBodyView() {
-        bodyView = CustomTextView()
-        bodyView.isScrollEnabled = false
-        bodyView.backgroundColor = .clear
-        addSubview(bodyView)
-
-        bodyView.snp.makeConstraints { make in
-            make.top.equalTo(titleView.snp.bottom)
-            make.centerX.equalToSuperview()
-            make.width.equalTo(0)
-        }
-    }
-    
     override func customize() {
         super.customize()
         bodyView.typingAttributes = theme.bodyAttributes

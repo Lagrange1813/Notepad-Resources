@@ -8,11 +8,6 @@
 import UIKit
 
 class MDTextView: BaseTextView {
-//    override var bodyView: CustomTextView {
-//        get {
-//            return MDBodyView()
-//        }
-//    }
     
     override func configureTitleView() {
         titleView = CustomTextView()
@@ -23,19 +18,6 @@ class MDTextView: BaseTextView {
 
         titleView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(12)
-            make.centerX.equalToSuperview()
-            make.width.equalTo(0)
-        }
-    }
-    
-    override func configureBodyView() {
-        bodyView = MDBodyView()
-        bodyView.isScrollEnabled = false
-        bodyView.backgroundColor = .clear
-        addSubview(bodyView)
-
-        bodyView.snp.makeConstraints { make in
-            make.top.equalTo(titleView.snp.bottom)
             make.centerX.equalToSuperview()
             make.width.equalTo(0)
         }
