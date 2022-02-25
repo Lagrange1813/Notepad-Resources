@@ -2,21 +2,27 @@
     "name": "Simple",
     "styles": {
         "h1": {
-            "color": "#D36770"
+            "font": "LXGW WenKai Bold",
+            "color": "#D36770",
+            "size": 28
         },
         "h2": {
-            "color": "#D36770"
+            "font": "LXGW WenKai Bold",
+            "color": "#D36770",
+            "size": 25
         },
         "h3": {
-            "color": "#D36770"
+            "font": "LXGW WenKai Bold",
+            "color": "#D36770",
+            "size": 20
         },
         "body": {
-            "font": "Menlo-Regular",
+            "font": "LXGW WenKai",
             "size": 15,
             "color": "#A1A8B5"
         },
         "bold": {
-            "font": "Menlo-Bold",
+            "font": "LXGW WenKai Bold",
             "color": "#D19A66"
         },
         "italic": {

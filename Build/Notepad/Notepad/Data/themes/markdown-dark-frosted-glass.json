@@ -1,13 +1,12 @@
 {
-    "name": "Markdown Light",
+    "name": "Markdown Dark Frosted Galss",
     "editor": {
         "type": "MD",
-        "background": "#EDECE8",
+        "background": "#FFFFFF",
         "counterText": "#FFFFFF",
         "counterBackground": "#000000",
-        "frostedGlass": 0,
-        "doubleBarText":"#000000",
-        "doubleBarBackground":"#F7F6F4"
+        "frostedGlass": 1,
+        "backgroundImage": "Qerg85B7JDI"
     },
     "styles": {
         "title": {

@@ -93,7 +93,7 @@ class ToolBar: UIView {
         if theme.frostedGlass {
             configureBlur()
         } else {
-            backgroundColor = .white
+            backgroundColor = theme.colorSet["doubleBarBackground"]
         }
 
         configureScrollToolView()

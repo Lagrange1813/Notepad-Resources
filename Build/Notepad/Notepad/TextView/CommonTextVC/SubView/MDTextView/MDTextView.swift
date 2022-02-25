@@ -8,7 +8,8 @@
 import UIKit
 
 class MDTextView: BaseTextView {
-    var mdBodyView = MDBodyView(highlight: Highlight.BuiltIn.SimpleLight.enable())
+    var mdBodyView = MDBodyView()
+    
     override var bodyView: CustomTextView! {
         get {
             return mdBodyView
@@ -33,6 +34,10 @@ class MDTextView: BaseTextView {
     }
     
     override func configureBodyView() {
+        if !theme.frostedGlass {
+            mdBodyView.highlight = Highlight.BuiltIn.SimpleLight.enable()
+        }
+        
         bodyView.isScrollEnabled = false
         bodyView.backgroundColor = .clear
         addSubview(bodyView)
@@ -46,7 +51,7 @@ class MDTextView: BaseTextView {
     
     override func correctLayout(width: CGFloat) {
         titleView.snp.updateConstraints { make in
-            make.width.equalTo(width - 10)
+            make.width.equalTo(width - 30)
         }
         bodyView.snp.updateConstraints { make in
             make.width.equalTo(width - 10)

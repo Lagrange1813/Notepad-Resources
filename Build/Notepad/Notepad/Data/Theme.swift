@@ -17,6 +17,8 @@ public struct Theme {
         case TextDarkFrostedGlass = "text-dark-frosted-glass"
         case MarkdownLight = "markdown-light"
         case MarkdownDark = "markdown-dark"
+        case MarkdownLightFrostedGlass = "markdown-light-frosted-glass"
+        case MarkdownDarkFrostedGlass = "markdown-dark-frosted-glass"
         
         public func enable() -> Theme {
             return Theme(rawValue)
@@ -93,6 +95,9 @@ public struct Theme {
         
         if frostedGlass {
             backgroundImage = UIImage(named: attributes["backgroundImage"] as! String)!
+        } else {
+            colorSet.updateValue(UIColor(hexString: attributes["doubleBarText"] as! String), forKey: "doubleBarText")
+            colorSet.updateValue(UIColor(hexString: attributes["doubleBarBackground"] as! String), forKey: "doubleBarBackground")
         }
     }
     
