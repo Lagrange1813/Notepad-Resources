@@ -65,16 +65,16 @@ enum Font {
     case articleBody
 }
 
-func fetchFont(font: Font) -> UIFont {
-    switch font {
-    case .bookTitle:
-        return UIFont(name: "LXGW WenKai Bold", size: 16)!
-    case .articleTitle:
-        return UIFont(name: "LXGW WenKai Bold", size: 15)!
-    case .articleBody:
-        return UIFont(name: "LXGW WenKai", size: 13)!
-    }
-}
+//func fetchFont(font: Font) -> UIFont {
+//    switch font {
+//    case .bookTitle:
+//        return UIFont(name: "LXGW WenKai Bold", size: 16)!
+//    case .articleTitle:
+//        return UIFont(name: "LXGW WenKai Bold", size: 15)!
+//    case .articleBody:
+//        return UIFont(name: "LXGW WenKai", size: 13)!
+//    }
+//}
 
 let titleBarOffset: CGFloat = {
     if ScreenSize.topPadding! > 20 {

@@ -18,7 +18,7 @@ public struct Theme {
         case MarkdownLight = "markdown-light"
         case MarkdownDark = "markdown-dark"
         
-        public func theme() -> Theme {
+        public func enable() -> Theme {
             return Theme(rawValue)
         }
     }

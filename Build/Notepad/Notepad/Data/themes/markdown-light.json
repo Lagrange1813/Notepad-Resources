@@ -9,7 +9,7 @@
     },
     "styles": {
         "title": {
-            "name": "LXGW WenKai Bold",
+            "name": "LXGW WenKai Mono Bold",
             "size": 18,
             "color": "#000000",
             "lineSpacing": 0,
@@ -18,7 +18,7 @@
             "alignment": "left"
         },
         "body": {
-            "name": "LXGW WenKai",
+            "name": "LXGW WenKai Mono",
             "size": 15,
             "color": "#000000",
             "lineSpacing": 3,

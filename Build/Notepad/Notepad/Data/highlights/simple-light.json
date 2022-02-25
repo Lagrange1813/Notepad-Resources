@@ -1,0 +1,36 @@
+{
+    "name": "Simple",
+    "styles": {
+        "h1": {
+            "color": "#E55D51"
+        },
+        "h2": {
+            "color": "#E55D51"
+        },
+        "h3": {
+            "color": "#E55D51"
+        },
+        "body": {
+            "font": "Menlo-Regular",
+            "size": 15,
+            "color": "#383A42"
+        },
+        "bold": {
+            "font": "Menlo-Bold",
+            "color": "#A97A00"
+        },
+        "italic": {
+            "font": "Menlo-Italic",
+            "color": "#B742B3"
+        },
+        "code": {
+            "color": "#64AF66"
+        },
+        "url": {
+            "color": "#78aedd"
+        },
+        "image": {
+            "color": "#78aedd"
+        }
+    }
+}

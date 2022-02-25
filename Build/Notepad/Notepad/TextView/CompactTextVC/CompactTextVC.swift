@@ -38,8 +38,8 @@ class CompactTextVC: CommonTextVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        textTheme = Theme.BuiltIn.TextLightFrostedGlass.theme()
-        markdownTheme = Theme.BuiltIn.MarkdownLight.theme()
+        textTheme = Theme.BuiltIn.TextLightFrostedGlass.enable()
+        markdownTheme = Theme.BuiltIn.MarkdownLight.enable()
         loadTheme()
         
         appDelegate.supportAll = false
