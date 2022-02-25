@@ -5,7 +5,9 @@
         "background": "#282828",
         "counterText": "#FFFFFF",
         "counterBackground": "#99222222",
-        "frostedGlass": 0
+        "frostedGlass": 0,
+        "doubleBarText":"#000000",
+        "doubleBarBackground":"#F7F6F4"
     },
     "styles": {
         "title": {

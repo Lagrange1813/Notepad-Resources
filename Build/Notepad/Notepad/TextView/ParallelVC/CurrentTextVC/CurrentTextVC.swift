@@ -13,6 +13,10 @@ class CurrentTextVC: CommonTextVC {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        textTheme = Theme.BuiltIn.TextLightFrostedGlass.enable()
+        markdownTheme = Theme.BuiltIn.MarkdownLight.enable()
+        loadTheme()
+        
         navigationController?.navigationBar.isHidden = true
 
         barHeight = 0
