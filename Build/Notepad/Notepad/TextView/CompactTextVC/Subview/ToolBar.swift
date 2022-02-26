@@ -214,6 +214,7 @@ class ToolBar: UIView {
             shortcutBtn.setTitleColor(.systemGray, for: .highlighted)
             shortcutBtn.titleLabel!.font = UIFont(name: "LXGW WenKai", size: 15)
             shortcutBtn.argument = shortcutBarItem[0]
+            shortcutBtn.retreat = 1
 
             scrollToolView.addSubview(shortcutBtn)
             shortcutBtn.snp.makeConstraints { make in
@@ -232,6 +233,7 @@ class ToolBar: UIView {
             shortcutBtn.setTitleColor(.systemGray, for: .highlighted)
             shortcutBtn.titleLabel!.font = UIFont(name: "LXGW WenKai", size: 15)
             shortcutBtn.argument = shortcutBarItem[1]
+            shortcutBtn.retreat = 1
 
             scrollToolView.addSubview(shortcutBtn)
             shortcutBtn.snp.makeConstraints { make in
@@ -250,6 +252,7 @@ class ToolBar: UIView {
             shortcutBtn.setTitleColor(.systemGray, for: .highlighted)
             shortcutBtn.titleLabel!.font = UIFont(name: "LXGW WenKai", size: 15)
             shortcutBtn.argument = shortcutBarItem[2]
+            shortcutBtn.retreat = 1
 
             scrollToolView.addSubview(shortcutBtn)
             shortcutBtn.snp.makeConstraints { make in

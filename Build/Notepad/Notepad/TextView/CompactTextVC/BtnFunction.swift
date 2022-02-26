@@ -190,6 +190,8 @@ extension CompactTextVC {
 
     @objc func shortcutFunc(sender: CustomBtn, forEvent: UIEvent) {
         insertFromCursor(sender: sender, forEvent: forEvent)
+        
+        retreat = sender.retreat!
 
         var selectedView: CustomTextView?
 
@@ -200,8 +202,21 @@ extension CompactTextVC {
         }
         if let selectedView = selectedView {
             let location = selectedView.selectedRange.location
-            selectedView.selectedRange = NSRange(location: location - 1, length: 0)
+            selectedView.selectedRange = NSRange(location: location - sender.retreat!, length: 0)
             isShortcutBtnInputing = true
+            
+            let cursorRange = selectedView.selectedRange
+            let string = "请输字"
+            let tipString = NSMutableAttributedString(string: string)
+            selectedView.setAttributedMarkedText(tipString, selectedRange: cursorRange)
+            
+            let allString = selectedView.attributedText.string
+            let startIndex = allString.index(allString.startIndex, offsetBy: cursorRange.location)
+            let range: Range = startIndex..<allString.endIndex
+            let stringToFind = allString[range]
+            let index = stringToFind.firstIndex(of: "）")
+            let offset: Int = index!.utf16Offset(in: stringToFind)
+            print(offset)
         }
     }
 
@@ -257,11 +272,18 @@ extension CompactTextVC {
         }
     }
 
+    
+    
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        
+        if text == "" {
+            isShortcutBtnInputing = false
+        }
+        
         if textView == textField.bodyView {
             if text == "\n", isShortcutBtnInputing, bodyViewUnderEditing {
                 let location = textField.bodyView.selectedRange.location
-                textField.bodyView.selectedRange = NSRange(location: location + 1, length: 0)
+                textField.bodyView.selectedRange = NSRange(location: location + retreat, length: 0)
                 isShortcutBtnInputing = false
 
                 return false
@@ -272,7 +294,7 @@ extension CompactTextVC {
             if text == "\n" {
                 if isShortcutBtnInputing, titleViewUnderEditing {
                     let location = textField.titleView.selectedRange.location
-                    textField.titleView.selectedRange = NSRange(location: location + 1, length: 0)
+                    textField.titleView.selectedRange = NSRange(location: location + retreat, length: 0)
                     isShortcutBtnInputing = false
                 } else {
                     textField.bodyView.becomeFirstResponder()

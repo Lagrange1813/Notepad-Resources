@@ -9,8 +9,6 @@ import CoreData
 import Foundation
 import UIKit
 
-var hideSupplementary = false
-
 extension UIColor {
     convenience init(hexString: String) {
         let hex = hexString.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)

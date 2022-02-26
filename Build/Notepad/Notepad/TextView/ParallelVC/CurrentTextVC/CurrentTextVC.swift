@@ -17,7 +17,7 @@ class CurrentTextVC: CommonTextVC {
         markdownTheme = Theme.BuiltIn.MarkdownLight.enable()
         loadTheme()
         
-        navigationController?.navigationBar.isHidden = true
+//        navigationController?.navigationBar.isHidden = true
 
         barHeight = 0
         topPadding = 0
@@ -25,11 +25,11 @@ class CurrentTextVC: CommonTextVC {
         
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        guard let textField = textField else { return }
-        parallelDisplayVC.synchronizedTitle = textField.title!
-        parallelDisplayVC.synchronizedBody = textField.body!
-    }
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        
+//        guard let textField = textField else { return }
+//        parallelDisplayVC.synchronizedTitle = textField.title!
+//        parallelDisplayVC.synchronizedBody = textField.body!
+//    }
 }

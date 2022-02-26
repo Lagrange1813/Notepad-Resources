@@ -9,6 +9,7 @@ import UIKit
 
 class CustomBtn: UIButton {
     var argument: String?
+    var retreat: Int?
 
     override var isHighlighted: Bool {
         didSet {

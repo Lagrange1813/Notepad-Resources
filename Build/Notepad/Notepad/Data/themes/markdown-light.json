@@ -23,8 +23,8 @@
             "name": "LXGW WenKai",
             "size": 15,
             "color": "#000000",
-            "lineSpacing": 3,
-            "paragraphSpacing": 3,
+            "lineSpacing": 0,
+            "paragraphSpacing": 0,
             "firstLineHeadIndent": 0,
             "alignment": "left"
         }

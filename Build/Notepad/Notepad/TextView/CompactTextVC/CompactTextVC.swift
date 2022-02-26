@@ -26,6 +26,9 @@ class CompactTextVC: CommonTextVC {
     var bodyViewUnderEditing = false
 
     var isShortcutBtnInputing = false
+    var retreat: Int = 0
+//    var prefix = NSRange(location: 0, length: 0)
+    var suffix = NSRange(location: 0, length: 0)
 
     var isMenuExpanded = false
     var isKeyboardUsing = false

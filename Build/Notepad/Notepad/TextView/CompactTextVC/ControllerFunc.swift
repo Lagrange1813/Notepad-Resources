@@ -59,8 +59,10 @@ extension CompactTextVC {
     }
     
     func restart() {
+        guard let textField = textField else { return }
+        
         textField.removeFromSuperview()
-        textField = nil
+        self.textField = nil
         counter.removeFromSuperview()
         counter = nil
         titleBar.removeFromSuperview()

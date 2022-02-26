@@ -8,6 +8,15 @@
 import UIKit
 
 class MDBodyView: CustomTextView {
+    var substitute = false
+    override var custom: Bool {
+        get {
+            return substitute
+        }
+        set {
+            substitute = newValue
+        }
+    }
     var storage: CustomTextStorage = CustomTextStorage()
     var highlight: Highlight? {
         didSet {

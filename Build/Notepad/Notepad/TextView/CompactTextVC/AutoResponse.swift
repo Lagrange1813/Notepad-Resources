@@ -27,11 +27,9 @@ extension CompactTextVC {
         }
     }
 
-    func textViewDidChangeSelection(_ textView: UITextView) {
-        if isShortcutBtnInputing {
-            isShortcutBtnInputing = false
-        }
-    }
+//    func textViewDidChangeSelection(_ textView: UITextView) {
+//        print("Selection")
+//    }
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if !fullScreen {

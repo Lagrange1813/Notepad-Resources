@@ -32,6 +32,9 @@
         "code": {
             "color": "#751410"
         },
+        "codeBlock": {
+            "color": "#A73A2A"
+        },
         "url": {
             "color": "#36698D"
         },
