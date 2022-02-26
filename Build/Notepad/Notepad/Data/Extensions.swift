@@ -76,6 +76,7 @@ enum Font {
 //    }
 //}
 
+/// 若 topPadding 大于 20， 返回 0 ，否则返回 10
 let titleBarOffset: CGFloat = {
     if ScreenSize.topPadding! > 20 {
         return 0

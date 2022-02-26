@@ -19,6 +19,8 @@ class CompactTextVC: CommonTextVC {
     var moveDistance: CGFloat?
 
     var trackingView: String?
+    
+    var isTitleBarHidden: Bool = false
 
     var titleViewUnderEditing = false
     var bodyViewUnderEditing = false

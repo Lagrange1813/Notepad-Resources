@@ -39,11 +39,15 @@ extension CompactTextVC {
             let velocity = pan.velocity(in: scrollView).y
 
             if velocity < -200 {
-                hideTitleBar()
+                if !isTitleBarHidden {
+                    hideTitleBar()
+                    isTitleBarHidden = true
+                }
 //                navigationController?.prefersStatusBarHidden = true
 
             } else if velocity > 200 {
                 showTitleBar()
+                isTitleBarHidden = false
             }
 
             if textField.contentOffset.y <= -(TitleBar.height() + titleBarOffset) + 10 {

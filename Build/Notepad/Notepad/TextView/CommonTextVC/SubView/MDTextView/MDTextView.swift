@@ -35,7 +35,8 @@ class MDTextView: BaseTextView {
     
     override func configureBodyView() {
         if !theme.frostedGlass {
-            mdBodyView.highlight = Highlight.BuiltIn.SimpleLight.enable()
+            guard let highlight = theme.highlight else { return }
+            mdBodyView.highlight = highlight
         }
         
         bodyView.isScrollEnabled = false

@@ -28,5 +28,6 @@
             "firstLineHeadIndent": 1,
             "alignment": "left"
         }
-    }
+    },
+    "highlight": "simple-dark"
 }

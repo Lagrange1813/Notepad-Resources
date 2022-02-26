@@ -17,8 +17,8 @@ extension CompactTextVC {
     }
 
     func hideTitleBar() {
-        UIView.animate(withDuration: 0.7, animations: {
-            self.titleBar.frame.origin.y -= (TitleBar.height() + titleBarOffset + 5)
+        UIView.animate(withDuration: 0.5, animations: {
+            self.titleBar.frame.origin.y -= (TitleBar.height() + titleBarOffset + 5 + ScreenSize.topPadding!)
         })
     }
 

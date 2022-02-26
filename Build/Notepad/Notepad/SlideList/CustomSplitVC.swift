@@ -18,7 +18,7 @@ class CustomSplitVC: UISplitViewController, UISplitViewControllerDelegate {
 
         let bookListVC = BookListVC()
         let articleListVC = ArticleListVC()
-        let mdDiplayVC = MDDisplayVC()
+        let mdDiplayVC = ParallelDisplayVC()
 
         let articleListNav = UINavigationController(rootViewController: articleListVC)
         let mdDisplayNav = UINavigationController(rootViewController: mdDiplayVC)

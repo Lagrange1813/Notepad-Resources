@@ -11,6 +11,15 @@
         }
       },
       {
+        "package": "MarkdownView",
+        "repositoryURL": "https://gitee.com/lagrange1813/MarkdownView.git",
+        "state": {
+          "branch": null,
+          "revision": "5e62a27f1002cd63c350ef1a4c640ddcd1f1ed48",
+          "version": "1.9.1"
+        }
+      },
+      {
         "package": "SnapKit",
         "repositoryURL": "git@gitee.com:lagrange1813/SnapKit.git",
         "state": {

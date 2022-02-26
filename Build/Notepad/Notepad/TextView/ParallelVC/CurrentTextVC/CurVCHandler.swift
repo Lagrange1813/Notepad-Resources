@@ -9,13 +9,13 @@ import UIKit
 
 extension CurrentTextVC {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        mdDisplayVC.synchronizedProportion = textField.contentOffset.y/max(textField.contentSize.height, 30)
+        parallelDisplayVC.synchronizedProportion = textField.contentOffset.y/max(textField.contentSize.height, 30)
     }
     
     override func textViewDidChange(_ textView: UITextView) {
         super.textViewDidChange(textView)
         
-        mdDisplayVC.synchronizedTitle = textField.titleView.text
-        mdDisplayVC.synchronizedBody = textField.bodyView.text
+        parallelDisplayVC.synchronizedTitle = textField.titleView.text
+        parallelDisplayVC.synchronizedBody = textField.bodyView.text
     }
 }

@@ -8,7 +8,7 @@
 import UIKit
 
 class CurrentTextVC: CommonTextVC {
-    weak var mdDisplayVC: MDDisplayVC!
+    weak var parallelDisplayVC: ParallelDisplayVC!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +29,7 @@ class CurrentTextVC: CommonTextVC {
         super.viewWillAppear(animated)
         
         guard let textField = textField else { return }
-        mdDisplayVC.synchronizedTitle = textField.title!
-        mdDisplayVC.synchronizedBody = textField.body!
+        parallelDisplayVC.synchronizedTitle = textField.title!
+        parallelDisplayVC.synchronizedBody = textField.body!
     }
 }

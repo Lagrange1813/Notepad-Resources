@@ -8,7 +8,7 @@
 import SnapKit
 import UIKit
 
-class MDDisplayVC: UIViewController {
+class ParallelDisplayVC: UIViewController {
     var currentTextVC: CurrentTextVC!
     var mdPreviewVC: MDPreviewVC!
 
@@ -26,7 +26,7 @@ class MDDisplayVC: UIViewController {
         currentTextVC.showCounter = false
         addChild(currentTextVC)
         view.addSubview(currentTextVC.view)
-        currentTextVC.mdDisplayVC = self
+        currentTextVC.parallelDisplayVC = self
         currentTextVC.view.snp.makeConstraints { make in
             make.top.equalToSuperview()
             make.leading.bottom.equalToSuperview()
