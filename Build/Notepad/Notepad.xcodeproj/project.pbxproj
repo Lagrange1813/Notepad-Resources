@@ -12,6 +12,8 @@
 		7A12F1B127C8A29500EB67CD /* LXGWWenKaiMono-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7A12F1AC27C8A22500EB67CD /* LXGWWenKaiMono-Regular.ttf */; };
 		7A12F1B427C8A8DB00EB67CD /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A12F1B327C8A8DB00EB67CD /* Item.swift */; };
 		7A12F1BD27C9D2AA00EB67CD /* MarkdownView in Frameworks */ = {isa = PBXBuildFile; productRef = 7A12F1BC27C9D2AA00EB67CD /* MarkdownView */; };
+		7A12F1CC27CB63A500EB67CD /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 7A12F1CB27CB63A500EB67CD /* RxCocoa */; };
+		7A12F1CE27CB63A500EB67CD /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 7A12F1CD27CB63A500EB67CD /* RxSwift */; };
 		7A172DE427C096A700568433 /* CurrentTextVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A172DE327C096A700568433 /* CurrentTextVC.swift */; };
 		7A2A5F0227C747C300C399F8 /* toolbar in Resources */ = {isa = PBXBuildFile; fileRef = 7A2A5F0127C747C300C399F8 /* toolbar */; };
 		7A2A5F0427C74B2D00C399F8 /* BtnFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2A5F0327C74B2D00C399F8 /* BtnFunction.swift */; };
@@ -142,6 +144,8 @@
 			files = (
 				7ADEC0D727C3732A006E6DD5 /* Down in Frameworks */,
 				7ADEC0D427C37321006E6DD5 /* SnapKit in Frameworks */,
+				7A12F1CE27CB63A500EB67CD /* RxSwift in Frameworks */,
+				7A12F1CC27CB63A500EB67CD /* RxCocoa in Frameworks */,
 				7A12F1BD27C9D2AA00EB67CD /* MarkdownView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -379,6 +383,8 @@
 				7ADEC0D327C37321006E6DD5 /* SnapKit */,
 				7ADEC0D627C3732A006E6DD5 /* Down */,
 				7A12F1BC27C9D2AA00EB67CD /* MarkdownView */,
+				7A12F1CB27CB63A500EB67CD /* RxCocoa */,
+				7A12F1CD27CB63A500EB67CD /* RxSwift */,
 			);
 			productName = Notepad;
 			productReference = 7AC3213B27AB9148008987B7 /* Notepad.app */;
@@ -456,6 +462,7 @@
 				7ADEC0D227C37321006E6DD5 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				7ADEC0D527C3732A006E6DD5 /* XCRemoteSwiftPackageReference "Down" */,
 				7A12F1BB27C9D2AA00EB67CD /* XCRemoteSwiftPackageReference "MarkdownView" */,
+				7A12F1CA27CB63A500EB67CD /* XCRemoteSwiftPackageReference "RxSwift" */,
 			);
 			productRefGroup = 7AC3213C27AB9148008987B7 /* Products */;
 			projectDirPath = "";
@@ -898,6 +905,14 @@
 				version = 1.9.1;
 			};
 		};
+		7A12F1CA27CB63A500EB67CD /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://gitee.com/lagrange1813/RxSwift.git";
+			requirement = {
+				kind = exactVersion;
+				version = 6.5.0;
+			};
+		};
 		7ADEC0D227C37321006E6DD5 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "git@gitee.com:lagrange1813/SnapKit.git";
@@ -921,6 +936,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 7A12F1BB27C9D2AA00EB67CD /* XCRemoteSwiftPackageReference "MarkdownView" */;
 			productName = MarkdownView;
+		};
+		7A12F1CB27CB63A500EB67CD /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7A12F1CA27CB63A500EB67CD /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		7A12F1CD27CB63A500EB67CD /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7A12F1CA27CB63A500EB67CD /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
 		};
 		7ADEC0D327C37321006E6DD5 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;

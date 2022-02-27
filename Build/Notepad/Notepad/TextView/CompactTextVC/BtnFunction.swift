@@ -206,12 +206,12 @@ extension CompactTextVC {
             isShortcutBtnInputing = true
             
             let cursorRange = selectedView.selectedRange
-            let string = "请输字"
+            let string = "请输入文字"
             let tipString = NSMutableAttributedString(string: string)
             selectedView.setAttributedMarkedText(tipString, selectedRange: cursorRange)
             
             let allString = selectedView.attributedText.string
-            let startIndex = allString.index(allString.startIndex, offsetBy: cursorRange.location)
+            let startIndex = allString.index(allString.startIndex, offsetBy: cursorRange.location - 1)
             let range: Range = startIndex..<allString.endIndex
             let stringToFind = allString[range]
             let index = stringToFind.firstIndex(of: "）")
