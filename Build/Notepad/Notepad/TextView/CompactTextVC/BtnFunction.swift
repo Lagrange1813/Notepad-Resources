@@ -185,6 +185,8 @@ extension CompactTextVC {
         titleViewUnderEditing = false
         bodyViewUnderEditing = false
     }
+    
+    
 
     // MARK: - Tool bar scrollview button function configurment
 
