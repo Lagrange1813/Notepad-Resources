@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7A05EDD227CCC400000B5BA3 /* MDPreHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A05EDD127CCC400000B5BA3 /* MDPreHandler.swift */; };
+		7A05EDD427CCC50B000B5BA3 /* MDSubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A05EDD327CCC50B000B5BA3 /* MDSubView.swift */; };
 		7A12F1AE27C8A28600EB67CD /* LXGWWenKai-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7AA89BBB27C8A1C200E77749 /* LXGWWenKai-Regular.ttf */; };
 		7A12F1AF27C8A28B00EB67CD /* LXGWWenKaiMono-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7A12F1AA27C8A21F00EB67CD /* LXGWWenKaiMono-Bold.ttf */; };
 		7A12F1B127C8A29500EB67CD /* LXGWWenKaiMono-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7A12F1AC27C8A22500EB67CD /* LXGWWenKaiMono-Regular.ttf */; };
@@ -81,6 +83,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7A05EDD127CCC400000B5BA3 /* MDPreHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDPreHandler.swift; sourceTree = "<group>"; };
+		7A05EDD327CCC50B000B5BA3 /* MDSubView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDSubView.swift; sourceTree = "<group>"; };
 		7A12F1AA27C8A21F00EB67CD /* LXGWWenKaiMono-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "LXGWWenKaiMono-Bold.ttf"; sourceTree = "<group>"; };
 		7A12F1AC27C8A22500EB67CD /* LXGWWenKaiMono-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "LXGWWenKaiMono-Regular.ttf"; sourceTree = "<group>"; };
 		7A12F1B327C8A8DB00EB67CD /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
@@ -326,7 +330,7 @@
 			children = (
 				7AA89BB827C8A1A900E77749 /* Font */,
 				7A172DE727C0C77E00568433 /* CommonTextVC */,
-				7ADEC0D827C3739F006E6DD5 /* ParallelVC */,
+				7ADEC0D827C3739F006E6DD5 /* ParallelDisplayVC */,
 				7A172DE527C096CF00568433 /* CompactTextVC */,
 			);
 			path = TextView;
@@ -345,20 +349,22 @@
 			path = Data;
 			sourceTree = "<group>";
 		};
-		7ADEC0D827C3739F006E6DD5 /* ParallelVC */ = {
+		7ADEC0D827C3739F006E6DD5 /* ParallelDisplayVC */ = {
 			isa = PBXGroup;
 			children = (
 				7ADEC0DB27C37496006E6DD5 /* ParallelDisplayVC.swift */,
 				7A172DE627C0AE3B00568433 /* CurrentTextVC */,
 				7ADEC0DD27C377A4006E6DD5 /* MDPreviewVC */,
 			);
-			path = ParallelVC;
+			path = ParallelDisplayVC;
 			sourceTree = "<group>";
 		};
 		7ADEC0DD27C377A4006E6DD5 /* MDPreviewVC */ = {
 			isa = PBXGroup;
 			children = (
 				7ADEC0DE27C377E9006E6DD5 /* MDPreviewVC.swift */,
+				7A05EDD127CCC400000B5BA3 /* MDPreHandler.swift */,
+				7A05EDD327CCC50B000B5BA3 /* MDSubView.swift */,
 			);
 			path = MDPreviewVC;
 			sourceTree = "<group>";
@@ -528,6 +534,7 @@
 				7A2A5F0427C74B2D00C399F8 /* BtnFunction.swift in Sources */,
 				7A12F1B427C8A8DB00EB67CD /* Item.swift in Sources */,
 				7A443A1227B688C900A72F76 /* ControllerFunc.swift in Sources */,
+				7A05EDD227CCC400000B5BA3 /* MDPreHandler.swift in Sources */,
 				7AB9F1F727AD1FF300A64FDA /* SelectionRect.swift in Sources */,
 				7A758BC127BAAB5C00813C08 /* BookListVC.swift in Sources */,
 				7AC3213F27AB9148008987B7 /* AppDelegate.swift in Sources */,
@@ -547,6 +554,7 @@
 				7A758BBC27BAAAE700813C08 /* CustomSplitVC.swift in Sources */,
 				7AC3217527AB9271008987B7 /* CustomBtn.swift in Sources */,
 				7AC3218A27AB9371008987B7 /* Extensions.swift in Sources */,
+				7A05EDD427CCC50B000B5BA3 /* MDSubView.swift in Sources */,
 				7A2A5F0627C7594C00C399F8 /* MDTextView.swift in Sources */,
 				7ADEC10827C5C6E3006E6DD5 /* Theme.swift in Sources */,
 				7A172DE427C096A700568433 /* CurrentTextVC.swift in Sources */,
