@@ -27,7 +27,7 @@ extension CompactTextVC {
         }
     }
 
-    func textViewDidChangeSelection(_ textView: UITextView) {
+//    func textViewDidChangeSelection(_ textView: UITextView) {
 //        var selectedView: CustomTextView?
 //        
 //        if bodyViewUnderEditing {
@@ -47,7 +47,7 @@ extension CompactTextVC {
 //            let offset: Int = index?.utf16Offset(in: stringToFind) ?? 1000
 //            print(offset)
 //        }
-    }
+//    }
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if !fullScreen {
@@ -79,9 +79,6 @@ extension CompactTextVC {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(handleKeyboardWillHide),
                                                name: UIResponder.keyboardWillHideNotification, object: nil)
-//        NotificationCenter.default.addObserver(self,
-//                                               selector: #selector(handleKeyboardWillHide),
-//                                               name: UIResponder., object: nil)
     }
 
     @objc func handleKeyboardWillShow(notification: NSNotification) {

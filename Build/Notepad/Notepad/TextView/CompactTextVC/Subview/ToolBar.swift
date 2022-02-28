@@ -32,6 +32,7 @@ class ToolBar: UIView {
 
     var undoBtn: CustomBtn!
     var pasteBtn: CustomBtn!
+    var touchPadBtn: CustomBtn!
     var downBtn: CustomBtn!
 
     var redoBtn: CustomBtn?
@@ -142,7 +143,7 @@ class ToolBar: UIView {
 
     func configureScrollToolView() {
         scrollToolView = { () -> CustomScrollView in
-            let view = CustomScrollView(frame: CGRect(x: height * 3 + 2, y: 0, width: width - height * 4 - 2.0, height: height))
+            let view = CustomScrollView(frame: CGRect(x: height * 4 + 2, y: 0, width: width - height * 5 - 2.0, height: height))
             view.alpha = 1
             view.contentSize = CGSize(width: 10 * height, height: height)
             view.canCancelContentTouches = true
@@ -154,7 +155,7 @@ class ToolBar: UIView {
     }
 
     func updateScrollToolView() {
-        scrollToolView.frame.size.width = width - height * 4 - 2.0
+        scrollToolView.frame.size.width = width - height * 5 - 2.0
     }
 
     func configureFixedButton() {
@@ -182,6 +183,14 @@ class ToolBar: UIView {
 
             return button
         }()
+        
+        touchPadBtn = { () -> CustomBtn in
+            let button = CustomBtn(frame: CGRect(x: height / 2 - btnLength / 2 + height * 3 + 2, y: height / 2 - btnLength / 2, width: btnLength, height: btnLength))
+            button.setImage(UIImage(systemName: "ipad.landscape"), for: .normal)
+            addSubview(button)
+
+            return button
+        }()
 
         downBtn = { () -> CustomBtn in
             let button = CustomBtn()
@@ -198,7 +207,7 @@ class ToolBar: UIView {
         }()
 
         let dividingLineHeight: CGFloat = 26
-        let dividingLine = UIView(frame: CGRect(x: height * 3 + 1, y: height / 2 - dividingLineHeight / 2, width: 1, height: dividingLineHeight))
+        let dividingLine = UIView(frame: CGRect(x: height * 4 + 1, y: height / 2 - dividingLineHeight / 2, width: 1, height: dividingLineHeight))
         dividingLine.backgroundColor = .gray
         dividingLine.alpha = 0.4
         addSubview(dividingLine)

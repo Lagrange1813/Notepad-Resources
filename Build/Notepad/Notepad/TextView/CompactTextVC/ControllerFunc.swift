@@ -59,20 +59,7 @@ extension CompactTextVC {
     }
     
     func restart() {
-        guard let textField = textField else { return }
-        
-        textField.removeFromSuperview()
-        self.textField = nil
-        counter.removeFromSuperview()
-        counter = nil
-        titleBar.removeFromSuperview()
-        titleBar = nil
-        toolBar.removeFromSuperview()
-        toolBar = nil
-        image?.removeFromSuperview()
-        image = nil
-        backgroundSupport?.removeFromSuperview()
-        backgroundSupport = nil
+        remove()
         
         loadData()
         loadType()
@@ -95,5 +82,22 @@ extension CompactTextVC {
 
         configureTitleBarBtnAction()
         configureToolBarBtnAction()
+    }
+    
+    func remove() {
+        guard let textField = textField else { return }
+        
+        textField.removeFromSuperview()
+        self.textField = nil
+        counter.removeFromSuperview()
+        counter = nil
+        titleBar.removeFromSuperview()
+        titleBar = nil
+        toolBar.removeFromSuperview()
+        toolBar = nil
+        image?.removeFromSuperview()
+        image = nil
+        backgroundSupport?.removeFromSuperview()
+        backgroundSupport = nil
     }
 }

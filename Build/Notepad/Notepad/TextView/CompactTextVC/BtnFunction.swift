@@ -210,13 +210,13 @@ extension CompactTextVC {
             let tipString = NSMutableAttributedString(string: string)
             selectedView.setAttributedMarkedText(tipString, selectedRange: cursorRange)
             
-            let allString = selectedView.attributedText.string
-            let startIndex = allString.index(allString.startIndex, offsetBy: cursorRange.location - 1)
-            let range: Range = startIndex..<allString.endIndex
-            let stringToFind = allString[range]
-            let index = stringToFind.firstIndex(of: "）")
-            let offset: Int = index!.utf16Offset(in: stringToFind)
-            print(offset)
+//            let allString = selectedView.attributedText.string
+//            let startIndex = allString.index(allString.startIndex, offsetBy: cursorRange.location - 1)
+//            let range: Range = startIndex..<allString.endIndex
+//            let stringToFind = allString[range]
+//            let index = stringToFind.firstIndex(of: "）")
+//            let offset: Int = index!.utf16Offset(in: stringToFind)
+//            print(offset)
         }
     }
 
@@ -276,9 +276,9 @@ extension CompactTextVC {
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         
-        if text == "" {
-            isShortcutBtnInputing = false
-        }
+//        if text == "" {
+//            isShortcutBtnInputing = false
+//        }
         
         if textView == textField.bodyView {
             if text == "\n", isShortcutBtnInputing, bodyViewUnderEditing {

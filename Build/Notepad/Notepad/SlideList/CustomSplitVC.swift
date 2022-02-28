@@ -14,20 +14,28 @@ class CustomSplitVC: UISplitViewController, UISplitViewControllerDelegate {
         super.viewDidLoad()
 
         self.delegate = self
+        self.restorationIdentifier = "MainView"
         view.backgroundColor = .white
         self.preferredDisplayMode = .twoBesideSecondary
         self.preferredSplitBehavior = .tile
 
         let bookListVC = BookListVC()
         let articleListVC = ArticleListVC()
-        let ParallelDisplayVC = ParallelDisplayVC()
+        let parallelDisplayVC = ParallelDisplayVC()
 
         let articleListNav = UINavigationController(rootViewController: articleListVC)
-        let ParallelDisplayNav = UINavigationController(rootViewController: ParallelDisplayVC)
+        let parallelDisplayNav = UINavigationController(rootViewController: parallelDisplayVC)
+        
+//        bookListVC.restorationIdentifier = "BookListView"
+//        articleListVC.restorationIdentifier = "ArticleListView"
+//        parallelDisplayVC.restorationIdentifier = "ParallelView"
+//        
+//        articleListNav.restorationIdentifier = "ArticleListNav"
+//        parallelDisplayNav.restorationIdentifier = "ParallelNav"
 
         setViewController(bookListVC, for: .primary)
         setViewController(articleListNav, for: .supplementary)
-        setViewController(ParallelDisplayNav, for: .secondary)
+        setViewController(parallelDisplayNav, for: .secondary)
 
         preferredPrimaryColumnWidthFraction = 1/3
         preferredSupplementaryColumnWidthFraction = 1/3
@@ -39,33 +47,15 @@ class CustomSplitVC: UISplitViewController, UISplitViewControllerDelegate {
 //        view.addSubview(test)
 
         compactText = CompactTextVC()
+        compactText.restorationIdentifier = "CompactView"
         setViewController(compactText, for: .compact)
     }
     
-//    override func collapseSecondaryViewController(_ secondaryViewController: UIViewController, for splitViewController: UISplitViewController) {
-//        <#code#>
-//    }
-//
-//    override func splitViewControllerDidCollapse(_ svc: UISplitViewController) {
-//
-//    }
-    
-//    func splitViewController(_ svc: UISplitViewController, willShow column: UISplitViewController.Column) {
-//        if column == .compact {
-//            if let compactText = compactText {
-//                compactText.view.removeFromSuperview()
-//            }
-//            compactText.restart()
-//        }
-//    }
-    
-//    func splitViewControllerDidExpand(_ svc: UISplitViewController) {
-//        compactText.restart()
-//    }
-    
-//    func splitViewController(_ svc: UISplitViewController, willHide column: UISplitViewController.Column) {
-//        if column == .compact {
-//            compactText.restart()
-//        }
-//    }
+    func splitViewController(_ svc: UISplitViewController, willShow column: UISplitViewController.Column) {
+        if let compactText = compactText {
+            compactText.view.removeFromSuperview()
+            compactText.remove()
+
+        }
+    }
 }

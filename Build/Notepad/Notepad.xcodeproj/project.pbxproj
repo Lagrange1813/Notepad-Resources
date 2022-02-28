@@ -225,8 +225,8 @@
 			isa = PBXGroup;
 			children = (
 				7A758BBB27BAAAE700813C08 /* CustomSplitVC.swift */,
-				7A758BBE27BAAB4200813C08 /* ArticleListVC.swift */,
 				7A758BC027BAAB5C00813C08 /* BookListVC.swift */,
+				7A758BBE27BAAB4200813C08 /* ArticleListVC.swift */,
 			);
 			path = SlideList;
 			sourceTree = "<group>";
