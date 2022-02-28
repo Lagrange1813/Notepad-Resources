@@ -14,6 +14,7 @@ class CompactTextVC: CommonTextVC {
     var toolBar: ToolBar!
 
     var cursor: UIView?
+//    var sideCursor: UIView?
 
     var isKeyboardHasPoppedUp = false
     var moveDistance: CGFloat?

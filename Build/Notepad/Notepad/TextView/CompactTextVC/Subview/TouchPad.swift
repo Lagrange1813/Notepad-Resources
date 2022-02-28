@@ -27,6 +27,8 @@ class TouchPad: UIView {
 
     var panGesture: UIPanGestureRecognizer!
     var velocityLoop: CADisplayLink!
+    
+    var handleTouchStarted: (() -> Void)?
     var handler: ((TouchPadData) -> Void)?
     var handleTouchEnded: (() -> Void)?
 
@@ -65,6 +67,7 @@ class TouchPad: UIView {
         let touchLocation = sender.location(in: self)
 
         if panGesture.state == .began {
+            handleTouchStarted?()
             originLocation = CGPoint()
             originLocation!.x = touchLocation.x
             originLocation!.y = touchLocation.y

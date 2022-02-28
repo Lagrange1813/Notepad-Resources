@@ -134,7 +134,6 @@ extension CompactTextVC {
 
             if lowerSurface >= lowerBoundary {
                 textField.setContentOffset(CGPoint(x: 0, y: textField.contentOffset.y + 5), animated: false)
-//                cursor!.frame.origin.y += 4
                 hideTitleBar()
             }
         }
@@ -145,10 +144,7 @@ extension CompactTextVC {
             let location = self.textField.bodyView.offset(from: textField.bodyView.beginningOfDocument, to: range)
             textField.bodyView.selectedRange = NSRange(location: location, length: 0)
 
-//            let correction = NSRange(location: location-1, length: 0)
-
             rectFrame = textField.bodyView.fetchRect(textField.bodyView, textField.bodyView.selectedRange)
-//            rectFrame.origin.x += textField.bodyFont!.pointSize
             cursor!.frame = rectFrame
         }
     }
@@ -277,11 +273,6 @@ extension CompactTextVC {
     
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        
-//        if text == "" {
-//            isShortcutBtnInputing = false
-//        }
-        
         if textView == textField.bodyView {
             if text == "\n", isShortcutBtnInputing, bodyViewUnderEditing {
                 let location = textField.bodyView.selectedRange.location

@@ -44,7 +44,7 @@ extension CompactTextVC {
         toolBar.pasteBtn.addTarget(self, action: #selector(pasteBtnFunc), for: .touchUpInside)
         toolBar.downBtn.addTarget(self, action: #selector(downBtnFunc), for: .touchUpInside)
         
-        configureShortCutTouchPadHandler()
+//        configureShortCutTouchPadHandler()
 
         toolBar.redoBtn?.addTarget(self, action: #selector(redoFunc), for: .touchUpInside)
         
@@ -78,74 +78,77 @@ extension CompactTextVC {
         toolBar.redoBtn?.isEnabled = textField.bodyView.undoManager!.canRedo || textField.titleView.undoManager!.canRedo
     }
     
-    func configureShortCutTouchPadHandler() {
-        guard let touchPad = toolBar.touchPadBtn else { return }
-
-        var rectFrame = textField.bodyView.fetchRect(textField.bodyView, textField.bodyView.selectedRange)
-
-        cursor = UIView(frame: rectFrame)
-        cursor!.backgroundColor = UIColor(red: 0.2941176, green: 0.415686, blue: 0.917647, alpha: 1)
-        textField.bodyView.addSubview(cursor!)
-        
-        guard let cursor = cursor else { return }
-
-        touchPad.handler = { [unowned self] data in
-            
-            
-            cursor.frame.origin = CGPoint(x: rectFrame.origin.x + 1.5*data.velocity.x,
-                                           y: rectFrame.origin.y + 1.5*data.velocity.y)
-
-            let upSide = cursor.frame.origin.y
-            let downSide = cursor.frame.origin.y + cursor.frame.height
-            let leftSide = cursor.frame.origin.x
-            let rightSide = cursor.frame.origin.x + cursor.frame.width
-
-            if upSide <= 0 {
-                cursor.frame.origin.y = 0
-            }
-
-            if leftSide <= 0 {
-                cursor.frame.origin.x = 0
-            }
-
-            if downSide >= textField.bodyView.frame.height {
-                cursor.frame.origin.y = textField.bodyView.frame.height - cursor.frame.height
-            }
-
-            if rightSide >= textField.bodyView.frame.width {
-                cursor.frame.origin.x = textField.bodyView.frame.width - cursor.frame.width
-            }
-
-            let upperSurface = correctCoordinates(cursor.frame.origin.y, position: .bodyView)
-            let lowerSurface = upperSurface + cursor.frame.height
-
-            let upperBoundary: CGFloat = 0
-            let lowerBoundary = correctCoordinates(toolBar.frame.origin.y, position: .view) - 30
-
-            if upperSurface <= upperBoundary {
-                textField.setContentOffset(CGPoint(x: 0,
-                                                      y: textField.contentOffset.y - 5), animated: false)
-                cursor.frame.origin.y -= 4
-                hideTitleBar()
-            }
-
-            if lowerSurface >= lowerBoundary {
-                textField.setContentOffset(CGPoint(x: 0, y: textField.contentOffset.y + 5), animated: false)
-//                cursor!.frame.origin.y += 4
-                hideTitleBar()
-            }
-        }
-
-        touchPad.handleTouchEnded = { [unowned self] in
-            let range = self.textField.bodyView.closestPosition(to: cursor.center)!
-            let location = self.textField.bodyView.offset(from: textField.bodyView.beginningOfDocument, to: range)
-            textField.bodyView.selectedRange = NSRange(location: location, length: 0)
-
-//            let correction = NSRange(location: location-1, length: 0)
-
-            rectFrame = textField.bodyView.fetchRect(textField.bodyView, textField.bodyView.selectedRange)
-//            rectFrame.origin.x += textField.bodyFont!.pointSize
-            cursor.frame = rectFrame
-        }
-    }
+//    func configureShortCutTouchPadHandler() {
+//        guard let touchPadBtn = toolBar.touchPadBtn else { return }
+//        
+//        var rectFrame: CGRect?
+//        
+//        touchPadBtn.handleTouchStarted = { [unowned self] in
+//            rectFrame = textField.bodyView.fetchRect(textField.bodyView, textField.bodyView.selectedRange)
+//
+//            sideCursor = UIView(frame: rectFrame!)
+//            sideCursor!.backgroundColor = UIColor(red: 0.2941176, green: 0.415686, blue: 0.917647, alpha: 1)
+//            textField.bodyView.addSubview(sideCursor!)
+//        }
+//        
+//        guard let cursor = sideCursor else { return }
+//        
+//        touchPadBtn.handler = { [unowned self] data in
+//            
+//            cursor.frame.origin = CGPoint(x: rectFrame!.origin.x + 1.5*data.velocity.x,
+//                                           y: rectFrame!.origin.y + 1.5*data.velocity.y)
+//
+//            let upSide = cursor.frame.origin.y
+//            let downSide = cursor.frame.origin.y + cursor.frame.height
+//            let leftSide = cursor.frame.origin.x
+//            let rightSide = cursor.frame.origin.x + cursor.frame.width
+//
+//            if upSide <= 0 {
+//                cursor.frame.origin.y = 0
+//            }
+//
+//            if leftSide <= 0 {
+//                cursor.frame.origin.x = 0
+//            }
+//
+//            if downSide >= textField.bodyView.frame.height {
+//                cursor.frame.origin.y = textField.bodyView.frame.height - cursor.frame.height
+//            }
+//
+//            if rightSide >= textField.bodyView.frame.width {
+//                cursor.frame.origin.x = textField.bodyView.frame.width - cursor.frame.width
+//            }
+//
+//            let upperSurface = correctCoordinates(cursor.frame.origin.y, position: .bodyView)
+//            let lowerSurface = upperSurface + cursor.frame.height
+//
+//            let upperBoundary: CGFloat = 0
+//            let lowerBoundary = correctCoordinates(toolBar.frame.origin.y, position: .view) - 30
+//
+//            if upperSurface <= upperBoundary {
+//                textField.setContentOffset(CGPoint(x: 0,
+//                                                      y: textField.contentOffset.y - 5), animated: false)
+//                cursor.frame.origin.y -= 4
+//                hideTitleBar()
+//            }
+//
+//            if lowerSurface >= lowerBoundary {
+//                textField.setContentOffset(CGPoint(x: 0, y: textField.contentOffset.y + 5), animated: false)
+////                cursor!.frame.origin.y += 4
+//                hideTitleBar()
+//            }
+//        }
+//
+//        touchPadBtn.handleTouchEnded = { [unowned self] in
+//            print("ended")
+//            let range = self.textField.bodyView.closestPosition(to: cursor.center)!
+//            let location = self.textField.bodyView.offset(from: textField.bodyView.beginningOfDocument, to: range)
+//            textField.bodyView.selectedRange = NSRange(location: location, length: 0)
+//
+//            if let sideCursor = sideCursor {
+//                sideCursor.removeFromSuperview()
+//                self.sideCursor = nil
+//            }
+//        }
+//    }
 }
