@@ -21,7 +21,6 @@ class TouchPad: UIView {
     private var width: CGFloat!
     private var height: CGFloat!
 
-    private var tracking = false
     private var data = TouchPadData()
     private var trackingView: UIView!
 
@@ -52,9 +51,6 @@ class TouchPad: UIView {
         trackingView.addGestureRecognizer(panGesture)
 
         addSubview(trackingView)
-
-        velocityLoop = CADisplayLink(target: self, selector: #selector(listen))
-        velocityLoop.add(to: RunLoop.current, forMode: RunLoop.Mode(rawValue: RunLoop.Mode.common.rawValue))
     }
 
     @available(*, unavailable)
@@ -63,7 +59,6 @@ class TouchPad: UIView {
     }
 
     @objc func dragTouchPad(_ sender: UIPanGestureRecognizer) {
-        tracking = true
         let touchLocation = sender.location(in: self)
 
         if panGesture.state == .began {
@@ -79,15 +74,10 @@ class TouchPad: UIView {
 
         data = TouchPadData(velocity: dataCenter, angular: -atan2(dataCenter.x, dataCenter.y))
 
+        handler?(data)
+        
         if panGesture.state == .ended {
-            tracking = false
             handleTouchEnded?()
-        }
-    }
-
-    @objc func listen() {
-        if tracking {
-            handler?(data)
         }
     }
 }

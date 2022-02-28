@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class CompactTextVC: CommonTextVC {
     var viewWidth: CGFloat!
@@ -14,7 +16,7 @@ class CompactTextVC: CommonTextVC {
     var toolBar: ToolBar!
 
     var cursor: UIView?
-//    var sideCursor: UIView?
+    var sideCursor: UIView?
 
     var isKeyboardHasPoppedUp = false
     var moveDistance: CGFloat?
