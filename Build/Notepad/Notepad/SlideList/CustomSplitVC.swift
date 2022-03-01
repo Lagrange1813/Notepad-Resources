@@ -8,16 +8,16 @@
 import UIKit
 
 class CustomSplitVC: UISplitViewController, UISplitViewControllerDelegate {
-    var compactText: CompactTextVC!
-    
+    var compactView: CompactTextVC!
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.delegate = self
-        self.restorationIdentifier = "MainView"
+        delegate = self
+        restorationIdentifier = "MainView"
         view.backgroundColor = .white
-        self.preferredDisplayMode = .twoOverSecondary
-        self.preferredSplitBehavior = .displace
+        preferredDisplayMode = .twoOverSecondary
+        preferredSplitBehavior = .displace
 
         let bookListVC = BookListVC()
         let articleListVC = ArticleListVC()
@@ -25,11 +25,11 @@ class CustomSplitVC: UISplitViewController, UISplitViewControllerDelegate {
 
         let articleListNav = UINavigationController(rootViewController: articleListVC)
         let parallelDisplayNav = UINavigationController(rootViewController: parallelDisplayVC)
-        
+
 //        bookListVC.restorationIdentifier = "BookListView"
 //        articleListVC.restorationIdentifier = "ArticleListView"
 //        parallelDisplayVC.restorationIdentifier = "ParallelView"
-//        
+//
 //        articleListNav.restorationIdentifier = "ArticleListNav"
 //        parallelDisplayNav.restorationIdentifier = "ParallelNav"
 
@@ -37,8 +37,8 @@ class CustomSplitVC: UISplitViewController, UISplitViewControllerDelegate {
         setViewController(articleListNav, for: .supplementary)
         setViewController(parallelDisplayNav, for: .secondary)
 
-        preferredPrimaryColumnWidthFraction = 1/3
-        preferredSupplementaryColumnWidthFraction = 1/3
+        preferredPrimaryColumnWidthFraction = 1 / 3
+        preferredSupplementaryColumnWidthFraction = 1 / 3
         showsSecondaryOnlyButton = true
 //        hide(.primary)
 
@@ -46,16 +46,16 @@ class CustomSplitVC: UISplitViewController, UISplitViewControllerDelegate {
 //        test.backgroundColor = .red
 //        view.addSubview(test)
 
-        compactText = CompactTextVC()
-        compactText.restorationIdentifier = "CompactView"
-        setViewController(compactText, for: .compact)
+        compactView = CompactTextVC()
+//        compactView.restorationIdentifier = "CompactView"
+        let compactViewNav = UINavigationController(rootViewController: compactView)
+        setViewController(compactViewNav, for: .compact)
     }
-    
-    func splitViewController(_ svc: UISplitViewController, willShow column: UISplitViewController.Column) {
-        if let compactText = compactText {
-//            compactText.view.removeFromSuperview()
-            compactText.remove()
 
+    func splitViewController(_: UISplitViewController, willShow _: UISplitViewController.Column) {
+        if let compactView = compactView {
+//            compactText.view.removeFromSuperview()
+            compactView.remove()
         }
     }
 }

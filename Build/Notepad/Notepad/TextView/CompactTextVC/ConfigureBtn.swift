@@ -14,7 +14,24 @@ extension CompactTextVC {
 
     func configureTitleBarBtnAction() {
         titleBar.listBtn.addTarget(self, action: #selector(listBtnFunc), for: .touchUpInside)
+        configureSwitchButton()
         titleBar.typeBtn.addTarget(self, action: #selector(typeBtnFunc), for: .touchUpInside)
+    }
+
+    func configureSwitchButton() {
+//        titleBar.listBtn.showsMenuAsPrimaryAction = true
+        let bookList = ["白夜", "白痴", "卡拉马佐夫兄弟"]
+        var menuChildren: [UIAction] = []
+        
+        for x in 0 ..< bookList.count {
+            let item = UIAction(title: bookList[x], image: UIImage(systemName: "book.closed")) { (action) in
+                print("Add new action was selected")
+            }
+            menuChildren.append(item)
+        }
+        
+        let menu = UIMenu(title: "书籍", children: menuChildren)
+        titleBar.listBtn.menu = menu
     }
 
     @objc func listBtnFunc() {
@@ -96,7 +113,7 @@ extension CompactTextVC {
 
     func configureShortCutTouchPadHandler() {
         toolBar.addTouchpadButton()
-        
+
         guard let touchPadBtn = toolBar.touchPadBtn else { return }
 
         var rectFrame: CGRect?

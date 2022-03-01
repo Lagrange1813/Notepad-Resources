@@ -45,29 +45,9 @@ class CompactTextVC: CommonTextVC {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        let userDefaults = UserDefaults.standard
-//        userDefaults.set("text-light-frosted-glass", forKey: "TextTheme")
-        textTheme = Theme(userDefaults.object(forKey: "TextTheme") as! String)
-        markdownTheme = Theme(userDefaults.object(forKey: "MDTheme") as! String)
-
+        preload()
         loadTheme()
-
-        appDelegate.supportAll = false
-
-        if theme.frostedGlass {
-            configureBackgroundImage()
-            configureBlur()
-        } else {
-            view.backgroundColor = theme.colorSet["background"]
-        }
-
-        updateViewWidth()
-
-        barHeight = TitleBar.height()
-        topPadding = barHeight
-        bottomPadding = view.frame.height/2
-        bottomAnchor = 5
+        customize()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -80,7 +60,7 @@ class CompactTextVC: CommonTextVC {
 
         configureTitleBarBtnAction()
         configureToolBarBtnAction()
-        
+
         textField.keyboardDismissMode = .interactive
     }
 
@@ -102,6 +82,33 @@ class CompactTextVC: CommonTextVC {
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
+    }
+
+    func preload() {
+        let userDefaults = UserDefaults.standard
+//        userDefaults.set("text-light-frosted-glass", forKey: "TextTheme")
+        textTheme = Theme(userDefaults.object(forKey: "TextTheme") as! String)
+        markdownTheme = Theme(userDefaults.object(forKey: "MDTheme") as! String)
+    }
+    
+    func customize() {
+        navigationController?.navigationBar.isHidden = true
+
+        appDelegate.supportAll = false
+
+        if theme.frostedGlass {
+            configureBackgroundImage()
+            configureBlur()
+        } else {
+            view.backgroundColor = theme.colorSet["background"]
+        }
+
+        updateViewWidth()
+
+        barHeight = TitleBar.height()
+        topPadding = barHeight
+        bottomPadding = view.frame.height/2
+        bottomAnchor = 5
     }
 
     func configureStatusBarBackground() {
