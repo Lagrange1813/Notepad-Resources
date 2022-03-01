@@ -19,8 +19,8 @@ class ParallelDisplayVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        navigationController?.navigationBar.isHidden = true
-//        splitViewController?.hide(.supplementary)
+        navigationController?.navigationBar.isHidden = false
+        navigationController?.navigationBar.isTranslucent = true
         
         currentTextVC = CurrentTextVC()
         currentTextVC.showCounter = false

@@ -5,9 +5,9 @@
 //  Created by 张维熙 on 2022/2/19.
 //
 
-import UIKit
-import RxSwift
 import RxCocoa
+import RxSwift
+import UIKit
 
 class CompactTextVC: CommonTextVC {
     var viewWidth: CGFloat!
@@ -22,7 +22,7 @@ class CompactTextVC: CommonTextVC {
     var moveDistance: CGFloat?
 
     var trackingView: String?
-    
+
     var isTitleBarHidden: Bool = false
 
     var titleViewUnderEditing = false
@@ -39,17 +39,20 @@ class CompactTextVC: CommonTextVC {
     var fullScreen = false
 
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
-    
+
     var image: UIImageView?
     var backgroundSupport: UIView?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        textTheme = Theme.BuiltIn.TextLightFrostedGlass.enable()
-        markdownTheme = Theme.BuiltIn.MarkdownLight.enable()
+
+        let userDefaults = UserDefaults.standard
+//        userDefaults.set("text-light-frosted-glass", forKey: "TextTheme")
+        textTheme = Theme(userDefaults.object(forKey: "TextTheme") as! String)
+        markdownTheme = Theme(userDefaults.object(forKey: "MDTheme") as! String)
+
         loadTheme()
-        
+
         appDelegate.supportAll = false
 
         if theme.frostedGlass {
@@ -58,7 +61,7 @@ class CompactTextVC: CommonTextVC {
         } else {
             view.backgroundColor = theme.colorSet["background"]
         }
-        
+
         updateViewWidth()
 
         barHeight = TitleBar.height()
@@ -77,6 +80,8 @@ class CompactTextVC: CommonTextVC {
 
         configureTitleBarBtnAction()
         configureToolBarBtnAction()
+        
+        textField.keyboardDismissMode = .interactive
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -144,7 +149,7 @@ class CompactTextVC: CommonTextVC {
 //            }
 //        }
     }
-    
+
     func configureBackgroundImage() {
         image = UIImageView(image: UIImage(named: "Qerg85B7JDI"))
         image!.contentMode = .scaleAspectFill
@@ -153,19 +158,19 @@ class CompactTextVC: CommonTextVC {
             make.top.leading.trailing.bottom.equalToSuperview()
         }
     }
-    
+
     func configureBlur() {
         backgroundSupport = UIView()
         backgroundSupport!.clipsToBounds = true
         view.addSubview(backgroundSupport!)
-       
+
         backgroundSupport!.snp.makeConstraints { make in
             make.top.equalToSuperview()
             make.bottom.equalToSuperview()
             make.leading.equalToSuperview()
             make.trailing.equalToSuperview()
         }
-        
+
         let blur: UIBlurEffect = {
             if traitCollection.userInterfaceStyle == .light {
                 return UIBlurEffect(style: .prominent)
@@ -173,10 +178,10 @@ class CompactTextVC: CommonTextVC {
                 return UIBlurEffect(style: .systemUltraThinMaterialDark)
             }
         }()
-        
+
         let background = UIVisualEffectView(effect: blur)
         backgroundSupport!.addSubview(background)
-        
+
         background.snp.makeConstraints { make in
             make.top.equalToSuperview()
             make.bottom.equalToSuperview()

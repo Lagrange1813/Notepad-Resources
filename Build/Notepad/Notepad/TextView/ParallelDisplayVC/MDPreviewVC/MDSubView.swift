@@ -12,7 +12,8 @@ class MDSubView: UIScrollView {
     var title: String?
     var body: String? {
         didSet {
-            bodyView.load(markdown: body)
+            bodyView.show(markdown: body!)
+            resize()
         }
     }
 
@@ -77,7 +78,7 @@ class MDSubView: UIScrollView {
 
         titleView.selectedRange = NSRange(location: 0, length: 0)
         
-        bodyView.load(markdown: body)
+        bodyView.load(markdown: body ?? "请输入文字")
     }
 
     func resize() {

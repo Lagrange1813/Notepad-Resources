@@ -13,8 +13,10 @@ class CurrentTextVC: CommonTextVC {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        textTheme = Theme.BuiltIn.TextLightFrostedGlass.enable()
-        markdownTheme = Theme.BuiltIn.MarkdownLight.enable()
+        let userDefaults = UserDefaults.standard
+        textTheme = Theme(userDefaults.object(forKey: "TextTheme") as! String)
+        markdownTheme = Theme(userDefaults.object(forKey: "MDTheme") as! String)
+        
         loadTheme()
 
         barHeight = 0

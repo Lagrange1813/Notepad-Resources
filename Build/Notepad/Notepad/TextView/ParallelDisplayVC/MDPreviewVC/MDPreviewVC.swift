@@ -6,12 +6,14 @@
 //
 
 import UIKit
+import CoreData
 
 class MDPreviewVC: UIViewController {
     var titleString: String = "" {
         didSet {
             guard let textField = textField else { return }
             textField.titleView.text = titleString
+            adjustView()
         }
     }
 
@@ -19,6 +21,7 @@ class MDPreviewVC: UIViewController {
         didSet {
             guard let textField = textField else { return }
             textField.body = bodyString
+            adjustView()
         }
     }
 
@@ -42,12 +45,14 @@ class MDPreviewVC: UIViewController {
     
     var textField: MDSubView!
     
+    var articles: [NSManagedObject] = []
     var counter: WordCounter!
     
     var theme = Theme.BuiltIn.MarkdownLight.enable()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -95,6 +100,19 @@ class MDPreviewVC: UIViewController {
     
     // MARK: - Configure components
     
+    func loadData() {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Article")
+
+        do {
+            articles = try managedContext.fetch(fetchRequest)
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+    }
+    
     func configureTextView() {
         textField = MDSubView(theme: theme)
         textField.delegate = self
@@ -109,6 +127,15 @@ class MDPreviewVC: UIViewController {
             make.trailing.equalToSuperview()
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(bottomAnchor)
         }
+        
+        configureText(textField)
+    }
+    
+    func configureText(_ textField: MDSubView) {
+        let index = articles.count
+        let text = articles[index - 1]
+        textField.configureText(title: text.value(forKey: "title") as! String,
+                                   body: text.value(forKey: "body") as! String)
     }
     
     func configurePadding() {

@@ -16,8 +16,8 @@ class CustomSplitVC: UISplitViewController, UISplitViewControllerDelegate {
         self.delegate = self
         self.restorationIdentifier = "MainView"
         view.backgroundColor = .white
-        self.preferredDisplayMode = .twoBesideSecondary
-        self.preferredSplitBehavior = .tile
+        self.preferredDisplayMode = .twoOverSecondary
+        self.preferredSplitBehavior = .displace
 
         let bookListVC = BookListVC()
         let articleListVC = ArticleListVC()
@@ -53,7 +53,7 @@ class CustomSplitVC: UISplitViewController, UISplitViewControllerDelegate {
     
     func splitViewController(_ svc: UISplitViewController, willShow column: UISplitViewController.Column) {
         if let compactText = compactText {
-            compactText.view.removeFromSuperview()
+//            compactText.view.removeFromSuperview()
             compactText.remove()
 
         }
