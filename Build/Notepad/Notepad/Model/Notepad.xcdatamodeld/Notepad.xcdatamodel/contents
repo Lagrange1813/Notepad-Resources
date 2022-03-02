@@ -4,6 +4,7 @@
         <attribute name="author" optional="YES" attributeType="String"/>
         <attribute name="firstEditTime" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="lastEditTime" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
         <relationship name="text" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Text" inverseName="book" inverseEntity="Text"/>
     </entity>
     <entity name="Text" representedClassName="Text" syncable="YES" codeGenerationType="class">
@@ -16,6 +17,6 @@
     </entity>
     <elements>
         <element name="Text" positionX="-964.984375" positionY="5895.4140625" width="128" height="133"/>
-        <element name="Book" positionX="-1189.87890625" positionY="6002.671875" width="128" height="103"/>
+        <element name="Book" positionX="-1189.87890625" positionY="6002.671875" width="128" height="118"/>
     </elements>
 </model>

@@ -8,6 +8,14 @@
 import UIKit
 
 class BookClass: NSObject {
-
+    var author: String?
+    var firstEditTime: Date?
+    var lastEditTime: Date?
+    
+    var texts: [Text] = []
+    
+    override init() {
+        super.init()
+    }
 }
 

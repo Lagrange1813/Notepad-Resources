@@ -123,29 +123,31 @@ extension String {
     }
 }
 
-enum EntityType {
-    case Book
-    case Text
-}
-func fetchData(_ fetchType: EntityType) -> [NSManagedObject]? {
-    let type: String = {
-        switch fetchType {
-        case .Book:
-            return "Book"
-        case .Text:
-            return "Text"
-        }
-    }()
+// MARK: - Core Data configuration
+
+//enum EntityType {
+//    case Book
+//    case Text
+//}
+func fetchBook() -> [Book] {
+//    let type: String = {
+//        switch fetchType {
+//        case .Book:
+//            return "Book"
+//        case .Text:
+//            return "Text"
+//        }
+//    }()
     
-    var results: [NSManagedObject] = []
+    var results: [Book] = []
     
-    guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return nil }
+    guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return [] }
 
     let managedContext = appDelegate.persistentContainer.viewContext
-    let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: type)
+    let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Book")
 
     do {
-        results = try managedContext.fetch(fetchRequest)
+        results = try managedContext.fetch(fetchRequest) as! [Book]
     } catch let error as NSError {
         print("Could not fetch. \(error), \(error.userInfo)")
     }
@@ -154,15 +156,39 @@ func fetchData(_ fetchType: EntityType) -> [NSManagedObject]? {
 }
 
 func saveText(title: String, body: String, type: String) {
+    saveText(title: title, body: body, type: type, bookName: "卡拉马佐夫兄弟")
+}
+
+func saveText(title: String, body: String, type: String, bookName: String) {
     guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
 
     let managedContext = appDelegate.persistentContainer.viewContext
 
     let entity = NSEntityDescription.entity(forEntityName: "Text", in: managedContext)!
-    let text = NSManagedObject(entity: entity, insertInto: managedContext)
-    text.setValue(title, forKey: "title")
-    text.setValue(body, forKey: "body")
-    text.setValue(type, forKey: "type")
+//    let text = NSManagedObject(entity: entity, insertInto: managedContext)
+//    text.setValue(title, forKey: "title")
+//    text.setValue(body, forKey: "body")
+//    text.setValue(type, forKey: "type")
+    let text = Text(entity: entity, insertInto: managedContext)
+    text.title = title
+    text.body = body
+    text.type = type
+    
+    var books: [NSManagedObject]!
+    let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Book")
+    do {
+        books = try managedContext.fetch(fetchRequest)
+    } catch let error as NSError {
+        print("Could not fetch. \(error), \(error.userInfo)")
+    }
+    
+    var targetBook: Book!
+    for book in books {
+        if (book.value(forKey: "title") as! String) == bookName {
+            targetBook = (book as! Book)
+        }
+    }
+    text.book = targetBook
 
     do { try managedContext.save()
     } catch let error as NSError {
@@ -170,16 +196,19 @@ func saveText(title: String, body: String, type: String) {
     }
 }
 
-func saveBook(title: String, body: String, type: String) {
+func saveBook(title: String, author: String) {
     guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
 
     let managedContext = appDelegate.persistentContainer.viewContext
 
     let entity = NSEntityDescription.entity(forEntityName: "Book", in: managedContext)!
-    let article = NSManagedObject(entity: entity, insertInto: managedContext)
-    article.setValue(title, forKeyPath: "title")
-    article.setValue(body, forKey: "body")
-    article.setValue(type, forKey: "type")
+//    let article = NSManagedObject(entity: entity, insertInto: managedContext)
+//    article.setValue(title, forKeyPath: "title")
+//    article.setValue(author, forKey: "author")
+    
+    let book = Book(entity: entity, insertInto: managedContext)
+    book.title = title
+    book.author = author
 
     do { try managedContext.save()
     } catch let error as NSError {

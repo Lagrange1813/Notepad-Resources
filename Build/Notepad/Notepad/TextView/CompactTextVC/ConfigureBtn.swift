@@ -20,7 +20,23 @@ extension CompactTextVC {
 
     func configureSwitchButton() {
 //        titleBar.listBtn.showsMenuAsPrimaryAction = true
-        let bookList = ["白夜", "白痴", "卡拉马佐夫兄弟"]
+        let books = fetchBook()
+        var bookList: [String] = []
+        var textList: [[String]] = []
+        
+        for x in 0 ..< books.count {
+            bookList.append(books[x].title!)
+            textList.append([])
+            let texts = books[x].text!
+            for text in texts {
+                let postman = text as! Text
+                textList[x].append(postman.title!)
+            }
+        }
+        
+        print(bookList)
+        print(textList)
+        
         var menuChildren: [UIAction] = []
         
         for x in 0 ..< bookList.count {
