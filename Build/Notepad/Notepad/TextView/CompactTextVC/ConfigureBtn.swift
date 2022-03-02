@@ -22,28 +22,24 @@ extension CompactTextVC {
 //        titleBar.listBtn.showsMenuAsPrimaryAction = true
         let books = fetchBook()
         var bookList: [String] = []
-        var textList: [[String]] = []
+        var textList: [[Text]] = []
 
         for x in 0 ..< books.count {
             bookList.append(books[x].title!)
             textList.append([])
             let texts = books[x].text!
             for text in texts {
-                let postman = text as! Text
-                textList[x].append(postman.title!)
+                textList[x].append(text as! Text)
             }
         }
-
-        print(bookList)
-        print(textList)
 
         var bookBoard: [UIMenuElement] = []
 
         for x in 0 ..< bookList.count {
             var textBoard: [UIAction] = []
             for text in textList[x] {
-                let item = UIAction(title: text, image: UIImage(systemName: "doc.text")) { _ in
-                    UserDefaults.standard.set(<#T##value: Int##Int#>, forKey: <#T##String#>)
+                let item = UIAction(title: text.title!, image: UIImage(systemName: "doc.text")) { _ in
+                    UserDefaults.standard.set(text.id, forKey: "CurrentTextID")
                     self.restart()
                 }
                 textBoard.append(item)
