@@ -34,7 +34,8 @@ extension CommonTextVC {
             let titleToStore: String = textField.titleView.text
             let bodyToStore: String = textField.bodyView.text
 
-            saveText(title: titleToStore, body: bodyToStore, type: type)
+            let id = UserDefaults.standard.integer(forKey: "CurrentTextID")
+            saveText(id: id, title: titleToStore, body: bodyToStore, type: type)
         }
     }
 }

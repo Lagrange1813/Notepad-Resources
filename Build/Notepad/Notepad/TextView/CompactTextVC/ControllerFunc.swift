@@ -62,7 +62,7 @@ extension CompactTextVC {
         remove()
         
         loadData()
-        loadType()
+        loadInfo()
         loadTheme()
         if theme.frostedGlass {
             configureBackgroundImage()

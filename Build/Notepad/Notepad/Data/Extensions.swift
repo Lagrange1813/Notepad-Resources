@@ -63,7 +63,7 @@ enum Font {
     case articleBody
 }
 
-//func fetchFont(font: Font) -> UIFont {
+// func fetchFont(font: Font) -> UIFont {
 //    switch font {
 //    case .bookTitle:
 //        return UIFont(name: "LXGW WenKai Bold", size: 16)!
@@ -72,7 +72,7 @@ enum Font {
 //    case .articleBody:
 //        return UIFont(name: "LXGW WenKai", size: 13)!
 //    }
-//}
+// }
 
 /// 若 topPadding 大于 20， 返回 0 ，否则返回 10
 let titleBarOffset: CGFloat = {
@@ -99,19 +99,19 @@ extension String {
             let to16 = utf16.index(from16, offsetBy: nsRange.length, limitedBy: utf16.endIndex),
             let from = String.Index(from16, within: self),
             let to = String.Index(to16, within: self)
-            else { return nil }
+        else { return nil }
         return from ..< to
     }
-    
+
     func nsRange(from range: Range<String.Index>) -> NSRange {
         let from = range.lowerBound.samePosition(in: utf16)
         let to = range.upperBound.samePosition(in: utf16)
         return NSRange(location: utf16.distance(from: utf16.startIndex, to: from!),
                        length: utf16.distance(from: from!, to: to!))
     }
-    
+
     func toRegex() -> NSRegularExpression {
-        var pattern: NSRegularExpression = NSRegularExpression()
+        var pattern = NSRegularExpression()
 
         do {
             try pattern = NSRegularExpression(pattern: self, options: .anchorsMatchLines)
@@ -125,93 +125,87 @@ extension String {
 
 // MARK: - Core Data configuration
 
-//enum EntityType {
-//    case Book
-//    case Text
+private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+
+//func saveText(title: String, body: String, type: String) {
+//    insertText(title: title, body: body, type: type, bookName: "卡拉马佐夫兄弟")
 //}
-func fetchBook() -> [Book] {
-//    let type: String = {
-//        switch fetchType {
-//        case .Book:
-//            return "Book"
-//        case .Text:
-//            return "Text"
-//        }
-//    }()
-    
-    var results: [Book] = []
-    
-    guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return [] }
 
-    let managedContext = appDelegate.persistentContainer.viewContext
-    let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Book")
+// 增
+func insertBook(title: String, author: String) {
+    let entity = NSEntityDescription.entity(forEntityName: "Book", in: context)!
 
-    do {
-        results = try managedContext.fetch(fetchRequest) as! [Book]
+    let book = Book(entity: entity, insertInto: context)
+    book.title = title
+    book.author = author
+
+    do { try context.save()
     } catch let error as NSError {
-        print("Could not fetch. \(error), \(error.userInfo)")
+        print("Could not save. \(error), \(error.userInfo)")
     }
+}
+
+func insertText(title: String, body: String, type: String, bookName: String) {
+    let userDefaults = UserDefaults.standard
+    let cnt = userDefaults.integer(forKey: "TextID")
+    userDefaults.set(cnt+1, forKey: "TextID")
     
-    return results
-}
-
-func saveText(title: String, body: String, type: String) {
-    saveText(title: title, body: body, type: type, bookName: "卡拉马佐夫兄弟")
-}
-
-func saveText(title: String, body: String, type: String, bookName: String) {
-    guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-
-    let managedContext = appDelegate.persistentContainer.viewContext
-
-    let entity = NSEntityDescription.entity(forEntityName: "Text", in: managedContext)!
-//    let text = NSManagedObject(entity: entity, insertInto: managedContext)
-//    text.setValue(title, forKey: "title")
-//    text.setValue(body, forKey: "body")
-//    text.setValue(type, forKey: "type")
-    let text = Text(entity: entity, insertInto: managedContext)
+    let entity = NSEntityDescription.entity(forEntityName: "Text", in: context)!
+    let text = Text(entity: entity, insertInto: context)
     text.title = title
     text.body = body
     text.type = type
-    
-    var books: [NSManagedObject]!
-    let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Book")
-    do {
-        books = try managedContext.fetch(fetchRequest)
-    } catch let error as NSError {
-        print("Could not fetch. \(error), \(error.userInfo)")
-    }
-    
+    text.id = Int64(cnt)
+
+    let books = fetchBook()
+
     var targetBook: Book!
     for book in books {
         if (book.value(forKey: "title") as! String) == bookName {
-            targetBook = (book as! Book)
+            targetBook = book
         }
     }
     text.book = targetBook
 
-    do { try managedContext.save()
+    do { try context.save()
     } catch let error as NSError {
         print("Could not save. \(error), \(error.userInfo)")
     }
 }
 
-func saveBook(title: String, author: String) {
-    guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+// 查
+func fetchBook() -> [Book] {
+    var results: [Book] = []
 
-    let managedContext = appDelegate.persistentContainer.viewContext
+    let fetchRequest = NSFetchRequest<Book>(entityName: "Book")
 
-    let entity = NSEntityDescription.entity(forEntityName: "Book", in: managedContext)!
-//    let article = NSManagedObject(entity: entity, insertInto: managedContext)
-//    article.setValue(title, forKeyPath: "title")
-//    article.setValue(author, forKey: "author")
-    
-    let book = Book(entity: entity, insertInto: managedContext)
-    book.title = title
-    book.author = author
-
-    do { try managedContext.save()
+    do { results = try context.fetch(fetchRequest)
     } catch let error as NSError {
-        print("Could not save. \(error), \(error.userInfo)")
+        print("Could not fetch. \(error), \(error.userInfo)")
+    }
+
+    return results
+}
+
+// 改
+func saveText(id: Int, title: String, body: String, type: String) {
+    
+    let fetchRequest = NSFetchRequest<Text>(entityName: "Text")
+    
+    do {
+        var targetText: Text!
+        let texts = try context.fetch(fetchRequest)
+        for text in texts {
+            if text.id == id {
+                targetText = text
+            }
+        }
+        targetText.title = title
+        targetText.body = body
+        targetText.type = type
+        try context.save()
+        
+    } catch let error as NSError {
+        print("Could not fetch. \(error), \(error.userInfo)")
     }
 }

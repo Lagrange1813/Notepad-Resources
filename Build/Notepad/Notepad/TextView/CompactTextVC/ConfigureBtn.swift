@@ -23,7 +23,7 @@ extension CompactTextVC {
         let books = fetchBook()
         var bookList: [String] = []
         var textList: [[String]] = []
-        
+
         for x in 0 ..< books.count {
             bookList.append(books[x].title!)
             textList.append([])
@@ -33,20 +33,26 @@ extension CompactTextVC {
                 textList[x].append(postman.title!)
             }
         }
-        
+
         print(bookList)
         print(textList)
-        
-        var menuChildren: [UIAction] = []
-        
+
+        var bookBoard: [UIMenuElement] = []
+
         for x in 0 ..< bookList.count {
-            let item = UIAction(title: bookList[x], image: UIImage(systemName: "book.closed")) { (action) in
-                print("Add new action was selected")
+            var textBoard: [UIAction] = []
+            for text in textList[x] {
+                let item = UIAction(title: text, image: UIImage(systemName: "doc.text")) { _ in
+                    UserDefaults.standard.set(<#T##value: Int##Int#>, forKey: <#T##String#>)
+                    self.restart()
+                }
+                textBoard.append(item)
             }
-            menuChildren.append(item)
+            let item = UIMenu(title: bookList[x], image: UIImage(systemName: "book.closed"), children: textBoard)
+            bookBoard.append(item)
         }
-        
-        let menu = UIMenu(title: "书籍", children: menuChildren)
+
+        let menu = UIMenu(title: "书籍", children: bookBoard)
         titleBar.listBtn.menu = menu
     }
 
@@ -56,10 +62,11 @@ extension CompactTextVC {
     }
 
     @objc func typeBtnFunc() {
+        let id = UserDefaults.standard.integer(forKey: "CurrentTextID")
         let titleToStore: String = textField.titleView.text
         let bodyToStore: String = textField.bodyView.text
-
-        saveText(title: titleToStore, body: bodyToStore, type: {
+        
+        saveText(id: id, title: titleToStore, body: bodyToStore, type: {
             switch type {
             case "Text": return "MD"
             case "MD": return "Text"

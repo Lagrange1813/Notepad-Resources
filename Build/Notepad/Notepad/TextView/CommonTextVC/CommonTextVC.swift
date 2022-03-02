@@ -25,7 +25,8 @@ class CommonTextVC: UIViewController {
     
     var type: String!
     
-    var texts: [NSManagedObject] = []
+    var texts: [Text] = []
+    var currentText: Text!
     var counter: WordCounter!
     
     var theme: Theme!
@@ -35,7 +36,7 @@ class CommonTextVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         loadData()
-        loadType()
+        loadInfo()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -89,20 +90,28 @@ class CommonTextVC: UIViewController {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
 
         let managedContext = appDelegate.persistentContainer.viewContext
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Text")
+        let fetchRequest = NSFetchRequest<Text>(entityName: "Text")
 
         do {
             texts = try managedContext.fetch(fetchRequest)
         } catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
         }
-//        texts = fetchData(.Text)!
+        
     }
     
-    func loadType() {
-        let index = texts.count
-        let text = texts[index - 1]
-        self.type = (text.value(forKey: "type") as! String)
+    func loadInfo() {
+        let userDefaults = UserDefaults.standard
+        var targetText: Text!
+        
+        for text in texts {
+            if text.id == userDefaults.integer(forKey: "CurrentTextID") {
+                targetText = text
+            }
+        }
+        
+        self.type = targetText.type
+        self.currentText = targetText
     }
     
     func loadTheme() {
@@ -147,10 +156,8 @@ class CommonTextVC: UIViewController {
     }
     
     func configureText(_ textField: BaseTextView) {
-        let index = texts.count
-        let text = texts[index - 1]
-        textField.configureText(title: text.value(forKey: "title") as! String,
-                                   body: text.value(forKey: "body") as! String)
+        textField.configureText(title: currentText.title!,
+                                body: currentText.body!)
     }
     
     func configureCounter() {
