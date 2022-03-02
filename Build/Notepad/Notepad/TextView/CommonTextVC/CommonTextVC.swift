@@ -19,13 +19,13 @@ class CommonTextVC: UIViewController {
     var bottomPadding: CGFloat = 0
     
     var showCounter: Bool = true
-    var saveText: Bool = true
+    var toSaveText: Bool = true
     
     var textField: BaseTextView!
     
     var type: String!
     
-    var articles: [NSManagedObject] = []
+    var texts: [NSManagedObject] = []
     var counter: WordCounter!
     
     var theme: Theme!
@@ -89,18 +89,19 @@ class CommonTextVC: UIViewController {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
 
         let managedContext = appDelegate.persistentContainer.viewContext
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Article")
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Text")
 
         do {
-            articles = try managedContext.fetch(fetchRequest)
+            texts = try managedContext.fetch(fetchRequest)
         } catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
         }
+//        texts = fetchData(.Text)!
     }
     
     func loadType() {
-        let index = articles.count
-        let text = articles[index - 1]
+        let index = texts.count
+        let text = texts[index - 1]
         self.type = (text.value(forKey: "type") as! String)
     }
     
@@ -146,8 +147,8 @@ class CommonTextVC: UIViewController {
     }
     
     func configureText(_ textField: BaseTextView) {
-        let index = articles.count
-        let text = articles[index - 1]
+        let index = texts.count
+        let text = texts[index - 1]
         textField.configureText(title: text.value(forKey: "title") as! String,
                                    body: text.value(forKey: "body") as! String)
     }

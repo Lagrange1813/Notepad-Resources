@@ -123,12 +123,59 @@ extension String {
     }
 }
 
-func saveData(title: String, body: String, type: String) {
+enum EntityType {
+    case Book
+    case Text
+}
+func fetchData(_ fetchType: EntityType) -> [NSManagedObject]? {
+    let type: String = {
+        switch fetchType {
+        case .Book:
+            return "Book"
+        case .Text:
+            return "Text"
+        }
+    }()
+    
+    var results: [NSManagedObject] = []
+    
+    guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return nil }
+
+    let managedContext = appDelegate.persistentContainer.viewContext
+    let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: type)
+
+    do {
+        results = try managedContext.fetch(fetchRequest)
+    } catch let error as NSError {
+        print("Could not fetch. \(error), \(error.userInfo)")
+    }
+    
+    return results
+}
+
+func saveText(title: String, body: String, type: String) {
     guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
 
     let managedContext = appDelegate.persistentContainer.viewContext
 
-    let entity = NSEntityDescription.entity(forEntityName: "Article", in: managedContext)!
+    let entity = NSEntityDescription.entity(forEntityName: "Text", in: managedContext)!
+    let text = NSManagedObject(entity: entity, insertInto: managedContext)
+    text.setValue(title, forKey: "title")
+    text.setValue(body, forKey: "body")
+    text.setValue(type, forKey: "type")
+
+    do { try managedContext.save()
+    } catch let error as NSError {
+        print("Could not save. \(error), \(error.userInfo)")
+    }
+}
+
+func saveBook(title: String, body: String, type: String) {
+    guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+
+    let managedContext = appDelegate.persistentContainer.viewContext
+
+    let entity = NSEntityDescription.entity(forEntityName: "Book", in: managedContext)!
     let article = NSManagedObject(entity: entity, insertInto: managedContext)
     article.setValue(title, forKeyPath: "title")
     article.setValue(body, forKey: "body")

@@ -43,7 +43,7 @@ extension CompactTextVC {
         let titleToStore: String = textField.titleView.text
         let bodyToStore: String = textField.bodyView.text
 
-        saveData(title: titleToStore, body: bodyToStore, type: {
+        saveText(title: titleToStore, body: bodyToStore, type: {
             switch type {
             case "Text": return "MD"
             case "MD": return "Text"

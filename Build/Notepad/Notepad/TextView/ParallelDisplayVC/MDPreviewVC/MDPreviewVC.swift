@@ -45,7 +45,7 @@ class MDPreviewVC: UIViewController {
     
     var textField: MDSubView!
     
-    var articles: [NSManagedObject] = []
+    var texts: [NSManagedObject] = []
     var counter: WordCounter!
     
     var theme = Theme.BuiltIn.MarkdownLight.enable()
@@ -104,10 +104,10 @@ class MDPreviewVC: UIViewController {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
 
         let managedContext = appDelegate.persistentContainer.viewContext
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Article")
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Text")
 
         do {
-            articles = try managedContext.fetch(fetchRequest)
+            texts = try managedContext.fetch(fetchRequest)
         } catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
         }
@@ -132,8 +132,8 @@ class MDPreviewVC: UIViewController {
     }
     
     func configureText(_ textField: MDSubView) {
-        let index = articles.count
-        let text = articles[index - 1]
+        let index = texts.count
+        let text = texts[index - 1]
         textField.configureText(title: text.value(forKey: "title") as! String,
                                    body: text.value(forKey: "body") as! String)
     }

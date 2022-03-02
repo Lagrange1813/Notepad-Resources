@@ -30,11 +30,11 @@ extension CommonTextVC {
             refreshCounter()
         }
 
-        if saveText {
+        if toSaveText {
             let titleToStore: String = textField.titleView.text
             let bodyToStore: String = textField.bodyView.text
 
-            saveData(title: titleToStore, body: bodyToStore, type: type)
+            saveText(title: titleToStore, body: bodyToStore, type: type)
         }
     }
 }
