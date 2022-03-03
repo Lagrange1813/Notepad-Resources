@@ -90,7 +90,7 @@ class CompactTextVC: CommonTextVC {
         textTheme = Theme(userDefaults.object(forKey: "TextTheme") as! String)
         markdownTheme = Theme(userDefaults.object(forKey: "MDTheme") as! String)
     }
-    
+
     func customize() {
         navigationController?.navigationBar.isHidden = true
 
@@ -195,5 +195,73 @@ class CompactTextVC: CommonTextVC {
             make.leading.equalToSuperview()
             make.trailing.equalToSuperview()
         }
+    }
+
+//    override func restart() {
+//        remove()
+//
+//        loadData()
+//        loadInfo()
+//        loadTheme()
+//        if theme.frostedGlass {
+//            configureBackgroundImage()
+//            configureBlur()
+//        } else {
+//            view.backgroundColor = theme.colorSet["background"]
+//        }
+//        loadTextView()
+//        configureTextView()
+//        if showCounter {
+//            configureCounter()
+//        }
+//        configureToolBar()
+//        configureTitleBar()
+//
+//        registNotification()
+//
+//        configureTitleBarBtnAction()
+//        configureToolBarBtnAction()
+//    }
+
+    override func firstToLoad() {
+        super.firstToLoad()
+        if theme.frostedGlass {
+            configureBackgroundImage()
+            configureBlur()
+        } else {
+            view.backgroundColor = theme.colorSet["background"]
+        }
+    }
+
+    override func secondToLoad() {
+        super.secondToLoad()
+        configureToolBar()
+        configureTitleBar()
+
+        registNotification()
+
+        configureTitleBarBtnAction()
+        configureToolBarBtnAction()
+    }
+
+    override func remove() {
+//        guard let textField = textField else { return }
+//
+//        textField.removeFromSuperview()
+//        self.textField = nil
+//        counter.removeFromSuperview()
+//        counter = nil
+        guard textField != nil else { return }
+        
+        super.remove()
+        
+        titleBar.removeFromSuperview()
+        titleBar = nil
+        toolBar.removeFromSuperview()
+        toolBar = nil
+        image?.removeFromSuperview()
+        image = nil
+        backgroundSupport?.removeFromSuperview()
+        backgroundSupport = nil
     }
 }

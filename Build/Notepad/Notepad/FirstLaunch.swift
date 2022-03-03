@@ -61,4 +61,6 @@ func firstStart() {
     
     userDefaults.set("text-light", forKey: "TextTheme")
     userDefaults.set("md-light", forKey: "MDTheme")
+    userDefaults.set("text-dark", forKey: "TextDarkTheme")
+    userDefaults.set("md-dark", forKey: "MDDarkTheme")
 }

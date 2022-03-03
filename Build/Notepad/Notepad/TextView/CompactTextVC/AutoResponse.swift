@@ -25,11 +25,12 @@ extension CompactTextVC {
         } else if textView == textField.titleView {
             titleViewUnderEditing = false
         }
+        configureSwitchButton()
     }
 
 //    func textViewDidChangeSelection(_ textView: UITextView) {
 //        var selectedView: CustomTextView?
-//        
+//
 //        if bodyViewUnderEditing {
 //            selectedView = textField.bodyView
 //        } else if titleViewUnderEditing {
@@ -37,7 +38,7 @@ extension CompactTextVC {
 //        }
 //        if let selectedView = selectedView {
 //            let cursorRange = selectedView.selectedRange
-//            
+//
 //            let allString = selectedView.attributedText.string
 //            if allString.count < cursorRange.location { return }
 //            let startIndex = allString.index(allString.startIndex, offsetBy: cursorRange.location - 1)

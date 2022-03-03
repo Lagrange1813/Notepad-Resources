@@ -127,7 +127,7 @@ extension CompactTextVC {
 
             if upperSurface <= upperBoundary {
                 textField.setContentOffset(CGPoint(x: 0,
-                                                      y: textField.contentOffset.y - 5), animated: false)
+                                                   y: textField.contentOffset.y - 5), animated: false)
                 cursor!.frame.origin.y -= 4
                 hideTitleBar()
             }
@@ -181,14 +181,12 @@ extension CompactTextVC {
         titleViewUnderEditing = false
         bodyViewUnderEditing = false
     }
-    
-    
 
     // MARK: - Tool bar scrollview button function configurment
 
     @objc func shortcutFunc(sender: CustomBtn, forEvent: UIEvent) {
         insertFromCursor(sender: sender, forEvent: forEvent)
-        
+
         retreat = sender.retreat!
 
         var selectedView: CustomTextView?
@@ -202,12 +200,12 @@ extension CompactTextVC {
             let location = selectedView.selectedRange.location
             selectedView.selectedRange = NSRange(location: location - sender.retreat!, length: 0)
             isShortcutBtnInputing = true
-            
+
             let cursorRange = selectedView.selectedRange
             let string = "请输入文字"
             let tipString = NSMutableAttributedString(string: string)
             selectedView.setAttributedMarkedText(tipString, selectedRange: cursorRange)
-            
+
 //            let allString = selectedView.attributedText.string
 //            let startIndex = allString.index(allString.startIndex, offsetBy: cursorRange.location - 1)
 //            let range: Range = startIndex..<allString.endIndex
@@ -270,8 +268,6 @@ extension CompactTextVC {
         }
     }
 
-    
-    
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         if textView == textField.bodyView {
             if text == "\n", isShortcutBtnInputing, bodyViewUnderEditing {

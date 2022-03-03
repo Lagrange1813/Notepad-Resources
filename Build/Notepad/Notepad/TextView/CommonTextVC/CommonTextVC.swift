@@ -76,6 +76,20 @@ class CommonTextVC: UIViewController {
         }
     }
     
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        if traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
+            if traitCollection.userInterfaceStyle == .dark {
+                let userDefaults = UserDefaults.standard
+                let darkTheme = userDefaults.value(forKey: "")
+                restart()
+            } else {
+                
+                restart()
+            }
+        }
+    }
+    
     func adjustView() {
         if let textField = textField {
             textField.titleView.sizeToFit()
@@ -97,7 +111,6 @@ class CommonTextVC: UIViewController {
         } catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
         }
-        
     }
     
     func loadInfo() {
@@ -110,14 +123,14 @@ class CommonTextVC: UIViewController {
             }
         }
         
-        self.type = targetText.type
-        self.currentText = targetText
+        type = targetText.type
+        currentText = targetText
     }
     
     func loadTheme() {
         switch type {
-        case "Text": self.theme = textTheme
-        case "MD": self.theme = markdownTheme
+        case "Text": theme = textTheme
+        case "MD": theme = markdownTheme
         default: return
         }
     }
@@ -179,6 +192,37 @@ class CommonTextVC: UIViewController {
         counter.snp.updateConstraints { make in
             make.width.equalTo(counter.width + 11)
         }
+    }
+    
+    func restart() {
+        remove()
+        firstToLoad()
+        secondToLoad()
+    }
+
+    func firstToLoad() {
+        remove()
+
+        loadData()
+        loadInfo()
+        loadTheme()
+    }
+    
+    func secondToLoad() {
+        loadTextView()
+        configureTextView()
+        if showCounter {
+            configureCounter()
+        }
+    }
+    
+    func remove() {
+        guard let textField = textField else { return }
+
+        textField.removeFromSuperview()
+        self.textField = nil
+        counter.removeFromSuperview()
+        counter = nil
     }
 }
 

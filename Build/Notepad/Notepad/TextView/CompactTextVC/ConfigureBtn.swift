@@ -61,7 +61,7 @@ extension CompactTextVC {
         let id = UserDefaults.standard.integer(forKey: "CurrentTextID")
         let titleToStore: String = textField.titleView.text
         let bodyToStore: String = textField.bodyView.text
-        
+
         saveText(id: id, title: titleToStore, body: bodyToStore, type: {
             switch type {
             case "Text": return "MD"

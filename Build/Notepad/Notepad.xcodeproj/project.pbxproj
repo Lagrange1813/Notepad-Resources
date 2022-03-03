@@ -17,6 +17,7 @@
 		7A12F1CC27CB63A500EB67CD /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 7A12F1CB27CB63A500EB67CD /* RxCocoa */; };
 		7A12F1CE27CB63A500EB67CD /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 7A12F1CD27CB63A500EB67CD /* RxSwift */; };
 		7A172DE427C096A700568433 /* CurrentTextVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A172DE327C096A700568433 /* CurrentTextVC.swift */; };
+		7A276C7D27D06BB40013B739 /* Controller加载顺序.md in Resources */ = {isa = PBXBuildFile; fileRef = 7A276C7C27D06BB40013B739 /* Controller加载顺序.md */; };
 		7A2A5F0227C747C300C399F8 /* toolbar in Resources */ = {isa = PBXBuildFile; fileRef = 7A2A5F0127C747C300C399F8 /* toolbar */; };
 		7A2A5F0427C74B2D00C399F8 /* BtnFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2A5F0327C74B2D00C399F8 /* BtnFunction.swift */; };
 		7A2A5F0627C7594C00C399F8 /* MDTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2A5F0527C7594C00C399F8 /* MDTextView.swift */; };
@@ -92,6 +93,8 @@
 		7A12F1B327C8A8DB00EB67CD /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		7A172DE327C096A700568433 /* CurrentTextVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentTextVC.swift; sourceTree = "<group>"; };
 		7A172DE827C0C7CD00568433 /* CommonTextVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonTextVC.swift; sourceTree = "<group>"; };
+		7A276C7B27CFBFBD0013B739 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		7A276C7C27D06BB40013B739 /* Controller加载顺序.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "Controller加载顺序.md"; sourceTree = "<group>"; };
 		7A2A5F0127C747C300C399F8 /* toolbar */ = {isa = PBXFileReference; lastKnownFileType = folder; path = toolbar; sourceTree = "<group>"; };
 		7A2A5F0327C74B2D00C399F8 /* BtnFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BtnFunction.swift; sourceTree = "<group>"; };
 		7A2A5F0527C7594C00C399F8 /* MDTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDTextView.swift; sourceTree = "<group>"; };
@@ -297,6 +300,8 @@
 				7AC3214C27AB9149008987B7 /* LaunchScreen.storyboard */,
 				7AC3214F27AB9149008987B7 /* Info.plist */,
 				7AC3218B27AB938A008987B7 /* FirstLaunch.swift */,
+				7A276C7B27CFBFBD0013B739 /* README.md */,
+				7A276C7C27D06BB40013B739 /* Controller加载顺序.md */,
 			);
 			path = Notepad;
 			sourceTree = "<group>";
@@ -506,6 +511,7 @@
 				7A2A5F0227C747C300C399F8 /* toolbar in Resources */,
 				7ADEC10A27C5CE48006E6DD5 /* themes in Resources */,
 				7AA89BAC27C7BBEE00E77749 /* highlights in Resources */,
+				7A276C7D27D06BB40013B739 /* Controller加载顺序.md in Resources */,
 				7AA89BBA27C8A1BD00E77749 /* LXGWWenKai-Bold.ttf in Resources */,
 				7AC3214E27AB9149008987B7 /* LaunchScreen.storyboard in Resources */,
 				7AC3214B27AB9149008987B7 /* Assets.xcassets in Resources */,
