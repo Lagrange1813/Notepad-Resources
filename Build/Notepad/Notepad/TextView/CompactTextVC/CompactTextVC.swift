@@ -30,8 +30,6 @@ class CompactTextVC: CommonTextVC {
 
     var isShortcutBtnInputing = false
     var retreat: Int = 0
-//    var prefix = NSRange(location: 0, length: 0)
-//    var suffix = NSRange(location: 0, length: 0)
 
     var isMenuExpanded = false
     var isKeyboardUsing = false
@@ -83,13 +81,6 @@ class CompactTextVC: CommonTextVC {
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
     }
-    
-//    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-//        super.traitCollectionDidChange(previousTraitCollection)
-//        if traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
-//            restart()
-//        }
-//    }
 
     func preload() {
         let userDefaults = UserDefaults.standard
@@ -204,39 +195,6 @@ class CompactTextVC: CommonTextVC {
         }
     }
 
-//    override func restart() {
-//        remove()
-//
-//        loadData()
-//        loadInfo()
-//        loadTheme()
-//        if theme.frostedGlass {
-//            configureBackgroundImage()
-//            configureBlur()
-//        } else {
-//            view.backgroundColor = theme.colorSet["background"]
-//        }
-//        loadTextView()
-//        configureTextView()
-//        if showCounter {
-//            configureCounter()
-//        }
-//        configureToolBar()
-//        configureTitleBar()
-//
-//        registNotification()
-//
-//        configureTitleBarBtnAction()
-//        configureToolBarBtnAction()
-//    }
-
-//    func restart() {
-//        remove()
-//        firstToLoad()
-//        secondToLoad()
-//        thirdToLoad()
-//    }
-    
     override func firstToLoad() {
         super.firstToLoad()
         preload()
@@ -251,7 +209,7 @@ class CompactTextVC: CommonTextVC {
             view.backgroundColor = theme.colorSet["background"]
         }
     }
-    
+
     override func thirdToLoad() {
         super.thirdToLoad()
         configureToolBar()
@@ -264,16 +222,10 @@ class CompactTextVC: CommonTextVC {
     }
 
     override func remove() {
-//        guard let textField = textField else { return }
-//
-//        textField.removeFromSuperview()
-//        self.textField = nil
-//        counter.removeFromSuperview()
-//        counter = nil
         guard textField != nil else { return }
-        
+
         super.remove()
-        
+
         titleBar.removeFromSuperview()
         titleBar = nil
         toolBar.removeFromSuperview()

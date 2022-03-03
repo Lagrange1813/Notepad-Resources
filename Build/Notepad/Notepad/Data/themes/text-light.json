@@ -1,13 +1,13 @@
 {
-    "name": "Text Light Frosted Galss",
+    "name": "Text Light",
     "editor": {
         "type": "Text",
-        "background": "#FFFFFF",
+        "background": "#F7F6F4",
         "counterText": "#FFFFFF",
         "counterBackground": "#000000",
         "frostedGlass": 0,
         "doubleBarText":"#000000",
-        "doubleBarBackground":"#F7F6F4"
+        "doubleBarBackground":"#EDECE8"
     },
     "styles": {
         "title": {
