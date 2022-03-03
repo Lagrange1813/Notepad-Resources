@@ -47,6 +47,9 @@ extension CompactTextVC {
     }
 
     func updateComponents() {
+        guard let titleBar = titleBar else { return }
+        guard let toolBar = toolBar else { return }
+        
         let width = viewWidth - 10
         titleBar.frame.size.width = width
         titleBar.frame.origin.x = view.frame.width/2 - width/2

@@ -83,6 +83,13 @@ class CompactTextVC: CommonTextVC {
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
     }
+    
+//    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+//        super.traitCollectionDidChange(previousTraitCollection)
+//        if traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
+//            restart()
+//        }
+//    }
 
     func preload() {
         let userDefaults = UserDefaults.standard
@@ -223,8 +230,20 @@ class CompactTextVC: CommonTextVC {
 //        configureToolBarBtnAction()
 //    }
 
+//    func restart() {
+//        remove()
+//        firstToLoad()
+//        secondToLoad()
+//        thirdToLoad()
+//    }
+    
     override func firstToLoad() {
         super.firstToLoad()
+        preload()
+    }
+
+    override func secondToLoad() {
+        super.secondToLoad()
         if theme.frostedGlass {
             configureBackgroundImage()
             configureBlur()
@@ -232,9 +251,9 @@ class CompactTextVC: CommonTextVC {
             view.backgroundColor = theme.colorSet["background"]
         }
     }
-
-    override func secondToLoad() {
-        super.secondToLoad()
+    
+    override func thirdToLoad() {
+        super.thirdToLoad()
         configureToolBar()
         configureTitleBar()
 

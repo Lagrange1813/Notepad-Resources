@@ -29,5 +29,6 @@
             "alignment": "left"
         }
     },
+    "relativeTheme": "md-dark",
     "highlight": "simple-light"
 }

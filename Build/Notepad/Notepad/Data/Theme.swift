@@ -31,6 +31,7 @@ public struct Theme {
     public var colorSet: [String: UIColor]!
     public var frostedGlass: Bool!
     public var backgroundImage: UIImage?
+    public var relativeTheme: String!
     public var highlight: Highlight?
     
     init(_ name: String) {
@@ -80,6 +81,10 @@ public struct Theme {
             if let bodyStyles = textStyles["body"] as? [String: AnyObject] {
                 bodyAttributes = parse(bodyStyles)
             }
+        }
+        
+        if let relativeTheme = data["relativeTheme"] as? String {
+            self.relativeTheme = relativeTheme
         }
         
         if let highlightStyle = data["highlight"] as? String {

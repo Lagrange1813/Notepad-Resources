@@ -28,5 +28,6 @@
             "firstLineHeadIndent": 1,
             "alignment": "justified"
         }
-    }
+    },
+    "relativeTheme": "text-dark"
 }

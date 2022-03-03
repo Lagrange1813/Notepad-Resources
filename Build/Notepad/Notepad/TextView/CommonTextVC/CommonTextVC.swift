@@ -57,6 +57,7 @@ class CommonTextVC: UIViewController {
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
+        guard let textField = textField else { return }
         textField.correctLayout(width: view.frame.width)
     }
     
@@ -78,15 +79,9 @@ class CommonTextVC: UIViewController {
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
+
         if traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
-            if traitCollection.userInterfaceStyle == .dark {
-                let userDefaults = UserDefaults.standard
-                let darkTheme = userDefaults.value(forKey: "")
-                restart()
-            } else {
-                
-                restart()
-            }
+            restart()
         }
     }
     
@@ -132,6 +127,9 @@ class CommonTextVC: UIViewController {
         case "Text": theme = textTheme
         case "MD": theme = markdownTheme
         default: return
+        }
+        if traitCollection.userInterfaceStyle == .dark {
+            theme = Theme(theme.relativeTheme)
         }
     }
     
@@ -198,17 +196,19 @@ class CommonTextVC: UIViewController {
         remove()
         firstToLoad()
         secondToLoad()
+        thirdToLoad()
     }
 
     func firstToLoad() {
-        remove()
-
         loadData()
         loadInfo()
-        loadTheme()
     }
     
     func secondToLoad() {
+        loadTheme()
+    }
+    
+    func thirdToLoad() {
         loadTextView()
         configureTextView()
         if showCounter {

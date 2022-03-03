@@ -7,3 +7,11 @@
 - TextDarkTheme
 - MDTheme
 - MDDarkTheme
+
+### Required
+
+#### CommonTextVC
+
+- textTheme
+- markdownTheme
+
