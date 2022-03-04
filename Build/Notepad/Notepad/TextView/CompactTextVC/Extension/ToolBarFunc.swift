@@ -10,7 +10,7 @@ import UIKit
 extension CompactTextVC {
     func configureToolBar() {
         toolBar = ToolBar(viewWidth: viewWidth, theme)
-        view.addSubview(toolBar)
+        view.insertSubview(toolBar, at: 1)
 
         toolBar.snp.makeConstraints { make in
             make.centerX.equalToSuperview()

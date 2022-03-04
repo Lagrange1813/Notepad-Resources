@@ -42,9 +42,14 @@ class CompactTextVC: CommonTextVC {
     var backgroundSupport: UIView?
 
     var revealSideMenuOnTop = true
+    
     var sideMenuRevealWidth: CGFloat = 260
     var sideMenuVC: SideMenuVC!
     var sideMenuShadowView: UIView!
+    var isDraggingEnabled: Bool = false
+    var isExpanded: Bool = false
+    var panBaseLocation: CGFloat = 0.0
+    var sideMenuTrailingConstraint: NSLayoutConstraint!
 
     override func viewDidLoad() {
         super.viewDidLoad()

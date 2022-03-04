@@ -8,13 +8,20 @@
 import UIKit
 
 class SideMenuVC: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        view.backgroundColor = .red
+    var theme: Theme!
+    
+    init(theme: Theme) {
+        super.init(nibName: nil, bundle: nil)
+        self.theme = theme
     }
     
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
-
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = theme.colorSet["background"]
+    }
 }

@@ -13,7 +13,7 @@ extension CompactTextVC {
                                           y: ScreenSize.topPadding! + titleBarOffset,
                                           width: viewWidth - 10,
                                           height: TitleBar.height()), theme)
-        view.addSubview(titleBar)
+        view.insertSubview(titleBar, at: 1)
     }
     
     func showTitleBar() {
@@ -35,7 +35,6 @@ extension CompactTextVC {
     }
 
     func configureSwitchButton() {
-//        titleBar.listBtn.showsMenuAsPrimaryAction = true
         let books = fetchBook()
         var bookList: [String] = []
         var textList: [[Text]] = []
@@ -69,8 +68,7 @@ extension CompactTextVC {
     }
 
     @objc func listBtnFunc() {
-//        saveData(title: "Test", body: "iahuohihoifbuiauihuuifba", type: "MD")
-        restart()
+        triggerSideMenu(expand: true)
     }
 
     @objc func typeBtnFunc() {

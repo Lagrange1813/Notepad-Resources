@@ -1,8 +1,8 @@
 //
-//  BtnFunction.swift
+//  ToolBarBtnFunc.swift
 //  Notepad
 //
-//  Created by 张维熙 on 2022/2/24.
+//  Created by 张维熙 on 2022/3/4.
 //
 
 import UIKit
@@ -295,3 +295,4 @@ extension CompactTextVC {
         return true
     }
 }
+
