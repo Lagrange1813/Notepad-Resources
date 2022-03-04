@@ -15,10 +15,10 @@ public struct Theme {
         case TextDark = "text-dark"
         case TextLightFrostedGlass = "text-light-frosted-glass"
         case TextDarkFrostedGlass = "text-dark-frosted-glass"
-        case MarkdownLight = "markdown-light"
-        case MarkdownDark = "markdown-dark"
-        case MarkdownLightFrostedGlass = "markdown-light-frosted-glass"
-        case MarkdownDarkFrostedGlass = "markdown-dark-frosted-glass"
+        case MarkdownLight = "md-light"
+        case MarkdownDark = "md-dark"
+        case MarkdownLightFrostedGlass = "md-light-frosted-glass"
+        case MarkdownDarkFrostedGlass = "md-dark-frosted-glass"
         
         public func enable() -> Theme {
             return Theme(rawValue)

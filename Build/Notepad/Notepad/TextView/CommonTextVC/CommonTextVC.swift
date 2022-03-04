@@ -191,6 +191,8 @@ class CommonTextVC: UIViewController {
             make.width.equalTo(counter.width + 11)
         }
     }
+
+    // MARK: - Optional function
     
     func restart() {
         remove()
@@ -203,11 +205,11 @@ class CommonTextVC: UIViewController {
         loadData()
         loadInfo()
     }
-    
+
     func secondToLoad() {
         loadTheme()
     }
-    
+
     func thirdToLoad() {
         loadTextView()
         configureTextView()
@@ -215,14 +217,16 @@ class CommonTextVC: UIViewController {
             configureCounter()
         }
     }
-    
+
     func remove() {
         guard let textField = textField else { return }
 
         textField.removeFromSuperview()
         self.textField = nil
-        counter.removeFromSuperview()
-        counter = nil
+        if showCounter {
+            counter.removeFromSuperview()
+            counter = nil
+        }
     }
 }
 

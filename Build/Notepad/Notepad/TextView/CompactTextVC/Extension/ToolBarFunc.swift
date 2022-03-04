@@ -1,79 +1,45 @@
 //
-//  ConfigureBtn.swift
+//  ToolBarFunc.swift
 //  Notepad
 //
-//  Created by 张维熙 on 2022/1/27.
+//  Created by 张维熙 on 2022/3/4.
 //
 
-import RxCocoa
-import RxSwift
 import UIKit
 
 extension CompactTextVC {
-    // MARK: - Title bar button configurment
+    func configureToolBar() {
+        toolBar = ToolBar(viewWidth: viewWidth, theme)
+        view.addSubview(toolBar)
 
-    func configureTitleBarBtnAction() {
-        titleBar.listBtn.addTarget(self, action: #selector(listBtnFunc), for: .touchUpInside)
-        configureSwitchButton()
-        titleBar.typeBtn.addTarget(self, action: #selector(typeBtnFunc), for: .touchUpInside)
-    }
-
-    func configureSwitchButton() {
-//        titleBar.listBtn.showsMenuAsPrimaryAction = true
-        let books = fetchBook()
-        var bookList: [String] = []
-        var textList: [[Text]] = []
-
-        for x in 0 ..< books.count {
-            bookList.append(books[x].title!)
-            textList.append([])
-            let texts = books[x].text!
-            for text in texts {
-                textList[x].append(text as! Text)
+        toolBar.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            if ScreenSize.bottomPadding! > 0 {
+                make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+            } else {
+                make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).inset(5)
             }
+            make.width.equalTo(toolBar.width)
+            make.height.equalTo(toolBar.height)
         }
 
-        var bookBoard: [UIMenuElement] = []
-
-        for x in 0 ..< bookList.count {
-            var textBoard: [UIAction] = []
-            for text in textList[x] {
-                let item = UIAction(title: text.title!, image: UIImage(systemName: "doc.text")) { _ in
-                    UserDefaults.standard.set(text.id, forKey: "CurrentTextID")
-                    self.restart()
-                }
-                textBoard.append(item)
-            }
-            let item = UIMenu(title: bookList[x], image: UIImage(systemName: "book.closed"), children: textBoard)
-            bookBoard.append(item)
-        }
-
-        let menu = UIMenu(title: "书籍", children: bookBoard)
-        titleBar.listBtn.menu = menu
+//        toolBar.gestureHandler = { [self] in
+//            let pan = self.toolBar.panGestureRecognizer
+//            let velocity = pan!.velocity(in: textField).y
+//
+//            if velocity < -200 {
+//                UIView.animate(withDuration: 0.3, animations: {
+//                    self.titleBar.frame.origin.y -= 50
+//                })
+//
+//            } else if velocity > 200 {
+//                UIView.animate(withDuration: 0.3, animations: {
+//                    self.titleBar.frame.origin.y = ScreenSize.topPadding!
+//                })
+//            }
+//        }
     }
-
-    @objc func listBtnFunc() {
-//        saveData(title: "Test", body: "iahuohihoifbuiauihuuifba", type: "MD")
-        restart()
-    }
-
-    @objc func typeBtnFunc() {
-        let id = UserDefaults.standard.integer(forKey: "CurrentTextID")
-        let titleToStore: String = textField.titleView.text
-        let bodyToStore: String = textField.bodyView.text
-
-        saveText(id: id, title: titleToStore, body: bodyToStore, type: {
-            switch type {
-            case "Text": return "MD"
-            case "MD": return "Text"
-            default: return ""
-            }
-        }())
-        restart()
-    }
-
-    // MARK: - Tool bar button configurment
-
+    
     func configureToolBarBtnAction() {
         toolBar.commandBtn.addTarget(self, action: #selector(commandBtnFunc), for: .touchUpInside)
 

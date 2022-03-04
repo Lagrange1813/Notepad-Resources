@@ -41,6 +41,11 @@ class CompactTextVC: CommonTextVC {
     var image: UIImageView?
     var backgroundSupport: UIView?
 
+    var revealSideMenuOnTop = true
+    var sideMenuRevealWidth: CGFloat = 260
+    var sideMenuVC: SideMenuVC!
+    var sideMenuShadowView: UIView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         preload()
@@ -82,6 +87,8 @@ class CompactTextVC: CommonTextVC {
         super.viewWillTransition(to: size, with: coordinator)
     }
 
+    // MARK: - Configure components
+
     func preload() {
         let userDefaults = UserDefaults.standard
 //        userDefaults.set("text-light-frosted-glass", forKey: "TextTheme")
@@ -107,53 +114,15 @@ class CompactTextVC: CommonTextVC {
         topPadding = barHeight
         bottomPadding = view.frame.height/2
         bottomAnchor = 5
+
+        configureSideMenu()
     }
 
-    func configureStatusBarBackground() {
-        let background = UIView(frame: CGRect(x: 0, y: 0, width: ScreenSize.width, height: ScreenSize.topPadding! - 1))
-        background.backgroundColor = theme.colorSet["background"]
-        view.addSubview(background)
-    }
-
-    func configureTitleBar() {
-        titleBar = TitleBar(frame: CGRect(x: view.frame.width/2 - (viewWidth - 10)/2,
-                                          y: ScreenSize.topPadding! + titleBarOffset,
-                                          width: viewWidth - 10,
-                                          height: TitleBar.height()), theme)
-        view.addSubview(titleBar)
-    }
-
-    func configureToolBar() {
-        toolBar = ToolBar(viewWidth: viewWidth, theme)
-        view.addSubview(toolBar)
-
-        toolBar.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            if ScreenSize.bottomPadding! > 0 {
-                make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
-            } else {
-                make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).inset(5)
-            }
-            make.width.equalTo(toolBar.width)
-            make.height.equalTo(toolBar.height)
-        }
-
-//        toolBar.gestureHandler = { [self] in
-//            let pan = self.toolBar.panGestureRecognizer
-//            let velocity = pan!.velocity(in: textField).y
-//
-//            if velocity < -200 {
-//                UIView.animate(withDuration: 0.3, animations: {
-//                    self.titleBar.frame.origin.y -= 50
-//                })
-//
-//            } else if velocity > 200 {
-//                UIView.animate(withDuration: 0.3, animations: {
-//                    self.titleBar.frame.origin.y = ScreenSize.topPadding!
-//                })
-//            }
-//        }
-    }
+//    func configureStatusBarBackground() {
+//        let background = UIView(frame: CGRect(x: 0, y: 0, width: ScreenSize.width, height: ScreenSize.topPadding! - 1))
+//        background.backgroundColor = theme.colorSet["background"]
+//        view.addSubview(background)
+//    }
 
     func configureBackgroundImage() {
         image = UIImageView(image: UIImage(named: "Qerg85B7JDI"))
@@ -195,6 +164,23 @@ class CompactTextVC: CommonTextVC {
         }
     }
 
+    // MARK: - Optional function
+
+    override func remove() {
+        guard textField != nil else { return }
+
+        super.remove()
+
+        titleBar.removeFromSuperview()
+        titleBar = nil
+        toolBar.removeFromSuperview()
+        toolBar = nil
+        image?.removeFromSuperview()
+        image = nil
+        backgroundSupport?.removeFromSuperview()
+        backgroundSupport = nil
+    }
+
     override func firstToLoad() {
         super.firstToLoad()
         preload()
@@ -221,18 +207,42 @@ class CompactTextVC: CommonTextVC {
         configureToolBarBtnAction()
     }
 
-    override func remove() {
-        guard textField != nil else { return }
+    enum Position {
+        case view
+        case textField
+        case bodyView
+    }
 
-        super.remove()
+    func correctCoordinates(_ location: CGFloat, position: Position) -> CGFloat {
+        guard let textField = textField else { return 0 }
+        let viewCoordinates = textField.contentOffset
+        switch position {
+        case .view:
+            return location - ScreenSize.topPadding!
+        case .textField:
+            return location - viewCoordinates.y
+        case .bodyView:
+            let temp = location + textField.titleView.bounds.height - viewCoordinates.y
+            return temp
+        }
+    }
 
-        titleBar.removeFromSuperview()
-        titleBar = nil
-        toolBar.removeFromSuperview()
-        toolBar = nil
-        image?.removeFromSuperview()
-        image = nil
-        backgroundSupport?.removeFromSuperview()
-        backgroundSupport = nil
+    func updateViewWidth() {
+        viewWidth = view.frame.width
+    }
+
+    func updateComponents() {
+        guard let titleBar = titleBar else { return }
+        guard let toolBar = toolBar else { return }
+
+        let width = viewWidth - 10
+        titleBar.frame.size.width = width
+        titleBar.frame.origin.x = view.frame.width/2 - width/2
+
+        toolBar.viewWidth = viewWidth
+        toolBar.snp.updateConstraints { make in
+            make.width.equalTo(width)
+        }
+        toolBar.updateScrollToolView()
     }
 }
