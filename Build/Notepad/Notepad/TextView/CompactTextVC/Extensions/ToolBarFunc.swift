@@ -26,7 +26,7 @@ extension CompactTextVC {
 //        toolBar.gestureHandler = { [self] in
 //            let pan = self.toolBar.panGestureRecognizer
 //            let velocity = pan!.velocity(in: textField).y
-//
+
 //            if velocity < -200 {
 //                UIView.animate(withDuration: 0.3, animations: {
 //                    self.titleBar.frame.origin.y -= 50

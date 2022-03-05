@@ -28,12 +28,24 @@ extension CompactTextVC: UIGestureRecognizerDelegate {
         view.insertSubview(sideMenuVC.view, at: revealSideMenuOnTop ? 3 : 0)
         sideMenuVC.didMove(toParent: self)
 
-        sideMenuVC.view.snp.makeConstraints { make in
-            make.top.equalToSuperview()
-            make.bottom.equalToSuperview()
-            make.width.equalTo(sideMenuRevealWidth)
-            make.trailing.equalTo(view.snp.leading)
-        }
+        self.sideMenuVC.view.translatesAutoresizingMaskIntoConstraints = false
+        
+        self.sideMenuTrailingConstraint = self.sideMenuVC.view.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: -self.sideMenuRevealWidth)
+        self.sideMenuTrailingConstraint.isActive = true
+
+        NSLayoutConstraint.activate([
+            self.sideMenuVC.view.widthAnchor.constraint(equalToConstant: self.sideMenuRevealWidth),
+            self.sideMenuVC.view.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            self.sideMenuVC.view.topAnchor.constraint(equalTo: view.topAnchor),
+//            self.sideMenuVC.view.trailingAnchor.constraint(equalTo: view.leadingAnchor)
+        ])
+        
+//        sideMenuVC.view.snp.makeConstraints { make in
+//            make.top.equalToSuperview()
+//            make.bottom.equalToSuperview()
+//            make.width.equalTo(sideMenuRevealWidth)
+//            make.trailing.equalTo(view.snp.leading)
+//        }
         
         let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(panGestureHandler))
         panGestureRecognizer.delegate = self
@@ -46,22 +58,29 @@ extension CompactTextVC: UIGestureRecognizerDelegate {
             textField.bodyView.resignFirstResponder()
             
             UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 0, options: .layoutSubviews, animations: {
-                self.sideMenuVC.view.snp.updateConstraints { make in
-                    make.trailing.equalTo(self.view.snp.leading).offset(self.sideMenuRevealWidth)
-                }
+//                self.sideMenuVC.view.snp.updateConstraints { make in
+//                    make.trailing.equalTo(self.view.snp.leading).offset(self.sideMenuRevealWidth)
+//                }
+                self.sideMenuTrailingConstraint.constant = 0
                 self.view.layoutIfNeeded()
             })
             
             UIView.animate(withDuration: 0.5) { self.sideMenuShadowView.alpha = 0.6 }
+            
+            self.isExpanded = true
+            
         } else {
             UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 0, options: .layoutSubviews, animations: {
-                self.sideMenuVC.view.snp.updateConstraints { make in
-                    make.trailing.equalTo(self.view.snp.leading)
-                }
+//                self.sideMenuVC.view.snp.updateConstraints { make in
+//                    make.trailing.equalTo(self.view.snp.leading)
+//                }
+                self.sideMenuTrailingConstraint.constant = -self.sideMenuRevealWidth
                 self.view.layoutIfNeeded()
             })
             
             UIView.animate(withDuration: 0.5) { self.sideMenuShadowView.alpha = 0 }
+            
+            self.isExpanded = false
         }
         
     }
@@ -76,8 +95,8 @@ extension CompactTextVC: UIGestureRecognizerDelegate {
         let position: CGFloat = sender.translation(in: self.view).x
         let velocity: CGFloat = sender.velocity(in: self.view).x
         
-        print(position)
-        print(velocity)
+//        print(position)
+//        print(velocity)
         
         switch sender.state {
         case .began:
@@ -114,7 +133,7 @@ extension CompactTextVC: UIGestureRecognizerDelegate {
             
         case .changed:
             
-            print("changed")
+//            print("changed")
             if self.isDraggingEnabled {
                 if self.revealSideMenuOnTop {
                     // Show/Hide shadow background view while dragging
@@ -148,7 +167,7 @@ extension CompactTextVC: UIGestureRecognizerDelegate {
             
         case .ended:
             
-            print("ended")
+//            print("ended")
             self.isDraggingEnabled = false
             // If the side menu is half Open/Close, then Expand/Collapse with animation
             if self.revealSideMenuOnTop {
