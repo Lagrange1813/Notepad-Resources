@@ -24,6 +24,7 @@ extension CompactTextVC: UIGestureRecognizerDelegate {
         }
 
         sideMenuVC = SideMenuVC(theme: self.theme)
+//        sideMenuVC = SideMenuVC()
         addChild(sideMenuVC)
         view.insertSubview(sideMenuVC.view, at: revealSideMenuOnTop ? 3 : 0)
         sideMenuVC.didMove(toParent: self)
