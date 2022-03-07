@@ -43,7 +43,7 @@ class CompactTextVC: CommonTextVC {
 
     var revealSideMenuOnTop = true
     
-    var sideMenuRevealWidth: CGFloat = 290
+    var sideMenuRevealWidth: CGFloat = 320
     var sideMenuVC: SideMenuVC!
     var sideMenuShadowView: UIView!
     var isDraggingEnabled: Bool = false

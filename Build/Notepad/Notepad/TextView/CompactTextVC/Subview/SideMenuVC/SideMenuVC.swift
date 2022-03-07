@@ -8,35 +8,7 @@
 import UIKit
 
 class SideMenuVC: UIViewController {
-//    let books = fetchBook()
-//    var bookList: [String] = []
-//    var textList: [[Text]] = []
-//
-//    for x in 0 ..< books.count {
-//        bookList.append(books[x].title!)
-//        textList.append([])
-//        let texts = books[x].text!
-//        for text in texts {
-//            textList[x].append(text as! Text)
-//        }
-//    }
-//
-//    var bookBoard: [UIMenuElement] = []
-//
-//    for x in 0 ..< bookList.count {
-//        var textBoard: [UIAction] = []
-//        for text in textList[x] {
-//            let item = UIAction(title: text.title!, image: UIImage(systemName: "doc.text")) { _ in
-//                UserDefaults.standard.set(text.id, forKey: "CurrentTextID")
-//                self.restart()
-//            }
-//            textBoard.append(item)
-//        }
-//        let item = UIMenu(title: bookList[x], image: UIImage(systemName: "book.closed"), children: textBoard)
-//        bookBoard.append(item)
-//    }
-    
-    let modelObjects: [BookItem] = {
+    let mainItems: [BookItem] = {
         let books = fetchBook()
         var objects: [BookItem] = []
         
@@ -89,13 +61,12 @@ class SideMenuVC: UIViewController {
 //    ]
     
     enum Section {
+        case sundry
         case main
     }
     
     var textList: UICollectionView!
     var dataSource: UICollectionViewDiffableDataSource<Section, ListItem>!
-    var bookCellRegistration: UICollectionView.CellRegistration<UICollectionViewListCell, BookItem>!
-    var textCellRegistration: UICollectionView.CellRegistration<UICollectionViewListCell, TextItem>!
     
     var theme: Theme!
     
@@ -104,6 +75,7 @@ class SideMenuVC: UIViewController {
         self.theme = theme
     }
     
+    @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -111,31 +83,41 @@ class SideMenuVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = theme.colorSet["background"]
+        view.backgroundColor = .systemGray6
         
         configureCollectionView()
-        registerCell()
         configureDataSource()
         setupSnapshots()
     }
     
     func configureCollectionView() {
-        let configuration = UICollectionLayoutListConfiguration(appearance: .insetGrouped)
+        var configuration = UICollectionLayoutListConfiguration(appearance: .insetGrouped)
+        configuration.backgroundColor = .systemGray6
+        configuration.headerMode = .firstItemInSection
+        
         let listLayout = UICollectionViewCompositionalLayout.list(using: configuration)
 
         textList = UICollectionView(frame: CGRect(), collectionViewLayout: listLayout)
-        textList.tintColor = .systemYellow
+        textList.tintColor = .systemBlue
         view.addSubview(textList)
         
         textList.snp.makeConstraints { make in
-            make.top.equalToSuperview()
+            make.top.equalToSuperview().offset(ScreenSize.topPadding!)
             make.bottom.equalToSuperview()
             make.leading.trailing.equalToSuperview()
         }
     }
     
-    func registerCell() {
-        bookCellRegistration = UICollectionView.CellRegistration<UICollectionViewListCell, BookItem> { cell, _, bookItem in
+    func configureDataSource() {
+        let sectionCellRegistration = UICollectionView.CellRegistration<UICollectionViewListCell, SectionItem> { cell, _, sectionItem in
+            var content = cell.defaultContentConfiguration()
+            content.text = sectionItem.title
+            cell.contentConfiguration = content
+            
+            cell.accessories = [.outlineDisclosure()]
+        }
+        
+        let bookCellRegistration = UICollectionView.CellRegistration<UICollectionViewListCell, BookItem> { cell, _, bookItem in
             var content = cell.defaultContentConfiguration()
             content.text = bookItem.title
             content.image = bookItem.image
@@ -145,33 +127,46 @@ class SideMenuVC: UIViewController {
             cell.accessories = [.outlineDisclosure(options: headerDisclosureOption)]
         }
         
-        textCellRegistration = UICollectionView.CellRegistration<UICollectionViewListCell, TextItem> { cell, _, textItem in
+        let textCellRegistration = UICollectionView.CellRegistration<UICollectionViewListCell, TextItem> { cell, _, textItem in
             var content = cell.defaultContentConfiguration()
 //            content.image = textItem.image
             content.text = textItem.title
             cell.contentConfiguration = content
         }
-    }
-    
-    func configureDataSource() {
+        
         dataSource = UICollectionViewDiffableDataSource<Section, ListItem>(collectionView: textList) {
             collectionView, indexPath, listItem -> UICollectionViewCell? in
             
             switch listItem {
+            case .section(let sectionItem):
+                
+                let cell = collectionView.dequeueConfiguredReusableCell(using: sectionCellRegistration,
+                                                                        for: indexPath,
+                                                                        item: sectionItem)
+                return cell
+                
             case .book(let bookItem):
             
                 // Dequeue header cell
-                let cell = collectionView.dequeueConfiguredReusableCell(using: self.bookCellRegistration,
+                let cell = collectionView.dequeueConfiguredReusableCell(using: bookCellRegistration,
                                                                         for: indexPath,
                                                                         item: bookItem)
+                var background = UIBackgroundConfiguration.listPlainCell()
+                background.backgroundColor = .systemBackground
+                cell.backgroundConfiguration = background
+                
                 return cell
             
             case .text(let textItem):
                 
                 // Dequeue symbol cell
-                let cell = collectionView.dequeueConfiguredReusableCell(using: self.textCellRegistration,
+                let cell = collectionView.dequeueConfiguredReusableCell(using: textCellRegistration,
                                                                         for: indexPath,
                                                                         item: textItem)
+                var background = UIBackgroundConfiguration.listPlainCell()
+                background.backgroundColor = .systemBackground
+                cell.backgroundConfiguration = background
+                
                 return cell
             }
         }
@@ -181,33 +176,39 @@ class SideMenuVC: UIViewController {
         var dataSourceSnapshot = NSDiffableDataSourceSnapshot<Section, ListItem>()
 
         // Create a section in the data source snapshot
-        dataSourceSnapshot.appendSections([.main])
+        dataSourceSnapshot.appendSections([.sundry, .main])
         dataSource.apply(dataSourceSnapshot)
         
-        // Create a section snapshot for main section
-        var sectionSnapshot = NSDiffableDataSourceSectionSnapshot<ListItem>()
+        var sundrySectionSnapshot = NSDiffableDataSourceSectionSnapshot<ListItem>()
         
-        for bookItem in modelObjects {
+        sundrySectionSnapshot.append([ListItem.section(SectionItem(title: ""))])
+        sundrySectionSnapshot.append([ListItem.book(BookItem(title: "全部", texts: []))])
+        sundrySectionSnapshot.append([ListItem.book(BookItem(title: "废纸篓", texts: []))])
+        
+        dataSource.apply(sundrySectionSnapshot, to: .sundry, animatingDifferences: false)
+        
+        // Create a section snapshot for main section
+        var mainSectionSnapshot = NSDiffableDataSourceSectionSnapshot<ListItem>()
+        
+        mainSectionSnapshot.append([ListItem.section(SectionItem(title: "书籍"))])
+        
+        for bookItem in mainItems {
             // Create a header ListItem & append as parent
             let bookListItem = ListItem.book(bookItem)
-            sectionSnapshot.append([bookListItem])
+            mainSectionSnapshot.append([bookListItem])
             
             // Create an array of symbol ListItem & append as children of headerListItem
             let textListItemArray = bookItem.texts.map { ListItem.text($0) }
-            sectionSnapshot.append(textListItemArray, to: bookListItem)
+            mainSectionSnapshot.append(textListItemArray, to: bookListItem)
             
             // Expand this section by default
-            sectionSnapshot.expand([bookListItem])
+//            sectionSnapshot.expand([bookListItem])
         }
         
-        dataSource.apply(sectionSnapshot, to: .main, animatingDifferences: false)
+        dataSource.apply(mainSectionSnapshot, to: .main, animatingDifferences: false)
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {}
 }
 
-extension SideMenuVC: UICollectionViewDelegate {
-    
-}
+extension SideMenuVC: UICollectionViewDelegate {}

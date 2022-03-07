@@ -8,17 +8,22 @@
 import UIKit
 
 enum ListItem: Hashable {
+    case section(SectionItem)
     case book(BookItem)
     case text(TextItem)
 }
 
 struct BookItem: Hashable {
     let title: String
-    let image = UIImage(systemName: "book")!
+    let image = UIImage(systemName: "text.book.closed")!
     let texts: [TextItem]
 }
 
 struct TextItem: Hashable {
     let title: String
     let image: UIImage = UIImage(systemName: "doc.text")!
+}
+
+struct SectionItem: Hashable {
+    let title: String
 }

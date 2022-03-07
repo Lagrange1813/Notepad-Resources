@@ -66,7 +66,7 @@ extension CompactTextVC: UIGestureRecognizerDelegate {
                 self.view.layoutIfNeeded()
             })
             
-            UIView.animate(withDuration: 0.5) { self.sideMenuShadowView.alpha = 0.6 }
+            UIView.animate(withDuration: 0.5) { self.sideMenuShadowView.alpha = 0.4 }
             
             self.isExpanded = true
             
@@ -141,7 +141,7 @@ extension CompactTextVC: UIGestureRecognizerDelegate {
                     let xLocation: CGFloat = self.panBaseLocation + position
                     let percentage = (xLocation * 150 / self.sideMenuRevealWidth) / self.sideMenuRevealWidth
 
-                    let alpha = percentage >= 0.6 ? 0.6 : percentage
+                    let alpha = percentage >= 0.4 ? 0.4 : percentage
                     self.sideMenuShadowView.alpha = alpha
 
                     // Move side menu while dragging
@@ -154,7 +154,7 @@ extension CompactTextVC: UIGestureRecognizerDelegate {
                         // Show/Hide shadow background view while dragging
                         let percentage = (recogView.frame.origin.x * 150 / self.sideMenuRevealWidth) / self.sideMenuRevealWidth
 
-                        let alpha = percentage >= 0.6 ? 0.6 : percentage
+                        let alpha = percentage >= 0.4 ? 0.4 : percentage
                         self.sideMenuShadowView.alpha = alpha
 
                         // Move side menu while dragging
