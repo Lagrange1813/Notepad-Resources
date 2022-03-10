@@ -192,3 +192,9 @@ extension CompactTextVC: UIGestureRecognizerDelegate {
         }
     }
 }
+
+//extension CompactTextVC: UICollectionViewDelegate {
+//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//         print(indexPath)
+//    }
+//}

@@ -222,8 +222,4 @@ class SideMenuVC: UIViewController {
         
         dataSource.apply(mainSectionSnapshot, to: .main, animatingDifferences: false)
     }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {}
 }
-
-extension SideMenuVC: UICollectionViewDelegate {}
