@@ -14,6 +14,11 @@ extension CompactTextVC: UIGestureRecognizerDelegate {
         sideMenuShadowView.backgroundColor = .black
         sideMenuShadowView.alpha = 0.0
         
+//        let test = UIView(frame: view.bounds)
+//        test.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+//        test.backgroundColor = .white
+//        view.insertSubview(test, at: 1)
+        
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapGestureHandler))
         tapGestureRecognizer.numberOfTapsRequired = 1
         tapGestureRecognizer.delegate = self

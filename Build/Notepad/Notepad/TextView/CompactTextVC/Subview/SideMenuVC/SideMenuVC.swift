@@ -98,7 +98,7 @@ class SideMenuVC: UIViewController {
         let listLayout = UICollectionViewCompositionalLayout.list(using: configuration)
 
         textList = UICollectionView(frame: CGRect(), collectionViewLayout: listLayout)
-        textList.tintColor = .systemBlue
+        textList.tintColor = .black
         view.addSubview(textList)
         
         textList.snp.makeConstraints { make in
@@ -129,8 +129,13 @@ class SideMenuVC: UIViewController {
         
         let textCellRegistration = UICollectionView.CellRegistration<UICollectionViewListCell, TextItem> { cell, _, textItem in
             var content = cell.defaultContentConfiguration()
-//            content.image = textItem.image
+            content.image = textItem.image
             content.text = textItem.title
+            cell.contentConfiguration = content
+        }
+        
+        let blankCellRegistration = UICollectionView.CellRegistration<UICollectionViewListCell, BlankItem> { cell, _, _ in
+            let content = cell.defaultContentConfiguration()
             cell.contentConfiguration = content
         }
         
@@ -168,6 +173,13 @@ class SideMenuVC: UIViewController {
                 cell.backgroundConfiguration = background
                 
                 return cell
+                
+            case .blank(let blankItem):
+                
+                let cell = collectionView.dequeueConfiguredReusableCell(using: blankCellRegistration,
+                                                                        for: indexPath,
+                                                                        item: blankItem)
+                return cell
             }
         }
     }
@@ -179,23 +191,26 @@ class SideMenuVC: UIViewController {
         dataSourceSnapshot.appendSections([.sundry, .main])
         dataSource.apply(dataSourceSnapshot)
         
+        // 杂项
         var sundrySectionSnapshot = NSDiffableDataSourceSectionSnapshot<ListItem>()
         
-        sundrySectionSnapshot.append([ListItem.section(SectionItem(title: ""))])
-        sundrySectionSnapshot.append([ListItem.book(BookItem(title: "全部", texts: []))])
-        sundrySectionSnapshot.append([ListItem.book(BookItem(title: "废纸篓", texts: []))])
+        sundrySectionSnapshot.append([ListItem.blank(BlankItem())])
+        sundrySectionSnapshot.append([ListItem.book(BookItem(title: "全部", image: "archivebox"))])
+        sundrySectionSnapshot.append([ListItem.book(BookItem(title: "废纸篓",image: "trash"))])
         
         dataSource.apply(sundrySectionSnapshot, to: .sundry, animatingDifferences: false)
         
-        // Create a section snapshot for main section
+        // 书籍主列表
         var mainSectionSnapshot = NSDiffableDataSourceSectionSnapshot<ListItem>()
         
-        mainSectionSnapshot.append([ListItem.section(SectionItem(title: "书籍"))])
+        let bookSectionItem = ListItem.section(SectionItem(title: "书籍"))
+        mainSectionSnapshot.append([bookSectionItem])
+        mainSectionSnapshot.expand([bookSectionItem])
         
         for bookItem in mainItems {
             // Create a header ListItem & append as parent
             let bookListItem = ListItem.book(bookItem)
-            mainSectionSnapshot.append([bookListItem])
+            mainSectionSnapshot.append([bookListItem], to: bookSectionItem)
             
             // Create an array of symbol ListItem & append as children of headerListItem
             let textListItemArray = bookItem.texts.map { ListItem.text($0) }
