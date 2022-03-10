@@ -127,10 +127,6 @@ extension String {
 
 private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
-//func saveText(title: String, body: String, type: String) {
-//    insertText(title: title, body: body, type: type, bookName: "卡拉马佐夫兄弟")
-//}
-
 // 增
 func insertBook(title: String, author: String) {
     let entity = NSEntityDescription.entity(forEntityName: "Book", in: context)!
@@ -145,17 +141,13 @@ func insertBook(title: String, author: String) {
     }
 }
 
-func insertText(title: String, body: String, type: String, bookName: String) {
-    let userDefaults = UserDefaults.standard
-    let cnt = userDefaults.integer(forKey: "TextID")
-    userDefaults.set(cnt+1, forKey: "TextID")
-    
+func insertText(title: String, body: String, type: String, bookName: String, id: UUID?) {
     let entity = NSEntityDescription.entity(forEntityName: "Text", in: context)!
     let text = Text(entity: entity, insertInto: context)
     text.title = title
     text.body = body
     text.type = type
-    text.id = Int64(cnt)
+    text.id = id ?? UUID()
 
     let books = fetchBook()
 
@@ -187,8 +179,21 @@ func fetchBook() -> [Book] {
     return results
 }
 
+func fetchAllTexts() -> [Text] {
+    var texts: [Text] = []
+    let fetchRequest = NSFetchRequest<Text>(entityName: "Text")
+
+    do {
+        texts = try context.fetch(fetchRequest)
+    } catch let error as NSError {
+        print("Could not fetch. \(error), \(error.userInfo)")
+    }
+    
+    return texts
+}
+
 // 改
-func saveText(id: Int, title: String, body: String, type: String) {
+func saveText(id: UUID, title: String, body: String, type: String) {
     
     let fetchRequest = NSFetchRequest<Text>(entityName: "Text")
     

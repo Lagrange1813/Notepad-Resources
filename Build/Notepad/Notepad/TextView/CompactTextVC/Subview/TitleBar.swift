@@ -86,7 +86,19 @@ class TitleBar: UIView {
     }
     
     func configueTitle() {
-        let text = "卡拉马佐夫兄弟"
+        let texts = fetchAllTexts()
+        
+        let userDefaults = UserDefaults.standard
+        let id = userDefaults.value(forKey: "CurrentTextID") as! String
+        var targetText: Text!
+        
+        for text in texts {
+            if text.id! == UUID(uuidString: id) {
+                targetText = text
+            }
+        }
+        
+        let text = targetText.book!.title
         
         let title = UILabel()
         title.text = text

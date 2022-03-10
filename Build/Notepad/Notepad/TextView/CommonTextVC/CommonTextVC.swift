@@ -96,24 +96,16 @@ class CommonTextVC: UIViewController {
     // MARK: - Load data
     
     func loadData() {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-
-        let managedContext = appDelegate.persistentContainer.viewContext
-        let fetchRequest = NSFetchRequest<Text>(entityName: "Text")
-
-        do {
-            texts = try managedContext.fetch(fetchRequest)
-        } catch let error as NSError {
-            print("Could not fetch. \(error), \(error.userInfo)")
-        }
+        texts = fetchAllTexts()
     }
     
     func loadInfo() {
         let userDefaults = UserDefaults.standard
+        let id = userDefaults.value(forKey: "CurrentTextID") as! String
         var targetText: Text!
         
         for text in texts {
-            if text.id == userDefaults.integer(forKey: "CurrentTextID") {
+            if text.id! == UUID(uuidString: id) {
                 targetText = text
             }
         }

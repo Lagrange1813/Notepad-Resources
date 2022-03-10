@@ -54,7 +54,7 @@ extension CompactTextVC {
             var textBoard: [UIAction] = []
             for text in textList[x] {
                 let item = UIAction(title: text.title!, image: UIImage(systemName: "doc.text")) { _ in
-                    UserDefaults.standard.set(text.id, forKey: "CurrentTextID")
+                    UserDefaults.standard.set(text.id!.uuidString, forKey: "CurrentTextID")
                     self.restart()
                 }
                 textBoard.append(item)
@@ -72,11 +72,11 @@ extension CompactTextVC {
     }
 
     @objc func typeBtnFunc() {
-        let id = UserDefaults.standard.integer(forKey: "CurrentTextID")
+        let id = UUID(uuidString: UserDefaults.standard.value(forKey: "CurrentTextID") as! String)
         let titleToStore: String = textField.titleView.text
         let bodyToStore: String = textField.bodyView.text
 
-        saveText(id: id, title: titleToStore, body: bodyToStore, type: {
+        saveText(id: id!, title: titleToStore, body: bodyToStore, type: {
             switch type {
             case "Text": return "MD"
             case "MD": return "Text"

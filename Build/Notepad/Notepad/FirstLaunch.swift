@@ -22,8 +22,8 @@ extension UserDefaults {
 
 func firstStart() {
     let userDefaults = UserDefaults.standard
-    userDefaults.set(0, forKey: "TextID")
-    userDefaults.set(0, forKey: "CurrentTextID")
+    let id = UUID().uuidString
+    userDefaults.set(id, forKey: "CurrentTextID")
     
     let title0 = "卡拉马佐夫兄弟"
     let author0 = "陀思妥耶夫斯基"
@@ -38,9 +38,9 @@ func firstStart() {
     let title02 = "斯乜尔加科夫论"
     let body02 = "“我虽然在戍边营里当准尉，可还是像流放犯那样受到监视。然而我在驻地的那个小城受到的接待好得不得了。我大手大脚地花钱，人家都相信我很富有，连我自己也相信这一点。不过，想必我还有别的什么地方赢得他们的好感。尽管他们对我的品行连连摇头，可是挺喜欢我。我的上司，一位已经上了年纪的中校，不知为什么瞧我觉得不顺眼。他老是找我的碴儿。可是我有后台，再说，全城的人都站在我这边，所以也没法跟我太过不去。都怪我自己不好，我故意不向他表示应有的尊敬。是我的傲气在作怪。\n“这个老顽固其实人不坏，心肠挺好，很热情，先后有过两个妻子，两个都去世了。第一个妻子是寻常人家出身，给他生了个女儿，也很纯朴。我在那里的时候，她已经是个二十四岁的大姑娘了，跟父亲和姨妈——她已故母亲的姐姐——住在一起。姨妈属于那种百依百顺的纯朴型；外甥女，也就是中校的长女，表现的则是一种朝气蓬勃的单纯。我喜欢用美好的语言回忆往事。亲爱的小弟，以前我从未遇见过有哪一个女人性格比这姑娘更可爱的，她叫阿嘉菲娅，连同父名是阿嘉菲娅·伊万诺夫娜。她的模样也相当可以，俄罗斯风韵：高高的个儿，结实、丰满，眼睛挺漂亮，相貌嘛，是粗点儿。她还没有出嫁，虽然有两家来提过亲，都让她给拒绝了，过后她照旧乐乐和和的。我跟她相交了——可不是相好，不，我们之间清清白白，纯粹是朋友。我跟女人相交的方式往往一清二白，并不越出友谊的范围。\n“我跟她谈话的内容倒是毫无顾忌，坦率得惊人！她只是笑声不断。不少女人喜欢坦率，可是别忘了她还是姑娘家，这一点在我看来特别有趣。还得指出这样一个情况，那就是：怎么也没法把她当作一位小姐对待。\n"
 
-    insertText(title: title00, body: body00, type: "Text", bookName: "卡拉马佐夫兄弟")
-    insertText(title: title01, body: body01, type: "Text", bookName: "卡拉马佐夫兄弟")
-    insertText(title: title02, body: body02, type: "Text", bookName: "卡拉马佐夫兄弟")
+    insertText(title: title00, body: body00, type: "Text", bookName: "卡拉马佐夫兄弟", id: UUID(uuidString: id))
+    insertText(title: title01, body: body01, type: "Text", bookName: "卡拉马佐夫兄弟", id: nil)
+    insertText(title: title02, body: body02, type: "Text", bookName: "卡拉马佐夫兄弟", id: nil)
     
     let book1 = "白夜"
     let author1 = "陀思妥耶夫斯基"
@@ -55,9 +55,9 @@ func firstStart() {
     let title12 = "早晨"
     let body12 = "“我虽然在戍边营里当准尉，可还是像流放犯那样受到监视。然而我在驻地的那个小城受到的接待好得不得了。我大手大脚地花钱，人家都相信我很富有，连我自己也相信这一点。不过，想必我还有别的什么地方赢得他们的好感。尽管他们对我的品行连连摇头，可是挺喜欢我。我的上司，一位已经上了年纪的中校，不知为什么瞧我觉得不顺眼。他老是找我的碴儿。可是我有后台，再说，全城的人都站在我这边，所以也没法跟我太过不去。都怪我自己不好，我故意不向他表示应有的尊敬。是我的傲气在作怪。\n“这个老顽固其实人不坏，心肠挺好，很热情，先后有过两个妻子，两个都去世了。第一个妻子是寻常人家出身，给他生了个女儿，也很纯朴。我在那里的时候，她已经是个二十四岁的大姑娘了，跟父亲和姨妈——她已故母亲的姐姐——住在一起。姨妈属于那种百依百顺的纯朴型；外甥女，也就是中校的长女，表现的则是一种朝气蓬勃的单纯。我喜欢用美好的语言回忆往事。亲爱的小弟，以前我从未遇见过有哪一个女人性格比这姑娘更可爱的，她叫阿嘉菲娅，连同父名是阿嘉菲娅·伊万诺夫娜。她的模样也相当可以，俄罗斯风韵：高高的个儿，结实、丰满，眼睛挺漂亮，相貌嘛，是粗点儿。她还没有出嫁，虽然有两家来提过亲，都让她给拒绝了，过后她照旧乐乐和和的。我跟她相交了——可不是相好，不，我们之间清清白白，纯粹是朋友。我跟女人相交的方式往往一清二白，并不越出友谊的范围。\n“我跟她谈话的内容倒是毫无顾忌，坦率得惊人！她只是笑声不断。不少女人喜欢坦率，可是别忘了她还是姑娘家，这一点在我看来特别有趣。还得指出这样一个情况，那就是：怎么也没法把她当作一位小姐对待。\n"
 
-    insertText(title: title10, body: body10, type: "Text", bookName: "白夜")
-    insertText(title: title11, body: body11, type: "Text", bookName: "白夜")
-    insertText(title: title12, body: body12, type: "Text", bookName: "白夜")
+    insertText(title: title10, body: body10, type: "Text", bookName: "白夜", id: nil)
+    insertText(title: title11, body: body11, type: "Text", bookName: "白夜", id: nil)
+    insertText(title: title12, body: body12, type: "Text", bookName: "白夜", id: nil)
     
     userDefaults.set("text-light", forKey: "TextTheme")
     userDefaults.set("md-light", forKey: "MDTheme")
