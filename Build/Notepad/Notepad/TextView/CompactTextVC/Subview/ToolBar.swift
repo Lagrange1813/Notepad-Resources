@@ -26,6 +26,11 @@ class ToolBar: UIView {
 
     var scrollToolView: CustomScrollView!
 
+    var btnProfile: [String:[String:String]] = ["quotesBtn": ["type":"shortCutBtn",
+                                                              "content":"”“"],
+                                                "sqrBracketsBtn": ["type":"shortCutBtn","content":"「」"],
+                                                "bracketsBtn": ["type":"shortCutBtn","content":"（）"]]
+
     var commandBtn: CustomBtn!
 
     var touchPad: TouchPad!

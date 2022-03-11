@@ -19,7 +19,7 @@ extension CompactTextVC: UIGestureRecognizerDelegate {
 //        test.backgroundColor = .white
 //        view.insertSubview(test, at: 1)
         
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapGestureHandler))
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.tapGestureHandler))
         tapGestureRecognizer.numberOfTapsRequired = 1
         tapGestureRecognizer.delegate = self
         sideMenuShadowView.addGestureRecognizer(tapGestureRecognizer)
@@ -29,11 +29,11 @@ extension CompactTextVC: UIGestureRecognizerDelegate {
         }
 
         sideMenuVC = SideMenuVC(theme: self.theme)
-//        sideMenuVC = SideMenuVC()
         addChild(sideMenuVC)
         view.insertSubview(sideMenuVC.view, at: revealSideMenuOnTop ? 3 : 0)
         sideMenuVC.didMove(toParent: self)
 
+        sideMenuVC.textList.delegate = self
         self.sideMenuVC.view.translatesAutoresizingMaskIntoConstraints = false
         
         self.sideMenuTrailingConstraint = self.sideMenuVC.view.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: -self.sideMenuRevealWidth)
@@ -53,7 +53,7 @@ extension CompactTextVC: UIGestureRecognizerDelegate {
 //            make.trailing.equalTo(view.snp.leading)
 //        }
         
-        let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(panGestureHandler))
+        let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(self.panGestureHandler))
         panGestureRecognizer.delegate = self
         view.addGestureRecognizer(panGestureRecognizer)
     }
@@ -74,8 +74,8 @@ extension CompactTextVC: UIGestureRecognizerDelegate {
             UIView.animate(withDuration: 0.5) { self.sideMenuShadowView.alpha = 0.4 }
             
             self.isExpanded = true
-            
-        } else {
+        }
+        else {
             UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 0, options: .layoutSubviews, animations: {
 //                self.sideMenuVC.view.snp.updateConstraints { make in
 //                    make.trailing.equalTo(self.view.snp.leading)
@@ -88,12 +88,11 @@ extension CompactTextVC: UIGestureRecognizerDelegate {
             
             self.isExpanded = false
         }
-        
     }
     
     @objc func tapGestureHandler(sender: UITapGestureRecognizer) {
         if sender.state == .ended {
-            triggerSideMenu(expand: false)
+            self.triggerSideMenu(expand: false)
         }
     }
     
@@ -135,7 +134,6 @@ extension CompactTextVC: UIGestureRecognizerDelegate {
                     }
                 }
             }
-            
             
         case .changed:
             
@@ -193,8 +191,21 @@ extension CompactTextVC: UIGestureRecognizerDelegate {
     }
 }
 
-//extension CompactTextVC: UICollectionViewDelegate {
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//         print(indexPath)
-//    }
-//}
+extension CompactTextVC: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let test = sideMenuVC.dataSource.itemIdentifier(for: indexPath)!
+        switch test {
+        case .section(_):
+            break
+        case .book(_):
+            break
+        case .text(let textItem):
+            let id = textItem.id.uuidString
+            UserDefaults.standard.set(id, forKey: "CurrentTextID")
+            restart()
+//            triggerSideMenu(expand: false)
+        case .blank(_):
+            break
+        }
+    }
+}

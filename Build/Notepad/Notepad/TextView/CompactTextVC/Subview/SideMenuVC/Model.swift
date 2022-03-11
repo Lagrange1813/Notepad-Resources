@@ -47,6 +47,7 @@ struct BookItem: Hashable {
 struct TextItem: Hashable {
     let title: String
     let image: UIImage = UIImage(systemName: "doc.text")!
+    let id: UUID
 }
 
 struct SectionItem: Hashable {

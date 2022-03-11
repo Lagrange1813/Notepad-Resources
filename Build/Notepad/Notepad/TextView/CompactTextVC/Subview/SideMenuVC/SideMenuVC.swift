@@ -17,7 +17,7 @@ class SideMenuVC: UIViewController {
                 var texts: [TextItem] = []
                 let textEntries = book.text!
                 for text in textEntries {
-                    texts.append(TextItem(title: (text as! Text).title!))
+                    texts.append(TextItem(title: (text as! Text).title!,id: (text as! Text).id!))
                 }
                 return texts
             }()))
