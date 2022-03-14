@@ -1,6 +1,0 @@
-framework module Pods___ {
-  umbrella header "Pods-观辞-umbrella.h"
-
-  export *
-  module * { export * }
-}
