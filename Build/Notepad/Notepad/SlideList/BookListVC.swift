@@ -11,7 +11,7 @@ class BookListVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.prefersLargeTitles = true
         title = "观辞"
     }
 

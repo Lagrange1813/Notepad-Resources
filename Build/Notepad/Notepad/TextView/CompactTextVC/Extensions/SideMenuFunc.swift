@@ -19,7 +19,7 @@ extension CompactTextVC: UIGestureRecognizerDelegate {
 //        test.backgroundColor = .white
 //        view.insertSubview(test, at: 1)
         
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.tapGestureHandler))
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapGestureHandler))
         tapGestureRecognizer.numberOfTapsRequired = 1
         tapGestureRecognizer.delegate = self
         sideMenuShadowView.addGestureRecognizer(tapGestureRecognizer)
@@ -200,10 +200,14 @@ extension CompactTextVC: UICollectionViewDelegate {
         case .book(_):
             break
         case .text(let textItem):
+
             let id = textItem.id.uuidString
             UserDefaults.standard.set(id, forKey: "CurrentTextID")
+
             restart()
-//            triggerSideMenu(expand: false)
+            view.layoutIfNeeded()
+            triggerSideMenu(expand: false)
+
         case .blank(_):
             break
         }
