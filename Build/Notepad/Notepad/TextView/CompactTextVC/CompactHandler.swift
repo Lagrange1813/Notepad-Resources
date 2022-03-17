@@ -70,17 +70,18 @@ extension CompactTextVC {
             if velocity < -200 {
                 if !isTitleBarHidden {
                     hideTitleBar()
-                    isTitleBarHidden = true
+                    
                 }
 //                navigationController?.prefersStatusBarHidden = true
 
             } else if velocity > 200 {
                 showTitleBar()
-                isTitleBarHidden = false
+//                isTitleBarHidden = false
             }
 
             if textField.contentOffset.y <= -(TitleBar.height() + titleBarOffset) + 10 {
                 showTitleBar()
+//                isTitleBarHidden = true
             }
         }
     }

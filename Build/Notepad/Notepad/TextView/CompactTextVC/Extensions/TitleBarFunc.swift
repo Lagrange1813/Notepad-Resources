@@ -9,25 +9,35 @@ import UIKit
 
 extension CompactTextVC {
     func configureTitleBar() {
-        titleBar = TitleBar(frame: CGRect(x: view.frame.width/2 - (viewWidth - 10)/2,
-                                          y: ScreenSize.topPadding! + titleBarOffset,
-                                          width: viewWidth - 10,
-                                          height: TitleBar.height()), theme)
+        titleBar = TitleBar(frame: CGRect(x: view.frame.width / 2 - (viewWidth - 10) / 2,
+                            y: ScreenSize.topPadding! + titleBarOffset,
+                            width: viewWidth - 10,
+                            height: TitleBar.height()), theme)
         view.insertSubview(titleBar, at: 1)
     }
-    
+
     func showTitleBar() {
+        self.isTitleBarHidden = false
         UIView.animate(withDuration: 0.7, animations: {
             self.titleBar.frame.origin.y = ScreenSize.topPadding! + titleBarOffset
+            
+            self.titleBar.alpha = 1
         })
     }
 
     func hideTitleBar() {
+        self.isTitleBarHidden = true
         UIView.animate(withDuration: 0.5, animations: {
             self.titleBar.frame.origin.y -= (TitleBar.height() + titleBarOffset + 5 + ScreenSize.topPadding!)
+            
+            
         })
+        UIView.animate(withDuration: 0.3, animations: {
+            self.titleBar.alpha = 0
+        })
+        
     }
-    
+
     func configureTitleBarBtnAction() {
         titleBar.listBtn.addTarget(self, action: #selector(listBtnFunc), for: .touchUpInside)
         configureSwitchButton()
@@ -39,7 +49,7 @@ extension CompactTextVC {
         var bookList: [String] = []
         var textList: [[Text]] = []
 
-        for x in 0 ..< books.count {
+        for x in 0..<books.count {
             bookList.append(books[x].title!)
             textList.append([])
             let texts = books[x].text!
@@ -50,7 +60,7 @@ extension CompactTextVC {
 
         var bookBoard: [UIMenuElement] = []
 
-        for x in 0 ..< bookList.count {
+        for x in 0..<bookList.count {
             var textBoard: [UIAction] = []
             for text in textList[x] {
                 let item = UIAction(title: text.title!, image: UIImage(systemName: "doc.text")) { _ in

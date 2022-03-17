@@ -22,6 +22,8 @@ extension UserDefaults {
 
 func firstStart() {
     let userDefaults = UserDefaults.standard
+    
+    
     let id = UUID().uuidString
     userDefaults.set(id, forKey: "CurrentTextID")
     

@@ -92,12 +92,12 @@ extension CompactTextVC {
         _ = NotificationCenter.default.rx.notification(UIResponder.keyboardWillHideNotification)
             .take(until: rx.deallocated)
             .subscribe(onNext: { _ in
-                self.toolBar.removeTouchpadButton()
+                self.toolBar.removeShortCutTouchpadButton()
             })
     }
 
     func configureShortCutTouchPadHandler() {
-        toolBar.addTouchpadButton()
+        toolBar.addShortCutTouchpadButton()
 
         guard let touchPadBtn = toolBar.touchPadBtn else { return }
 
