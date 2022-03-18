@@ -13,6 +13,8 @@
 		7A12F1AF27C8A28B00EB67CD /* LXGWWenKaiMono-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7A12F1AA27C8A21F00EB67CD /* LXGWWenKaiMono-Bold.ttf */; };
 		7A12F1B127C8A29500EB67CD /* LXGWWenKaiMono-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7A12F1AC27C8A22500EB67CD /* LXGWWenKaiMono-Regular.ttf */; };
 		7A12F1B427C8A8DB00EB67CD /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A12F1B327C8A8DB00EB67CD /* Item.swift */; };
+		7A14B11727E407AF0099FF96 /* TitleBarVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A14B11627E407AF0099FF96 /* TitleBarVM.swift */; };
+		7A14B11C27E412C30099FF96 /* TitleBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A14B11B27E412C30099FF96 /* TitleBar.swift */; };
 		7A172DE427C096A700568433 /* CurrentTextVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A172DE327C096A700568433 /* CurrentTextVC.swift */; };
 		7A22203E27D1909200899A24 /* SideMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A22203D27D1909200899A24 /* SideMenuVC.swift */; };
 		7A22204527D1A16E00899A24 /* SideMenuFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A22204427D1A16E00899A24 /* SideMenuFunc.swift */; };
@@ -22,7 +24,7 @@
 		7A276C7D27D06BB40013B739 /* Controller加载顺序.md in Resources */ = {isa = PBXBuildFile; fileRef = 7A276C7C27D06BB40013B739 /* Controller加载顺序.md */; };
 		7A2A5F0227C747C300C399F8 /* toolbar in Resources */ = {isa = PBXBuildFile; fileRef = 7A2A5F0127C747C300C399F8 /* toolbar */; };
 		7A2A5F0627C7594C00C399F8 /* MDTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2A5F0527C7594C00C399F8 /* MDTextView.swift */; };
-		7A443A0E27B4D99600A72F76 /* TitleBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A443A0D27B4D99600A72F76 /* TitleBar.swift */; };
+		7A443A0E27B4D99600A72F76 /* TitleBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A443A0D27B4D99600A72F76 /* TitleBarView.swift */; };
 		7A5F137727C76591002C8F1A /* BaseTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5F137627C76591002C8F1A /* BaseTextView.swift */; };
 		7A758BBC27BAAAE700813C08 /* CustomSplitVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A758BBB27BAAAE700813C08 /* CustomSplitVC.swift */; };
 		7A758BBF27BAAB4200813C08 /* ArticleListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A758BBE27BAAB4200813C08 /* ArticleListVC.swift */; };
@@ -92,6 +94,8 @@
 		7A12F1AA27C8A21F00EB67CD /* LXGWWenKaiMono-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "LXGWWenKaiMono-Bold.ttf"; sourceTree = "<group>"; };
 		7A12F1AC27C8A22500EB67CD /* LXGWWenKaiMono-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "LXGWWenKaiMono-Regular.ttf"; sourceTree = "<group>"; };
 		7A12F1B327C8A8DB00EB67CD /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		7A14B11627E407AF0099FF96 /* TitleBarVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleBarVM.swift; sourceTree = "<group>"; };
+		7A14B11B27E412C30099FF96 /* TitleBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleBar.swift; sourceTree = "<group>"; };
 		7A172DE327C096A700568433 /* CurrentTextVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentTextVC.swift; sourceTree = "<group>"; };
 		7A172DE827C0C7CD00568433 /* CommonTextVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonTextVC.swift; sourceTree = "<group>"; };
 		7A22203D27D1909200899A24 /* SideMenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuVC.swift; sourceTree = "<group>"; };
@@ -103,7 +107,7 @@
 		7A276C7C27D06BB40013B739 /* Controller加载顺序.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "Controller加载顺序.md"; sourceTree = "<group>"; };
 		7A2A5F0127C747C300C399F8 /* toolbar */ = {isa = PBXFileReference; lastKnownFileType = folder; path = toolbar; sourceTree = "<group>"; };
 		7A2A5F0527C7594C00C399F8 /* MDTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDTextView.swift; sourceTree = "<group>"; };
-		7A443A0D27B4D99600A72F76 /* TitleBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleBar.swift; sourceTree = "<group>"; };
+		7A443A0D27B4D99600A72F76 /* TitleBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleBarView.swift; sourceTree = "<group>"; };
 		7A5CAAC027C137CA000173F4 /* CompactTextVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompactTextVC.swift; sourceTree = "<group>"; };
 		7A5CAAC327C268A5000173F4 /* Notepad.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Notepad.entitlements; sourceTree = "<group>"; };
 		7A5F137627C76591002C8F1A /* BaseTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTextView.swift; sourceTree = "<group>"; };
@@ -180,10 +184,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7A14B11527E4075C0099FF96 /* TitleBar */ = {
+			isa = PBXGroup;
+			children = (
+				7A443A0D27B4D99600A72F76 /* TitleBarView.swift */,
+				7A14B11627E407AF0099FF96 /* TitleBarVM.swift */,
+				7A14B11B27E412C30099FF96 /* TitleBar.swift */,
+			);
+			path = TitleBar;
+			sourceTree = "<group>";
+		};
+		7A14B11A27E409F60099FF96 /* Subview */ = {
+			isa = PBXGroup;
+			children = (
+				7A14B11527E4075C0099FF96 /* TitleBar */,
+			);
+			path = Subview;
+			sourceTree = "<group>";
+		};
 		7A172DE527C096CF00568433 /* CompactTextVC */ = {
 			isa = PBXGroup;
 			children = (
-				7A5CAAC227C25407000173F4 /* Subview */,
+				7A14B11A27E409F60099FF96 /* Subview */,
+				7A5CAAC227C25407000173F4 /* SubviewOld */,
 				7A22204327D1A15E00899A24 /* Extensions */,
 				7AC3218627AB934F008987B7 /* CompactHandler.swift */,
 				7A5CAAC027C137CA000173F4 /* CompactTextVC.swift */,
@@ -241,15 +264,14 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		7A5CAAC227C25407000173F4 /* Subview */ = {
+		7A5CAAC227C25407000173F4 /* SubviewOld */ = {
 			isa = PBXGroup;
 			children = (
 				7A22203C27D1906700899A24 /* SideMenuVC */,
 				7AC3217627AB9289008987B7 /* TouchPad.swift */,
-				7A443A0D27B4D99600A72F76 /* TitleBar.swift */,
 				C648730B50996A0FB23B934F /* ToolBar */,
 			);
-			path = Subview;
+			path = SubviewOld;
 			sourceTree = "<group>";
 		};
 		7A758BBD27BAAAF000813C08 /* SlideList */ = {
@@ -580,10 +602,11 @@
 				7A22203E27D1909200899A24 /* SideMenuVC.swift in Sources */,
 				7AA89BB127C856D400E77749 /* Storage.swift in Sources */,
 				7AA89BA827C773E800E77749 /* CommonHandler.swift in Sources */,
+				7A14B11C27E412C30099FF96 /* TitleBar.swift in Sources */,
 				7AC51AB627E1F4FD00F35DA6 /* ScrollVConfig.swift in Sources */,
 				7AEB2A1827C77362002753B8 /* CommonTextVC.swift in Sources */,
 				7AC3218C27AB938A008987B7 /* FirstLaunch.swift in Sources */,
-				7A443A0E27B4D99600A72F76 /* TitleBar.swift in Sources */,
+				7A443A0E27B4D99600A72F76 /* TitleBarView.swift in Sources */,
 				7A5F137727C76591002C8F1A /* BaseTextView.swift in Sources */,
 				7ACF059D27CEEE3800669300 /* Model.swift in Sources */,
 				7AC3217D27AB92ED008987B7 /* WordCounter.swift in Sources */,
@@ -610,6 +633,7 @@
 				7A22204527D1A16E00899A24 /* SideMenuFunc.swift in Sources */,
 				7AC3217527AB9271008987B7 /* CustomBtn.swift in Sources */,
 				7AC3218A27AB9371008987B7 /* Extensions.swift in Sources */,
+				7A14B11727E407AF0099FF96 /* TitleBarVM.swift in Sources */,
 				7A05EDD427CCC50B000B5BA3 /* MDSubView.swift in Sources */,
 				7A2A5F0627C7594C00C399F8 /* MDTextView.swift in Sources */,
 				7A22204C27D1A3D700899A24 /* ToolBarBtnFunc.swift in Sources */,

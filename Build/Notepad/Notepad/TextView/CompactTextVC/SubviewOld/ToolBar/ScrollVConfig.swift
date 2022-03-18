@@ -101,8 +101,8 @@ extension ToolBar {
       return assembleShortcutBtn(with: name)
     case .FunctionalBtn:
       switch name {
-      case "redo":
-        return fetchRedo()
+      case "redo": return fetchRedo()
+      default: return CustomBtn()
       }
     default:
       return CustomBtn()
@@ -110,8 +110,20 @@ extension ToolBar {
   }
   
   func fetchRedo() -> CustomBtn {
-      let button = CustomBtn()
-      button.setImage(UIImage(named: shortcutBarItem[5]), for: .normal)
-      return button
+    let button = CustomBtn()
+    button.setImage(UIImage(named: "arrowshape.turn.up.right"), for: .normal)
+    return button
+  }
+  
+  func fetchJumpToTop() -> CustomBtn {
+    let button = CustomBtn()
+    
+    return button
+  }
+  
+  func fetchJumpToBottom() -> CustomBtn {
+    let button = CustomBtn()
+    
+    return button
   }
 }

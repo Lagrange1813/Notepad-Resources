@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RxSwift
 
 extension CompactTextVC {
     func configureToolBar() {
@@ -82,19 +83,21 @@ extension CompactTextVC {
         toolBar.redoBtn?.isEnabled = textField.bodyView.undoManager!.canRedo || textField.titleView.undoManager!.canRedo
     }
 
-    func addTouchBarBtnObserver() {
-        _ = NotificationCenter.default.rx.notification(UIResponder.keyboardWillShowNotification)
-            .take(until: rx.deallocated)
-            .subscribe(onNext: { _ in
-                self.configureShortCutTouchPadHandler()
-            })
-
-        _ = NotificationCenter.default.rx.notification(UIResponder.keyboardWillHideNotification)
-            .take(until: rx.deallocated)
-            .subscribe(onNext: { _ in
-                self.toolBar.removeShortCutTouchpadButton()
-            })
-    }
+  func addTouchBarBtnObserver() {
+    NotificationCenter.default.rx.notification(UIResponder.keyboardWillShowNotification)
+      .take(until: rx.deallocated)
+      .subscribe(onNext: { _ in
+        self.configureShortCutTouchPadHandler()
+      })
+      .disposed(by: bag)
+    
+    NotificationCenter.default.rx.notification(UIResponder.keyboardWillHideNotification)
+      .take(until: rx.deallocated)
+      .subscribe(onNext: { _ in 
+        self.toolBar.removeShortCutTouchpadButton()
+      })
+      .disposed(by: bag)
+  }
 
     func configureShortCutTouchPadHandler() {
         toolBar.addShortCutTouchpadButton()

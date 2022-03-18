@@ -12,6 +12,8 @@ class TitleBar: UIView {
 
   var listBtn: CustomBtn!
   var typeBtn: CustomBtn!
+  
+  var title: UILabel!
 
   var theme: Theme!
 
@@ -33,10 +35,10 @@ class TitleBar: UIView {
 
     layer.cornerRadius = 8
 
-    //        layer.shadowColor = CGColor(red: 0, green: 0, blue: 0, alpha: 1)
-    //        layer.shadowOffset = CGSize(width: 0, height: 0)
-    //        layer.shadowOpacity = 0.5
-    //        layer.shadowRadius = 0.5
+//    layer.shadowColor = CGColor(red: 0, green: 0, blue: 0, alpha: 1)
+//    layer.shadowOffset = CGSize(width: 0, height: 0)
+//    layer.shadowOpacity = 0.5
+//    layer.shadowRadius = 0.5
 
     layer.masksToBounds = true
     layer.borderWidth = 1.5
@@ -104,7 +106,7 @@ class TitleBar: UIView {
 
     let text = targetText.book!.title
 
-    let title = UILabel()
+    title = UILabel()
     title.text = text
     title.font = UIFont(name: "LXGW WenKai Bold", size: 16)
 

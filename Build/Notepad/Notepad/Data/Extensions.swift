@@ -213,3 +213,17 @@ func saveText(id: UUID, title: String, body: String, type: String) {
     print("Could not fetch. \(error), \(error.userInfo)")
   }
 }
+
+func fetchText(_ uuid: UUID) -> Text {
+  let texts = fetchAllTexts()
+
+  var targetText: Text!
+
+  for text in texts {
+    if text.id! == uuid {
+      targetText = text
+    }
+  }
+
+  return targetText
+}
