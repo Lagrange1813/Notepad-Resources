@@ -1,0 +1,31 @@
+{
+  "items" : [
+    {
+      "defaultSpecialUsage" : "先煎",
+      "drugCount" : 1,
+      "drugId" : "12312232323123213123123123",
+      "drugName" : "山茱萸",
+      "maxPrice" : 4,
+      "minPrice" : 2,
+      "unit" : "g"
+    },
+    {
+      "defaultSpecialUsage" : "先煎",
+      "drugCount" : 3,
+      "drugId" : "8787878",
+      "drugName" : "熟地黄",
+      "maxPrice" : 5,
+      "minPrice" : 3,
+      "unit" : "g"
+    },
+    {
+      "defaultSpecialUsage" : "先煎",
+      "drugCount" : 3,
+      "drugId" : "4566565",
+      "drugName" : "蛇床子",
+      "maxPrice" : 8,
+      "minPrice" : 1,
+      "unit" : "g"
+    }
+  ]
+}
