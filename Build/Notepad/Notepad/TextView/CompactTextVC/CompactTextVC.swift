@@ -68,7 +68,6 @@ class CompactTextVC: CommonTextVC {
     
     registNotification()
     
-    configureTitleBarBtnAction()
     configureToolBarBtnAction()
     
     textField.keyboardDismissMode = .interactive
@@ -178,8 +177,8 @@ class CompactTextVC: CommonTextVC {
     
     super.remove()
     
-    titleBar.removeFromSuperview()
-    titleBar = nil
+//    titleBar.removeFromSuperview()
+//    titleBar = nil
     toolBar.removeFromSuperview()
     toolBar = nil
     image?.removeFromSuperview()
@@ -206,11 +205,9 @@ class CompactTextVC: CommonTextVC {
   override func thirdToLoad() {
     super.thirdToLoad()
     configureToolBar()
-    configureTitleBar()
     
     registNotification()
-    
-    configureTitleBarBtnAction()
+
     configureToolBarBtnAction()
   }
   

@@ -204,6 +204,7 @@ func saveText(id: UUID, title: String, body: String, type: String) {
         targetText = text
       }
     }
+    
     targetText.title = title
     targetText.body = body
     targetText.type = type

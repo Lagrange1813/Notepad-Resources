@@ -37,7 +37,6 @@ extension CompactTextVC {
         } else if textView == textField.titleView {
             titleViewUnderEditing = false
         }
-        configureSwitchButton()
     }
 
 //    func textViewDidChangeSelection(_ textView: UITextView) {

@@ -5,8 +5,8 @@
 //  Created by 张维熙 on 2022/3/18.
 //
 
-import Foundation
 import RxSwift
+import UIKit
 
 class TitleBarViewModel {
   var text: Observable<Text>
@@ -20,13 +20,22 @@ class TitleBarViewModel {
       .observe(String.self, "CurrentTextID")
     
     text = uuid
-      .map { fetchText(UUID.init(uuidString: $0!)!) }
+      .map { fetchText(UUID(uuidString: $0!)!) }
     
     title = text
-      .map { $0.title! }
+      .map { $0.book!.title! }
     
-    typeBtnText = text
-      .map { $0.type! }
-    
+    typeBtnText = UserDefaults.standard.rx
+      .observe(String.self, "CurrentTextType")
+      .map {
+        switch $0! {
+        case "Text":
+          return "TXT"
+        case "MD":
+          return "MD"
+        default:
+          return ""
+        }
+      }
   }
 }

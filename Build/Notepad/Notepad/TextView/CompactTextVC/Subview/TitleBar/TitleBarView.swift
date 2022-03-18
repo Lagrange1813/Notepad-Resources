@@ -1,5 +1,5 @@
 //
-//  TitleBar.swift
+//  TitleBarConnector.swift
 //  Notepad
 //
 //  Created by 张维熙 on 2022/2/10.
@@ -54,9 +54,7 @@ class TitleBar: UIView {
     configureBtn()
   }
 
-  class func height() -> CGFloat {
-    50
-  }
+  class func height() -> CGFloat { 50 }
 
   func configureBlur() {
     let backgroundSupport = UIView()
@@ -137,11 +135,6 @@ class TitleBar: UIView {
     typeBtn = { () -> CustomBtn in
       let button = CustomBtn()
 
-      switch theme.type {
-      case "Text": button.setTitle("TXT", for: .normal)
-      case "MD": button.setTitle("MD", for: .normal)
-      default: return CustomBtn()
-      }
       button.setTitleColor(.black, for: .normal)
       button.setTitleColor(.systemGray, for: .highlighted)
       button.titleLabel!.font = UIFont(name: "LXGW WenKai", size: 15)

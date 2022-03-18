@@ -9,16 +9,14 @@ import UIKit
 
 extension CompactTextVC {
   func configureTitleBar() {
-//    titleBar = TitleBar(frame: CGRect(x: view.frame.width / 2 - (viewWidth - 10) / 2,
-//                                      y: ScreenSize.topPadding! + titleBarOffset,
-//                                      width: viewWidth - 10,
-//                                      height: TitleBar.height()), theme)
-//    view.insertSubview(titleBar, at: 1)
     let titleBarConnector = TitleBarConnector(frame: CGRect(x: view.frame.width / 2 - (viewWidth - 10) / 2,
                                                             y: ScreenSize.topPadding! + titleBarOffset,
                                                             width: viewWidth - 10,
                                                             height: TitleBar.height()),
-                                              bag: bag)
+                                              bag: bag,
+                                              functions: (listBtn: listBtnFunc,
+                                                          listMenu: fetchListBtnMenu(),
+                                                          typeBtn: typeBtnFunc))
     titleBar = titleBarConnector.view
     view.insertSubview(titleBar, at: 1)
   }
@@ -43,13 +41,7 @@ extension CompactTextVC {
     })
   }
   
-  func configureTitleBarBtnAction() {
-//    titleBar.listBtn.addTarget(self, action: #selector(listBtnFunc), for: .touchUpInside)
-    configureSwitchButton()
-//    titleBar.typeBtn.addTarget(self, action: #selector(typeBtnFunc), for: .touchUpInside)
-  }
-  
-  func configureSwitchButton() {
+  func fetchListBtnMenu() -> UIMenu {
     let books = fetchBook()
     var bookList: [String] = []
     var textList: [[Text]] = []
@@ -79,7 +71,8 @@ extension CompactTextVC {
     }
     
     let menu = UIMenu(title: "书籍", children: bookBoard)
-    titleBar.listBtn.menu = menu
+    
+    return menu
   }
   
   func listBtnFunc() {
@@ -90,7 +83,7 @@ extension CompactTextVC {
     let id = UUID(uuidString: UserDefaults.standard.value(forKey: "CurrentTextID") as! String)
     let titleToStore: String = textField.titleView.text
     let bodyToStore: String = textField.bodyView.text
-    
+
     saveText(id: id!, title: titleToStore, body: bodyToStore, type: {
       switch type {
       case "Text": return "MD"

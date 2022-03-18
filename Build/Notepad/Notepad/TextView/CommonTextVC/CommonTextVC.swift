@@ -111,6 +111,7 @@ class CommonTextVC: UIViewController {
         }
         
         type = targetText.type
+      userDefaults.set(type, forKey: "CurrentTextType")
         currentText = targetText
     }
     
