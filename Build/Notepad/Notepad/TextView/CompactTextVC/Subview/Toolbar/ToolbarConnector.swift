@@ -11,10 +11,25 @@ class ToolbarConnector {
   var viewModel: ToolbarViewModel!
 
   init(
-      frame: CGRect,
+      width: CGFloat,
       bag: DisposeBag,
+      titleUndoManager: UndoManager,
+      bodyUndoManager: UndoManager,
       functions: [() -> ()]
   ) {
-
+    view = ToolBar(viewWidth: width, Theme.BuiltIn.TextLight.enable())
+    
+    viewModel = ToolbarViewModel(
+      titleUndoManager: titleUndoManager,
+      bodyUndoManager: bodyUndoManager
+    )
+    
+    viewModel.undoEnabled
+      .bind(to: view.undoBtn.rx.isEnabled)
+      .disposed(by: bag)
+    
+    viewModel.downEnabled
+      .bind(to: view.downBtn.rx.isEnabled)
+      .disposed(by: bag)
   }
 }

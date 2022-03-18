@@ -10,8 +10,13 @@ import RxSwift
 
 extension CompactTextVC {
     func configureToolBar() {
-        toolBar = ToolBar(viewWidth: viewWidth, theme)
-        view.insertSubview(toolBar, at: 1)
+      let toolbarConnector = ToolbarConnector(width: viewWidth,
+                                              bag: bag,
+                                              titleUndoManager: textField.titleView.undoManager!,
+                                              bodyUndoManager: textField.bodyView.undoManager!,
+                                              functions: [])
+      toolBar = toolbarConnector.view
+      view.insertSubview(toolBar, at: 1)
 
         toolBar.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
