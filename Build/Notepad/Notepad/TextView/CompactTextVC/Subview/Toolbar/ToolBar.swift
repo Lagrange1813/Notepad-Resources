@@ -363,26 +363,26 @@ class ToolBar: UIView {
     touchPad.isHidden = true
   }
   
-  //    override func touchesBegan(_ touches: Set<UITouch>?, with event: UIEvent!) {
-  //        lastLocation = center
-  //        print("start!")
-  //
-  //        tracking = true
-  //        velocityLoop = CADisplayLink(target: self, selector: #selector(watching))
-  //        velocityLoop.add(to: RunLoop.current, forMode: RunLoop.Mode(rawValue: RunLoop.Mode.common.rawValue))
-  //    }
-  //
-  //    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-  //        print("moving!")
-  //    }
-  //
-  //    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-  //        print("ended!")
-  //        tracking = false
-  //    }
-  //
-  //    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-  //        print("cancelled!")
-  //        //        tracking = false
-  //    }
+//  override func touchesBegan(_ touches: Set<UITouch>?, with event: UIEvent!) {
+//    lastLocation = center
+//    print("start!")
+//
+//    tracking = true
+//    velocityLoop = CADisplayLink(target: self, selector: #selector(watching))
+//    velocityLoop.add(to: RunLoop.current, forMode: RunLoop.Mode(rawValue: RunLoop.Mode.common.rawValue))
+//  }
+//
+//  override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+//    print("moving!")
+//  }
+//
+//  override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+//    print("ended!")
+//    tracking = false
+//  }
+//
+//  override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+//    print("cancelled!")
+//    //        tracking = false
+//  }
 }
