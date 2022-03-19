@@ -23,6 +23,7 @@ extension UserDefaults {
 func firstStart() {
     let userDefaults = UserDefaults.standard
     
+  initBtnList()
     
     let id = UUID().uuidString
     userDefaults.set(id, forKey: "CurrentTextID")

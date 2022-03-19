@@ -231,4 +231,63 @@ func fetchText(_ uuid: UUID) -> Text {
   return targetText
 }
 
+func initBtnList() {
+  let textBtn = ["indent", "comma", "period", "redo", "dayton", "question", "colon", "quotes", "sqrBrackets", "guillemets"]
+  let mdBtn = [""]
 
+  UserDefaults.standard.set(textBtn, forKey: "TextBtn")
+  UserDefaults.standard.set(mdBtn, forKey: "MDBtn")
+}
+
+func fetch(with type: Type) -> NSMutableArray {
+  UserDefaults.standard.mutableArrayValue(forKey: type.rawValue)
+}
+
+func set(array: NSMutableArray, with type: Type) {
+  UserDefaults.standard.set(array, forKey: type.rawValue)
+}
+
+func convertType( _ type: String) -> ButtonType {
+  if type == "ShortcutBtn" { return .ShortcutBtn }
+  else if type == "FunctionalBtn" { return .FunctionalBtn }
+  return .null
+}
+
+func fetchButtonTypeConfigurationPath() -> String {
+  let bundle = Bundle.main
+  let path: String!
+  
+  if let path1 = bundle.path(forResource: "toolbar/button-type", ofType: "json") { path = path1 }
+  else if let path2 = bundle.path(forResource: "button-type", ofType: "json") { path = path2 }
+  else {
+    print("Unable to load your button configuration file.")
+    assertionFailure()
+    return ""
+  }
+  
+  return path
+}
+
+func fetchButtonTypeDictionary() -> [String: ButtonType]? {
+  let path = fetchButtonTypeConfigurationPath()
+  
+  do {
+    let json = try String(contentsOf: URL(fileURLWithPath: path), encoding: .utf8)
+    if let data = json.data(using: .utf8) {
+      do {
+        var result: [String: ButtonType] = [:]
+        let dic =  try JSONSerialization.jsonObject(with: data, options: []) as! [String: String]
+        _ = dic.map { result.updateValue(convertType($1), forKey: $0) }
+        
+        return result
+      } catch let error as NSError {
+        print(error)
+      }
+    }
+  } catch let error as NSError {
+    print(error)
+  }
+
+  
+  return nil
+}

@@ -15,42 +15,29 @@ enum Type: String {
 }
 
 enum ButtonType {
+  case null
   case ShortcutBtn
   case FunctionalBtn
 }
 
-let buttonType: [String: ButtonType] = ["redo": .FunctionalBtn,
-                                        "jumpToTop": .FunctionalBtn,
-                                        "jumpToBottom": .FunctionalBtn,
-                                        "indent": .ShortcutBtn,
-                                        "comma": .ShortcutBtn,
-                                        "period": .ShortcutBtn,
-                                        "datyon": .ShortcutBtn,
-                                        "question": .ShortcutBtn,
-                                        "colon": .ShortcutBtn,
-                                        "quotes": .ShortcutBtn,
-                                        "sqrBrackets": .ShortcutBtn,
-                                        "guillemets": .ShortcutBtn]
+
+
+//let buttonType: [String: ButtonType] = ["redo": .FunctionalBtn,
+//                                        "jumpToTop": .FunctionalBtn,
+//                                        "jumpToBottom": .FunctionalBtn,
+//                                        "indent": .ShortcutBtn,
+//                                        "comma": .ShortcutBtn,
+//                                        "period": .ShortcutBtn,
+//                                        "dayton": .ShortcutBtn,
+//                                        "question": .ShortcutBtn,
+//                                        "colon": .ShortcutBtn,
+//                                        "quotes": .ShortcutBtn,
+//                                        "sqrBrackets": .ShortcutBtn,
+//                                        "guillemets": .ShortcutBtn]
+
+let buttonType: [String: ButtonType] = fetchButtonTypeDictionary()!
 
 extension ToolBar {
-  
-  // MARK: - Configure List
-  
-  func initBtnList() {
-    let textBtn = ["indent", "comma", "redo", "period", "dayton", "question", "colon", "quotes", "sqrBrackets", "guillemets"]
-    let mdBtn = [""]
-
-    userDefaults.set(textBtn, forKey: "TextBtn")
-    userDefaults.set(mdBtn, forKey: "MDBtn")
-  }
-
-  func fetch(with type: Type) -> NSMutableArray {
-    userDefaults.mutableArrayValue(forKey: type.rawValue)
-  }
-  
-  func set(array: NSMutableArray, with type: Type) {
-    userDefaults.set(array, forKey: type.rawValue)
-  }
   
   // MARK: - Fetch Instance
   
@@ -70,14 +57,14 @@ extension ToolBar {
   
   // MARK: - Configure Shortcut Button
   
-  func fetchPath() -> String {
+  func fetchShortcutButtonConfigurationPath() -> String {
     let bundle = Bundle.main
     let path: String!
     
-    if let path1 = bundle.path(forResource: "toolbar/shortcut-button)", ofType: "json") { path = path1 }
+    if let path1 = bundle.path(forResource: "toolbar/shortcut-button", ofType: "json") { path = path1 }
     else if let path2 = bundle.path(forResource: "shortcut-button", ofType: "json") { path = path2 }
     else {
-      print("Unable to load your theme file.")
+      print("Unable to load your button configuration file.")
       assertionFailure()
       return ""
     }
@@ -86,7 +73,7 @@ extension ToolBar {
   }
   
   func fetchShortcutButtonConfiguration() -> [String: AnyObject]? {
-    let path = fetchPath()
+    let path = fetchShortcutButtonConfigurationPath()
     
     do {
       let json = try String(contentsOf: URL(fileURLWithPath: path), encoding: .utf8)
@@ -110,6 +97,11 @@ extension ToolBar {
     let button = CustomBtn()
     if (targetConfig["image"] as! String) != "" {
       button.setImage(UIImage(systemName: targetConfig["image"] as! String), for: .normal)
+    } else {
+      button.setTitle(targetConfig["content"] as! String, for: .normal)
+      button.setTitleColor(.black, for: .normal)
+      button.setTitleColor(.systemGray, for: .highlighted)
+      button.titleLabel!.font = UIFont(name: "LXGW WenKai", size: 15)
     }
     button.argument = (targetConfig["content"] as! String)
     button.retreat = (targetConfig["retreat"] as! Int)

@@ -50,8 +50,6 @@ class ToolBar: UIView {
   
   let fixedBarItem = ("command", "arrowshape.turn.up.backward", "doc.on.clipboard", "keyboard.chevron.compact.down")
   
-  var shortcutBarItem = ["“”", "「」", "（）", "platter.filled.top.and.arrow.up.iphone", "platter.filled.bottom.and.arrow.down.iphone", "arrowshape.turn.up.right"]
-  
   init(viewWidth: CGFloat, _ theme: Theme) {
     super.init(frame: CGRect())
     self.viewWidth = viewWidth
@@ -73,10 +71,10 @@ class ToolBar: UIView {
     tintColor = .black
     layer.cornerRadius = 10
     
-    //    layer.shadowColor = CGColor(red: 0, green: 0, blue: 0, alpha: 1)
-    //    layer.shadowOffset = CGSize(width: 0, height: 0)
-    //    layer.shadowOpacity = 0.5
-    //    layer.shadowRadius = 0.5
+//    layer.shadowColor = CGColor(red: 0, green: 0, blue: 0, alpha: 1)
+//    layer.shadowOffset = CGSize(width: 0, height: 0)
+//    layer.shadowOpacity = 0.5
+//    layer.shadowRadius = 0.5
     
     layer.masksToBounds = true
     layer.borderWidth = 1.5
@@ -215,121 +213,22 @@ class ToolBar: UIView {
     touchPadBtn = nil
   }
   
-  func configureScrollViewButton() {
+  func addToView(at index: Int, with button: CustomBtn) {
     let jumpSpacing: CGFloat = 35.0
+    scrollToolView.addSubview(button)
+    button.snp.makeConstraints { make in
+      make.centerY.equalToSuperview()
+      make.centerX.equalTo(height / 2 + jumpSpacing * CGFloat(index))
+      make.size.width.height.equalTo(30)
+    }
+  }
+  
+  func configureScrollViewButton() {
+    let btnList = fetch(with: .Text) as! [String]
     
-    quotesBtn = { () -> CustomBtn in
-      let shortcutBtn = CustomBtn()
-      shortcutBtn.setTitle(shortcutBarItem[0], for: .normal)
-      shortcutBtn.setTitleColor(.black, for: .normal)
-      shortcutBtn.setTitleColor(.systemGray, for: .highlighted)
-      shortcutBtn.titleLabel!.font = UIFont(name: "LXGW WenKai", size: 15)
-      shortcutBtn.argument = shortcutBarItem[0]
-      shortcutBtn.retreat = 1
-      
-      scrollToolView.addSubview(shortcutBtn)
-      shortcutBtn.snp.makeConstraints { make in
-        make.centerY.equalToSuperview()
-        make.centerX.equalTo(height / 2 + jumpSpacing * CGFloat(0))
-        make.size.width.height.equalTo(30)
-      }
-      
-      return shortcutBtn
-    }()
-    
-    sqrBracketsBtn = { () -> CustomBtn in
-      let shortcutBtn = CustomBtn()
-      shortcutBtn.setTitle(shortcutBarItem[1], for: .normal)
-      shortcutBtn.setTitleColor(.black, for: .normal)
-      shortcutBtn.setTitleColor(.systemGray, for: .highlighted)
-      shortcutBtn.titleLabel!.font = UIFont(name: "LXGW WenKai", size: 15)
-      shortcutBtn.argument = shortcutBarItem[1]
-      shortcutBtn.retreat = 1
-      
-      scrollToolView.addSubview(shortcutBtn)
-      shortcutBtn.snp.makeConstraints { make in
-        make.centerY.equalToSuperview()
-        make.centerX.equalTo(height / 2 + jumpSpacing * CGFloat(1))
-        make.size.width.height.equalTo(30)
-      }
-      
-      return shortcutBtn
-    }()
-    
-    bracketsBtn = { () -> CustomBtn in
-      let shortcutBtn = CustomBtn()
-      shortcutBtn.setTitle(shortcutBarItem[2], for: .normal)
-      shortcutBtn.setTitleColor(.black, for: .normal)
-      shortcutBtn.setTitleColor(.systemGray, for: .highlighted)
-      shortcutBtn.titleLabel!.font = UIFont(name: "LXGW WenKai", size: 15)
-      shortcutBtn.argument = shortcutBarItem[2]
-      shortcutBtn.retreat = 1
-      
-      scrollToolView.addSubview(shortcutBtn)
-      shortcutBtn.snp.makeConstraints { make in
-        make.centerY.equalToSuperview()
-        make.centerX.equalTo(height / 2 + jumpSpacing * CGFloat(2))
-        make.size.width.height.equalTo(30)
-      }
-      
-      return shortcutBtn
-    }()
-    
-    jumpToTop = { () -> CustomBtn in
-      let shortcutBtn = CustomBtn()
-      shortcutBtn.setImage(UIImage(named: shortcutBarItem[3]), for: .normal)
-      //                  shortcutBtn.argument = "top"
-      
-      scrollToolView.addSubview(shortcutBtn)
-      shortcutBtn.snp.makeConstraints { make in
-        make.centerY.equalToSuperview()
-        make.centerX.equalTo(height / 2 + jumpSpacing * CGFloat(3))
-        make.size.width.height.equalTo(40)
-      }
-      
-      return shortcutBtn
-    }()
-    
-    jumpToBottom = { () -> CustomBtn in
-      let shortcutBtn = CustomBtn()
-      shortcutBtn.setImage(UIImage(named: shortcutBarItem[4]), for: .normal)
-      //            shortcutBtn.argument = "bottom"
-      
-      scrollToolView.addSubview(shortcutBtn)
-      shortcutBtn.snp.makeConstraints { make in
-        make.centerY.equalToSuperview()
-        make.centerX.equalTo(height / 2 + jumpSpacing * CGFloat(4))
-        make.size.width.height.equalTo(40)
-      }
-      
-      return shortcutBtn
-    }()
-    
-    redoBtn = { () -> CustomBtn in
-      let shortcutBtn = CustomBtn()
-      shortcutBtn.setImage(UIImage(named: shortcutBarItem[5]), for: .normal)
-      
-      scrollToolView.addSubview(shortcutBtn)
-      shortcutBtn.snp.makeConstraints { make in
-        make.centerY.equalToSuperview()
-        make.centerX.equalTo(height / 2 + jumpSpacing * CGFloat(5))
-        make.size.width.height.equalTo(40)
-      }
-      
-      return shortcutBtn
-    }()
-    
-    for x in 6 ... 9 {
-      let testBtn = UIView()
-      
-      testBtn.backgroundColor = .blue
-      
-      scrollToolView.addSubview(testBtn)
-      testBtn.snp.makeConstraints { make in
-        make.centerY.equalToSuperview()
-        make.centerX.equalTo(height / 2 + jumpSpacing * CGFloat(x))
-        make.size.width.height.equalTo(20)
-      }
+    for x in 0 ..< btnList.count {
+      let instance = fetchBtnInstance(with: btnList[x])
+      addToView(at: x, with: instance)
     }
   }
   
