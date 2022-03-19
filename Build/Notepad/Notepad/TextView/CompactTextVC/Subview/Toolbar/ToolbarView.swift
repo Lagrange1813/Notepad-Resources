@@ -51,12 +51,12 @@ class ToolBar: UIView {
   
   var theme: Theme!
   
-  //    func changeToDark() {
-  //        let buttonList = [commandBtn, undoBtn, pasteBtn, downBtn, quotesBtn, sqrBracketsBtn, bracketsBtn, jumpToTop, jumpToBottom, redoBtn]
-  //        for button in buttonList {
-  //            button?.tintColor = .white
-  //        }
-  //    }
+//  func changeToDark() {
+//    let buttonList = [commandBtn, undoBtn, pasteBtn, downBtn, quotesBtn, sqrBracketsBtn, bracketsBtn, jumpToTop, jumpToBottom, redoBtn]
+//    for button in buttonList {
+//      button?.tintColor = .white
+//    }
+//  }
   
   let fixedBarItem = ("command", "arrowshape.turn.up.backward", "doc.on.clipboard", "keyboard.chevron.compact.down")
   

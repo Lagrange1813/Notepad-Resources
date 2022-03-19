@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7A04A21627E5E7EA00AC9BBC /* ScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A04A21527E5E7EA00AC9BBC /* ScrollView.swift */; };
 		7A05EDD227CCC400000B5BA3 /* MDPreHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A05EDD127CCC400000B5BA3 /* MDPreHandler.swift */; };
 		7A05EDD427CCC50B000B5BA3 /* MDSubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A05EDD327CCC50B000B5BA3 /* MDSubView.swift */; };
 		7A12F1AE27C8A28600EB67CD /* LXGWWenKai-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7AA89BBB27C8A1C200E77749 /* LXGWWenKai-Regular.ttf */; };
@@ -24,7 +25,7 @@
 		7A276C7D27D06BB40013B739 /* Controller加载顺序.md in Resources */ = {isa = PBXBuildFile; fileRef = 7A276C7C27D06BB40013B739 /* Controller加载顺序.md */; };
 		7A2A5F0227C747C300C399F8 /* toolbar in Resources */ = {isa = PBXBuildFile; fileRef = 7A2A5F0127C747C300C399F8 /* toolbar */; };
 		7A2A5F0627C7594C00C399F8 /* MDTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2A5F0527C7594C00C399F8 /* MDTextView.swift */; };
-		7A381D1527E46B1E001393E0 /* ToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A381D1427E46B1E001393E0 /* ToolBar.swift */; };
+		7A381D1527E46B1E001393E0 /* ToolbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A381D1427E46B1E001393E0 /* ToolbarView.swift */; };
 		7A443A0E27B4D99600A72F76 /* TitleBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A443A0D27B4D99600A72F76 /* TitleBarView.swift */; };
 		7A5F137727C76591002C8F1A /* BaseTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5F137627C76591002C8F1A /* BaseTextView.swift */; };
 		7A758BBC27BAAAE700813C08 /* CustomSplitVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A758BBB27BAAAE700813C08 /* CustomSplitVC.swift */; };
@@ -91,6 +92,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7A04A21527E5E7EA00AC9BBC /* ScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollView.swift; sourceTree = "<group>"; };
 		7A05EDD127CCC400000B5BA3 /* MDPreHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDPreHandler.swift; sourceTree = "<group>"; };
 		7A05EDD327CCC50B000B5BA3 /* MDSubView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDSubView.swift; sourceTree = "<group>"; };
 		7A12F1AA27C8A21F00EB67CD /* LXGWWenKaiMono-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "LXGWWenKaiMono-Bold.ttf"; sourceTree = "<group>"; };
@@ -109,7 +111,7 @@
 		7A276C7C27D06BB40013B739 /* Controller加载顺序.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "Controller加载顺序.md"; sourceTree = "<group>"; };
 		7A2A5F0127C747C300C399F8 /* toolbar */ = {isa = PBXFileReference; lastKnownFileType = folder; path = toolbar; sourceTree = "<group>"; };
 		7A2A5F0527C7594C00C399F8 /* MDTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDTextView.swift; sourceTree = "<group>"; };
-		7A381D1427E46B1E001393E0 /* ToolBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolBar.swift; sourceTree = "<group>"; };
+		7A381D1427E46B1E001393E0 /* ToolbarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolbarView.swift; sourceTree = "<group>"; };
 		7A443A0D27B4D99600A72F76 /* TitleBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleBarView.swift; sourceTree = "<group>"; };
 		7A5CAAC027C137CA000173F4 /* CompactTextVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompactTextVC.swift; sourceTree = "<group>"; };
 		7A5CAAC327C268A5000173F4 /* Notepad.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Notepad.entitlements; sourceTree = "<group>"; };
@@ -274,7 +276,6 @@
 			isa = PBXGroup;
 			children = (
 				7A22203C27D1906700899A24 /* SideMenuVC */,
-				C648730B50996A0FB23B934F /* ToolBar */,
 			);
 			path = SubviewOld;
 			sourceTree = "<group>";
@@ -442,20 +443,14 @@
 			path = MDPreviewVC;
 			sourceTree = "<group>";
 		};
-		C648730B50996A0FB23B934F /* ToolBar */ = {
-			isa = PBXGroup;
-			children = (
-				7AC51AB527E1F4FD00F35DA6 /* ScrollVConfig.swift */,
-			);
-			path = ToolBar;
-			sourceTree = "<group>";
-		};
 		C64874C213610961ACE2D16D /* Toolbar */ = {
 			isa = PBXGroup;
 			children = (
-				7A381D1427E46B1E001393E0 /* ToolBar.swift */,
+				7A381D1427E46B1E001393E0 /* ToolbarView.swift */,
 				C6487705A89D56BEC19B9747 /* ToolbarVM.swift */,
 				C6487DABF0202063DC52EFDA /* ToolbarConnector.swift */,
+				7A04A21527E5E7EA00AC9BBC /* ScrollView.swift */,
+				7AC51AB527E1F4FD00F35DA6 /* ScrollVConfig.swift */,
 			);
 			path = Toolbar;
 			sourceTree = "<group>";
@@ -614,7 +609,8 @@
 				7A22204A27D1A1B400899A24 /* ToolBarFunc.swift in Sources */,
 				7AA89BA927C773ED00E77749 /* CompactHandler.swift in Sources */,
 				7A22203E27D1909200899A24 /* SideMenuVC.swift in Sources */,
-				7A381D1527E46B1E001393E0 /* ToolBar.swift in Sources */,
+				7A04A21627E5E7EA00AC9BBC /* ScrollView.swift in Sources */,
+				7A381D1527E46B1E001393E0 /* ToolbarView.swift in Sources */,
 				7AA89BB127C856D400E77749 /* Storage.swift in Sources */,
 				7AA89BA827C773E800E77749 /* CommonHandler.swift in Sources */,
 				7A14B11C27E412C30099FF96 /* TitleBarConnector.swift in Sources */,

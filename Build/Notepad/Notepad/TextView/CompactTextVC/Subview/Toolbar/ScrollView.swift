@@ -1,8 +1,8 @@
 //
-//  ScrollViewConfig.swift
+//  ScrollView.swift
 //  Notepad
 //
-//  Created by 张维熙 on 2022/3/16.
+//  Created by 张维熙 on 2022/3/19.
 //
 
 import UIKit
@@ -33,7 +33,7 @@ let buttonType: [String: ButtonType] = ["redo": .FunctionalBtn,
                                         "guillemets": .ShortcutBtn]
 
 extension ToolBar {
-  func initialize() {
+  func initBtnList() {
     let textBtn = ["indent", "comma", "redo", "period", "dayton", "question", "colon", "quotes", "sqrBrackets", "guillemets"]
     let mdBtn = [""]
 
@@ -45,7 +45,7 @@ extension ToolBar {
     userDefaults.mutableArrayValue(forKey: type.rawValue)
   }
   
-  func set(array: NSArray, with type: Type) {
+  func set(array: NSMutableArray, with type: Type) {
     userDefaults.set(array, forKey: type.rawValue)
   }
   
@@ -83,18 +83,6 @@ extension ToolBar {
     return nil
   }
   
-  func assembleShortcutBtn(with name: String) -> CustomBtn {
-    let configuration = fetchShortcutButtonConfiguration()!
-    let targetConfig = (configuration[name] as! [String: Any])
-    let button = CustomBtn()
-    if (targetConfig["image"] as! String) != "" {
-      button.setImage(UIImage(systemName: targetConfig["image"] as! String), for: .normal)
-    }
-    button.argument = (targetConfig["content"] as! String)
-    button.retreat = (targetConfig["retreat"] as! Int)
-    return button
-  }
-  
   func fetchBtnInstance(with name: String) -> CustomBtn {
     switch buttonType[name] {
     case .ShortcutBtn:
@@ -108,6 +96,20 @@ extension ToolBar {
       return CustomBtn()
     }
   }
+  
+  func assembleShortcutBtn(with name: String) -> CustomBtn {
+    let configuration = fetchShortcutButtonConfiguration()!
+    let targetConfig = (configuration[name] as! [String: Any])
+    let button = CustomBtn()
+    if (targetConfig["image"] as! String) != "" {
+      button.setImage(UIImage(systemName: targetConfig["image"] as! String), for: .normal)
+    }
+    button.argument = (targetConfig["content"] as! String)
+    button.retreat = (targetConfig["retreat"] as! Int)
+    return button
+  }
+  
+  
   
   func fetchRedo() -> CustomBtn {
     let button = CustomBtn()
