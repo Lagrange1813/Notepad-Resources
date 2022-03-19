@@ -33,6 +33,9 @@ let buttonType: [String: ButtonType] = ["redo": .FunctionalBtn,
                                         "guillemets": .ShortcutBtn]
 
 extension ToolBar {
+  
+  // MARK: - Configure List
+  
   func initBtnList() {
     let textBtn = ["indent", "comma", "redo", "period", "dayton", "question", "colon", "quotes", "sqrBrackets", "guillemets"]
     let mdBtn = [""]
@@ -48,6 +51,24 @@ extension ToolBar {
   func set(array: NSMutableArray, with type: Type) {
     userDefaults.set(array, forKey: type.rawValue)
   }
+  
+  // MARK: - Fetch Instance
+  
+  func fetchBtnInstance(with name: String) -> CustomBtn {
+    switch buttonType[name] {
+    case .ShortcutBtn:
+      return assembleShortcutBtn(with: name)
+    case .FunctionalBtn:
+      switch name {
+      case "redo": return fetchRedo()
+      default: return CustomBtn()
+      }
+    default:
+      return CustomBtn()
+    }
+  }
+  
+  // MARK: - Configure Shortcut Button
   
   func fetchPath() -> String {
     let bundle = Bundle.main
@@ -83,20 +104,6 @@ extension ToolBar {
     return nil
   }
   
-  func fetchBtnInstance(with name: String) -> CustomBtn {
-    switch buttonType[name] {
-    case .ShortcutBtn:
-      return assembleShortcutBtn(with: name)
-    case .FunctionalBtn:
-      switch name {
-      case "redo": return fetchRedo()
-      default: return CustomBtn()
-      }
-    default:
-      return CustomBtn()
-    }
-  }
-  
   func assembleShortcutBtn(with name: String) -> CustomBtn {
     let configuration = fetchShortcutButtonConfiguration()!
     let targetConfig = (configuration[name] as! [String: Any])
@@ -109,7 +116,7 @@ extension ToolBar {
     return button
   }
   
-  
+  // MARK: - Configure Functional Button
   
   func fetchRedo() -> CustomBtn {
     let button = CustomBtn()

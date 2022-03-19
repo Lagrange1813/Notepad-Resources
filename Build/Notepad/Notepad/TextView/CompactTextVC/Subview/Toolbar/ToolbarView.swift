@@ -26,11 +26,6 @@ class ToolBar: UIView {
   
   var scrollToolView: CustomScrollView!
   
-  //    var btnProfile: [String:[String:String]] = ["quotesBtn": ["type":"shortCutBtn",
-  //                                                              "content":"”“"],
-  //                                                "sqrBracketsBtn": ["type":"shortCutBtn","content":"「」"],
-  //                                                "bracketsBtn": ["type":"shortCutBtn","content":"（）"]]
-  
   var commandBtn: CustomBtn!
   
   var touchPad: TouchPad!
@@ -39,6 +34,8 @@ class ToolBar: UIView {
   var pasteBtn: CustomBtn!
   var touchPadBtn: TouchPad?
   var downBtn: CustomBtn!
+  
+  // MARK: - ScrollView
   
   var redoBtn: CustomBtn?
   
@@ -50,13 +47,6 @@ class ToolBar: UIView {
   var jumpToBottom: CustomBtn?
   
   var theme: Theme!
-  
-//  func changeToDark() {
-//    let buttonList = [commandBtn, undoBtn, pasteBtn, downBtn, quotesBtn, sqrBracketsBtn, bracketsBtn, jumpToTop, jumpToBottom, redoBtn]
-//    for button in buttonList {
-//      button?.tintColor = .white
-//    }
-//  }
   
   let fixedBarItem = ("command", "arrowshape.turn.up.backward", "doc.on.clipboard", "keyboard.chevron.compact.down")
   

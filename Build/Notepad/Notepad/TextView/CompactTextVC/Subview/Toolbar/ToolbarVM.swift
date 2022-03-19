@@ -20,6 +20,7 @@ class ToolbarViewModel {
     textField: BaseTextView
 //      pasteBoard: UIPasteboard
   ) {
+    
     // MARK: - TitleUndo TitleRedo
     
     var titleUndoStack = 0
