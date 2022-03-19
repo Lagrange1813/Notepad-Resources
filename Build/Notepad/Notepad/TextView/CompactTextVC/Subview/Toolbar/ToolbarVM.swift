@@ -86,7 +86,6 @@ class ToolbarViewModel {
     
     redoEnabled = bodyCanRedo
 
-    
     let keyboardShown = NotificationCenter.default.rx.notification(UIResponder.keyboardWillShowNotification)
     let keyboardHidden = NotificationCenter.default.rx.notification(UIResponder.keyboardWillHideNotification)
 
