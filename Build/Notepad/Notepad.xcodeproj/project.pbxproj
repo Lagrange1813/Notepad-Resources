@@ -555,9 +555,9 @@
 			);
 			mainGroup = 7AC3213227AB9148008987B7;
 			packageReferences = (
-				7AEF605627D3595F00B8E43E /* XCRemoteSwiftPackageReference "SnapKit.git" */,
-				7AEF605927D3597100B8E43E /* XCRemoteSwiftPackageReference "RxSwift.git" */,
-				7AEF605E27D3597E00B8E43E /* XCRemoteSwiftPackageReference "MarkdownView.git" */,
+				7AEF605627D3595F00B8E43E /* XCRemoteSwiftPackageReference "SnapKit" */,
+				7AEF605927D3597100B8E43E /* XCRemoteSwiftPackageReference "RxSwift" */,
+				7AEF605E27D3597E00B8E43E /* XCRemoteSwiftPackageReference "MarkdownView" */,
 			);
 			productRefGroup = 7AC3213C27AB9148008987B7 /* Products */;
 			projectDirPath = "";
@@ -1003,7 +1003,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		7AEF605627D3595F00B8E43E /* XCRemoteSwiftPackageReference "SnapKit.git" */ = {
+		7AEF605627D3595F00B8E43E /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "git@gitee.com:lagrange1813/SnapKit.git";
 			requirement = {
@@ -1011,7 +1011,7 @@
 				version = 5.0.1;
 			};
 		};
-		7AEF605927D3597100B8E43E /* XCRemoteSwiftPackageReference "RxSwift.git" */ = {
+		7AEF605927D3597100B8E43E /* XCRemoteSwiftPackageReference "RxSwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://gitee.com/lagrange1813/RxSwift.git";
 			requirement = {
@@ -1019,7 +1019,7 @@
 				version = 6.5.0;
 			};
 		};
-		7AEF605E27D3597E00B8E43E /* XCRemoteSwiftPackageReference "MarkdownView.git" */ = {
+		7AEF605E27D3597E00B8E43E /* XCRemoteSwiftPackageReference "MarkdownView" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://gitee.com/lagrange1813/MarkdownView.git";
 			requirement = {
@@ -1032,22 +1032,22 @@
 /* Begin XCSwiftPackageProductDependency section */
 		7AEF605727D3595F00B8E43E /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 7AEF605627D3595F00B8E43E /* XCRemoteSwiftPackageReference "SnapKit.git" */;
+			package = 7AEF605627D3595F00B8E43E /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
 		};
 		7AEF605A27D3597100B8E43E /* RxCocoa */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 7AEF605927D3597100B8E43E /* XCRemoteSwiftPackageReference "RxSwift.git" */;
+			package = 7AEF605927D3597100B8E43E /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxCocoa;
 		};
 		7AEF605C27D3597100B8E43E /* RxSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 7AEF605927D3597100B8E43E /* XCRemoteSwiftPackageReference "RxSwift.git" */;
+			package = 7AEF605927D3597100B8E43E /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxSwift;
 		};
 		7AEF605F27D3597E00B8E43E /* MarkdownView */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 7AEF605E27D3597E00B8E43E /* XCRemoteSwiftPackageReference "MarkdownView.git" */;
+			package = 7AEF605E27D3597E00B8E43E /* XCRemoteSwiftPackageReference "MarkdownView" */;
 			productName = MarkdownView;
 		};
 /* End XCSwiftPackageProductDependency section */

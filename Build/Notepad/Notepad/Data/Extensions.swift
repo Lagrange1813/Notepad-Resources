@@ -8,6 +8,8 @@
 import CoreData
 import Foundation
 import UIKit
+import RxSwift
+import RxCocoa
 
 extension UIColor {
   convenience init(hexString: String) {
@@ -228,3 +230,5 @@ func fetchText(_ uuid: UUID) -> Text {
 
   return targetText
 }
+
+

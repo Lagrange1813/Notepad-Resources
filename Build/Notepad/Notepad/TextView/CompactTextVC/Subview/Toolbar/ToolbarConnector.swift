@@ -13,23 +13,28 @@ class ToolbarConnector {
   init(
       width: CGFloat,
       bag: DisposeBag,
-      titleUndoManager: UndoManager,
-      bodyUndoManager: UndoManager,
+      textField: BaseTextView,
       functions: [() -> ()]
   ) {
     view = ToolBar(viewWidth: width, Theme.BuiltIn.TextLight.enable())
     
     viewModel = ToolbarViewModel(
-      titleUndoManager: titleUndoManager,
-      bodyUndoManager: bodyUndoManager
+      textField: textField
     )
     
     viewModel.undoEnabled
       .bind(to: view.undoBtn.rx.isEnabled)
       .disposed(by: bag)
     
+    if let redoBtn = view.redoBtn {
+      viewModel.redoEnabled
+        .bind(to: redoBtn.rx.isEnabled)
+        .disposed(by: bag)
+    }
+    
     viewModel.downEnabled
       .bind(to: view.downBtn.rx.isEnabled)
       .disposed(by: bag)
   }
 }
+

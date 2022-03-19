@@ -9,42 +9,41 @@ import UIKit
 import RxSwift
 
 extension CompactTextVC {
-    func configureToolBar() {
-      let toolbarConnector = ToolbarConnector(width: viewWidth,
-                                              bag: bag,
-                                              titleUndoManager: textField.titleView.undoManager!,
-                                              bodyUndoManager: textField.bodyView.undoManager!,
-                                              functions: [])
-      toolBar = toolbarConnector.view
-      view.insertSubview(toolBar, at: 1)
-
-        toolBar.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            if ScreenSize.bottomPadding! > 0 {
-                make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
-            } else {
-                make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).inset(5)
-            }
-            make.width.equalTo(toolBar.width)
-            make.height.equalTo(toolBar.height)
-        }
-
-//        toolBar.gestureHandler = { [self] in
-//            let pan = self.toolBar.panGestureRecognizer
-//            let velocity = pan!.velocity(in: textField).y
-
-//            if velocity < -200 {
-//                UIView.animate(withDuration: 0.3, animations: {
-//                    self.titleBar.frame.origin.y -= 50
-//                })
-//
-//            } else if velocity > 200 {
-//                UIView.animate(withDuration: 0.3, animations: {
-//                    self.titleBar.frame.origin.y = ScreenSize.topPadding!
-//                })
-//            }
-//        }
+  func configureToolBar() {
+    let toolbarConnector = ToolbarConnector(width: viewWidth,
+                                            bag: bag,
+                                            textField: textField,
+                                            functions: [])
+    toolBar = toolbarConnector.view
+    view.insertSubview(toolBar, at: 1)
+    
+    toolBar.snp.makeConstraints { make in
+      make.centerX.equalToSuperview()
+      if ScreenSize.bottomPadding! > 0 {
+        make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+      } else {
+        make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).inset(5)
+      }
+      make.width.equalTo(toolBar.width)
+      make.height.equalTo(toolBar.height)
     }
+    
+    //        toolBar.gestureHandler = { [self] in
+    //            let pan = self.toolBar.panGestureRecognizer
+    //            let velocity = pan!.velocity(in: textField).y
+    
+    //            if velocity < -200 {
+    //                UIView.animate(withDuration: 0.3, animations: {
+    //                    self.titleBar.frame.origin.y -= 50
+    //                })
+    //
+    //            } else if velocity > 200 {
+    //                UIView.animate(withDuration: 0.3, animations: {
+    //                    self.titleBar.frame.origin.y = ScreenSize.topPadding!
+    //                })
+    //            }
+    //        }
+  }
     
     func configureToolBarBtnAction() {
         toolBar.commandBtn.addTarget(self, action: #selector(commandBtnFunc), for: .touchUpInside)
@@ -75,17 +74,17 @@ extension CompactTextVC {
             toolBar.commandBtn.isEnabled = false
         }
 
-        if isMenuExpanded {
-            toolBar.downBtn.isEnabled = false
-        } else {
-            toolBar.downBtn.isEnabled = true
-        }
+//        if isMenuExpanded {
+//            toolBar.downBtn.isEnabled = false
+//        } else {
+//            toolBar.downBtn.isEnabled = true
+//        }
     }
 
     func updateUnRedoButtons() {
-        guard let textField = textField else { return }
-        toolBar.undoBtn?.isEnabled = textField.bodyView.undoManager!.canUndo || textField.titleView.undoManager!.canUndo
-        toolBar.redoBtn?.isEnabled = textField.bodyView.undoManager!.canRedo || textField.titleView.undoManager!.canRedo
+//        guard let textField = textField else { return }
+//        toolBar.undoBtn?.isEnabled = textField.bodyView.undoManager!.canUndo || textField.titleView.undoManager!.canUndo
+//        toolBar.redoBtn?.isEnabled = textField.bodyView.undoManager!.canRedo || textField.titleView.undoManager!.canRedo
     }
 
   func addTouchBarBtnObserver() {
