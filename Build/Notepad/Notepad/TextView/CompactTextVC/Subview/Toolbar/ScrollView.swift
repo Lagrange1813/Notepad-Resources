@@ -20,22 +20,7 @@ enum ButtonType {
   case FunctionalBtn
 }
 
-
-
-//let buttonType: [String: ButtonType] = ["redo": .FunctionalBtn,
-//                                        "jumpToTop": .FunctionalBtn,
-//                                        "jumpToBottom": .FunctionalBtn,
-//                                        "indent": .ShortcutBtn,
-//                                        "comma": .ShortcutBtn,
-//                                        "period": .ShortcutBtn,
-//                                        "dayton": .ShortcutBtn,
-//                                        "question": .ShortcutBtn,
-//                                        "colon": .ShortcutBtn,
-//                                        "quotes": .ShortcutBtn,
-//                                        "sqrBrackets": .ShortcutBtn,
-//                                        "guillemets": .ShortcutBtn]
-
-let buttonType: [String: ButtonType] = fetchButtonTypeDictionary()!
+let buttonType: [String: ButtonType] = fetchButtonTypeDictionary()
 
 extension ToolBar {
   

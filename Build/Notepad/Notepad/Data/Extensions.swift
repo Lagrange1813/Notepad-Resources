@@ -239,55 +239,25 @@ func initBtnList() {
   UserDefaults.standard.set(mdBtn, forKey: "MDBtn")
 }
 
-func fetch(with type: Type) -> NSMutableArray {
+func fetchButtonList(with type: Type) -> NSMutableArray {
   UserDefaults.standard.mutableArrayValue(forKey: type.rawValue)
 }
 
-func set(array: NSMutableArray, with type: Type) {
+func setButtonList(array: NSMutableArray, with type: Type) {
   UserDefaults.standard.set(array, forKey: type.rawValue)
 }
 
-func convertType( _ type: String) -> ButtonType {
-  if type == "ShortcutBtn" { return .ShortcutBtn }
-  else if type == "FunctionalBtn" { return .FunctionalBtn }
-  return .null
-}
-
-func fetchButtonTypeConfigurationPath() -> String {
-  let bundle = Bundle.main
-  let path: String!
-  
-  if let path1 = bundle.path(forResource: "toolbar/button-type", ofType: "json") { path = path1 }
-  else if let path2 = bundle.path(forResource: "button-type", ofType: "json") { path = path2 }
-  else {
-    print("Unable to load your button configuration file.")
-    assertionFailure()
-    return ""
-  }
-  
-  return path
-}
-
-func fetchButtonTypeDictionary() -> [String: ButtonType]? {
-  let path = fetchButtonTypeConfigurationPath()
-  
-  do {
-    let json = try String(contentsOf: URL(fileURLWithPath: path), encoding: .utf8)
-    if let data = json.data(using: .utf8) {
-      do {
-        var result: [String: ButtonType] = [:]
-        let dic =  try JSONSerialization.jsonObject(with: data, options: []) as! [String: String]
-        _ = dic.map { result.updateValue(convertType($1), forKey: $0) }
-        
-        return result
-      } catch let error as NSError {
-        print(error)
-      }
-    }
-  } catch let error as NSError {
-    print(error)
-  }
-
-  
-  return nil
+func fetchButtonTypeDictionary() -> [String: ButtonType] {
+  ["redo": .FunctionalBtn,
+   "jumpToTop": .FunctionalBtn,
+   "jumpToBottom": .FunctionalBtn,
+   "indent": .ShortcutBtn,
+   "comma": .ShortcutBtn,
+   "period": .ShortcutBtn,
+   "dayton": .ShortcutBtn,
+   "question": .ShortcutBtn,
+   "colon": .ShortcutBtn,
+   "quotes": .ShortcutBtn,
+   "sqrBrackets": .ShortcutBtn,
+   "guillemets": .ShortcutBtn]
 }

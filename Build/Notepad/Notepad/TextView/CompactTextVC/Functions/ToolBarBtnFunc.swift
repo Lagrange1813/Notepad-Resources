@@ -184,8 +184,8 @@ extension CompactTextVC {
 
     // MARK: - Tool bar scrollview button function configurment
 
-    @objc func shortcutFunc(sender: CustomBtn, forEvent: UIEvent) {
-        insertFromCursor(sender: sender, forEvent: forEvent)
+    @objc func shortcutFunc(sender: CustomBtn) {
+        insertFromCursor(sender: sender)
 
         retreat = sender.retreat!
 
@@ -250,7 +250,7 @@ extension CompactTextVC {
         hideTitleBar()
     }
 
-    @objc func insertFromCursor(sender: CustomBtn, forEvent event: UIEvent) {
+    @objc func insertFromCursor(sender: CustomBtn) {
         var selectedView: CustomTextView?
 
         if bodyViewUnderEditing {

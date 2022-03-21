@@ -57,7 +57,6 @@
 		7AC3218327AB9325008987B7 /* CustomSView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC3218227AB9325008987B7 /* CustomSView.swift */; };
 		7AC3218A27AB9371008987B7 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC3218927AB9371008987B7 /* Extensions.swift */; };
 		7AC3218C27AB938A008987B7 /* FirstLaunch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC3218B27AB938A008987B7 /* FirstLaunch.swift */; };
-		7AC51AB627E1F4FD00F35DA6 /* ScrollVConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC51AB527E1F4FD00F35DA6 /* ScrollVConfig.swift */; };
 		7ACF059D27CEEE3800669300 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACF059C27CEEE3800669300 /* Model.swift */; };
 		7ADEC0DC27C37496006E6DD5 /* ParallelDisplayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADEC0DB27C37496006E6DD5 /* ParallelDisplayVC.swift */; };
 		7ADEC0DF27C377E9006E6DD5 /* MDPreviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADEC0DE27C377E9006E6DD5 /* MDPreviewVC.swift */; };
@@ -148,7 +147,6 @@
 		7AC3218627AB934F008987B7 /* CompactHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompactHandler.swift; sourceTree = "<group>"; };
 		7AC3218927AB9371008987B7 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		7AC3218B27AB938A008987B7 /* FirstLaunch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstLaunch.swift; sourceTree = "<group>"; };
-		7AC51AB527E1F4FD00F35DA6 /* ScrollVConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollVConfig.swift; sourceTree = "<group>"; };
 		7ACF059C27CEEE3800669300 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		7ADEC0C327C37189006E6DD5 /* CommonHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonHandler.swift; sourceTree = "<group>"; };
 		7ADEC0DB27C37496006E6DD5 /* ParallelDisplayVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParallelDisplayVC.swift; sourceTree = "<group>"; };
@@ -450,7 +448,6 @@
 				C6487705A89D56BEC19B9747 /* ToolbarVM.swift */,
 				C6487DABF0202063DC52EFDA /* ToolbarConnector.swift */,
 				7A04A21527E5E7EA00AC9BBC /* ScrollView.swift */,
-				7AC51AB527E1F4FD00F35DA6 /* ScrollVConfig.swift */,
 			);
 			path = Toolbar;
 			sourceTree = "<group>";
@@ -614,7 +611,6 @@
 				7AA89BB127C856D400E77749 /* Storage.swift in Sources */,
 				7AA89BA827C773E800E77749 /* CommonHandler.swift in Sources */,
 				7A14B11C27E412C30099FF96 /* TitleBarConnector.swift in Sources */,
-				7AC51AB627E1F4FD00F35DA6 /* ScrollVConfig.swift in Sources */,
 				7AEB2A1827C77362002753B8 /* CommonTextVC.swift in Sources */,
 				7AC3218C27AB938A008987B7 /* FirstLaunch.swift in Sources */,
 				7A443A0E27B4D99600A72F76 /* TitleBarView.swift in Sources */,

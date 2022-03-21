@@ -14,6 +14,7 @@ class ToolbarConnector {
     width: CGFloat,
     bag: DisposeBag,
     textField: BaseTextView,
+    symbolFunc: (CustomBtn) -> (),
     functions: [() -> ()]
   ) {
     view = ToolBar(viewWidth: width, Theme.BuiltIn.TextLight.enable())
@@ -35,6 +36,21 @@ class ToolbarConnector {
     viewModel.downEnabled
       .bind(to: view.downBtn.rx.isEnabled)
       .disposed(by: bag)
+    
+    let dic = fetchButtonTypeDictionary()
+    let list = fetchButtonList(with: .Text) as! [String]
+    
+    for x in 0 ..< list.count {
+      if dic[list[x]] == .ShortcutBtn {
+        view.shortcutButtons[x].rx.tap
+          .subscribe {}
+          .disposed(by: bag)
+      } else if dic[list[x]] == .FunctionalBtn {
+        view.shortcutButtons[x].rx.tap
+          .subscribe {  }
+          .disposed(by: bag)
+      }
+    }
   }
   
   

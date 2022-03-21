@@ -13,6 +13,7 @@ extension CompactTextVC {
     let toolbarConnector = ToolbarConnector(width: viewWidth,
                                             bag: bag,
                                             textField: textField,
+                                            symbolFunc: shortcutFunc,
                                             functions: [])
     toolBar = toolbarConnector.view
     view.insertSubview(toolBar, at: 1)
@@ -66,6 +67,20 @@ extension CompactTextVC {
 
         updateBtnStatus()
     }
+  
+  func configureButtonFunction() {
+    var functions: [(CustomBtn, UIEvent) -> ()] = []
+    let dic = fetchButtonTypeDictionary()
+    let list = fetchButtonList(with: .Text) as! [String]
+    for button in list {
+      if dic[button] == .ShortcutBtn {
+        functions.append(shortcutFunc)
+      }
+      if dic[button] == .FunctionalBtn {
+        
+      }
+    }
+  }
 
     func updateBtnStatus() {
         if isKeyboardHasPoppedUp {
