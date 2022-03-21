@@ -7,9 +7,9 @@
 
 import CoreData
 import Foundation
-import UIKit
-import RxSwift
 import RxCocoa
+import RxSwift
+import UIKit
 
 extension UIColor {
   convenience init(hexString: String) {
@@ -38,17 +38,17 @@ func isFullScreen() -> Bool {
 
 enum ColorCollection {
   static let lightBodyBG = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
-  
+
   static let lightTitleText = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
   static let lightBodyText = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
-  
+
   static let lightTitleBar = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
-  
+
   static let lightCountBG = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
   static let lightToolBG = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
-  
+
   static let lightRightBG = UIColor(red: 0.94117, green: 0.94117, blue: 0.94117, alpha: 1)
-  
+
   static let darkBodyBG = UIColor(red: 0.15686, green: 0.15686, blue: 0.15686, alpha: 1)
   static let darkBodyText = UIColor(red: 0.90196, green: 0.90196, blue: 0.90196, alpha: 1)
   static let darkNavigation = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
@@ -88,7 +88,7 @@ let titleBarOffset: CGFloat = {
 enum ScreenSize {
   static let width = UIScreen.main.bounds.width
   static let height = UIScreen.main.bounds.height
-  
+
   static let window = UIApplication.shared.windows.first
   static let topPadding = window?.safeAreaInsets.top
   static let bottomPadding = window?.safeAreaInsets.bottom
@@ -104,23 +104,23 @@ extension String {
     else { return nil }
     return from ..< to
   }
-  
+
   func nsRange(from range: Range<String.Index>) -> NSRange {
     let from = range.lowerBound.samePosition(in: utf16)
     let to = range.upperBound.samePosition(in: utf16)
     return NSRange(location: utf16.distance(from: utf16.startIndex, to: from!),
                    length: utf16.distance(from: from!, to: to!))
   }
-  
+
   func toRegex() -> NSRegularExpression {
     var pattern = NSRegularExpression()
-    
+
     do {
       try pattern = NSRegularExpression(pattern: self, options: .anchorsMatchLines)
     } catch {
       print(error)
     }
-    
+
     return pattern
   }
 }
@@ -132,11 +132,11 @@ private let context = (UIApplication.shared.delegate as! AppDelegate).persistent
 // 增
 func insertBook(title: String, author: String) {
   let entity = NSEntityDescription.entity(forEntityName: "Book", in: context)!
-  
+
   let book = Book(entity: entity, insertInto: context)
   book.title = title
   book.author = author
-  
+
   do { try context.save()
   } catch let error as NSError {
     print("Could not save. \(error), \(error.userInfo)")
@@ -150,9 +150,9 @@ func insertText(title: String, body: String, type: String, bookName: String, id:
   text.body = body
   text.type = type
   text.id = id ?? UUID()
-  
+
   let books = fetchBook()
-  
+
   var targetBook: Book!
   for book in books {
     if (book.value(forKey: "title") as! String) == bookName {
@@ -160,7 +160,7 @@ func insertText(title: String, body: String, type: String, bookName: String, id:
     }
   }
   text.book = targetBook
-  
+
   do { try context.save()
   } catch let error as NSError {
     print("Could not save. \(error), \(error.userInfo)")
@@ -170,34 +170,34 @@ func insertText(title: String, body: String, type: String, bookName: String, id:
 // 查
 func fetchBook() -> [Book] {
   var results: [Book] = []
-  
+
   let fetchRequest = NSFetchRequest<Book>(entityName: "Book")
-  
+
   do { results = try context.fetch(fetchRequest)
   } catch let error as NSError {
     print("Could not fetch. \(error), \(error.userInfo)")
   }
-  
+
   return results
 }
 
 func fetchAllTexts() -> [Text] {
   var texts: [Text] = []
   let fetchRequest = NSFetchRequest<Text>(entityName: "Text")
-  
+
   do {
     texts = try context.fetch(fetchRequest)
   } catch let error as NSError {
     print("Could not fetch. \(error), \(error.userInfo)")
   }
-  
+
   return texts
 }
 
 // 改
 func saveText(id: UUID, title: String, body: String, type: String) {
   let fetchRequest = NSFetchRequest<Text>(entityName: "Text")
-  
+
   do {
     var targetText: Text!
     let texts = try context.fetch(fetchRequest)
@@ -206,12 +206,12 @@ func saveText(id: UUID, title: String, body: String, type: String) {
         targetText = text
       }
     }
-    
+
     targetText.title = title
     targetText.body = body
     targetText.type = type
     try context.save()
-    
+
   } catch let error as NSError {
     print("Could not fetch. \(error), \(error.userInfo)")
   }

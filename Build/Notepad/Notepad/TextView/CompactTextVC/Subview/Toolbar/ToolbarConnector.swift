@@ -15,7 +15,7 @@ class ToolbarConnector {
     bag: DisposeBag,
     textField: BaseTextView,
     shortcutFunc: @escaping (CustomBtn) -> (),
-    functions: [() -> ()]
+    selector: @escaping (String) -> (() -> ())
   ) {
     view = ToolBar(viewWidth: width, Theme.BuiltIn.TextLight.enable())
 
@@ -27,7 +27,6 @@ class ToolbarConnector {
       .bind(to: view.undoBtn.rx.isEnabled)
       .disposed(by: bag)
 
-    
     for button in view.functionalButtons {
       if button.identifier == "redo" {
         viewModel.redoEnabled
@@ -39,22 +38,32 @@ class ToolbarConnector {
     viewModel.downEnabled
       .bind(to: view.downBtn.rx.isEnabled)
       .disposed(by: bag)
+    
+    for button in view.fixedButtons {
+      button.rx.tap
+        .map { button }
+        .subscribe(onNext: {
+          selector($0.identifier!)()
+        })
+        .disposed(by: bag)
+    }
 
     let dic = fetchButtonTypeDictionary()
     let list = fetchButtonList(with: .Text) as! [String]
 
     for x in 0 ..< list.count {
       if dic[list[x]] == .ShortcutBtn {
-        view.shortcutButtons[x].rx.tap
-          .map { self.view.shortcutButtons[x] }
+        view.allScrollButtons[x].rx.tap
+          .map { self.view.allScrollButtons[x] }
           .subscribe(onNext: {
             shortcutFunc($0)
           })
           .disposed(by: bag)
       } else if dic[list[x]] == .FunctionalBtn {
-        view.shortcutButtons[x].rx.tap
+        view.allScrollButtons[x].rx.tap
+          .map { self.view.allScrollButtons[x] }
           .subscribe(onNext: {
-            functions[x]()
+            selector($0.identifier!)()
           })
           .disposed(by: bag)
       }

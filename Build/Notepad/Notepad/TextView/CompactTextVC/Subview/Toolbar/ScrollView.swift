@@ -29,9 +29,7 @@ extension ToolBar {
   func fetchBtnInstance(with name: String) -> CustomBtn {
     switch buttonType[name] {
     case .ShortcutBtn:
-      let instance = assembleShortcutBtn(with: name)
-      shortcutButtons.append(instance)
-      return instance
+      return assembleShortcutBtn(with: name)
       
     case .FunctionalBtn:
       
@@ -41,7 +39,6 @@ extension ToolBar {
         instance = fetchRedo()
       default: return CustomBtn()
       }
-      shortcutButtons.append(CustomBtn())
       functionalButtons.append(instance)
       return instance
       

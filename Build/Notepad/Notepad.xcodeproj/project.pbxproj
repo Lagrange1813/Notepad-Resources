@@ -20,14 +20,15 @@
 		7A22203E27D1909200899A24 /* SideMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A22203D27D1909200899A24 /* SideMenuVC.swift */; };
 		7A22204527D1A16E00899A24 /* SideMenuFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A22204427D1A16E00899A24 /* SideMenuFunc.swift */; };
 		7A22204827D1A1A200899A24 /* TitleBarFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A22204727D1A1A200899A24 /* TitleBarFunc.swift */; };
-		7A22204A27D1A1B400899A24 /* ToolBarFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A22204927D1A1B400899A24 /* ToolBarFunc.swift */; };
-		7A22204C27D1A3D700899A24 /* ToolBarBtnFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A22204B27D1A3D700899A24 /* ToolBarBtnFunc.swift */; };
+		7A22204A27D1A1B400899A24 /* ToolbarFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A22204927D1A1B400899A24 /* ToolbarFunc.swift */; };
+		7A22204C27D1A3D700899A24 /* ToolbarBtnFuncOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A22204B27D1A3D700899A24 /* ToolbarBtnFuncOld.swift */; };
 		7A276C7D27D06BB40013B739 /* Controller加载顺序.md in Resources */ = {isa = PBXBuildFile; fileRef = 7A276C7C27D06BB40013B739 /* Controller加载顺序.md */; };
 		7A2A5F0227C747C300C399F8 /* toolbar in Resources */ = {isa = PBXBuildFile; fileRef = 7A2A5F0127C747C300C399F8 /* toolbar */; };
 		7A2A5F0627C7594C00C399F8 /* MDTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2A5F0527C7594C00C399F8 /* MDTextView.swift */; };
 		7A381D1527E46B1E001393E0 /* ToolbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A381D1427E46B1E001393E0 /* ToolbarView.swift */; };
 		7A443A0E27B4D99600A72F76 /* TitleBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A443A0D27B4D99600A72F76 /* TitleBarView.swift */; };
 		7A5F137727C76591002C8F1A /* BaseTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5F137627C76591002C8F1A /* BaseTextView.swift */; };
+		7A69A24C27E8ABF800F5E749 /* ToolbarBtnFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A69A24B27E8ABF800F5E749 /* ToolbarBtnFunc.swift */; };
 		7A758BBC27BAAAE700813C08 /* CustomSplitVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A758BBB27BAAAE700813C08 /* CustomSplitVC.swift */; };
 		7A758BBF27BAAB4200813C08 /* ArticleListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A758BBE27BAAB4200813C08 /* ArticleListVC.swift */; };
 		7A758BC127BAAB5C00813C08 /* BookListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A758BC027BAAB5C00813C08 /* BookListVC.swift */; };
@@ -104,8 +105,8 @@
 		7A22203D27D1909200899A24 /* SideMenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuVC.swift; sourceTree = "<group>"; };
 		7A22204427D1A16E00899A24 /* SideMenuFunc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuFunc.swift; sourceTree = "<group>"; };
 		7A22204727D1A1A200899A24 /* TitleBarFunc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleBarFunc.swift; sourceTree = "<group>"; };
-		7A22204927D1A1B400899A24 /* ToolBarFunc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolBarFunc.swift; sourceTree = "<group>"; };
-		7A22204B27D1A3D700899A24 /* ToolBarBtnFunc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolBarBtnFunc.swift; sourceTree = "<group>"; };
+		7A22204927D1A1B400899A24 /* ToolbarFunc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarFunc.swift; sourceTree = "<group>"; };
+		7A22204B27D1A3D700899A24 /* ToolbarBtnFuncOld.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarBtnFuncOld.swift; sourceTree = "<group>"; };
 		7A276C7B27CFBFBD0013B739 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		7A276C7C27D06BB40013B739 /* Controller加载顺序.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "Controller加载顺序.md"; sourceTree = "<group>"; };
 		7A2A5F0127C747C300C399F8 /* toolbar */ = {isa = PBXFileReference; lastKnownFileType = folder; path = toolbar; sourceTree = "<group>"; };
@@ -115,6 +116,7 @@
 		7A5CAAC027C137CA000173F4 /* CompactTextVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompactTextVC.swift; sourceTree = "<group>"; };
 		7A5CAAC327C268A5000173F4 /* Notepad.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Notepad.entitlements; sourceTree = "<group>"; };
 		7A5F137627C76591002C8F1A /* BaseTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTextView.swift; sourceTree = "<group>"; };
+		7A69A24B27E8ABF800F5E749 /* ToolbarBtnFunc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarBtnFunc.swift; sourceTree = "<group>"; };
 		7A758BBB27BAAAE700813C08 /* CustomSplitVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSplitVC.swift; sourceTree = "<group>"; };
 		7A758BBE27BAAB4200813C08 /* ArticleListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListVC.swift; sourceTree = "<group>"; };
 		7A758BC027BAAB5C00813C08 /* BookListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListVC.swift; sourceTree = "<group>"; };
@@ -264,8 +266,9 @@
 			children = (
 				7A22204727D1A1A200899A24 /* TitleBarFunc.swift */,
 				7A22204427D1A16E00899A24 /* SideMenuFunc.swift */,
-				7A22204927D1A1B400899A24 /* ToolBarFunc.swift */,
-				7A22204B27D1A3D700899A24 /* ToolBarBtnFunc.swift */,
+				7A22204927D1A1B400899A24 /* ToolbarFunc.swift */,
+				7A22204B27D1A3D700899A24 /* ToolbarBtnFuncOld.swift */,
+				7A69A24B27E8ABF800F5E749 /* ToolbarBtnFunc.swift */,
 			);
 			path = Functions;
 			sourceTree = "<group>";
@@ -603,7 +606,7 @@
 			files = (
 				7A22204827D1A1A200899A24 /* TitleBarFunc.swift in Sources */,
 				7AA89BAA27C773F000E77749 /* CompactTextVC.swift in Sources */,
-				7A22204A27D1A1B400899A24 /* ToolBarFunc.swift in Sources */,
+				7A22204A27D1A1B400899A24 /* ToolbarFunc.swift in Sources */,
 				7AA89BA927C773ED00E77749 /* CompactHandler.swift in Sources */,
 				7A22203E27D1909200899A24 /* SideMenuVC.swift in Sources */,
 				7A04A21627E5E7EA00AC9BBC /* ScrollView.swift in Sources */,
@@ -619,6 +622,7 @@
 				7AC3217D27AB92ED008987B7 /* WordCounter.swift in Sources */,
 				7AC3217327AB925A008987B7 /* CustomTextView.swift in Sources */,
 				7A12F1B427C8A8DB00EB67CD /* Item.swift in Sources */,
+				7A69A24C27E8ABF800F5E749 /* ToolbarBtnFunc.swift in Sources */,
 				7A05EDD227CCC400000B5BA3 /* MDPreHandler.swift in Sources */,
 				7AB9F1F727AD1FF300A64FDA /* SelectionRect.swift in Sources */,
 				7A758BC127BAAB5C00813C08 /* BookListVC.swift in Sources */,
@@ -642,7 +646,7 @@
 				7A14B11727E407AF0099FF96 /* TitleBarVM.swift in Sources */,
 				7A05EDD427CCC50B000B5BA3 /* MDSubView.swift in Sources */,
 				7A2A5F0627C7594C00C399F8 /* MDTextView.swift in Sources */,
-				7A22204C27D1A3D700899A24 /* ToolBarBtnFunc.swift in Sources */,
+				7A22204C27D1A3D700899A24 /* ToolbarBtnFuncOld.swift in Sources */,
 				7ADEC10827C5C6E3006E6DD5 /* Theme.swift in Sources */,
 				7A172DE427C096A700568433 /* CurrentTextVC.swift in Sources */,
 				C6487444EEEBCE8E04644E46 /* TouchPad.swift in Sources */,

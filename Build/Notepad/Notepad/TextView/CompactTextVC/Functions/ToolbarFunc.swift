@@ -10,12 +10,11 @@ import UIKit
 
 extension CompactTextVC {
   func configureToolBar() {
-    let functions = configureButtonFunctions()
     let toolbarConnector = ToolbarConnector(width: viewWidth,
                                             bag: bag,
                                             textField: textField,
                                             shortcutFunc: shortcutFunc,
-                                            functions: functions)
+                                            selector: functionSelector)
     toolBar = toolbarConnector.view
     view.insertSubview(toolBar, at: 1)
 
@@ -48,16 +47,7 @@ extension CompactTextVC {
   }
 
   func configureToolBarBtnAction() {
-    toolBar.commandBtn.addTarget(self, action: #selector(commandBtnFunc), for: .touchUpInside)
-
-    toolBar.undoBtn.addTarget(self, action: #selector(undoFunc), for: .touchUpInside)
-
-    toolBar.pasteBtn.addTarget(self, action: #selector(pasteBtnFunc), for: .touchUpInside)
-    toolBar.downBtn.addTarget(self, action: #selector(downBtnFunc), for: .touchUpInside)
-
     addTouchBarBtnObserver()
-
-//        toolBar.redoBtn?.addTarget(self, action: #selector(redoFunc), for: .touchUpInside)
 
     toolBar.quotesBtn?.addTarget(self, action: #selector(shortcutFunc), for: .touchUpInside)
     toolBar.sqrBracketsBtn?.addTarget(self, action: #selector(shortcutFunc), for: .touchUpInside)
@@ -69,49 +59,25 @@ extension CompactTextVC {
     updateBtnStatus()
   }
 
-  func configureButtonFunctions() -> [() -> ()] {
-    var functions: [() -> ()] = []
-    let dic = fetchButtonTypeDictionary()
-    let list = fetchButtonList(with: .Text) as! [String]
-    for button in list {
-      if dic[button] == .ShortcutBtn {
-        functions.append {}
-      }
-      if dic[button] == .FunctionalBtn {
-        switch button {
-        case "redo":
-          functions.append(redoFunc)
-        default:
-          functions.append {}
-        }
-      }
-    }
-    return functions
-  }
-
   func updateBtnStatus() {
     if isKeyboardHasPoppedUp {
       toolBar.commandBtn.isEnabled = true
     } else {
       toolBar.commandBtn.isEnabled = false
     }
-
-//        if isMenuExpanded {
-//            toolBar.downBtn.isEnabled = false
-//        } else {
-//            toolBar.downBtn.isEnabled = true
-//        }
-  }
-
-  func updateUnRedoButtons() {
-//        guard let textField = textField else { return }
-//        toolBar.undoBtn?.isEnabled = textField.bodyView.undoManager!.canUndo || textField.titleView.undoManager!.canUndo
-//        toolBar.redoBtn?.isEnabled = textField.bodyView.undoManager!.canRedo || textField.titleView.undoManager!.canRedo
   }
 
   func functionSelector(_ identifier: String) -> (() -> ()) {
     var result: (()->())!
     switch identifier {
+    case "command":
+      result = commandBtnFunc
+    case "undo":
+      result = undoFunc
+    case "paste":
+      result = pasteBtnFunc
+    case "down":
+      result = downBtnFunc
     case "redo":
       result = redoFunc
     default:

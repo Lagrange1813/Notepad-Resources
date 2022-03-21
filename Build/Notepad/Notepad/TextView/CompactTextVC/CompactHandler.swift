@@ -9,17 +9,6 @@ import CoreData
 import UIKit
 
 extension CompactTextVC {
-    override func textViewDidChange(_ textView: UITextView) {
-        super.textViewDidChange(textView)
-        guard let textField = textField else { return }
-        if textView == textField.bodyView {
-            updateUnRedoButtons()
-
-        } else if textView == textField.titleView {
-            updateUnRedoButtons()
-        }
-    }
-    
     func textViewDidBeginEditing(_ textView: UITextView) {
         guard let textField = textField else { return }
         if textView == textField.bodyView {

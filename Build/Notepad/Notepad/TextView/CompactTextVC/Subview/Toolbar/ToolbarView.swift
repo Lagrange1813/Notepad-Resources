@@ -36,7 +36,8 @@ class ToolBar: UIView {
   var downBtn: CustomBtn!
   
   // MARK: - ScrollView
-  var shortcutButtons: [CustomBtn] = []
+  var fixedButtons: [CustomBtn] = []
+  var allScrollButtons: [CustomBtn] = []
   var functionalButtons: [CustomBtn] = []
   
   var redoBtn: CustomBtn?
@@ -152,6 +153,9 @@ class ToolBar: UIView {
   func configureFixedButton() {
     commandBtn = { () -> CustomBtn in
       let button = CustomBtn(frame: CGRect(x: height / 2 - btnLength / 2 + 2, y: height / 2 - btnLength / 2, width: btnLength, height: btnLength))
+      button.identifier = "command"
+      fixedButtons.append(button)
+      functionalButtons.append(button)
       button.setImage(UIImage(named: fixedBarItem.0), for: .normal)
       addSubview(button)
       
@@ -160,6 +164,9 @@ class ToolBar: UIView {
     
     undoBtn = { () -> CustomBtn in
       let button = CustomBtn(frame: CGRect(x: height / 2 - btnLength / 2 + height * 1 + 2, y: height / 2 - btnLength / 2, width: btnLength, height: btnLength))
+      button.identifier = "undo"
+      fixedButtons.append(button)
+      functionalButtons.append(button)
       button.setImage(UIImage(named: fixedBarItem.1), for: .normal)
       button.setTitleColor(.black, for: .normal)
       addSubview(button)
@@ -169,6 +176,8 @@ class ToolBar: UIView {
     
     pasteBtn = { () -> CustomBtn in
       let button = CustomBtn(frame: CGRect(x: height / 2 - btnLength / 2 + height * 2 + 2, y: height / 2 - btnLength / 2, width: btnLength, height: btnLength))
+      button.identifier = "paste"
+      fixedButtons.append(button)
       button.setImage(UIImage(named: fixedBarItem.2), for: .normal)
       addSubview(button)
       
@@ -179,6 +188,9 @@ class ToolBar: UIView {
     
     downBtn = { () -> CustomBtn in
       let button = CustomBtn()
+      button.identifier = "down"
+      fixedButtons.append(button)
+      functionalButtons.append(button)
       button.setImage(UIImage(named: fixedBarItem.3), for: .normal)
       addSubview(button)
       
@@ -230,6 +242,7 @@ class ToolBar: UIView {
     
     for x in 0 ..< btnList.count {
       let instance = fetchBtnInstance(with: btnList[x])
+      allScrollButtons.append(instance)
       addToView(at: x, with: instance)
     }
   }

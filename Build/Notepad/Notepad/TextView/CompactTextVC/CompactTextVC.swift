@@ -75,7 +75,6 @@ class CompactTextVC: CommonTextVC {
   
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
-    updateUnRedoButtons()
   }
   
   override func viewWillLayoutSubviews() {
@@ -124,11 +123,11 @@ class CompactTextVC: CommonTextVC {
     configureSideMenu()
   }
   
-  //    func configureStatusBarBackground() {
-  //        let background = UIView(frame: CGRect(x: 0, y: 0, width: ScreenSize.width, height: ScreenSize.topPadding! - 1))
-  //        background.backgroundColor = theme.colorSet["background"]
-  //        view.addSubview(background)
-  //    }
+//  func configureStatusBarBackground() {
+//    let background = UIView(frame: CGRect(x: 0, y: 0, width: ScreenSize.width, height: ScreenSize.topPadding! - 1))
+//    background.backgroundColor = theme.colorSet["background"]
+//    view.addSubview(background)
+//  }
   
   func configureBackgroundImage() {
     image = UIImageView(image: UIImage(named: "Qerg85B7JDI"))
