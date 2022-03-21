@@ -29,12 +29,22 @@ extension ToolBar {
   func fetchBtnInstance(with name: String) -> CustomBtn {
     switch buttonType[name] {
     case .ShortcutBtn:
-      return assembleShortcutBtn(with: name)
+      let instance = assembleShortcutBtn(with: name)
+      shortcutButtons.append(instance)
+      return instance
+      
     case .FunctionalBtn:
+      
+      var instance: CustomBtn!
       switch name {
-      case "redo": return fetchRedo()
+      case "redo":
+        instance = fetchRedo()
       default: return CustomBtn()
       }
+      shortcutButtons.append(CustomBtn())
+      functionalButtons.append(instance)
+      return instance
+      
     default:
       return CustomBtn()
     }
@@ -83,7 +93,7 @@ extension ToolBar {
     if (targetConfig["image"] as! String) != "" {
       button.setImage(UIImage(systemName: targetConfig["image"] as! String), for: .normal)
     } else {
-      button.setTitle(targetConfig["content"] as! String, for: .normal)
+      button.setTitle((targetConfig["content"] as! String), for: .normal)
       button.setTitleColor(.black, for: .normal)
       button.setTitleColor(.systemGray, for: .highlighted)
       button.titleLabel!.font = UIFont(name: "LXGW WenKai", size: 15)
@@ -97,6 +107,7 @@ extension ToolBar {
   
   func fetchRedo() -> CustomBtn {
     let button = CustomBtn()
+    button.identifier = "redo"
     button.setImage(UIImage(named: "arrowshape.turn.up.right"), for: .normal)
     return button
   }

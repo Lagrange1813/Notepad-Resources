@@ -8,6 +8,7 @@
 import UIKit
 
 class CustomBtn: UIButton {
+  var identifier: String?
     var argument: String?
     var retreat: Int?
 

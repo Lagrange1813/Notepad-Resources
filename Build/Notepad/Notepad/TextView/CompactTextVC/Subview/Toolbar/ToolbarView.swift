@@ -37,6 +37,7 @@ class ToolBar: UIView {
   
   // MARK: - ScrollView
   var shortcutButtons: [CustomBtn] = []
+  var functionalButtons: [CustomBtn] = []
   
   var redoBtn: CustomBtn?
   
@@ -229,7 +230,6 @@ class ToolBar: UIView {
     
     for x in 0 ..< btnList.count {
       let instance = fetchBtnInstance(with: btnList[x])
-      shortcutButtons.append(instance)
       addToView(at: x, with: instance)
     }
   }

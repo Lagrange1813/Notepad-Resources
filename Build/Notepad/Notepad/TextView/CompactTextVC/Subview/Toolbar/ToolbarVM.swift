@@ -114,6 +114,7 @@ class ToolbarViewModel {
         }
         return false
       }
+      .startWith(false)
     
     redoEnabled = Observable.combineLatest(currentTextView, titleCanRedo, bodyCanRedo) { ($0, $1, $2) }
       .map { combine in
@@ -124,6 +125,7 @@ class ToolbarViewModel {
         }
         return false
       }
+      .startWith(false)
     
     // MARK: - Down
 

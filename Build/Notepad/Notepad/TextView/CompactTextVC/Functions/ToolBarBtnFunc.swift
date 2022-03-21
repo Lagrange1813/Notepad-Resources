@@ -158,7 +158,7 @@ extension CompactTextVC {
         updateUnRedoButtons()
     }
 
-    @objc func redoFunc(_ sender: Any) {
+    func redoFunc() {
         if trackingView == "body" {
             textField.bodyView.undoManager?.redo()
         } else if trackingView == "title" {
@@ -184,37 +184,57 @@ extension CompactTextVC {
 
     // MARK: - Tool bar scrollview button function configurment
 
-    @objc func shortcutFunc(sender: CustomBtn) {
-        insertFromCursor(sender: sender)
-
-        retreat = sender.retreat!
-
-        var selectedView: CustomTextView?
-
-        if bodyViewUnderEditing {
-            selectedView = textField.bodyView
-        } else if titleViewUnderEditing {
-            selectedView = textField.titleView
-        }
-        if let selectedView = selectedView {
-            let location = selectedView.selectedRange.location
-            selectedView.selectedRange = NSRange(location: location - sender.retreat!, length: 0)
-            isShortcutBtnInputing = true
-
-            let cursorRange = selectedView.selectedRange
-            let string = "请输入文字"
-            let tipString = NSMutableAttributedString(string: string)
-            selectedView.setAttributedMarkedText(tipString, selectedRange: cursorRange)
-
-//            let allString = selectedView.attributedText.string
-//            let startIndex = allString.index(allString.startIndex, offsetBy: cursorRange.location - 1)
-//            let range: Range = startIndex..<allString.endIndex
-//            let stringToFind = allString[range]
-//            let index = stringToFind.firstIndex(of: "）")
-//            let offset: Int = index!.utf16Offset(in: stringToFind)
-//            print(offset)
-        }
+  @objc func shortcutFunc(sender: CustomBtn) {
+    insertFromCursor(sender: sender)
+    
+    retreat = sender.retreat!
+    
+    var selectedView: CustomTextView?
+    
+    if bodyViewUnderEditing {
+      selectedView = textField.bodyView
+    } else if titleViewUnderEditing {
+      selectedView = textField.titleView
     }
+    if let selectedView = selectedView {
+      let location = selectedView.selectedRange.location
+      selectedView.selectedRange = NSRange(location: location - retreat, length: 0)
+      isShortcutBtnInputing = true
+      
+      if sender.argument!.count > 1 {
+        let cursorRange = selectedView.selectedRange
+        let string = "请输入文字"
+        let tipString = NSMutableAttributedString(string: string)
+        selectedView.setAttributedMarkedText(tipString, selectedRange: cursorRange)
+      }
+      
+//      let allString = selectedView.attributedText.string
+//      let startIndex = allString.index(allString.startIndex, offsetBy: cursorRange.location - 1)
+//      let range: Range = startIndex..<allString.endIndex
+//      let stringToFind = allString[range]
+//      let index = stringToFind.firstIndex(of: "）")
+//      let offset: Int = index!.utf16Offset(in: stringToFind)
+//      print(offset)
+    }
+  }
+  
+  @objc func insertFromCursor(sender: CustomBtn) {
+      var selectedView: CustomTextView?
+
+      if bodyViewUnderEditing {
+          selectedView = textField.bodyView
+      } else if titleViewUnderEditing {
+          selectedView = textField.titleView
+      }
+
+      if let selectedView = selectedView {
+          let range = selectedView.selectedRange
+          let start = selectedView.position(from: selectedView.beginningOfDocument, offset: range.location)!
+          let end = selectedView.position(from: start, offset: range.length)!
+          let textRange = selectedView.textRange(from: start, to: end)!
+        selectedView.replace(textRange, withText: sender.argument!)
+      }
+  }
 
     @objc func jumpToTopFunc() {
         let selectedView = textField.bodyView!
@@ -250,23 +270,7 @@ extension CompactTextVC {
         hideTitleBar()
     }
 
-    @objc func insertFromCursor(sender: CustomBtn) {
-        var selectedView: CustomTextView?
-
-        if bodyViewUnderEditing {
-            selectedView = textField.bodyView
-        } else if titleViewUnderEditing {
-            selectedView = textField.titleView
-        }
-
-        if let selectedView = selectedView {
-            let range = selectedView.selectedRange
-            let start = selectedView.position(from: selectedView.beginningOfDocument, offset: range.location)!
-            let end = selectedView.position(from: start, offset: range.length)!
-            let textRange = selectedView.textRange(from: start, to: end)!
-            selectedView.replace(textRange, withText: sender.argument!)
-        }
-    }
+    
 
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         if textView == textField.bodyView {
