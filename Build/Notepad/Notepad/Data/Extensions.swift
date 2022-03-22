@@ -232,7 +232,7 @@ func fetchText(_ uuid: UUID) -> Text {
 }
 
 func initBtnList() {
-  let textBtn = ["indent", "comma", "period", "redo", "dayton", "question", "colon", "quotes", "sqrBrackets", "guillemets"]
+  let textBtn = ["indent", "redo", "comma", "period", "dayton", "question", "colon", "quotes", "sqrBrackets", "guillemets"]
   let mdBtn = [""]
 
   UserDefaults.standard.set(textBtn, forKey: "TextBtn")

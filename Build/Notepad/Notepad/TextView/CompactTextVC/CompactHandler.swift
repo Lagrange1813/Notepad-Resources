@@ -89,7 +89,6 @@ extension CompactTextVC {
             let value = keyboardInfo?.object(forKey: UIResponder.keyboardFrameEndUserInfoKey) as! CGRect
             let distance = value.height - ScreenSize.bottomPadding! + 5
             moveDistance = distance
-            isKeyboardHasPoppedUp = true
 
             UIView.animate(withDuration: 1, animations: {
                 self.toolBar.snp.updateConstraints { make in
@@ -117,8 +116,6 @@ extension CompactTextVC {
 
         isKeyboardUsing = true
         isMenuExpanded = false
-
-        updateBtnStatus()
     }
 
     @objc func handleKeyboardWillHide() {
@@ -136,7 +133,5 @@ extension CompactTextVC {
         }
 
         isKeyboardUsing = false
-
-        updateBtnStatus()
     }
 }

@@ -23,10 +23,30 @@ class ToolbarConnector {
       textField: textField
     )
 
-    viewModel.undoEnabled
-      .bind(to: view.undoBtn.rx.isEnabled)
-      .disposed(by: bag)
-
+    for button in view.fixedButtons {
+      if button.identifier == "command" {
+        viewModel.commandEnabled
+          .bind(to: button.rx.isEnabled)
+          .disposed(by: bag)
+      }
+      
+      if button.identifier == "undo" {
+        viewModel.undoEnabled
+          .bind(to: button.rx.isEnabled)
+          .disposed(by: bag)
+      }
+      if button.identifier == "paste" {
+        viewModel.pasteEnabled
+          .bind(to: button.rx.isEnabled)
+          .disposed(by: bag)
+      }
+      if button.identifier == "down" {
+        viewModel.downEnabled
+          .bind(to: button.rx.isEnabled)
+          .disposed(by: bag)
+      }
+    }
+    
     for button in view.functionalButtons {
       if button.identifier == "redo" {
         viewModel.redoEnabled
@@ -34,10 +54,6 @@ class ToolbarConnector {
           .disposed(by: bag)
       }
     }
-
-    viewModel.downEnabled
-      .bind(to: view.downBtn.rx.isEnabled)
-      .disposed(by: bag)
     
     for button in view.fixedButtons {
       button.rx.tap
@@ -68,5 +84,16 @@ class ToolbarConnector {
           .disposed(by: bag)
       }
     }
+    
+    viewModel.keyboardNotification
+      .subscribe(onNext: { [self] in
+        if $0 {
+          view.addShortCutTouchpadButton()
+          selector("touchPad")()
+        } else {
+          view.removeShortCutTouchpadButton()
+        }
+      })
+      .disposed(by: bag)
   }
 }

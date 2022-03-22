@@ -21,37 +21,25 @@ class ToolBar: UIView {
   var width: CGFloat!
   var height = 40.0
   
-  var panGestureRecognizer: UIPanGestureRecognizer!
-  var gestureHandler: (() -> ())?
+//  var panGestureRecognizer: UIPanGestureRecognizer!
+//  var gestureHandler: (() -> ())?
   
   var scrollToolView: CustomScrollView!
   
-  var commandBtn: CustomBtn!
+  var fixedButtons: [CustomBtn] = []
   
+  var commandBtn: CustomBtn!
   var touchPad: TouchPad!
   
-  var undoBtn: CustomBtn!
   var pasteBtn: CustomBtn!
   var touchPadBtn: TouchPad?
-  var downBtn: CustomBtn!
   
   // MARK: - ScrollView
-  var fixedButtons: [CustomBtn] = []
+  
   var allScrollButtons: [CustomBtn] = []
   var functionalButtons: [CustomBtn] = []
   
-  var redoBtn: CustomBtn?
-  
-  var quotesBtn: CustomBtn?
-  var sqrBracketsBtn: CustomBtn?
-  var bracketsBtn: CustomBtn?
-  
-  var jumpToTop: CustomBtn?
-  var jumpToBottom: CustomBtn?
-  
   var theme: Theme!
-  
-  let fixedBarItem = ("command", "arrowshape.turn.up.backward", "doc.on.clipboard", "keyboard.chevron.compact.down")
   
   init(viewWidth: CGFloat, _ theme: Theme) {
     super.init(frame: CGRect())
@@ -68,7 +56,7 @@ class ToolBar: UIView {
   func customize() {
     width = viewWidth - 10
     
-    panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(detectPan))
+//    panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(detectPan))
     
     alpha = 1
     tintColor = .black
@@ -92,13 +80,11 @@ class ToolBar: UIView {
     configureScrollToolView()
     configureFixedButton()
     configureScrollViewButton()
-    
-    //        changeToDark()
   }
   
-  @objc func detectPan(_ recognizer: UIPanGestureRecognizer) {
-    gestureHandler?()
-  }
+//  @objc func detectPan(_ recognizer: UIPanGestureRecognizer) {
+//    gestureHandler?()
+//  }
   
   func configureBlur() {
     let backgroundSupport = UIView()
@@ -156,29 +142,29 @@ class ToolBar: UIView {
       button.identifier = "command"
       fixedButtons.append(button)
       functionalButtons.append(button)
-      button.setImage(UIImage(named: fixedBarItem.0), for: .normal)
+      button.setImage(UIImage(named: "command"), for: .normal)
       addSubview(button)
       
       return button
     }()
     
-    undoBtn = { () -> CustomBtn in
+    let undoBtn = { () -> CustomBtn in
       let button = CustomBtn(frame: CGRect(x: height / 2 - btnLength / 2 + height * 1 + 2, y: height / 2 - btnLength / 2, width: btnLength, height: btnLength))
       button.identifier = "undo"
       fixedButtons.append(button)
       functionalButtons.append(button)
-      button.setImage(UIImage(named: fixedBarItem.1), for: .normal)
+      button.setImage(UIImage(named: "arrowshape.turn.up.backward"), for: .normal)
       button.setTitleColor(.black, for: .normal)
-      addSubview(button)
       
       return button
     }()
+    addSubview(undoBtn)
     
     pasteBtn = { () -> CustomBtn in
       let button = CustomBtn(frame: CGRect(x: height / 2 - btnLength / 2 + height * 2 + 2, y: height / 2 - btnLength / 2, width: btnLength, height: btnLength))
       button.identifier = "paste"
       fixedButtons.append(button)
-      button.setImage(UIImage(named: fixedBarItem.2), for: .normal)
+      button.setImage(UIImage(named: "doc.on.clipboard"), for: .normal)
       addSubview(button)
       
       return button
@@ -186,12 +172,12 @@ class ToolBar: UIView {
     
     configureShortCutTouchpad()
     
-    downBtn = { () -> CustomBtn in
+    _ = { () -> CustomBtn in
       let button = CustomBtn()
       button.identifier = "down"
       fixedButtons.append(button)
       functionalButtons.append(button)
-      button.setImage(UIImage(named: fixedBarItem.3), for: .normal)
+      button.setImage(UIImage(named: "keyboard.chevron.compact.down"), for: .normal)
       addSubview(button)
       
       button.snp.makeConstraints { make in

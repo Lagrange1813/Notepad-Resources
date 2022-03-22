@@ -11,15 +11,22 @@ import RxSwift
 import UIKit
 
 class ToolbarViewModel {
+  var commandEnabled: Observable<Bool>
   var undoEnabled: Observable<Bool>
   var redoEnabled: Observable<Bool>
-//  var pasteEnabled: Observable<Bool>
+  var pasteEnabled: Observable<Bool>
   var downEnabled: Observable<Bool>
 
+  var keyboardNotification: Observable<Bool>
+  
   init(
     textField: BaseTextView
-//      pasteBoard: UIPasteboard
   ) {
+    
+    commandEnabled = NotificationCenter.default.rx
+      .notification(UIResponder.keyboardWillShowNotification)
+      .map { _ in true }
+      .startWith(false)
     
     // MARK: - TitleUndo TitleRedo
     
@@ -126,27 +133,31 @@ class ToolbarViewModel {
         return false
       }
       .startWith(false)
-    
-    // MARK: - Down
 
+    let beginEditing = Observable.merge(textField.titleView.rx.didBeginEditing.map { true }, textField.bodyView.rx.didBeginEditing.map { true })
+
+    let endEditing = Observable.merge(textField.titleView.rx.didEndEditing.map { false }, textField.bodyView.rx.didEndEditing.map { false })
+        
+    let isEditing = Observable.merge(beginEditing,endEditing).startWith(false)
+
+    let canPaste = NotificationCenter.default.rx
+      .notification(UIPasteboard.changedNotification)
+      .map { _ in UIPasteboard.general.hasStrings }
+      .startWith( UIPasteboard.general.hasStrings )
+    
+    pasteEnabled = Observable.combineLatest(isEditing, canPaste) { $0 && $1 }
+      .startWith(false)
+    
     let keyboardShown = NotificationCenter.default.rx.notification(UIResponder.keyboardWillShowNotification)
     let keyboardHidden = NotificationCenter.default.rx.notification(UIResponder.keyboardWillHideNotification)
+    
+    keyboardNotification = Observable
+      .merge(keyboardShown.map { _ in true }, keyboardHidden.map { _ in false })
+      .startWith(false)
+    
+    // MARK: - Down
 
     downEnabled = Observable.merge(keyboardShown.map { _ in true }, keyboardHidden.map { _ in false })
       .startWith(false)
   }
 }
-
-// public extension Reactive where Base: UIImageView {
-//  var isHighlighted: ControlEvent<Void> {
-//    let source = self.methodInvoked(#selector(setter: Base.isHighlighted)).map { _ in }
-//    return ControlEvent(events: source)
-//  }
-// }
-//
-// public extension Reactive where Base: UndoManager {
-//  var canUndo: ControlEvent<Void> {
-//    let source = self.methodInvoked(#selector(getter: Base.canUndo)).map { _ in }
-//    return ControlEvent(events: source)
-//  }
-// }

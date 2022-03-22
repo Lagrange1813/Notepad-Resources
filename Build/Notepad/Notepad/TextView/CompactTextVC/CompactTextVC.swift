@@ -18,7 +18,6 @@ class CompactTextVC: CommonTextVC {
   var cursor: UIView?
   var sideCursor: UIView?
   
-  var isKeyboardHasPoppedUp = false
   var moveDistance: CGFloat?
   
   var trackingView: String?
@@ -67,8 +66,6 @@ class CompactTextVC: CommonTextVC {
     configureTitleBar()
     
     registNotification()
-    
-    configureToolBarBtnAction()
     
     textField.keyboardDismissMode = .interactive
   }
@@ -206,8 +203,6 @@ class CompactTextVC: CommonTextVC {
     configureToolBar()
     
     registNotification()
-
-    configureToolBarBtnAction()
   }
   
   enum Position {

@@ -14,10 +14,10 @@ extension CompactTextVC: UIGestureRecognizerDelegate {
     sideMenuShadowView.backgroundColor = .black
     sideMenuShadowView.alpha = 0.0
     
-    //        let test = UIView(frame: view.bounds)
-    //        test.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-    //        test.backgroundColor = .white
-    //        view.insertSubview(test, at: 1)
+    //    let test = UIView(frame: view.bounds)
+    //    test.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+    //    test.backgroundColor = .white
+    //    view.insertSubview(test, at: 1)
     
     let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapGestureHandler))
     tapGestureRecognizer.numberOfTapsRequired = 1
@@ -46,12 +46,12 @@ extension CompactTextVC: UIGestureRecognizerDelegate {
       //            self.sideMenuVC.view.trailingAnchor.constraint(equalTo: view.leadingAnchor)
     ])
     
-    //        sideMenuVC.view.snp.makeConstraints { make in
-    //            make.top.equalToSuperview()
-    //            make.bottom.equalToSuperview()
-    //            make.width.equalTo(sideMenuRevealWidth)
-    //            make.trailing.equalTo(view.snp.leading)
-    //        }
+    //    sideMenuVC.view.snp.makeConstraints { make in
+    //      make.top.equalToSuperview()
+    //      make.bottom.equalToSuperview()
+    //      make.width.equalTo(sideMenuRevealWidth)
+    //      make.trailing.equalTo(view.snp.leading)
+    //    }
     
     let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(self.panGestureHandler))
     panGestureRecognizer.delegate = self

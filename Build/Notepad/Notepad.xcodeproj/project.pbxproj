@@ -21,14 +21,12 @@
 		7A22204527D1A16E00899A24 /* SideMenuFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A22204427D1A16E00899A24 /* SideMenuFunc.swift */; };
 		7A22204827D1A1A200899A24 /* TitleBarFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A22204727D1A1A200899A24 /* TitleBarFunc.swift */; };
 		7A22204A27D1A1B400899A24 /* ToolbarFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A22204927D1A1B400899A24 /* ToolbarFunc.swift */; };
-		7A22204C27D1A3D700899A24 /* ToolbarBtnFuncOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A22204B27D1A3D700899A24 /* ToolbarBtnFuncOld.swift */; };
 		7A276C7D27D06BB40013B739 /* Controller加载顺序.md in Resources */ = {isa = PBXBuildFile; fileRef = 7A276C7C27D06BB40013B739 /* Controller加载顺序.md */; };
 		7A2A5F0227C747C300C399F8 /* toolbar in Resources */ = {isa = PBXBuildFile; fileRef = 7A2A5F0127C747C300C399F8 /* toolbar */; };
 		7A2A5F0627C7594C00C399F8 /* MDTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2A5F0527C7594C00C399F8 /* MDTextView.swift */; };
 		7A381D1527E46B1E001393E0 /* ToolbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A381D1427E46B1E001393E0 /* ToolbarView.swift */; };
 		7A443A0E27B4D99600A72F76 /* TitleBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A443A0D27B4D99600A72F76 /* TitleBarView.swift */; };
 		7A5F137727C76591002C8F1A /* BaseTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5F137627C76591002C8F1A /* BaseTextView.swift */; };
-		7A69A24C27E8ABF800F5E749 /* ToolbarBtnFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A69A24B27E8ABF800F5E749 /* ToolbarBtnFunc.swift */; };
 		7A758BBC27BAAAE700813C08 /* CustomSplitVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A758BBB27BAAAE700813C08 /* CustomSplitVC.swift */; };
 		7A758BBF27BAAB4200813C08 /* ArticleListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A758BBE27BAAB4200813C08 /* ArticleListVC.swift */; };
 		7A758BC127BAAB5C00813C08 /* BookListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A758BC027BAAB5C00813C08 /* BookListVC.swift */; };
@@ -65,10 +63,10 @@
 		7ADEC10827C5C6E3006E6DD5 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADEC10727C5C6E3006E6DD5 /* Theme.swift */; };
 		7ADEC10A27C5CE48006E6DD5 /* themes in Resources */ = {isa = PBXBuildFile; fileRef = 7ADEC10927C5CE48006E6DD5 /* themes */; };
 		7AEB2A1827C77362002753B8 /* CommonTextVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A172DE827C0C7CD00568433 /* CommonTextVC.swift */; };
-		7AEF605827D3595F00B8E43E /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 7AEF605727D3595F00B8E43E /* SnapKit */; };
-		7AEF605B27D3597100B8E43E /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 7AEF605A27D3597100B8E43E /* RxCocoa */; };
-		7AEF605D27D3597100B8E43E /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 7AEF605C27D3597100B8E43E /* RxSwift */; };
-		7AEF606027D3597E00B8E43E /* MarkdownView in Frameworks */ = {isa = PBXBuildFile; productRef = 7AEF605F27D3597E00B8E43E /* MarkdownView */; };
+		7AF5B73627E9567600497DEE /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 7AF5B73527E9567600497DEE /* RxCocoa */; };
+		7AF5B73827E9567600497DEE /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 7AF5B73727E9567600497DEE /* RxSwift */; };
+		7AF5B73B27E9568D00497DEE /* MarkdownView in Frameworks */ = {isa = PBXBuildFile; productRef = 7AF5B73A27E9568D00497DEE /* MarkdownView */; };
+		7AF5B73E27E9569A00497DEE /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 7AF5B73D27E9569A00497DEE /* SnapKit */; };
 		C64870140E9F95C6475867DA /* ToolbarConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6487DABF0202063DC52EFDA /* ToolbarConnector.swift */; };
 		C6487444EEEBCE8E04644E46 /* TouchPad.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64871F70115A93623B2D7D8 /* TouchPad.swift */; };
 		C6487EDAB63F3EB8A8A62037 /* ToolbarVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6487705A89D56BEC19B9747 /* ToolbarVM.swift */; };
@@ -106,7 +104,6 @@
 		7A22204427D1A16E00899A24 /* SideMenuFunc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuFunc.swift; sourceTree = "<group>"; };
 		7A22204727D1A1A200899A24 /* TitleBarFunc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleBarFunc.swift; sourceTree = "<group>"; };
 		7A22204927D1A1B400899A24 /* ToolbarFunc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarFunc.swift; sourceTree = "<group>"; };
-		7A22204B27D1A3D700899A24 /* ToolbarBtnFuncOld.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarBtnFuncOld.swift; sourceTree = "<group>"; };
 		7A276C7B27CFBFBD0013B739 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		7A276C7C27D06BB40013B739 /* Controller加载顺序.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "Controller加载顺序.md"; sourceTree = "<group>"; };
 		7A2A5F0127C747C300C399F8 /* toolbar */ = {isa = PBXFileReference; lastKnownFileType = folder; path = toolbar; sourceTree = "<group>"; };
@@ -116,7 +113,6 @@
 		7A5CAAC027C137CA000173F4 /* CompactTextVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompactTextVC.swift; sourceTree = "<group>"; };
 		7A5CAAC327C268A5000173F4 /* Notepad.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Notepad.entitlements; sourceTree = "<group>"; };
 		7A5F137627C76591002C8F1A /* BaseTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTextView.swift; sourceTree = "<group>"; };
-		7A69A24B27E8ABF800F5E749 /* ToolbarBtnFunc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarBtnFunc.swift; sourceTree = "<group>"; };
 		7A758BBB27BAAAE700813C08 /* CustomSplitVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSplitVC.swift; sourceTree = "<group>"; };
 		7A758BBE27BAAB4200813C08 /* ArticleListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListVC.swift; sourceTree = "<group>"; };
 		7A758BC027BAAB5C00813C08 /* BookListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListVC.swift; sourceTree = "<group>"; };
@@ -166,10 +162,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7AEF605D27D3597100B8E43E /* RxSwift in Frameworks */,
-				7AEF605B27D3597100B8E43E /* RxCocoa in Frameworks */,
-				7AEF606027D3597E00B8E43E /* MarkdownView in Frameworks */,
-				7AEF605827D3595F00B8E43E /* SnapKit in Frameworks */,
+				7AF5B73827E9567600497DEE /* RxSwift in Frameworks */,
+				7AF5B73E27E9569A00497DEE /* SnapKit in Frameworks */,
+				7AF5B73627E9567600497DEE /* RxCocoa in Frameworks */,
+				7AF5B73B27E9568D00497DEE /* MarkdownView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,8 +263,6 @@
 				7A22204727D1A1A200899A24 /* TitleBarFunc.swift */,
 				7A22204427D1A16E00899A24 /* SideMenuFunc.swift */,
 				7A22204927D1A1B400899A24 /* ToolbarFunc.swift */,
-				7A22204B27D1A3D700899A24 /* ToolbarBtnFuncOld.swift */,
-				7A69A24B27E8ABF800F5E749 /* ToolbarBtnFunc.swift */,
 			);
 			path = Functions;
 			sourceTree = "<group>";
@@ -472,10 +466,10 @@
 			);
 			name = Notepad;
 			packageProductDependencies = (
-				7AEF605727D3595F00B8E43E /* SnapKit */,
-				7AEF605A27D3597100B8E43E /* RxCocoa */,
-				7AEF605C27D3597100B8E43E /* RxSwift */,
-				7AEF605F27D3597E00B8E43E /* MarkdownView */,
+				7AF5B73527E9567600497DEE /* RxCocoa */,
+				7AF5B73727E9567600497DEE /* RxSwift */,
+				7AF5B73A27E9568D00497DEE /* MarkdownView */,
+				7AF5B73D27E9569A00497DEE /* SnapKit */,
 			);
 			productName = Notepad;
 			productReference = 7AC3213B27AB9148008987B7 /* Notepad.app */;
@@ -550,9 +544,9 @@
 			);
 			mainGroup = 7AC3213227AB9148008987B7;
 			packageReferences = (
-				7AEF605627D3595F00B8E43E /* XCRemoteSwiftPackageReference "SnapKit" */,
-				7AEF605927D3597100B8E43E /* XCRemoteSwiftPackageReference "RxSwift" */,
-				7AEF605E27D3597E00B8E43E /* XCRemoteSwiftPackageReference "MarkdownView" */,
+				7AF5B73427E9567600497DEE /* XCRemoteSwiftPackageReference "RxSwift" */,
+				7AF5B73927E9568D00497DEE /* XCRemoteSwiftPackageReference "MarkdownView" */,
+				7AF5B73C27E9569A00497DEE /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = 7AC3213C27AB9148008987B7 /* Products */;
 			projectDirPath = "";
@@ -622,7 +616,6 @@
 				7AC3217D27AB92ED008987B7 /* WordCounter.swift in Sources */,
 				7AC3217327AB925A008987B7 /* CustomTextView.swift in Sources */,
 				7A12F1B427C8A8DB00EB67CD /* Item.swift in Sources */,
-				7A69A24C27E8ABF800F5E749 /* ToolbarBtnFunc.swift in Sources */,
 				7A05EDD227CCC400000B5BA3 /* MDPreHandler.swift in Sources */,
 				7AB9F1F727AD1FF300A64FDA /* SelectionRect.swift in Sources */,
 				7A758BC127BAAB5C00813C08 /* BookListVC.swift in Sources */,
@@ -646,7 +639,6 @@
 				7A14B11727E407AF0099FF96 /* TitleBarVM.swift in Sources */,
 				7A05EDD427CCC50B000B5BA3 /* MDSubView.swift in Sources */,
 				7A2A5F0627C7594C00C399F8 /* MDTextView.swift in Sources */,
-				7A22204C27D1A3D700899A24 /* ToolbarBtnFuncOld.swift in Sources */,
 				7ADEC10827C5C6E3006E6DD5 /* Theme.swift in Sources */,
 				7A172DE427C096A700568433 /* CurrentTextVC.swift in Sources */,
 				C6487444EEEBCE8E04644E46 /* TouchPad.swift in Sources */,
@@ -999,7 +991,23 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		7AEF605627D3595F00B8E43E /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+		7AF5B73427E9567600497DEE /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@gitee.com:lagrange1813/RxSwift.git";
+			requirement = {
+				kind = exactVersion;
+				version = 6.5.0;
+			};
+		};
+		7AF5B73927E9568D00497DEE /* XCRemoteSwiftPackageReference "MarkdownView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@gitee.com:lagrange1813/MarkdownView.git";
+			requirement = {
+				kind = exactVersion;
+				version = 1.9.1;
+			};
+		};
+		7AF5B73C27E9569A00497DEE /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "git@gitee.com:lagrange1813/SnapKit.git";
 			requirement = {
@@ -1007,44 +1015,28 @@
 				version = 5.0.1;
 			};
 		};
-		7AEF605927D3597100B8E43E /* XCRemoteSwiftPackageReference "RxSwift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://gitee.com/lagrange1813/RxSwift.git";
-			requirement = {
-				kind = exactVersion;
-				version = 6.5.0;
-			};
-		};
-		7AEF605E27D3597E00B8E43E /* XCRemoteSwiftPackageReference "MarkdownView" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://gitee.com/lagrange1813/MarkdownView.git";
-			requirement = {
-				kind = exactVersion;
-				version = 1.9.1;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		7AEF605727D3595F00B8E43E /* SnapKit */ = {
+		7AF5B73527E9567600497DEE /* RxCocoa */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 7AEF605627D3595F00B8E43E /* XCRemoteSwiftPackageReference "SnapKit" */;
-			productName = SnapKit;
-		};
-		7AEF605A27D3597100B8E43E /* RxCocoa */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 7AEF605927D3597100B8E43E /* XCRemoteSwiftPackageReference "RxSwift" */;
+			package = 7AF5B73427E9567600497DEE /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxCocoa;
 		};
-		7AEF605C27D3597100B8E43E /* RxSwift */ = {
+		7AF5B73727E9567600497DEE /* RxSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 7AEF605927D3597100B8E43E /* XCRemoteSwiftPackageReference "RxSwift" */;
+			package = 7AF5B73427E9567600497DEE /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxSwift;
 		};
-		7AEF605F27D3597E00B8E43E /* MarkdownView */ = {
+		7AF5B73A27E9568D00497DEE /* MarkdownView */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 7AEF605E27D3597E00B8E43E /* XCRemoteSwiftPackageReference "MarkdownView" */;
+			package = 7AF5B73927E9568D00497DEE /* XCRemoteSwiftPackageReference "MarkdownView" */;
 			productName = MarkdownView;
+		};
+		7AF5B73D27E9569A00497DEE /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7AF5B73C27E9569A00497DEE /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 
