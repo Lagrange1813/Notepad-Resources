@@ -25,7 +25,7 @@ public struct Theme {
     }
   }
   
-  public var type: String!
+//  public var type: String!
   public var titleAttributes: [NSAttributedString.Key: Any]!
   public var bodyAttributes: [NSAttributedString.Key: Any]!
   public var colorSet: [String: UIColor]!
@@ -93,7 +93,7 @@ public struct Theme {
   }
   
   mutating func configureEditor(_ attributes: [String: AnyObject]) {
-    type = (attributes["type"] as! String)
+//    type = (attributes["type"] as! String)
     
     colorSet = [
       "background": UIColor(hexString: attributes["background"] as! String),
