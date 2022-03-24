@@ -93,7 +93,7 @@ class CompactTextVC: CommonTextVC {
   
   func preload() {
     let userDefaults = UserDefaults.standard
-    //        userDefaults.set("text-light-frosted-glass", forKey: "TextTheme")
+//    userDefaults.set("text-light-frosted-glass", forKey: "TextTheme")
     textTheme = Theme(userDefaults.object(forKey: "TextTheme") as! String)
     markdownTheme = Theme(userDefaults.object(forKey: "MDTheme") as! String)
   }
@@ -173,8 +173,6 @@ class CompactTextVC: CommonTextVC {
     
     super.remove()
     
-//    titleBar.removeFromSuperview()
-//    titleBar = nil
     toolBar.removeFromSuperview()
     toolBar = nil
     image?.removeFromSuperview()

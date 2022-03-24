@@ -50,29 +50,7 @@ extension CompactTextVC {
 //        }
 //    }
 
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if !fullScreen {
-            let pan = scrollView.panGestureRecognizer
-            let velocity = pan.velocity(in: scrollView).y
-
-            if velocity < -200 {
-                if !isTitleBarHidden {
-                    hideTitleBar()
-                    
-                }
-//                navigationController?.prefersStatusBarHidden = true
-
-            } else if velocity > 200 {
-                showTitleBar()
-//                isTitleBarHidden = false
-            }
-
-            if textField.contentOffset.y <= -(TitleBar.height() + titleBarOffset) + 10 {
-                showTitleBar()
-//                isTitleBarHidden = true
-            }
-        }
-    }
+    
 
     func registNotification() {
         NotificationCenter.default.addObserver(self,

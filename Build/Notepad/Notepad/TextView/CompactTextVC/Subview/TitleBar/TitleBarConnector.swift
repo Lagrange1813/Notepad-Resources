@@ -22,7 +22,7 @@ class TitleBarConnector {
       typeBtn: () -> ()
     )
   ) {
-    view = TitleBar(frame: frame, Theme.BuiltIn.TextLight.enable())
+    view = TitleBar(frame: frame)
     
     viewModel = TitleBarViewModel()
     
@@ -42,6 +42,16 @@ class TitleBarConnector {
     
     view.typeBtn.rx.tap
       .subscribe(onNext: { functions.typeBtn() })
+      .disposed(by: bag)
+    
+    DataManager.shared.theme
+      .subscribe(onNext: {
+        if $0.frostedGlass {
+          self.view.configureBlur()
+        } else {
+          self.view.backgroundColor = $0.colorSet["doubleBarBackground"]
+        }
+      })
       .disposed(by: bag)
   }
 }

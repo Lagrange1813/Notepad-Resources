@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class CustomSplitVC: UISplitViewController, UISplitViewControllerDelegate {
     var compactView: CompactTextVC!

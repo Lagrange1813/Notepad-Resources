@@ -21,26 +21,6 @@ extension CompactTextVC {
     view.insertSubview(titleBar, at: 1)
   }
   
-  func showTitleBar() {
-    guard let titleBar = self.titleBar else { return }
-    
-    self.isTitleBarHidden = false
-    UIView.animate(withDuration: 0.7, animations: {
-      titleBar.frame.origin.y = ScreenSize.topPadding! + titleBarOffset
-      titleBar.alpha = 1
-    })
-  }
-  
-  func hideTitleBar() {
-    self.isTitleBarHidden = true
-    UIView.animate(withDuration: 0.5, animations: {
-      self.titleBar.frame.origin.y -= (TitleBar.height() + titleBarOffset + 5 + ScreenSize.topPadding!)
-    })
-    UIView.animate(withDuration: 0.3, animations: {
-      self.titleBar.alpha = 0
-    })
-  }
-  
   func fetchListBtnMenu() -> UIMenu {
     let books = fetchBook()
     var bookList: [String] = []
@@ -92,5 +72,50 @@ extension CompactTextVC {
       }
     }())
     restart()
+  }
+  
+  // MARK: - Auto Response
+  
+  func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    if !fullScreen {
+      let pan = scrollView.panGestureRecognizer
+      let velocity = pan.velocity(in: scrollView).y
+
+      if velocity < -200 {
+        if !isTitleBarHidden {
+          hideTitleBar()
+        }
+//                navigationController?.prefersStatusBarHidden = true
+
+      } else if velocity > 200 {
+        showTitleBar()
+//                isTitleBarHidden = false
+      }
+
+      if textField.contentOffset.y <= -(TitleBar.height() + titleBarOffset) + 10 {
+        showTitleBar()
+//                isTitleBarHidden = true
+      }
+    }
+  }
+  
+  func showTitleBar() {
+    guard let titleBar = titleBar else { return }
+    
+    isTitleBarHidden = false
+    UIView.animate(withDuration: 0.7, animations: {
+      titleBar.frame.origin.y = ScreenSize.topPadding! + titleBarOffset
+      titleBar.alpha = 1
+    })
+  }
+  
+  func hideTitleBar() {
+    isTitleBarHidden = true
+    UIView.animate(withDuration: 0.5, animations: {
+      self.titleBar.frame.origin.y -= (TitleBar.height() + titleBarOffset + 5 + ScreenSize.topPadding!)
+    })
+    UIView.animate(withDuration: 0.3, animations: {
+      self.titleBar.alpha = 0
+    })
   }
 }

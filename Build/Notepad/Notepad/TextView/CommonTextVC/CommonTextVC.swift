@@ -83,6 +83,7 @@ class CommonTextVC: UIViewController {
         if traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
             restart()
         }
+      
     }
     
     func adjustView() {
@@ -124,6 +125,9 @@ class CommonTextVC: UIViewController {
         if traitCollection.userInterfaceStyle == .dark {
             theme = Theme(theme.relativeTheme)
         }
+      
+      DataManager.shared.themeMode = traitCollection.rx.observe(UIUserInterfaceStyle.self, "userInterfaceStyle")
+        .map { $0!.rawValue }
     }
     
     func loadTextView() {

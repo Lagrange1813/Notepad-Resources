@@ -22,6 +22,7 @@ class ToolbarViewModel {
   init(
     textField: BaseTextView
   ) {
+    // MARK: - Buttton
     
     commandEnabled = NotificationCenter.default.rx
       .notification(UIResponder.keyboardWillShowNotification)

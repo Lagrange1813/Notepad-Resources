@@ -39,12 +39,12 @@ class ToolBar: UIView {
   var allScrollButtons: [CustomBtn] = []
   var functionalButtons: [CustomBtn] = []
   
-  var theme: Theme!
+//  var theme: Theme!
   
-  init(viewWidth: CGFloat, _ theme: Theme) {
+  init(viewWidth: CGFloat) {
     super.init(frame: CGRect())
     self.viewWidth = viewWidth
-    self.theme = theme
+//    self.theme = theme
     customize()
   }
   
@@ -71,11 +71,11 @@ class ToolBar: UIView {
     layer.borderWidth = 1.5
     layer.borderColor = UIColor.white.cgColor
     
-    if theme.frostedGlass {
-      configureBlur()
-    } else {
-      backgroundColor = theme.colorSet["doubleBarBackground"]
-    }
+//    if theme.frostedGlass {
+//      configureBlur()
+//    } else {
+//      backgroundColor = theme.colorSet["doubleBarBackground"]
+//    }
     
     configureScrollToolView()
     configureFixedButton()
@@ -85,39 +85,6 @@ class ToolBar: UIView {
 //  @objc func detectPan(_ recognizer: UIPanGestureRecognizer) {
 //    gestureHandler?()
 //  }
-  
-  func configureBlur() {
-    let backgroundSupport = UIView()
-    backgroundSupport.layer.cornerRadius = layer.cornerRadius
-    backgroundSupport.clipsToBounds = true
-    addSubview(backgroundSupport)
-    
-    backgroundSupport.snp.makeConstraints { make in
-      make.top.equalToSuperview()
-      make.bottom.equalToSuperview()
-      make.leading.equalToSuperview()
-      make.trailing.equalToSuperview()
-    }
-    
-    let blur: UIBlurEffect = {
-      if traitCollection.userInterfaceStyle == .light {
-        return UIBlurEffect(style: .systemUltraThinMaterialLight)
-      } else {
-        return UIBlurEffect(style: .systemUltraThinMaterialDark)
-      }
-    }()
-    
-    let background = UIVisualEffectView(effect: blur)
-    background.layer.cornerRadius = layer.cornerRadius
-    backgroundSupport.addSubview(background)
-    
-    background.snp.makeConstraints { make in
-      make.top.equalToSuperview()
-      make.bottom.equalToSuperview()
-      make.leading.equalToSuperview()
-      make.trailing.equalToSuperview()
-    }
-  }
   
   func configureScrollToolView() {
     scrollToolView = { () -> CustomScrollView in
@@ -275,4 +242,39 @@ class ToolBar: UIView {
 //    print("cancelled!")
 //    //        tracking = false
 //  }
+  
+  // MARK: - Optional
+  
+  func configureBlur() {
+    let backgroundSupport = UIView()
+    backgroundSupport.layer.cornerRadius = layer.cornerRadius
+    backgroundSupport.clipsToBounds = true
+    addSubview(backgroundSupport)
+    
+    backgroundSupport.snp.makeConstraints { make in
+      make.top.equalToSuperview()
+      make.bottom.equalToSuperview()
+      make.leading.equalToSuperview()
+      make.trailing.equalToSuperview()
+    }
+    
+    let blur: UIBlurEffect = {
+      if traitCollection.userInterfaceStyle == .light {
+        return UIBlurEffect(style: .systemUltraThinMaterialLight)
+      } else {
+        return UIBlurEffect(style: .systemUltraThinMaterialDark)
+      }
+    }()
+    
+    let background = UIVisualEffectView(effect: blur)
+    background.layer.cornerRadius = layer.cornerRadius
+    backgroundSupport.addSubview(background)
+    
+    background.snp.makeConstraints { make in
+      make.top.equalToSuperview()
+      make.bottom.equalToSuperview()
+      make.leading.equalToSuperview()
+      make.trailing.equalToSuperview()
+    }
+  }
 }

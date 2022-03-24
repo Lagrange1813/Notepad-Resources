@@ -15,11 +15,11 @@ class TitleBar: UIView {
   
   var title: UILabel!
 
-  var theme: Theme!
+//  var theme: Theme!
 
-  init(frame: CGRect, _ theme: Theme) {
+  override init(frame: CGRect) {
     super.init(frame: frame)
-    self.theme = theme
+//    self.theme = theme
     customize()
   }
 
@@ -44,50 +44,11 @@ class TitleBar: UIView {
     layer.borderWidth = 1.5
     layer.borderColor = UIColor.white.cgColor
 
-    if theme.frostedGlass {
-      configureBlur()
-    } else {
-      backgroundColor = theme.colorSet["doubleBarBackground"]
-    }
-
     configureTitle()
     configureBtn()
   }
 
   class func height() -> CGFloat { 50 }
-
-  func configureBlur() {
-    let backgroundSupport = UIView()
-    backgroundSupport.layer.cornerRadius = layer.cornerRadius
-    backgroundSupport.clipsToBounds = true
-    addSubview(backgroundSupport)
-
-    backgroundSupport.snp.makeConstraints { make in
-      make.top.equalToSuperview()
-      make.bottom.equalToSuperview()
-      make.leading.equalToSuperview()
-      make.trailing.equalToSuperview()
-    }
-
-    let blur: UIBlurEffect = {
-      if traitCollection.userInterfaceStyle == .light {
-        return UIBlurEffect(style: .systemUltraThinMaterialLight)
-      } else {
-        return UIBlurEffect(style: .systemUltraThinMaterialDark)
-      }
-    }()
-
-    let background = UIVisualEffectView(effect: blur)
-    background.layer.cornerRadius = layer.cornerRadius
-    backgroundSupport.addSubview(background)
-
-    background.snp.makeConstraints { make in
-      make.top.equalToSuperview()
-      make.bottom.equalToSuperview()
-      make.leading.equalToSuperview()
-      make.trailing.equalToSuperview()
-    }
-  }
 
   func configureTitle() {
     let texts = fetchAllTexts()
@@ -149,5 +110,40 @@ class TitleBar: UIView {
       return button
     }()
 
+  }
+  
+  // MARK: - Optional
+  
+  func configureBlur() {
+    let backgroundSupport = UIView()
+    backgroundSupport.layer.cornerRadius = layer.cornerRadius
+    backgroundSupport.clipsToBounds = true
+    addSubview(backgroundSupport)
+
+    backgroundSupport.snp.makeConstraints { make in
+      make.top.equalToSuperview()
+      make.bottom.equalToSuperview()
+      make.leading.equalToSuperview()
+      make.trailing.equalToSuperview()
+    }
+
+    let blur: UIBlurEffect = {
+      if traitCollection.userInterfaceStyle == .light {
+        return UIBlurEffect(style: .systemUltraThinMaterialLight)
+      } else {
+        return UIBlurEffect(style: .systemUltraThinMaterialDark)
+      }
+    }()
+
+    let background = UIVisualEffectView(effect: blur)
+    background.layer.cornerRadius = layer.cornerRadius
+    backgroundSupport.addSubview(background)
+
+    background.snp.makeConstraints { make in
+      make.top.equalToSuperview()
+      make.bottom.equalToSuperview()
+      make.leading.equalToSuperview()
+      make.trailing.equalToSuperview()
+    }
   }
 }

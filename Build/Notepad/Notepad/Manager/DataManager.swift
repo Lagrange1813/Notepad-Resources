@@ -6,35 +6,18 @@
 //
 
 import Foundation
+import RxSwift
+import RxCocoa
 
-//private let sigleton = DataManager()
+private let sigleton = DataManager()
 
+class DataManager {
+  class var shared: DataManager {
+    sigleton
+  }
 
-//enum Type: String {
-//  case Text = "TextBtn"
-//  case MD = "MDBtn"
-//}
-
-//class DataManager {
-//  class var shared: DataManager {
-//    sigleton
-//  }
-//
-//  func initialize() {
-//    let textBtn = ["indent", "comma", "period", "dayton", "question", "colon", "quotes", "sqrBrackets", "guillemets"]
-//    let mdBtn = [""]
-//
-//    userDefaults.set(textBtn, forKey: "TextBtn")
-//    userDefaults.set(mdBtn, forKey: "MDBtn")
-//  }
-//
-//  func fetch(with type: Type) -> NSMutableArray {
-//    userDefaults.mutableArrayValue(forKey: type.rawValue)
-//  }
-//
-//  func set(array: NSArray, with type: Type) {
-//    userDefaults.set(array, forKey: type.rawValue)
-//  }
-//
-//
-//}
+  var themeMode: Observable<Int>!
+  var theme = BehaviorRelay<Theme>(value: Theme.BuiltIn.DefaultLight.enable())
+  var highlight = BehaviorRelay<Highlight>(value: Highlight.BuiltIn.SimpleLight.enable())
+  
+}

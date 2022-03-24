@@ -17,7 +17,7 @@ class ToolbarConnector {
     shortcutFunc: @escaping (CustomBtn) -> (),
     selector: @escaping (String) -> (() -> ())
   ) {
-    view = ToolBar(viewWidth: width, Theme.BuiltIn.TextLight.enable())
+    view = ToolBar(viewWidth: width)
 
     viewModel = ToolbarViewModel(
       textField: textField
@@ -95,5 +95,23 @@ class ToolbarConnector {
         }
       })
       .disposed(by: bag)
+    
+    DataManager.shared.theme
+      .subscribe(onNext: { [unowned self] in
+        if $0.frostedGlass {
+          view.configureBlur()
+        } else {
+          view.backgroundColor = $0.colorSet["doubleBarBackground"]
+        }
+      })
+      .disposed(by: bag)
   }
+  
+  enum ThemeMode: Int {
+    case unspecified = 0
+    case light
+    case dark
+  }
+  
+  
 }
