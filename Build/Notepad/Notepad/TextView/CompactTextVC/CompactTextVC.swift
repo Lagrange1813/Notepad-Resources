@@ -103,11 +103,11 @@ class CompactTextVC: CommonTextVC {
     
     appDelegate.supportAll = false
     
-    if theme.frostedGlass {
+    if theme.main.frostedGlass {
       configureBackgroundImage()
       configureBlur()
     } else {
-      view.backgroundColor = theme.colorSet["background"]
+      view.backgroundColor = theme.main.colorSet["background"]
     }
     
     updateViewWidth()
@@ -188,11 +188,11 @@ class CompactTextVC: CommonTextVC {
   
   override func secondToLoad() {
     super.secondToLoad()
-    if theme.frostedGlass {
+    if theme.main.frostedGlass {
       configureBackgroundImage()
       configureBlur()
     } else {
-      view.backgroundColor = theme.colorSet["background"]
+      view.backgroundColor = theme.main.colorSet["background"]
     }
   }
   

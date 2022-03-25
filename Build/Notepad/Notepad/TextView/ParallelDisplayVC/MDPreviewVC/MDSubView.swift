@@ -20,9 +20,9 @@ class MDSubView: UIScrollView {
     var titleView: CustomTextView!
     var bodyView: MarkdownView!
     
-    var theme: Theme!
+    var theme: ThemeList!
 
-    init(theme: Theme) {
+    init(theme: ThemeList) {
         super.init(frame: CGRect())
         self.theme = theme
         configureTextView()

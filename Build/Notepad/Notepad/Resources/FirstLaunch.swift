@@ -62,6 +62,6 @@ func firstStart() {
     insertText(title: title11, body: body11, type: "Text", bookName: "白夜", id: nil)
     insertText(title: title12, body: body12, type: "Text", bookName: "白夜", id: nil)
     
-    userDefaults.set("text-light", forKey: "TextTheme")
-    userDefaults.set("md-light", forKey: "MDTheme")
+    userDefaults.set("default", forKey: "TextTheme")
+    userDefaults.set("default", forKey: "MDTheme")
 }

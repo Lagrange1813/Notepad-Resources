@@ -7,32 +7,35 @@
 
 import UIKit
 
+public struct ThemeList {
+  public var name: String!
+  public var titleAttributes: [NSAttributedString.Key: Any]!
+  public var bodyAttributes: [NSAttributedString.Key: Any]!
+  public var colorSet: [String: UIColor]!
+  public var frostedGlass: Bool!
+  public var backgroundImage: UIImage?
+  public var highlight: Highlight?
+}
+
 public struct Theme {
   public enum BuiltIn: String {
-    case DefaultLight = "default-light"
-    case DefaultDark = "default-dark"
-    case TextLight = "text-light"
-    case TextDark = "text-dark"
-    case TextLightFrostedGlass = "text-light-frosted-glass"
-    case TextDarkFrostedGlass = "text-dark-frosted-glass"
-    case MarkdownLight = "md-light"
-    case MarkdownDark = "md-dark"
-    case MarkdownLightFrostedGlass = "md-light-frosted-glass"
-    case MarkdownDarkFrostedGlass = "md-dark-frosted-glass"
+    case Default = "default"
+//    case TextLight = "text-light"
+//    case TextDark = "text-dark"
+//    case TextLightFrostedGlass = "text-light-frosted-glass"
+//    case TextDarkFrostedGlass = "text-dark-frosted-glass"
+//    case MarkdownLight = "md-light"
+//    case MarkdownDark = "md-dark"
+//    case MarkdownLightFrostedGlass = "md-light-frosted-glass"
+//    case MarkdownDarkFrostedGlass = "md-dark-frosted-glass"
     
     public func enable() -> Theme {
       Theme(rawValue)
     }
   }
   
-//  public var type: String!
-  public var titleAttributes: [NSAttributedString.Key: Any]!
-  public var bodyAttributes: [NSAttributedString.Key: Any]!
-  public var colorSet: [String: UIColor]!
-  public var frostedGlass: Bool!
-  public var backgroundImage: UIImage?
-  public var relativeTheme: String!
-  public var highlight: Highlight?
+  public var main: ThemeList!
+  public var secondary: ThemeList!
   
   init(_ name: String) {
     let bundle = Bundle.main
@@ -47,7 +50,7 @@ public struct Theme {
     }
     
     if let data = convertFile(path) {
-      configure(data)
+      differentiate(data)
     }
   }
   
@@ -68,46 +71,64 @@ public struct Theme {
     return nil
   }
   
-  mutating func configure(_ data: [String: AnyObject]) {
+  mutating func differentiate(_ data: [String: AnyObject]) {
+    if let mainTheme = data["main"] as? [String: AnyObject] {
+      main = configure(mainTheme)
+    }
+    
+    if data["variable"] as! Bool {
+      if let secondaryTheme = data["secondary"] as? [String: AnyObject] {
+        secondary = configure(secondaryTheme)
+      }
+    } else {
+      secondary = main
+    }
+  }
+  
+  func configure(_ data: [String: Any]) -> ThemeList {
+    var targetTheme = ThemeList()
+    
+    if let name = (data["name"] as? String) {
+      targetTheme.name = name
+    }
+    
     if let editorStyles = data["editor"] as? [String: AnyObject] {
-      configureEditor(editorStyles)
+      configureEditor(editorStyles, to: &targetTheme)
     }
     
     if let textStyles = data["styles"] as? [String: AnyObject] {
       if let titleStyles = textStyles["title"] as? [String: AnyObject] {
-        titleAttributes = parse(titleStyles)
+        targetTheme.titleAttributes = parse(titleStyles)
       }
       
       if let bodyStyles = textStyles["body"] as? [String: AnyObject] {
-        bodyAttributes = parse(bodyStyles)
+        targetTheme.bodyAttributes = parse(bodyStyles)
       }
     }
     
-    if let relativeTheme = data["relativeTheme"] as? String {
-      self.relativeTheme = relativeTheme
+    if let highlightStyle = data["highlight"] as? String {
+      targetTheme.highlight = Highlight(highlightStyle)
     }
     
-    if let highlightStyle = data["highlight"] as? String {
-      highlight = Highlight(highlightStyle)
-    }
+    return targetTheme
   }
   
-  mutating func configureEditor(_ attributes: [String: AnyObject]) {
+  func configureEditor(_ attributes: [String: AnyObject], to list: inout ThemeList) {
 //    type = (attributes["type"] as! String)
     
-    colorSet = [
+    list.colorSet = [
       "background": UIColor(hexString: attributes["background"] as! String),
       "counterText": UIColor(hexString: attributes["counterText"] as! String),
       "counterBackground": UIColor(hexString: attributes["counterBackground"] as! String),
     ]
     
-    frostedGlass = (attributes["frostedGlass"] as! Bool)
+    list.frostedGlass = (attributes["frostedGlass"] as! Bool)
     
-    if frostedGlass {
-      backgroundImage = UIImage(named: attributes["backgroundImage"] as! String)!
+    if list.frostedGlass {
+      list.backgroundImage = UIImage(named: attributes["backgroundImage"] as! String)!
     } else {
-      colorSet.updateValue(UIColor(hexString: attributes["doubleBarText"] as! String), forKey: "doubleBarText")
-      colorSet.updateValue(UIColor(hexString: attributes["doubleBarBackground"] as! String), forKey: "doubleBarBackground")
+      list.colorSet.updateValue(UIColor(hexString: attributes["doubleBarText"] as! String), forKey: "doubleBarText")
+      list.colorSet.updateValue(UIColor(hexString: attributes["doubleBarBackground"] as! String), forKey: "doubleBarBackground")
     }
   }
   

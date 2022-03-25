@@ -105,7 +105,6 @@
 		7A2A5F0527C7594C00C399F8 /* MDTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDTextView.swift; sourceTree = "<group>"; };
 		7A381D1427E46B1E001393E0 /* ToolbarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolbarView.swift; sourceTree = "<group>"; };
 		7A3D0DF327EC1390000CEDB6 /* fonts */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = fonts; path = Notepad/Data/fonts; sourceTree = SOURCE_ROOT; };
-		7A3D0DF727EC7A4A000CEDB6 /* RxTest.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = RxTest.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		7A443A0D27B4D99600A72F76 /* TitleBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleBarView.swift; sourceTree = "<group>"; };
 		7A5CAAC027C137CA000173F4 /* CompactTextVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompactTextVC.swift; sourceTree = "<group>"; };
 		7A5CAAC327C268A5000173F4 /* Notepad.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Notepad.entitlements; sourceTree = "<group>"; };
@@ -323,7 +322,6 @@
 		7AC3213227AB9148008987B7 = {
 			isa = PBXGroup;
 			children = (
-				7A3D0DF727EC7A4A000CEDB6 /* RxTest.playground */,
 				7AC3213D27AB9148008987B7 /* Notepad */,
 				7AC3215727AB9149008987B7 /* NotepadTests */,
 				7AC3216127AB9149008987B7 /* NotepadUITests */,

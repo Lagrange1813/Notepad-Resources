@@ -26,7 +26,7 @@ class WordCounter: UIView {
 
     var data = UILabel()
 
-    init(_ theme: Theme) {
+    init(_ theme: ThemeList) {
         super.init(frame: CGRect())
         data.text = "字数：\(number)"
         data.font = .systemFont(ofSize: 10)

@@ -15,11 +15,8 @@ class TitleBar: UIView {
   
   var title: UILabel!
 
-//  var theme: Theme!
-
   override init(frame: CGRect) {
     super.init(frame: frame)
-//    self.theme = theme
     customize()
   }
 

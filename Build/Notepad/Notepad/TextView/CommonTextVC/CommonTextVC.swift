@@ -116,24 +116,26 @@ class CommonTextVC: UIViewController {
         currentText = targetText
     }
     
-    func loadTheme() {
-        switch type {
-        case "Text": theme = textTheme
-        case "MD": theme = markdownTheme
-        default: return
-        }
-        if traitCollection.userInterfaceStyle == .dark {
-            theme = Theme(theme.relativeTheme)
-        }
-      
-      DataManager.shared.themeMode = traitCollection.rx.observe(UIUserInterfaceStyle.self, "userInterfaceStyle")
-        .map { $0!.rawValue }
+  func loadTheme() {
+    switch type {
+    case "Text": theme = textTheme
+    case "MD": theme = markdownTheme
+    default: return
     }
+    
+    let themeMode = traitCollection.rx.observe(UIUserInterfaceStyle.self, "userInterfaceStyle")
+      .map { $0!.rawValue }
+    
+    let instance = DataManager(themeMode: themeMode)
+    DataManager.shared = instance
+    
+    DataManager.shared.theme.accept(theme)
+  }
     
     func loadTextView() {
         switch type {
-        case "Text": textField = PureTextView(theme)
-        case "MD": textField = MDTextView(theme)
+        case "Text": textField = PureTextView(theme.main)
+        case "MD": textField = MDTextView(theme.main)
         default: return
         }
     }
@@ -169,7 +171,7 @@ class CommonTextVC: UIViewController {
     }
     
     func configureCounter() {
-        counter = WordCounter(theme)
+      counter = WordCounter(theme.main)
         view.insertSubview(counter, at: 1)
         
         counter.snp.makeConstraints { make in

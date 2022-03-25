@@ -48,7 +48,7 @@ class MDPreviewVC: UIViewController {
     var texts: [NSManagedObject] = []
     var counter: WordCounter!
     
-    var theme = Theme.BuiltIn.MarkdownLight.enable()
+    var theme = Theme.BuiltIn.Default.enable()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -114,7 +114,7 @@ class MDPreviewVC: UIViewController {
     }
     
     func configureTextView() {
-        textField = MDSubView(theme: theme)
+      textField = MDSubView(theme: theme.main)
         textField.delegate = self
         
         configurePadding()
@@ -143,7 +143,7 @@ class MDPreviewVC: UIViewController {
     }
     
     func configureCounter() {
-        counter = WordCounter(theme)
+      counter = WordCounter(theme.main)
         view.addSubview(counter)
         counter.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(5 + titleBarOffset + barHeight)

@@ -44,14 +44,24 @@ class TitleBarConnector {
       .subscribe(onNext: { functions.typeBtn() })
       .disposed(by: bag)
     
-    DataManager.shared.theme
+    DataManager.shared.currentTheme
+      .map {
+        $0.name
+      }
       .subscribe(onNext: {
-        if $0.frostedGlass {
-          self.view.configureBlur()
-        } else {
-          self.view.backgroundColor = $0.colorSet["doubleBarBackground"]
-        }
+        print($0)
       })
-      .disposed(by: bag)
+    
+    
+    
+//      .subscribe(onNext: {
+//        if $0.frostedGlass {
+//          self.view.configureBlur()
+//        } else {
+//          self.view.backgroundColor = $0.colorSet["doubleBarBackground"]
+//        }
+//        print($0.name)
+//      })
+//      .disposed(by: bag)
   }
 }

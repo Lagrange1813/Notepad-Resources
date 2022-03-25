@@ -14,9 +14,9 @@ class BaseTextView: UIScrollView {
     var titleView: CustomTextView!
     var bodyView: CustomTextView!
 
-    var theme: Theme!
+    var theme: ThemeList!
 
-    init(_ theme: Theme) {
+    init(_ theme: ThemeList) {
         super.init(frame: CGRect())
         self.theme = theme
         configureTextView()

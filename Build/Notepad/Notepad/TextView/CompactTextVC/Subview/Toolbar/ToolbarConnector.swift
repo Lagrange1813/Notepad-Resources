@@ -98,10 +98,10 @@ class ToolbarConnector {
     
     DataManager.shared.theme
       .subscribe(onNext: { [unowned self] in
-        if $0.frostedGlass {
+        if $0.main.frostedGlass {
           view.configureBlur()
         } else {
-          view.backgroundColor = $0.colorSet["doubleBarBackground"]
+          view.backgroundColor = $0.main.colorSet["doubleBarBackground"]
         }
       })
       .disposed(by: bag)
