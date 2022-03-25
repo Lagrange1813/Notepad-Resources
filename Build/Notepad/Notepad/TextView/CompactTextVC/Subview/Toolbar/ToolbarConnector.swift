@@ -96,22 +96,15 @@ class ToolbarConnector {
       })
       .disposed(by: bag)
     
-    DataManager.shared.theme
-      .subscribe(onNext: { [unowned self] in
-        if $0.main.frostedGlass {
-          view.configureBlur()
+    viewModel.currentTheme
+      .subscribe(onNext: {
+        if $0.frostedGlass {
+          self.view.configureBlur()
         } else {
-          view.backgroundColor = $0.main.colorSet["doubleBarBackground"]
+          self.view.backgroundColor = $0.colorSet["doubleBarBackground"]
         }
       })
       .disposed(by: bag)
+    
   }
-  
-  enum ThemeMode: Int {
-    case unspecified = 0
-    case light
-    case dark
-  }
-  
-  
 }

@@ -122,13 +122,6 @@ class CommonTextVC: UIViewController {
     case "MD": theme = markdownTheme
     default: return
     }
-    
-    let themeMode = traitCollection.rx.observe(UIUserInterfaceStyle.self, "userInterfaceStyle")
-      .map { $0!.rawValue }
-    
-    let instance = DataManager(themeMode: themeMode)
-    DataManager.shared = instance
-    
     DataManager.shared.theme.accept(theme)
   }
     

@@ -14,6 +14,7 @@ extension CompactTextVC {
                                                             width: viewWidth - 10,
                                                             height: TitleBar.height()),
                                               bag: bag,
+                                              traitCollection: traitCollection,
                                               functions: (listBtn: listBtnFunc,
                                                           listMenu: fetchListBtnMenu(),
                                                           typeBtn: typeBtnFunc))

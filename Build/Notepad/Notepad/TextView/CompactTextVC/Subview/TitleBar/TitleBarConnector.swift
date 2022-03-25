@@ -16,6 +16,7 @@ class TitleBarConnector {
   init(
     frame: CGRect,
     bag: DisposeBag,
+    traitCollection: UITraitCollection,
     functions: (
       listBtn: () -> (),
       listMenu: UIMenu,
@@ -24,7 +25,7 @@ class TitleBarConnector {
   ) {
     view = TitleBar(frame: frame)
     
-    viewModel = TitleBarViewModel()
+    viewModel = TitleBarViewModel(traitCollection: traitCollection)
     
     viewModel.title
       .bind(to: view.title.rx.text)
@@ -44,24 +45,14 @@ class TitleBarConnector {
       .subscribe(onNext: { functions.typeBtn() })
       .disposed(by: bag)
     
-    DataManager.shared.currentTheme
-      .map {
-        $0.name
-      }
+    viewModel.currentTheme
       .subscribe(onNext: {
-        print($0)
+        if $0.frostedGlass {
+          self.view.configureBlur()
+        } else {
+          self.view.backgroundColor = $0.colorSet["doubleBarBackground"]
+        }
       })
-    
-    
-    
-//      .subscribe(onNext: {
-//        if $0.frostedGlass {
-//          self.view.configureBlur()
-//        } else {
-//          self.view.backgroundColor = $0.colorSet["doubleBarBackground"]
-//        }
-//        print($0.name)
-//      })
-//      .disposed(by: bag)
+      .disposed(by: bag)
   }
 }

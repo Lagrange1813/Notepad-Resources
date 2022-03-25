@@ -15,7 +15,11 @@ class TitleBarViewModel {
   
   var typeBtnText: Observable<String>
   
-  init() {
+  var currentTheme: Observable<ThemeList>
+  
+  init(
+    traitCollection: UITraitCollection
+  ) {
     uuid = UserDefaults.standard.rx
       .observe(String.self, "CurrentTextID")
     
@@ -37,5 +41,7 @@ class TitleBarViewModel {
           return ""
         }
       }
+    
+    currentTheme = DataManager.shared.currentTheme
   }
 }

@@ -19,6 +19,8 @@ class ToolbarViewModel {
 
   var keyboardNotification: Observable<Bool>
   
+  var currentTheme: Observable<ThemeList>
+  
   init(
     textField: BaseTextView
   ) {
@@ -160,5 +162,9 @@ class ToolbarViewModel {
 
     downEnabled = Observable.merge(keyboardShown.map { _ in true }, keyboardHidden.map { _ in false })
       .startWith(false)
+    
+    // MARK: - Theme
+    
+    currentTheme = DataManager.shared.currentTheme
   }
 }
