@@ -17,7 +17,7 @@ extension CompactTextVC {
                                             shortcutFunc: shortcutFunc,
                                             selector: functionSelector)
     toolBar = toolbarConnector.view
-    view.insertSubview(toolBar, at: 1)
+    view.insertSubview(toolBar, at: 3)
 
     toolBar.snp.makeConstraints { make in
       make.centerX.equalToSuperview()

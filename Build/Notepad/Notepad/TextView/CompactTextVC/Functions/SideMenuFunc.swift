@@ -25,12 +25,12 @@ extension CompactTextVC: UIGestureRecognizerDelegate {
     sideMenuShadowView.addGestureRecognizer(tapGestureRecognizer)
     
     if revealSideMenuOnTop {
-      view.insertSubview(sideMenuShadowView, at: 2)
+      view.insertSubview(sideMenuShadowView, at: 4)
     }
     
     sideMenuVC = SideMenuVC(theme: self.theme)
     addChild(sideMenuVC)
-    view.insertSubview(sideMenuVC.view, at: revealSideMenuOnTop ? 3 : 0)
+    view.insertSubview(sideMenuVC.view, at: revealSideMenuOnTop ? 5 : 0)
     sideMenuVC.didMove(toParent: self)
     
     sideMenuVC.textList.delegate = self

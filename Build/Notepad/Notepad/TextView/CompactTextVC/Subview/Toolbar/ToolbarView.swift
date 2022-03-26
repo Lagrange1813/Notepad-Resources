@@ -21,9 +21,6 @@ class ToolBar: UIView {
   var width: CGFloat!
   var height = 40.0
   
-//  var panGestureRecognizer: UIPanGestureRecognizer!
-//  var gestureHandler: (() -> ())?
-  
   var scrollToolView: CustomScrollView!
   
   var fixedButtons: [CustomBtn] = []
@@ -39,12 +36,11 @@ class ToolBar: UIView {
   var allScrollButtons: [CustomBtn] = []
   var functionalButtons: [CustomBtn] = []
   
-//  var theme: Theme!
+  var backgroundView: UIView!
   
   init(viewWidth: CGFloat) {
     super.init(frame: CGRect())
     self.viewWidth = viewWidth
-//    self.theme = theme
     customize()
   }
   
@@ -56,36 +52,15 @@ class ToolBar: UIView {
   func customize() {
     width = viewWidth - 10
     
-//    panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(detectPan))
-    
     alpha = 1
     tintColor = .black
     layer.cornerRadius = 10
-    
-//    layer.shadowColor = CGColor(red: 0, green: 0, blue: 0, alpha: 1)
-//    layer.shadowOffset = CGSize(width: 0, height: 0)
-//    layer.shadowOpacity = 0.5
-//    layer.shadowRadius = 0.5
-    
-    layer.masksToBounds = true
-    layer.borderWidth = 1.5
-    layer.borderColor = UIColor.white.cgColor
-    
-//    if theme.frostedGlass {
-//      configureBlur()
-//    } else {
-//      backgroundColor = theme.colorSet["doubleBarBackground"]
-//    }
     
     configureScrollToolView()
     configureFixedButton()
     configureScrollViewButton()
   }
-  
-//  @objc func detectPan(_ recognizer: UIPanGestureRecognizer) {
-//    gestureHandler?()
-//  }
-  
+
   func configureScrollToolView() {
     scrollToolView = { () -> CustomScrollView in
       let view = CustomScrollView(frame: CGRect(x: height * 4 + 2 + 2, y: 0, width: width - height * 5 - 2.0, height: height))
@@ -96,7 +71,7 @@ class ToolBar: UIView {
       view.showsHorizontalScrollIndicator = false
       return view
     }()
-    addSubview(scrollToolView)
+    insertSubview(scrollToolView, at: 1)
   }
   
   func updateScrollToolView() {
@@ -110,7 +85,8 @@ class ToolBar: UIView {
       fixedButtons.append(button)
       functionalButtons.append(button)
       button.setImage(UIImage(named: "command"), for: .normal)
-      addSubview(button)
+//      addSubview(button)
+      insertSubview(button, at: 1)
       
       return button
     }()
@@ -125,14 +101,14 @@ class ToolBar: UIView {
       
       return button
     }()
-    addSubview(undoBtn)
+    insertSubview(undoBtn, at: 1)
     
     pasteBtn = { () -> CustomBtn in
       let button = CustomBtn(frame: CGRect(x: height / 2 - btnLength / 2 + height * 2 + 2, y: height / 2 - btnLength / 2, width: btnLength, height: btnLength))
       button.identifier = "paste"
       fixedButtons.append(button)
       button.setImage(UIImage(named: "doc.on.clipboard"), for: .normal)
-      addSubview(button)
+      insertSubview(button, at: 1)
       
       return button
     }()
@@ -145,7 +121,7 @@ class ToolBar: UIView {
       fixedButtons.append(button)
       functionalButtons.append(button)
       button.setImage(UIImage(named: "keyboard.chevron.compact.down"), for: .normal)
-      addSubview(button)
+      insertSubview(button, at: 1)
       
       button.snp.makeConstraints { make in
         make.top.equalToSuperview().offset(height / 2 - btnLength / 2)
@@ -160,19 +136,20 @@ class ToolBar: UIView {
     let dividingLine = UIView(frame: CGRect(x: height * 4 + 2 + 1, y: height / 2 - dividingLineHeight / 2, width: 1, height: dividingLineHeight))
     dividingLine.backgroundColor = .gray
     dividingLine.alpha = 0.4
-    addSubview(dividingLine)
+    insertSubview(dividingLine, at: 1)
   }
   
   func configureShortCutTouchpad() {
     let iconHeight = btnLength - 3.5
     let buttonIcon = UIImageView(frame: CGRect(x: height / 2 - btnLength / 2 + height * 3 + 2, y: height / 2 - iconHeight / 2, width: btnLength, height: iconHeight))
     buttonIcon.image = UIImage(systemName: "ipad.landscape")
-    addSubview(buttonIcon)
+    insertSubview(buttonIcon, at: 1)
   }
   
   func addShortCutTouchpadButton() {
     touchPadBtn = TouchPad(x: height * 3 + 2, y: 0, width: height, height: height)
-    addSubview(touchPadBtn!)
+//    addSubview(touchPadBtn!)
+    insertSubview(touchPadBtn!, at: 1)
   }
   
   func removeShortCutTouchpadButton() {
@@ -220,38 +197,20 @@ class ToolBar: UIView {
     touchPad.isHidden = true
   }
   
-//  override func touchesBegan(_ touches: Set<UITouch>?, with event: UIEvent!) {
-//    lastLocation = center
-//    print("start!")
-//
-//    tracking = true
-//    velocityLoop = CADisplayLink(target: self, selector: #selector(watching))
-//    velocityLoop.add(to: RunLoop.current, forMode: RunLoop.Mode(rawValue: RunLoop.Mode.common.rawValue))
-//  }
-//
-//  override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-//    print("moving!")
-//  }
-//
-//  override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-//    print("ended!")
-//    tracking = false
-//  }
-//
-//  override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-//    print("cancelled!")
-//    //        tracking = false
-//  }
-  
   // MARK: - Optional
   
   func configureBlur() {
-    let backgroundSupport = UIView()
-    backgroundSupport.layer.cornerRadius = layer.cornerRadius
-    backgroundSupport.clipsToBounds = true
-    addSubview(backgroundSupport)
+    if backgroundView != nil {
+      backgroundView!.removeFromSuperview()
+      backgroundView = nil
+    }
     
-    backgroundSupport.snp.makeConstraints { make in
+    backgroundView = UIView()
+    backgroundView.layer.cornerRadius = layer.cornerRadius
+    backgroundView.clipsToBounds = true
+    insertSubview(backgroundView, at: 0)
+    
+    backgroundView.snp.makeConstraints { make in
       make.top.equalToSuperview()
       make.bottom.equalToSuperview()
       make.leading.equalToSuperview()
@@ -268,7 +227,7 @@ class ToolBar: UIView {
     
     let background = UIVisualEffectView(effect: blur)
     background.layer.cornerRadius = layer.cornerRadius
-    backgroundSupport.addSubview(background)
+    backgroundView.addSubview(background)
     
     background.snp.makeConstraints { make in
       make.top.equalToSuperview()
@@ -276,5 +235,27 @@ class ToolBar: UIView {
       make.leading.equalToSuperview()
       make.trailing.equalToSuperview()
     }
+  }
+  
+  func configureShadow() {
+    layer.masksToBounds = false
+    layer.borderWidth = 0
+    layer.borderColor = nil
+    
+    layer.shadowColor = CGColor(red: 0, green: 0, blue: 0, alpha: 1)
+    layer.shadowOffset = CGSize(width: 0, height: 0)
+    layer.shadowOpacity = 0.5
+    layer.shadowRadius = 0.5
+  }
+  
+  func configureBorder() {
+    layer.shadowColor = nil
+    layer.shadowOffset = CGSize(width: 0, height: 0)
+    layer.shadowOpacity = 0
+    layer.shadowRadius = 0
+    
+    layer.masksToBounds = true
+    layer.borderWidth = 1.5
+    layer.borderColor = UIColor.white.cgColor
   }
 }

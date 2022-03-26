@@ -11,6 +11,9 @@
 		7A05EDD227CCC400000B5BA3 /* MDPreHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A05EDD127CCC400000B5BA3 /* MDPreHandler.swift */; };
 		7A05EDD427CCC50B000B5BA3 /* MDSubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A05EDD327CCC50B000B5BA3 /* MDSubView.swift */; };
 		7A08CE2A27EDAE59001542A0 /* CustomWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A08CE2927EDAE59001542A0 /* CustomWindow.swift */; };
+		7A08CE2C27EDD0E5001542A0 /* CompactTextVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A08CE2B27EDD0E5001542A0 /* CompactTextVM.swift */; };
+		7A08CE2E27EDD5A6001542A0 /* NewCompactVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A08CE2D27EDD5A6001542A0 /* NewCompactVC.swift */; };
+		7A08CE3027EDDD81001542A0 /* TextViewVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A08CE2F27EDDD81001542A0 /* TextViewVM.swift */; };
 		7A12F1B427C8A8DB00EB67CD /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A12F1B327C8A8DB00EB67CD /* Item.swift */; };
 		7A14B11727E407AF0099FF96 /* TitleBarVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A14B11627E407AF0099FF96 /* TitleBarVM.swift */; };
 		7A14B11C27E412C30099FF96 /* TitleBarConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A14B11B27E412C30099FF96 /* TitleBarConnector.swift */; };
@@ -92,6 +95,9 @@
 		7A05EDD127CCC400000B5BA3 /* MDPreHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDPreHandler.swift; sourceTree = "<group>"; };
 		7A05EDD327CCC50B000B5BA3 /* MDSubView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDSubView.swift; sourceTree = "<group>"; };
 		7A08CE2927EDAE59001542A0 /* CustomWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomWindow.swift; sourceTree = "<group>"; };
+		7A08CE2B27EDD0E5001542A0 /* CompactTextVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompactTextVM.swift; sourceTree = "<group>"; };
+		7A08CE2D27EDD5A6001542A0 /* NewCompactVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCompactVC.swift; sourceTree = "<group>"; };
+		7A08CE2F27EDDD81001542A0 /* TextViewVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewVM.swift; sourceTree = "<group>"; };
 		7A12F1B327C8A8DB00EB67CD /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		7A14B11627E407AF0099FF96 /* TitleBarVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleBarVM.swift; sourceTree = "<group>"; };
 		7A14B11B27E412C30099FF96 /* TitleBarConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleBarConnector.swift; sourceTree = "<group>"; };
@@ -209,6 +215,8 @@
 				7A22204327D1A15E00899A24 /* Functions */,
 				7AC3218627AB934F008987B7 /* CompactHandler.swift */,
 				7A5CAAC027C137CA000173F4 /* CompactTextVC.swift */,
+				7A08CE2B27EDD0E5001542A0 /* CompactTextVM.swift */,
+				7A08CE2D27EDD5A6001542A0 /* NewCompactVC.swift */,
 			);
 			path = CompactTextVC;
 			sourceTree = "<group>";
@@ -236,9 +244,11 @@
 			isa = PBXGroup;
 			children = (
 				7AA89BAD27C7CDC100E77749 /* MDTextView */,
+				7A2A5F0527C7594C00C399F8 /* MDTextView.swift */,
 				7AC3217C27AB92ED008987B7 /* WordCounter.swift */,
 				7A5F137627C76591002C8F1A /* BaseTextView.swift */,
 				7AC3217E27AB9302008987B7 /* PureTextView.swift */,
+				7A08CE2F27EDDD81001542A0 /* TextViewVM.swift */,
 			);
 			path = SubView;
 			sourceTree = "<group>";
@@ -304,7 +314,6 @@
 		7AA89BAD27C7CDC100E77749 /* MDTextView */ = {
 			isa = PBXGroup;
 			children = (
-				7A2A5F0527C7594C00C399F8 /* MDTextView.swift */,
 				7AA89BAE27C8565200E77749 /* MDBodyView.swift */,
 				7AA89BB027C856D400E77749 /* Storage.swift */,
 				7AA89BB427C8699B00E77749 /* Style.swift */,
@@ -599,6 +608,7 @@
 			files = (
 				7A22204827D1A1A200899A24 /* TitleBarFunc.swift in Sources */,
 				7AA89BAA27C773F000E77749 /* CompactTextVC.swift in Sources */,
+				7A08CE3027EDDD81001542A0 /* TextViewVM.swift in Sources */,
 				7A22204A27D1A1B400899A24 /* ToolbarFunc.swift in Sources */,
 				7AA89BA927C773ED00E77749 /* CompactHandler.swift in Sources */,
 				7A22203E27D1909200899A24 /* SideMenuVC.swift in Sources */,
@@ -610,12 +620,14 @@
 				7AEB2A1827C77362002753B8 /* CommonTextVC.swift in Sources */,
 				7AC3218C27AB938A008987B7 /* FirstLaunch.swift in Sources */,
 				7A443A0E27B4D99600A72F76 /* TitleBarView.swift in Sources */,
+				7A08CE2C27EDD0E5001542A0 /* CompactTextVM.swift in Sources */,
 				7A5F137727C76591002C8F1A /* BaseTextView.swift in Sources */,
 				7ACF059D27CEEE3800669300 /* Model.swift in Sources */,
 				7AC3217D27AB92ED008987B7 /* WordCounter.swift in Sources */,
 				7AC3217327AB925A008987B7 /* CustomTextView.swift in Sources */,
 				7A12F1B427C8A8DB00EB67CD /* Item.swift in Sources */,
 				7A05EDD227CCC400000B5BA3 /* MDPreHandler.swift in Sources */,
+				7A08CE2E27EDD5A6001542A0 /* NewCompactVC.swift in Sources */,
 				7AB9F1F727AD1FF300A64FDA /* SelectionRect.swift in Sources */,
 				7A758BC127BAAB5C00813C08 /* BookListVC.swift in Sources */,
 				7AC3213F27AB9148008987B7 /* AppDelegate.swift in Sources */,

@@ -20,14 +20,9 @@ public struct ThemeList {
 public struct Theme {
   public enum BuiltIn: String {
     case Default = "default"
-//    case TextLight = "text-light"
-//    case TextDark = "text-dark"
-//    case TextLightFrostedGlass = "text-light-frosted-glass"
-//    case TextDarkFrostedGlass = "text-dark-frosted-glass"
-//    case MarkdownLight = "md-light"
-//    case MarkdownDark = "md-dark"
-//    case MarkdownLightFrostedGlass = "md-light-frosted-glass"
-//    case MarkdownDarkFrostedGlass = "md-dark-frosted-glass"
+    case TextSimple = "text-simple"
+    case TextFrostedGlass = "text-frosted-glass"
+    case MarkdownSimple = "md-simple"
     
     public func enable() -> Theme {
       Theme(rawValue)

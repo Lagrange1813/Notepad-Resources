@@ -19,7 +19,7 @@ extension CompactTextVC {
                                                           listMenu: fetchListBtnMenu(),
                                                           typeBtn: typeBtnFunc))
     titleBar = titleBarConnector.view
-    view.insertSubview(titleBar, at: 1)
+    view.insertSubview(titleBar, at: 3)
   }
   
   func fetchListBtnMenu() -> UIMenu {

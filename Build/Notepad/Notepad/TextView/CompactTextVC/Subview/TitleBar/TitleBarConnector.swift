@@ -49,8 +49,10 @@ class TitleBarConnector {
       .subscribe(onNext: {
         if $0.frostedGlass {
           self.view.configureBlur()
+          self.view.configureShadow()
         } else {
           self.view.backgroundColor = $0.colorSet["doubleBarBackground"]
+          self.view.configureBorder()
         }
       })
       .disposed(by: bag)

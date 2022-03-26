@@ -8,13 +8,22 @@
 import UIKit
 
 class TitleBar: UIView {
+  
+  // MARK: - Function
+  
   var height: CGFloat!
 
   var listBtn: CustomBtn!
   var typeBtn: CustomBtn!
   
   var title: UILabel!
+  
+  // MARK: - Decoration
+  
+  var backgroundView: UIView!
 
+  // MARK: - Init
+  
   override init(frame: CGRect) {
     super.init(frame: frame)
     customize()
@@ -31,15 +40,6 @@ class TitleBar: UIView {
     alpha = 1
 
     layer.cornerRadius = 8
-
-//    layer.shadowColor = CGColor(red: 0, green: 0, blue: 0, alpha: 1)
-//    layer.shadowOffset = CGSize(width: 0, height: 0)
-//    layer.shadowOpacity = 0.5
-//    layer.shadowRadius = 0.5
-
-    layer.masksToBounds = true
-    layer.borderWidth = 1.5
-    layer.borderColor = UIColor.white.cgColor
 
     configureTitle()
     configureBtn()
@@ -66,7 +66,7 @@ class TitleBar: UIView {
     title.text = text
     title.font = UIFont(name: "LXGW WenKai Bold", size: 16)
 
-    addSubview(title)
+    insertSubview(title, at: 1)
 
     title.snp.makeConstraints { make in
       make.centerY.equalToSuperview()
@@ -79,7 +79,7 @@ class TitleBar: UIView {
       let button = CustomBtn()
       button.setImage(UIImage(named: "books.vertical"), for: .normal)
       //            button.tintColor = .white
-      addSubview(button)
+      insertSubview(button, at: 1)
 
       button.snp.makeConstraints { make in
         make.width.height.equalTo(25)
@@ -96,7 +96,7 @@ class TitleBar: UIView {
       button.setTitleColor(.black, for: .normal)
       button.setTitleColor(.systemGray, for: .highlighted)
       button.titleLabel!.font = UIFont(name: "LXGW WenKai", size: 15)
-      addSubview(button)
+      insertSubview(button, at: 1)
 
       button.snp.makeConstraints { make in
         make.centerY.equalToSuperview()
@@ -109,15 +109,20 @@ class TitleBar: UIView {
 
   }
   
-  // MARK: - Optional
+  // MARK: - Decoration
   
   func configureBlur() {
-    let backgroundSupport = UIView()
-    backgroundSupport.layer.cornerRadius = layer.cornerRadius
-    backgroundSupport.clipsToBounds = true
-    addSubview(backgroundSupport)
+    if backgroundView != nil {
+      backgroundView.removeFromSuperview()
+      backgroundView = nil
+    }
 
-    backgroundSupport.snp.makeConstraints { make in
+    backgroundView = UIView()
+    backgroundView.layer.cornerRadius = layer.cornerRadius
+    backgroundView.clipsToBounds = true
+    insertSubview(backgroundView, at: 0)
+
+    backgroundView.snp.makeConstraints { make in
       make.top.equalToSuperview()
       make.bottom.equalToSuperview()
       make.leading.equalToSuperview()
@@ -134,7 +139,7 @@ class TitleBar: UIView {
 
     let background = UIVisualEffectView(effect: blur)
     background.layer.cornerRadius = layer.cornerRadius
-    backgroundSupport.addSubview(background)
+    backgroundView.addSubview(background)
 
     background.snp.makeConstraints { make in
       make.top.equalToSuperview()
@@ -142,5 +147,27 @@ class TitleBar: UIView {
       make.leading.equalToSuperview()
       make.trailing.equalToSuperview()
     }
+  }
+  
+  func configureShadow() {
+    layer.masksToBounds = false
+    layer.borderWidth = 0
+    layer.borderColor = nil
+    
+    layer.shadowColor = CGColor(red: 0, green: 0, blue: 0, alpha: 1)
+    layer.shadowOffset = CGSize(width: 0, height: 0)
+    layer.shadowOpacity = 0.5
+    layer.shadowRadius = 0.5
+  }
+  
+  func configureBorder() {
+    layer.shadowColor = nil
+    layer.shadowOffset = CGSize(width: 0, height: 0)
+    layer.shadowOpacity = 0
+    layer.shadowRadius = 0
+    
+    layer.masksToBounds = true
+    layer.borderWidth = 1.5
+    layer.borderColor = UIColor.white.cgColor
   }
 }

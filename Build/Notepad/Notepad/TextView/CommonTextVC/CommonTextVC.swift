@@ -142,7 +142,7 @@ class CommonTextVC: UIViewController {
         
         configurePadding()
         
-        view.insertSubview(textField, at: 0)
+        view.insertSubview(textField, at: 2)
 
         textField.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(topAnchor)
@@ -165,7 +165,7 @@ class CommonTextVC: UIViewController {
     
     func configureCounter() {
       counter = WordCounter(theme.main)
-        view.insertSubview(counter, at: 1)
+        view.insertSubview(counter, at: 3)
         
         counter.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(5 + titleBarOffset + barHeight)

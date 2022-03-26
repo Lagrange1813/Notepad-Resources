@@ -10,6 +10,8 @@ import RxSwift
 import UIKit
 
 class CompactTextVC: CommonTextVC {
+  let viewModel = CompactTextViewModel()
+  
   var viewWidth: CGFloat!
   
   var titleBar: TitleBar!
@@ -37,8 +39,8 @@ class CompactTextVC: CommonTextVC {
   
   let appDelegate = UIApplication.shared.delegate as! AppDelegate
   
-  var image: UIImageView?
-  var backgroundSupport: UIView?
+  var backgroundImage: UIImageView?
+  var backgroundView: UIView?
   
   var revealSideMenuOnTop = true
   
@@ -93,31 +95,8 @@ class CompactTextVC: CommonTextVC {
   
   func preload() {
     let userDefaults = UserDefaults.standard
-//    userDefaults.set("text-light-frosted-glass", forKey: "TextTheme")
     textTheme = Theme(userDefaults.object(forKey: "TextTheme") as! String)
     markdownTheme = Theme(userDefaults.object(forKey: "MDTheme") as! String)
-  }
-  
-  func customize() {
-    navigationController?.navigationBar.isHidden = true
-    
-    appDelegate.supportAll = false
-    
-    if theme.main.frostedGlass {
-      configureBackgroundImage()
-      configureBlur()
-    } else {
-      view.backgroundColor = theme.main.colorSet["background"]
-    }
-    
-    updateViewWidth()
-    
-    barHeight = TitleBar.height()
-    topPadding = barHeight
-    bottomPadding = view.frame.height/2
-    bottomAnchor = 5
-    
-    configureSideMenu()
   }
   
 //  func configureStatusBarBackground() {
@@ -126,46 +105,6 @@ class CompactTextVC: CommonTextVC {
 //    view.addSubview(background)
 //  }
   
-  func configureBackgroundImage() {
-    image = UIImageView(image: UIImage(named: "Qerg85B7JDI"))
-    image!.contentMode = .scaleAspectFill
-    view.addSubview(image!)
-    image!.snp.makeConstraints { make in
-      make.top.leading.trailing.bottom.equalToSuperview()
-    }
-  }
-  
-  func configureBlur() {
-    backgroundSupport = UIView()
-    backgroundSupport!.clipsToBounds = true
-    view.addSubview(backgroundSupport!)
-    
-    backgroundSupport!.snp.makeConstraints { make in
-      make.top.equalToSuperview()
-      make.bottom.equalToSuperview()
-      make.leading.equalToSuperview()
-      make.trailing.equalToSuperview()
-    }
-    
-    let blur: UIBlurEffect = {
-      if traitCollection.userInterfaceStyle == .light {
-        return UIBlurEffect(style: .prominent)
-      } else {
-        return UIBlurEffect(style: .systemUltraThinMaterialDark)
-      }
-    }()
-    
-    let background = UIVisualEffectView(effect: blur)
-    backgroundSupport!.addSubview(background)
-    
-    background.snp.makeConstraints { make in
-      make.top.equalToSuperview()
-      make.bottom.equalToSuperview()
-      make.leading.equalToSuperview()
-      make.trailing.equalToSuperview()
-    }
-  }
-  
   // MARK: - Optional function
   
   override func remove() {
@@ -173,12 +112,10 @@ class CompactTextVC: CommonTextVC {
     
     super.remove()
     
-    toolBar.removeFromSuperview()
-    toolBar = nil
-    image?.removeFromSuperview()
-    image = nil
-    backgroundSupport?.removeFromSuperview()
-    backgroundSupport = nil
+    backgroundImage?.removeFromSuperview()
+    backgroundImage = nil
+    backgroundView?.removeFromSuperview()
+    backgroundView = nil
   }
   
   override func firstToLoad() {
@@ -188,17 +125,10 @@ class CompactTextVC: CommonTextVC {
   
   override func secondToLoad() {
     super.secondToLoad()
-    if theme.main.frostedGlass {
-      configureBackgroundImage()
-      configureBlur()
-    } else {
-      view.backgroundColor = theme.main.colorSet["background"]
-    }
   }
   
   override func thirdToLoad() {
     super.thirdToLoad()
-    configureToolBar()
     
     registNotification()
   }
