@@ -1,7 +1,0 @@
-flags:
-  Proton:
-    paths:
-      - Proton/Sources
-
-ignore:
-  - "**/*Tests.swift"
