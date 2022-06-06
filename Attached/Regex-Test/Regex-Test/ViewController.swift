@@ -32,12 +32,15 @@ class ViewController: UIViewController {
             make.height.equalTo(400)
         }
         
+        // ^(#+)(.*)
         // ^(\#[^\#](.*))$
         // ^(\#{2}(.*))$
         // ^(\#{3}(.*))$
  
         displayTextView.text = """
 # Header1
+#Header1
+\\#Header1
 ## Header2
 ### Header3
 - list1
