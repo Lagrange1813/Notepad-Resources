@@ -12,9 +12,8 @@
 		7A2BDE8C284B875800D53858 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2BDE8B284B875800D53858 /* ViewController.swift */; };
 		7A2BDE91284B875A00D53858 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A2BDE90284B875A00D53858 /* Assets.xcassets */; };
 		7A2BDE94284B875A00D53858 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A2BDE92284B875A00D53858 /* LaunchScreen.storyboard */; };
-		7A2BDE9D284B87C200D53858 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 7A2BDE9C284B87C200D53858 /* SnapKit */; };
 		7A2BDE9F284C845700D53858 /* EditorSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2BDE9E284C845700D53858 /* EditorSettingsView.swift */; };
-		7A2BDEA2284C8BE700D53858 /* LookinServer in Frameworks */ = {isa = PBXBuildFile; productRef = 7A2BDEA1284C8BE700D53858 /* LookinServer */; };
+		7A6993C528581D4B00D475DF /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 7A6993C428581D4B00D475DF /* SnapKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,8 +32,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7A2BDE9D284B87C200D53858 /* SnapKit in Frameworks */,
-				7A2BDEA2284C8BE700D53858 /* LookinServer in Frameworks */,
+				7A6993C528581D4B00D475DF /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,8 +86,7 @@
 			);
 			name = "SegmentedView-Test";
 			packageProductDependencies = (
-				7A2BDE9C284B87C200D53858 /* SnapKit */,
-				7A2BDEA1284C8BE700D53858 /* LookinServer */,
+				7A6993C428581D4B00D475DF /* SnapKit */,
 			);
 			productName = "SegmentedView-Test";
 			productReference = 7A2BDE84284B875800D53858 /* SegmentedView-Test.app */;
@@ -120,8 +117,7 @@
 			);
 			mainGroup = 7A2BDE7B284B875800D53858;
 			packageReferences = (
-				7A2BDE9B284B87C200D53858 /* XCRemoteSwiftPackageReference "SnapKit" */,
-				7A2BDEA0284C8BE700D53858 /* XCRemoteSwiftPackageReference "LookinServer" */,
+				7A6993C328581D4B00D475DF /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = 7A2BDE85284B875800D53858 /* Products */;
 			projectDirPath = "";
@@ -291,6 +287,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = J848DTSBF7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "SegmentedView-Test/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -318,6 +315,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = J848DTSBF7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "SegmentedView-Test/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -362,7 +360,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		7A2BDE9B284B87C200D53858 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+		7A6993C328581D4B00D475DF /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
 			requirement = {
@@ -370,26 +368,13 @@
 				version = 5.6.0;
 			};
 		};
-		7A2BDEA0284C8BE700D53858 /* XCRemoteSwiftPackageReference "LookinServer" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/QMUI/LookinServer.git";
-			requirement = {
-				kind = exactVersion;
-				version = 1.0.5;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		7A2BDE9C284B87C200D53858 /* SnapKit */ = {
+		7A6993C428581D4B00D475DF /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 7A2BDE9B284B87C200D53858 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			package = 7A6993C328581D4B00D475DF /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
-		};
-		7A2BDEA1284C8BE700D53858 /* LookinServer */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 7A2BDEA0284C8BE700D53858 /* XCRemoteSwiftPackageReference "LookinServer" */;
-			productName = LookinServer;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
