@@ -1,0 +1,21 @@
+{
+    "name": "@milkdown-examples/vue",
+    "private": true,
+    "version": "6.2.0",
+    "license": "MIT",
+    "scripts": {
+        "start": "vite"
+    },
+    "dependencies": {
+        "@milkdown/core": "workspace:*",
+        "@milkdown/plugin-emoji": "workspace:*",
+        "@milkdown/plugin-listener": "workspace:*",
+        "@milkdown/plugin-prism": "workspace:*",
+        "@milkdown/plugin-slash": "workspace:*",
+        "@milkdown/preset-commonmark": "workspace:*",
+        "@milkdown/prose": "workspace:*",
+        "@milkdown/theme-nord": "workspace:*",
+        "@milkdown/vue": "workspace:*",
+        "vue": "^3.0.0"
+    }
+}

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Editor</title>
+</head>
+<body>
+<div id="editor"
+        contenteditable="true"
+     onkeyup=saveSourceData()
+>### This is a title
+</div>
+</body>
+<script>
+    let saveSourceData = function () {
+        console.log(document.getElementById("editor").innerHTML);
+    }
+</script>
+</html>

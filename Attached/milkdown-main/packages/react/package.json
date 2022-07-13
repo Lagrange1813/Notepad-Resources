@@ -1,0 +1,68 @@
+{
+    "name": "@milkdown/react",
+    "version": "6.2.0",
+    "type": "module",
+    "main": "./lib/index.es.js",
+    "types": "./lib/index.d.ts",
+    "sideEffects": false,
+    "license": "MIT",
+    "scripts": {
+        "start": "concurrently -n es,dts \"vite build --watch\"  \"tsc --emitDeclarationOnly --watch\"",
+        "test": "vitest",
+        "tsc": "tsc --noEmit && echo",
+        "build": "tsc --emitDeclarationOnly && vite build"
+    },
+    "files": [
+        "lib",
+        "src"
+    ],
+    "keywords": [
+        "milkdown",
+        "milkdown plugin",
+        "react"
+    ],
+    "dependencies": {
+        "@milkdown/utils": "workspace:*",
+        "nanoid": "^4.0.0",
+        "tslib": "^2.3.1"
+    },
+    "peerDependencies": {
+        "@milkdown/core": "^6.0.1",
+        "@milkdown/prose": "^6.0.1",
+        "react": "*",
+        "react-dom": "*"
+    },
+    "devDependencies": {
+        "@milkdown/core": "workspace:*",
+        "@milkdown/prose": "workspace:*",
+        "@types/react": "^18.0.0",
+        "@types/react-dom": "^18.0.0",
+        "@vitejs/plugin-react": "^1.3.0",
+        "react": "^18.0.0",
+        "react-dom": "^18.0.0"
+    },
+    "nx": {
+        "targets": {
+            "build": {
+                "outputs": [
+                    "packages/react/lib"
+                ],
+                "dependsOn": [
+                    {
+                        "target": "build",
+                        "projects": "dependencies"
+                    }
+                ]
+            },
+            "tsc": {
+                "outputs": [],
+                "dependsOn": [
+                    {
+                        "target": "build",
+                        "projects": "dependencies"
+                    }
+                ]
+            }
+        }
+    }
+}

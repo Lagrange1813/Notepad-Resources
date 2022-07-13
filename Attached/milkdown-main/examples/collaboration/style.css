@@ -1,0 +1,12 @@
+.template-form {
+    display: flex;
+    gap: 8px;
+}
+
+.room {
+    margin: 10px;
+}
+
+.button-group {
+    margin: 10px;
+}

@@ -1,0 +1,63 @@
+{
+    "name": "@milkdown/transformer",
+    "version": "6.2.0",
+    "type": "module",
+    "main": "./lib/index.es.js",
+    "types": "./lib/index.d.ts",
+    "sideEffects": false,
+    "license": "MIT",
+    "scripts": {
+        "start": "concurrently -n es,dts \"vite build --watch\"  \"tsc --emitDeclarationOnly --watch\"",
+        "test": "vitest",
+        "tsc": "tsc --noEmit && echo",
+        "build": "tsc --emitDeclarationOnly && vite build"
+    },
+    "files": [
+        "lib",
+        "src"
+    ],
+    "keywords": [
+        "milkdown",
+        "prosemirror",
+        "remark",
+        "markdown"
+    ],
+    "devDependencies": {
+        "@milkdown/prose": "workspace:*"
+    },
+    "peerDependencies": {
+        "@milkdown/prose": "^6.0.1"
+    },
+    "dependencies": {
+        "@milkdown/exception": "workspace:*",
+        "@types/mdast": "^3.0.10",
+        "@types/unist": "^2.0.6",
+        "remark": "^14.0.1",
+        "tslib": "^2.3.1",
+        "unified": "^10.1.0"
+    },
+    "nx": {
+        "targets": {
+            "build": {
+                "outputs": [
+                    "packages/transformer/lib"
+                ],
+                "dependsOn": [
+                    {
+                        "target": "build",
+                        "projects": "dependencies"
+                    }
+                ]
+            },
+            "tsc": {
+                "outputs": [],
+                "dependsOn": [
+                    {
+                        "target": "build",
+                        "projects": "dependencies"
+                    }
+                ]
+            }
+        }
+    }
+}

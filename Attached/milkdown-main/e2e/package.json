@@ -1,0 +1,47 @@
+{
+    "name": "@milkdown/e2e",
+    "private": true,
+    "version": "6.2.0",
+    "scripts": {
+        "start": "vite",
+        "build": "vite build",
+        "serve": "vite preview --port 7000",
+        "setup": "pnpm build && pnpm serve",
+        "test": "cypress run",
+        "test:verbose": "cypress open",
+        "start:test": "start-server-and-test setup http-get://localhost:7000 test",
+        "start:test:verbose": "start-server-and-test setup http-get://localhost:7000 test:verbose"
+    },
+    "files": [
+        "style"
+    ],
+    "dependencies": {
+        "@milkdown/core": "workspace:*",
+        "@milkdown/design-system": "workspace:*",
+        "@milkdown/preset-commonmark": "workspace:*",
+        "@milkdown/preset-gfm": "workspace:*",
+        "@milkdown/prose": "workspace:*",
+        "@milkdown/theme-nord": "workspace:*",
+        "tslib": "^2.3.1"
+    },
+    "devDependencies": {
+        "@cypress/snapshot": "^2.1.7",
+        "cypress": "^10.0.0",
+        "start-server-and-test": "^1.13.0"
+    },
+    "nx": {
+        "targets": {
+            "build": {
+                "outputs": [
+                    "e2e/lib"
+                ],
+                "dependsOn": [
+                    {
+                        "target": "build",
+                        "projects": "dependencies"
+                    }
+                ]
+            }
+        }
+    }
+}

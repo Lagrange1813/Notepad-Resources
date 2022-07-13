@@ -1,0 +1,10 @@
+{
+    "extends": "../../tsconfig.base.json",
+    "compilerOptions": {
+        "rootDir": "src",
+        "outDir": "lib",
+        // TODO: workaround before y-prosemirror update
+        "skipLibCheck": true
+    },
+    "include": ["src"]
+}

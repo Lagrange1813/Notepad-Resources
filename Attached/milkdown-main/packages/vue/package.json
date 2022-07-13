@@ -1,0 +1,64 @@
+{
+    "name": "@milkdown/vue",
+    "version": "6.2.0",
+    "type": "module",
+    "main": "./lib/index.es.js",
+    "types": "./lib/index.d.ts",
+    "sideEffects": false,
+    "license": "MIT",
+    "scripts": {
+        "start": "concurrently -n es,dts \"vite build --watch\"  \"tsc --emitDeclarationOnly --watch\"",
+        "test": "vitest",
+        "tsc": "tsc --noEmit && echo",
+        "build": "tsc --emitDeclarationOnly && vite build"
+    },
+    "files": [
+        "lib",
+        "src"
+    ],
+    "keywords": [
+        "milkdown",
+        "milkdown plugin",
+        "vue"
+    ],
+    "dependencies": {
+        "@milkdown/utils": "workspace:*",
+        "@milkdown/exception": "workspace:*",
+        "nanoid": "^4.0.0",
+        "tslib": "^2.3.1"
+    },
+    "peerDependencies": {
+        "@milkdown/core": "^6.0.1",
+        "@milkdown/prose": "^6.0.1",
+        "vue": "^3.0.0"
+    },
+    "devDependencies": {
+        "@milkdown/core": "workspace:*",
+        "@milkdown/prose": "workspace:*",
+        "vue": "^3.0.0"
+    },
+    "nx": {
+        "targets": {
+            "build": {
+                "outputs": [
+                    "packages/vue/lib"
+                ],
+                "dependsOn": [
+                    {
+                        "target": "build",
+                        "projects": "dependencies"
+                    }
+                ]
+            },
+            "tsc": {
+                "outputs": [],
+                "dependsOn": [
+                    {
+                        "target": "build",
+                        "projects": "dependencies"
+                    }
+                ]
+            }
+        }
+    }
+}

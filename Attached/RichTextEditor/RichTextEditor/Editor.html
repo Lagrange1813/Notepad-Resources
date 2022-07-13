@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+
+<head>
+  <meta charset="utf-8"/>
+  <title>Test</title>
+</head>
+<body>
+<div class="wrapper">
+  <div id="vditor"></div>
+</div>
+</body>
+<script>
+  const addScript = (path, callback) => {
+    const scriptElement = document.createElement('script')
+    scriptElement.src = path
+    scriptElement.async = true
+    document.head.appendChild(scriptElement)
+    scriptElement.onload = () => {
+      callback()
+    }
+  }
+
+  const addStyle = (url) => {
+    const styleElement = document.createElement('link')
+    styleElement.rel = 'stylesheet'
+    styleElement.type = 'text/css'
+    styleElement.href = url
+    document.getElementsByTagName('head')[0].appendChild(styleElement)
+  }
+
+  addStyle('https://cdn.jsdelivr.net/npm/vditor@3.8.12/dist/index.css')
+
+  addScript('https://cdn.jsdelivr.net/npm/vditor@3.8.12/dist/index.min.js', () => {
+    vditorScript()
+  })
+
+  vditorScript = () => {
+    new Vditor('vditor', {
+      height: 360,
+      cache: {
+        enable: false,
+      },
+      value: '### Test',
+    })
+  }
+</script>
+</html>
