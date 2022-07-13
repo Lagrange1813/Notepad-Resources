@@ -1,89 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1bb3e96a-f4c3-40ff-94d9-0d120180f5cb" name="变更" comment="">
-      <change afterPath="$PROJECT_DIR$/../Bind-Test/Bind-Test.xcodeproj/project.pbxproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Bind-Test/Bind-Test.xcodeproj/project.xcworkspace/contents.xcworkspacedata" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Bind-Test/Bind-Test.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Bind-Test/Bind-Test.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Bind-Test/Bind-Test.xcodeproj/project.xcworkspace/xcuserdata/lagrange1813.xcuserdatad/IDEFindNavigatorScopes.plist" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Bind-Test/Bind-Test.xcodeproj/project.xcworkspace/xcuserdata/lagrange1813.xcuserdatad/UserInterfaceState.xcuserstate" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Bind-Test/Bind-Test.xcodeproj/xcuserdata/lagrange1813.xcuserdatad/xcschemes/xcschememanagement.plist" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Bind-Test/Bind-Test/AppDelegate.swift" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Bind-Test/Bind-Test/Assets.xcassets/AccentColor.colorset/Contents.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Bind-Test/Bind-Test/Assets.xcassets/AppIcon.appiconset/Contents.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Bind-Test/Bind-Test/Assets.xcassets/Contents.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Bind-Test/Bind-Test/Base.lproj/LaunchScreen.storyboard" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Bind-Test/Bind-Test/Base.lproj/Main.storyboard" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Bind-Test/Bind-Test/Info.plist" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Bind-Test/Bind-Test/SceneDelegate.swift" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Bind-Test/Bind-Test/ViewController.swift" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../CombineSubscription-Test/CombineSubscription-Test.xcodeproj/project.pbxproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../CombineSubscription-Test/CombineSubscription-Test.xcodeproj/project.xcworkspace/contents.xcworkspacedata" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../CombineSubscription-Test/CombineSubscription-Test.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../CombineSubscription-Test/CombineSubscription-Test.xcodeproj/project.xcworkspace/xcuserdata/lagrange1813.xcuserdatad/UserInterfaceState.xcuserstate" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../CombineSubscription-Test/CombineSubscription-Test.xcodeproj/xcuserdata/lagrange1813.xcuserdatad/xcschemes/xcschememanagement.plist" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../CombineSubscription-Test/CombineSubscription-Test/AppDelegate.swift" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../CombineSubscription-Test/CombineSubscription-Test/Assets.xcassets/AccentColor.colorset/Contents.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../CombineSubscription-Test/CombineSubscription-Test/Assets.xcassets/AppIcon.appiconset/Contents.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../CombineSubscription-Test/CombineSubscription-Test/Assets.xcassets/Contents.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../CombineSubscription-Test/CombineSubscription-Test/Base.lproj/LaunchScreen.storyboard" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../CombineSubscription-Test/CombineSubscription-Test/Info.plist" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../CombineSubscription-Test/CombineSubscription-Test/MyPlayground.playground/Pages/Untitled Page 2.xcplaygroundpage/Contents.swift" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../CombineSubscription-Test/CombineSubscription-Test/MyPlayground.playground/Pages/Untitled Page.xcplaygroundpage/Contents.swift" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../CombineSubscription-Test/CombineSubscription-Test/MyPlayground.playground/contents.xcplayground" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../CombineSubscription-Test/CombineSubscription-Test/SceneDelegate.swift" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../CombineSubscription-Test/CombineSubscription-Test/ViewController.swift" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Editor-Test/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Editor-Test/.idea/Editor-Test.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Editor-Test/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Editor-Test/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Editor-Test/editor.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Markdown-Test/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Markdown-Test/.idea/Markdown-Test.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Markdown-Test/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Markdown-Test/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Markdown-Test/editor.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Markdown-Test/markdown-it.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Markdown-Test/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Markdown-Test/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MarkdownView-master/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MarkdownView-master/.idea/MarkdownView-master.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MarkdownView-master/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MarkdownView-master/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/Notepad-Editor.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demo/test.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webpack.config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../RichTextEditor/RichTextEditor.xcodeproj/project.pbxproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../RichTextEditor/RichTextEditor.xcodeproj/project.xcworkspace/contents.xcworkspacedata" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../RichTextEditor/RichTextEditor.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../RichTextEditor/RichTextEditor.xcodeproj/project.xcworkspace/xcuserdata/lagrange1813.xcuserdatad/UserInterfaceState.xcuserstate" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../RichTextEditor/RichTextEditor.xcodeproj/xcuserdata/lagrange1813.xcuserdatad/xcschemes/xcschememanagement.plist" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../RichTextEditor/RichTextEditor/AppDelegate.swift" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../RichTextEditor/RichTextEditor/Assets.xcassets/AccentColor.colorset/Contents.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../RichTextEditor/RichTextEditor/Assets.xcassets/AppIcon.appiconset/Contents.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../RichTextEditor/RichTextEditor/Assets.xcassets/Contents.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../RichTextEditor/RichTextEditor/Base.lproj/LaunchScreen.storyboard" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../RichTextEditor/RichTextEditor/Editor.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../RichTextEditor/RichTextEditor/EditorView.swift" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../RichTextEditor/RichTextEditor/Info.plist" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../RichTextEditor/RichTextEditor/SceneDelegate.swift" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../RichTextEditor/RichTextEditor/ViewController.swift" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Vditor-Test/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Vditor-Test/src/App.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Vditor-Test/src/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Vditor-Test/tsconfig.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../vditor-master/Test.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../vditor-master/package-lock.json" afterDir="false" />
-    </list>
+    <list default="true" id="1bb3e96a-f4c3-40ff-94d9-0d120180f5cb" name="变更" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -113,17 +31,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/Users/lagrange1813/Fundamental/Notepad-Resources/Attached/Notepad-Editor/node_modules/typescript/lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "vcs.Git",
+    "ts.external.directory.path": "/Users/lagrange1813/Fundamental/Notepad-Resources/Attached/Notepad-Editor/node_modules/typescript/lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
@@ -152,6 +71,7 @@
       <workItem from="1657631999377" duration="3626000" />
       <workItem from="1657635670239" duration="2336000" />
       <workItem from="1657639048947" duration="5214000" />
+      <workItem from="1657705699415" duration="1119000" />
     </task>
     <servers />
   </component>
