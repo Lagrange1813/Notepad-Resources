@@ -7,18 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7A04AE7428819E7D007C799F /* File.html in Resources */ = {isa = PBXBuildFile; fileRef = 7A04AE7328819E7D007C799F /* File.html */; };
+		7A23AB37288053F30059F5F1 /* Dist in Resources */ = {isa = PBXBuildFile; fileRef = 7A23AB36288053F30059F5F1 /* Dist */; };
 		7A60D44E2876F23600A00A57 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A60D44D2876F23600A00A57 /* AppDelegate.swift */; };
 		7A60D4502876F23600A00A57 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A60D44F2876F23600A00A57 /* SceneDelegate.swift */; };
 		7A60D4522876F23600A00A57 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A60D4512876F23600A00A57 /* ViewController.swift */; };
 		7A60D4572876F23900A00A57 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A60D4562876F23900A00A57 /* Assets.xcassets */; };
 		7A60D45A2876F23900A00A57 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A60D4582876F23900A00A57 /* LaunchScreen.storyboard */; };
 		7A60D4622876F2C000A00A57 /* EditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A60D4612876F2C000A00A57 /* EditorView.swift */; };
-		7A60D4682876F3D500A00A57 /* LookinServer in Frameworks */ = {isa = PBXBuildFile; productRef = 7A60D4672876F3D500A00A57 /* LookinServer */; };
-		7A60D46A2877041900A00A57 /* Editor.html in Resources */ = {isa = PBXBuildFile; fileRef = 7A60D4692877041900A00A57 /* Editor.html */; };
 		7A60D46D2877072300A00A57 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 7A60D46C2877072300A00A57 /* SnapKit */; };
+		7ADBCB8628805B8B004289A4 /* Editor.html in Resources */ = {isa = PBXBuildFile; fileRef = 7ADBCB8528805B59004289A4 /* Editor.html */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7A04AE7328819E7D007C799F /* File.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = File.html; sourceTree = "<group>"; };
+		7A23AB36288053F30059F5F1 /* Dist */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Dist; sourceTree = "<group>"; };
 		7A60D44A2876F23600A00A57 /* RichTextEditor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RichTextEditor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A60D44D2876F23600A00A57 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7A60D44F2876F23600A00A57 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -27,7 +30,7 @@
 		7A60D4592876F23900A00A57 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7A60D45B2876F23900A00A57 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7A60D4612876F2C000A00A57 /* EditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorView.swift; sourceTree = "<group>"; };
-		7A60D4692877041900A00A57 /* Editor.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = Editor.html; sourceTree = "<group>"; };
+		7ADBCB8528805B59004289A4 /* Editor.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = Editor.html; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,7 +38,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7A60D4682876F3D500A00A57 /* LookinServer in Frameworks */,
 				7A60D46D2877072300A00A57 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -62,6 +64,8 @@
 		7A60D44C2876F23600A00A57 /* RichTextEditor */ = {
 			isa = PBXGroup;
 			children = (
+				7ADBCB8528805B59004289A4 /* Editor.html */,
+				7A23AB36288053F30059F5F1 /* Dist */,
 				7A60D44D2876F23600A00A57 /* AppDelegate.swift */,
 				7A60D44F2876F23600A00A57 /* SceneDelegate.swift */,
 				7A60D4512876F23600A00A57 /* ViewController.swift */,
@@ -69,7 +73,7 @@
 				7A60D4582876F23900A00A57 /* LaunchScreen.storyboard */,
 				7A60D45B2876F23900A00A57 /* Info.plist */,
 				7A60D4612876F2C000A00A57 /* EditorView.swift */,
-				7A60D4692877041900A00A57 /* Editor.html */,
+				7A04AE7328819E7D007C799F /* File.html */,
 			);
 			path = RichTextEditor;
 			sourceTree = "<group>";
@@ -91,7 +95,6 @@
 			);
 			name = RichTextEditor;
 			packageProductDependencies = (
-				7A60D4672876F3D500A00A57 /* LookinServer */,
 				7A60D46C2877072300A00A57 /* SnapKit */,
 			);
 			productName = RichTextEditor;
@@ -123,7 +126,6 @@
 			);
 			mainGroup = 7A60D4412876F23600A00A57;
 			packageReferences = (
-				7A60D4662876F3D500A00A57 /* XCRemoteSwiftPackageReference "LookinServer" */,
 				7A60D46B2877072300A00A57 /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = 7A60D44B2876F23600A00A57 /* Products */;
@@ -140,9 +142,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7ADBCB8628805B8B004289A4 /* Editor.html in Resources */,
+				7A23AB37288053F30059F5F1 /* Dist in Resources */,
 				7A60D45A2876F23900A00A57 /* LaunchScreen.storyboard in Resources */,
 				7A60D4572876F23900A00A57 /* Assets.xcassets in Resources */,
-				7A60D46A2877041900A00A57 /* Editor.html in Resources */,
+				7A04AE7428819E7D007C799F /* File.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -368,14 +372,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		7A60D4662876F3D500A00A57 /* XCRemoteSwiftPackageReference "LookinServer" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/QMUI/LookinServer/";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
 		7A60D46B2877072300A00A57 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
@@ -387,11 +383,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		7A60D4672876F3D500A00A57 /* LookinServer */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 7A60D4662876F3D500A00A57 /* XCRemoteSwiftPackageReference "LookinServer" */;
-			productName = LookinServer;
-		};
 		7A60D46C2877072300A00A57 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 7A60D46B2877072300A00A57 /* XCRemoteSwiftPackageReference "SnapKit" */;

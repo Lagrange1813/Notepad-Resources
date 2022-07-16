@@ -13,16 +13,13 @@
 </div>
 </body>
 <script>
-  let vditorScript = () => {
-    new Vditor('vditor', {
-      height: 360,
-      cache: {
-        enable: false,
-      },
-      value: '### Test',
-    })
-  }
-
-  vditorScript();
+  let editor = new Vditor('vditor', {
+    height: 360,
+    cache: {
+      enable: false,
+    },
+    value: '### Test',
+  })
+  editor.destroy();
 </script>
 </html>

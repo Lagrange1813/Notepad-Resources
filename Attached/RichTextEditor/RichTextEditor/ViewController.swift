@@ -34,9 +34,13 @@ class ViewController: UIViewController {
     }
 
     func configureEditorView() {
-        let path = Bundle.main.path(forResource: "Editor", ofType: "html") ?? ""
-        let request = URLRequest(url: URL(fileURLWithPath: path))
-        editor.load(request)
+        if let path = Bundle.main.path(forResource: "Editor", ofType: "html") {
+            print(path)
+            let request = URLRequest(url: URL(fileURLWithPath: path))
+            editor.load(request)
+        } else {
+            print("error")
+        }
     }
 }
 
